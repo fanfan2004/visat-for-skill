@@ -1,0 +1,317 @@
+.......F.F.....                                                          [100%]
+=================================== FAILURES ===================================
+_________________________ test_bubble_chart_rendering __________________________
+
+browser_page = <Page url='http://localhost:53835/index.html'>
+
+    def test_bubble_chart_rendering(browser_page):
+        """Bubble chart must render with correct number of bubbles, sizing, and coloring."""
+        page = browser_page
+    
+        # Wait a bit more for D3 animations to complete
+        page.wait_for_timeout(1000)
+    
+        # Check for SVG element first
+        svg = page.locator('svg')
+        assert svg.count() > 0, "No SVG element found - visualization may not be rendering"
+    
+        # Check for SVG bubbles (instruction.md: "50 stocks")
+        # Try multiple selectors
+        bubbles = page.locator('svg circle')
+        bubble_count = bubbles.count()
+    
+        # If no circles, try other selectors
+        if bubble_count == 0:
+            bubbles = page.locator('circle')
+            bubble_count = bubbles.count()
+    
+        if bubble_count == 0:
+            bubbles = page.locator('[class*="bubble"]')
+            bubble_count = bubbles.count()
+    
+        # If still no bubbles, provide detailed error info
+        if bubble_count == 0:
+            error_msg = f"Expected 50 bubbles for stocks, found {bubble_count}.\n"
+            error_msg += f"Console messages: {getattr(page, 'console_messages', [])}\n"
+            error_msg += f"Page errors: {getattr(page, 'page_errors', [])}\n"
+            error_msg += f"SVG innerHTML: {svg.first.inner_html()[:300] if svg.count() > 0 else 'No SVG'}"
+            pytest.fail(error_msg)
+    
+        assert bubble_count == 50, \
+            f"Expected 50 bubbles for stocks (instruction.md), found {bubble_count}"
+    
+        # Get all bubble radii
+        radii = []
+        positions = []
+        for i in range(bubble_count):
+            r = bubbles.nth(i).get_attribute('r')
+            cx = bubbles.nth(i).get_attribute('cx')
+            cy = bubbles.nth(i).get_attribute('cy')
+            if r:
+                radii.append(float(r))
+            if cx and cy:
+                positions.append((float(cx), float(cy)))
+    
+        assert len(radii) == 50, f"Could not get radius values from all bubbles, got {len(radii)}"
+    
+        # Basic overlap check (forceCollide requirement): most bubbles should not overlap
+        # Allow a small number of overlaps while the simulation settles
+        if len(positions) == bubble_count:
+            overlap_count = 0
+            max_checks = 300  # sample to avoid O(n^2) cost
+            checks = 0
+    
+            for i in range(bubble_count):
+                for j in range(i + 1, bubble_count):
+                    if checks >= max_checks:
+                        break
+                    dx = positions[i][0] - positions[j][0]
+                    dy = positions[i][1] - positions[j][1]
+                    dist = (dx * dx + dy * dy) ** 0.5
+                    min_dist = radii[i] + radii[j]
+                    if dist < min_dist - 1:  # small tolerance
+                        overlap_count += 1
+                    checks += 1
+                if checks >= max_checks:
+                    break
+    
+            assert overlap_count <= 5, \
+                f"Too many overlapping bubbles ({overlap_count}) - forceCollide not working properly"
+    
+        # Check that bubbles have varying sizes (market cap based)
+        # instruction.md: "Sized by market capitalization"
+        unique_radii = set(radii)
+        assert len(unique_radii) >= 5, \
+            f"Bubbles should have varying sizes based on market cap, found only {len(unique_radii)} unique sizes"
+    
+        # Check ETF uniform sizing (instruction.md: "ETFs don't have market cap data, so size them uniformly")
+        # ETFs should have same size - get smallest bubbles which are likely ETFs
+        sorted_radii = sorted(radii)
+    
+        # Find bubbles with the most common radius value (likely ETFs with uniform size)
+        from collections import Counter
+        radius_counts = Counter(radii)
+        most_common_radius, count = radius_counts.most_common(1)[0]
+    
+        # If there are multiple bubbles with same size, check if they're close to the expected ~10 ETFs
+        if count >= 10:
+            # Likely ETF bubbles with uniform sizing
+            etf_radii = [r for r in radii if abs(r - most_common_radius) < 0.1]
+            assert len(etf_radii) >= 10, \
+                f"Expected 10 ETF bubbles with uniform size, found {len(etf_radii)}"
+    
+            # Verify ETF sizes are actually uniform (within small tolerance)
+            max_diff = max(etf_radii) - min(etf_radii)
+            assert max_diff < 1.0, \
+                f"ETF bubbles should be uniformly sized (instruction.md), but found size variation of {max_diff}"
+    
+        # Check for distinct colors (instruction.md: "Colored by sector (5 sectors...)")
+        colors = set()
+        for i in range(min(bubble_count, 50)):
+            fill = bubbles.nth(i).get_attribute('fill')
+            if fill:
+                colors.add(fill)
+    
+        assert len(colors) >= 4, \
+            f"Expected at least 4-5 distinct colors for sectors, found {len(colors)}"
+    
+        # Check for legend (instruction.md: "Include a legend showing what each color represents")
+        # Try multiple ways to find legend
+        legend_by_class = page.locator('[class*="legend"]')
+        legend_by_id = page.locator('#legend')
+        legend_by_text = page.locator('text=/legend/i')
+    
+        has_legend = (legend_by_class.count() > 0 or
+                      legend_by_id.count() > 0 or
+                      legend_by_text.count() > 0)
+    
+        assert has_legend, \
+            "Must include a legend (instruction.md requirement)"
+    
+        # Wait for force simulation to render and position all text labels
+        # Text labels may be added dynamically as bubbles settle into position
+        page.wait_for_timeout(1000)
+    
+        # Check for ticker labels (instruction.md: "Labeled with the ticker symbol")
+        # Count only bubble ticker labels, excluding legend category labels
+        # Try to locate bubble labels specifically (common class names)
+        bubble_labels = page.locator('svg text.bubble-label, svg text[class*="label"]')
+    
+        if bubble_labels.count() >= 50:
+            # If bubble labels are properly classed, count them directly
+            ticker_count = bubble_labels.count()
+        else:
+            # Fallback: filter all text by ticker pattern and exclude legend categories
+            svg_text = page.locator('svg text')
+            text_count = svg_text.count()
+    
+            assert text_count > 0, \
+                "SVG must contain text elements for ticker labels (instruction.md: 'Labeled with the ticker symbol')"
+    
+            # Verify that text elements contain valid ticker-like text (1-4 uppercase letters)
+            # Exclude known legend category labels (5 sectors from instruction.md)
+            import re
+            ticker_pattern = re.compile(r'^[A-Z]{1,4}$')
+            # Exclude all 5 sector labels and common abbreviations that might appear in legend
+            legend_categories = ['energy', 'financial', 'industry', 'information technology', 'etf']
+            ticker_count = 0
+    
+            for i in range(text_count):
+                text_content = svg_text.nth(i).text_content().strip()
+                # Only count if it matches ticker pattern and is not a legend category
+                if ticker_pattern.match(text_content) and text_content.lower() not in legend_categories:
+                    ticker_count += 1
+    
+        # Should have exactly 50 ticker labels (one per stock bubble)
+>       assert ticker_count == 50, \
+            f"Expected exactly 50 ticker symbols in bubble labels (not counting legend labels), found {ticker_count}. " \
+            f"instruction.md: 'Labeled with the ticker symbol displayed inside each bubble'"
+E       AssertionError: Expected exactly 50 ticker symbols in bubble labels (not counting legend labels), found 55. instruction.md: 'Labeled with the ticker symbol displayed inside each bubble'
+E       assert 55 == 50
+
+/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-03-noskill-replicate-02/verifier/test_outputs.py:441: AssertionError
+---------------------------- Captured stdout setup -----------------------------
+
+============================================================
+BROWSER PAGE FIXTURE - Starting
+============================================================
+✓ index.html exists at /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-03-noskill-replicate-02/workspace/output/index.html
+✓ index.html size: 1753 bytes
+✓ HTTP server started on port 53835
+✓ HTML preview (first 500 chars):
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stock Market Visualization</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="page-header">
+    <h1>Stock Market Visualization</h1>
+    <p class="subtitle">50 Stocks &amp; ETFs clustered by sector &middot; sized by market capitalization</p>
+  </header>
+
+  <main class="dashboard">
+    <section class="bubble-panel
+
+✓ Playwright started
+✓ Chromium browser launched
+✓ New page created
+Loading http://localhost:53835/index.html
+✓ Page loaded (status: 200)
+✓ Page title: 'Stock Market Visualization'
+✓ Found 2 script tags
+✓ D3.js loaded: True
+✓ Found 1 SVG element(s)
+✓ Found 1 table element(s)
+
+Waiting for visualization to render...
+✓ Bubbles rendered: 50 circles found
+
+============================================================
+RENDER SUCCESS: True
+Console messages: 0
+Page errors: 0
+============================================================
+
+Waiting for D3 force simulation to settle...
+✓ Force simulation settled
+✓ Screenshot saved to /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-03-noskill-replicate-02/verifier/logs/visualization.png for review
+---------------------------- Captured stderr setup -----------------------------
+127.0.0.1 - - [23/Aug/2026 18:02:49] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2026 18:02:49] "GET /css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2026 18:02:49] "GET /js/d3.v6.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2026 18:02:49] "GET /js/visualization.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2026 18:02:49] "GET /data/stock-descriptions.csv HTTP/1.1" 200 -
+________________________ test_tooltips_non_etf_and_etf _________________________
+
+browser_page = <Page url='http://localhost:53835/index.html'>
+
+    def test_tooltips_non_etf_and_etf(browser_page):
+        """Non-ETF bubbles should show tooltips; ETF bubbles should not."""
+        page = browser_page
+    
+        # Tooltip uses .visible class to show (opacity: 1), not display property
+        # Check for the .visible class specifically, not :visible pseudo-selector
+        tooltip_locator = '.tooltip.visible, #tooltip.visible, [role="tooltip"][class*="visible"]'
+        etf_tickers = ['SPY', 'VOO', 'QQQ', 'GLD', 'XLF', 'VWO', 'XLU', 'XLV', 'VEA', 'VTV']
+        svg_texts = page.locator('svg text')
+    
+        def hover_label_text(text_to_hover):
+            for i in range(svg_texts.count()):
+                text_elem = svg_texts.nth(i)
+                text_content = text_elem.text_content().strip()
+                if text_content == text_to_hover:
+                    box = text_elem.bounding_box()
+                    if box:
+                        page.mouse.move(box['x'] + box['width'] / 2, box['y'] + box['height'] / 2)
+                        page.wait_for_timeout(400)
+                        return True
+            return False
+    
+        def find_first_non_etf_label():
+            import re
+            ticker_pattern = re.compile(r'^[A-Z]{1,4}$')
+            for i in range(svg_texts.count()):
+                text_elem = svg_texts.nth(i)
+                text_content = text_elem.text_content().strip()
+                if ticker_pattern.match(text_content) and text_content not in etf_tickers:
+                    return text_content
+            return None
+    
+        # Test 1: ETF bubbles should NOT show tooltips
+        # Test this first in cleanest page state before any other interactions
+        # Move mouse to origin to ensure no hover state from page load
+        page.mouse.move(0, 0)
+        page.wait_for_timeout(500)
+    
+        etf_label = None
+        for candidate in etf_tickers:
+            if hover_label_text(candidate):
+                etf_label = candidate
+                break
+    
+        if etf_label is None:
+            print("⚠ Could not locate ETF bubble by ticker label for screenshot")
+        else:
+            # Wait for any tooltip to appear (if incorrectly configured)
+            page.wait_for_timeout(200)
+    
+            # Save screenshot showing ETF hover (should show no tooltip)
+            try:
+                page.screenshot(path="/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-03-noskill-replicate-02/verifier/logs/tooltip_etf_hover_no_tooltip.png", full_page=True)
+                print(f"✓ ETF hover screenshot saved for {etf_label} (should show no tooltip)")
+            except Exception as e:
+                print(f"⚠ Failed to save ETF hover screenshot: {e}")
+    
+            # After hovering ETF, ensure tooltip is not visible
+            etf_tooltip = page.locator(tooltip_locator)
+            assert etf_tooltip.count() == 0, \
+                "ETF bubble should not show a tooltip (instruction.md requirement)"
+    
+        # Test 2: Non-ETF bubbles should show tooltips with ticker, name, and sector
+        # Move mouse away to clear hover state before testing non-ETF
+        page.mouse.move(0, 0)
+        page.wait_for_timeout(500)
+    
+        non_etf_label = find_first_non_etf_label()
+        assert non_etf_label is not None, "Could not find a non-ETF ticker label to hover"
+    
+        assert hover_label_text(non_etf_label), f"Could not hover non-ETF label {non_etf_label}"
+    
+        tooltip = page.locator(tooltip_locator)
+>       assert tooltip.count() > 0, "Tooltip did not appear on non-ETF hover"
+E       AssertionError: Tooltip did not appear on non-ETF hover
+E       assert 0 > 0
+E        +  where 0 = count()
+E        +    where count = <Locator frame=<Frame name= url='http://localhost:53835/index.html'> selector='.tooltip.visible, #tooltip.visible, [role="tooltip"][class*="visible"]'>.count
+
+/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-03-noskill-replicate-02/verifier/test_outputs.py:574: AssertionError
+----------------------------- Captured stdout call -----------------------------
+✓ ETF hover screenshot saved for SPY (should show no tooltip)
+=========================== short test summary info ============================
+FAILED test_outputs.py::test_bubble_chart_rendering - AssertionError: Expecte...
+FAILED test_outputs.py::test_tooltips_non_etf_and_etf - AssertionError: Toolt...
+2 failed, 13 passed in 20.36s

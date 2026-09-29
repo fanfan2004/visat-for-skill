@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task004-local-3x3-minimaxm3-20260823-01",
+  "batch_type": "controller_diagnostic",
+  "status": "excluded",
+  "completed_formal_result_files": 0,
+  "attempt_result_files": 1,
+  "model_requests": 0,
+  "observed_condition": "noskill",
+  "observed_replicate_id": 1,
+  "observed_attempt": 1,
+  "observed_opencode_error": "APIError: Cannot connect to API; the call emitted zero requests and no task verifier was run",
+  "reason": "The initial task4 runner classified an isRetryable API connection error as zero-request shared rate limiting. The batch was stopped immediately, the attempt was retained for audit, and the controller was corrected before the new formal batch.",
+  "excluded_from_formal_statistics": true,
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "evidence_directory": "/private/tmp/vista-task004-local-3x3-20260823-01"
+}

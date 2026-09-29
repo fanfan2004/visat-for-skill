@@ -1,0 +1,11 @@
+task_id: task-008
+mapping_status: resolved
+condition_backend: zcode
+source:
+  benchmark: skillsbench
+  benchmark_task_id: adaptive-cruise-control
+  definition_path: vendor/skillsbench/tasks/adaptive-cruise-control
+  skill_path: vendor/skillsbench/tasks/adaptive-cruise-control/environment/skills
+skill_paths:
+  native: vendor/skillsbench/tasks/adaptive-cruise-control/environment/skills
+  pd_vista: skills/pd-vista/task-008

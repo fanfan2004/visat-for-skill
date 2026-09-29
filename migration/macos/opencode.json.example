@@ -1,0 +1,27 @@
+{
+  "share": "disabled",
+  "permission": {
+    "external_directory": "deny"
+  },
+  "provider": {
+    "openai": {
+      "npm": "@ai-sdk/openai",
+      "name": "codexzh",
+      "options": {
+        "baseURL": "https://api.codexzh.com/v1",
+        "apiKey": "{env:OPENAI_API_KEY}",
+        "setCachekey": true,
+        "options": {
+          "reasoningEffort": "high",
+          "textVerbosity": "low",
+          "reasoningSummary": "auto"
+        }
+      },
+      "models": {
+        "gpt-5.6-terra": {
+          "name": "gpt-5.6-terra"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "protocol": "task007-opencode-current-minimaxm3-noskill-native-pdvista-3x3",
+  "task_id": "task-007-travel-planning",
+  "conditions": [
+    "noskill",
+    "native",
+    "pd-vista"
+  ],
+  "replicates_per_condition": 3,
+  "planned_trials": 9,
+  "completed_trials": 0,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "status": "quarantined_verifier_readiness"
+}

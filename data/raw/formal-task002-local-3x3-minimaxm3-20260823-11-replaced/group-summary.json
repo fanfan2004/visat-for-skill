@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "protocol": "task002-local-opencode-minimaxm3-public-diagnostics-resumable-timeout-noskill-native-pdvista-3x3",
+  "task_id": "task-002",
+  "conditions": [
+    "noskill",
+    "native",
+    "pd-vista"
+  ],
+  "replicates_per_condition": 3,
+  "planned_trials": 9,
+  "completed_trials": 9,
+  "schedule": [
+    {
+      "replicate_id": 1,
+      "condition": "noskill"
+    },
+    {
+      "replicate_id": 1,
+      "condition": "native"
+    },
+    {
+      "replicate_id": 1,
+      "condition": "pd-vista"
+    },
+    {
+      "replicate_id": 2,
+      "condition": "native"
+    },
+    {
+      "replicate_id": 2,
+      "condition": "pd-vista"
+    },
+    {
+      "replicate_id": 2,
+      "condition": "noskill"
+    },
+    {
+      "replicate_id": 3,
+      "condition": "pd-vista"
+    },
+    {
+      "replicate_id": 3,
+      "condition": "noskill"
+    },
+    {
+      "replicate_id": 3,
+      "condition": "native"
+    }
+  ],
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "opencode": {
+    "config_path": "/Users/wangjinhua/.config/opencode/opencode.json",
+    "launcher": "/Users/wangjinhua/.local/lib/node_modules/opencode-ai/bin/opencode.exe",
+    "version": "1.18.18",
+    "binary_sha256": "c9be687513fd652ca53018901457eb0911cb505dc9cdc494a0ae3645970699ee"
+  },
+  "condition_summaries": {
+    "noskill": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 1,
+      "usage": {
+        "requests": 249,
+        "tool_uses": 239,
+        "input_tokens": 1033091,
+        "output_tokens": 166132,
+        "cache_read_tokens": 23670895
+      }
+    },
+    "native": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "usage": {
+        "requests": 360,
+        "tool_uses": 351,
+        "input_tokens": 469708,
+        "output_tokens": 160135,
+        "cache_read_tokens": 28860541
+      }
+    },
+    "pd-vista": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 2,
+      "usage": {
+        "requests": 288,
+        "tool_uses": 279,
+        "input_tokens": 411380,
+        "output_tokens": 152038,
+        "cache_read_tokens": 25200432
+      }
+    }
+  },
+  "results": [
+    {
+      "condition": "noskill",
+      "replicate_id": 1,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "ses_fd6ca6ebdffeBHJg3box6ipZoo",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 121,
+        "tool_uses": 115,
+        "input_tokens": 692319,
+        "output_tokens": 89735,
+        "cache_read_tokens": 16642226
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 1,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd6b4f98affer5X04RClZpSKbB",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 120,
+        "tool_uses": 117,
+        "input_tokens": 144904,
+        "output_tokens": 60358,
+        "cache_read_tokens": 9550973
+      },
+      "initially_available_modules": [
+        "enterprise-artifact-search"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 1,
+      "status": "passed_without_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd6a85723ffekMROM6qOjxKUIF",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 48,
+        "tool_uses": 47,
+        "input_tokens": 64741,
+        "output_tokens": 15163,
+        "cache_read_tokens": 1627194
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd6a59dc0ffefGLvhDrPwYyyin",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 169,
+        "tool_uses": 165,
+        "input_tokens": 215386,
+        "output_tokens": 70766,
+        "cache_read_tokens": 16280832
+      },
+      "initially_available_modules": [
+        "enterprise-artifact-search"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 4,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 2,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd68e032fffe5HenUGg5OpX8KV",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 76,
+        "tool_uses": 74,
+        "input_tokens": 102508,
+        "output_tokens": 20241,
+        "cache_read_tokens": 3899781
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [
+        "enterprise-artifact-search"
+      ],
+      "accessed_modules_after_disclosure": [
+        "enterprise-artifact-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "ses_fd6855227ffe0KSRsG7urk053A",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 78,
+        "tool_uses": 73,
+        "input_tokens": 242498,
+        "output_tokens": 41727,
+        "cache_read_tokens": 4755328
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "ses_fd470e1fffferRyevlxS8scwz1",
+      "actual_model_ids": [
+        "MiniMax-M3"
+      ],
+      "actual_provider_ids": [
+        "minimax-cn"
+      ],
+      "usage": {
+        "requests": 164,
+        "tool_uses": 158,
+        "input_tokens": 244131,
+        "output_tokens": 116634,
+        "cache_read_tokens": 19673457
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [
+        "enterprise-artifact-search"
+      ],
+      "accessed_modules_after_disclosure": [
+        "enterprise-artifact-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 6,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd45d0f56ffeexyHfGKnE6b3Uf",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 50,
+        "tool_uses": 51,
+        "input_tokens": 98274,
+        "output_tokens": 34670,
+        "cache_read_tokens": 2273341
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd457fe83ffezs7DbgjjL7j0KG",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 71,
+        "tool_uses": 69,
+        "input_tokens": 109418,
+        "output_tokens": 29011,
+        "cache_read_tokens": 3028736
+      },
+      "initially_available_modules": [
+        "enterprise-artifact-search"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    }
+  ],
+  "diagnostic_batches": [
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-01",
+      "completed_result_files": 0,
+      "reason": "controller import-path diagnostic failed before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-02",
+      "completed_result_files": 0,
+      "reason": "controller workspace location was denied by the local sandbox before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-03",
+      "completed_result_files": 0,
+      "reason": "controller security gate rejected an in-repository workspace before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-04",
+      "completed_result_files": 9,
+      "reason": "network-isolated infrastructure diagnostic: all nine trials ended in retryable API connection errors with zero requests, tokens, tool uses, and task outputs; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-05",
+      "completed_result_files": 0,
+      "reason": "foreground-controller diagnostic: execution host ended the controller parent while an OpenCode child was still completing; incomplete controller evidence excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-06",
+      "completed_result_files": 0,
+      "reason": "background-controller diagnostic: background process did not persist in the execution host and made no model request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-07",
+      "completed_result_files": 0,
+      "reason": "foreground-controller retry diagnostic: execution host ended the controller before the first model turn could be reconciled; incomplete controller evidence excluded before formal comparison"
+    }
+  ],
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "run_id": "formal-task002-local-3x3-minimaxm3-20260823-11-replaced",
+  "replacement_provenance": {
+    "replaced_original_run": "formal-task002-local-3x3-minimaxm3-20260822-08",
+    "retry_run": "formal-task002-local-3x3-minimaxm3-20260823-11-retry-external",
+    "excluded_recovery_diagnostics": [
+      "formal-task002-local-3x3-minimaxm3-20260822-09-retry-external",
+      "formal-task002-local-3x3-minimaxm3-20260822-10-retry-external"
+    ],
+    "reason": "Three replicate-03 records were quarantined solely for retryable provider HTTP 429 rate limiting; rerun with fresh isolated workspace, OpenCode state, and session.",
+    "replaced_trials": [
+      {
+        "condition": "native",
+        "replicate_id": 3
+      },
+      {
+        "condition": "noskill",
+        "replicate_id": 3
+      },
+      {
+        "condition": "pd-vista",
+        "replicate_id": 3
+      }
+    ]
+  }
+}

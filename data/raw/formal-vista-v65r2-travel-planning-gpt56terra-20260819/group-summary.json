@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "protocol": "vista-v65r2-real-verifier-travel-planning",
+  "task_id": "task-007-travel-planning",
+  "condition": "pd-vista",
+  "planned_replicates": 2,
+  "completed_replicates": 2,
+  "controls_run": 0,
+  "results": [
+    {
+      "replicate_id": 1,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "disclosed_modules": [
+        "search-attractions",
+        "search-cities",
+        "search-accommodations"
+      ],
+      "accessed_modules_after_disclosure": [
+        "search-attractions",
+        "search-cities",
+        "search-accommodations"
+      ],
+      "distractor_flight_disclosed": false,
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 6,
+        "successful_disclosures": 3,
+        "next_round_module_access": 3,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "replicate_id": 2,
+      "status": "quarantined_provider_policy_rejection",
+      "final_verifier_pass": false,
+      "disclosed_modules": [
+        "search-cities"
+      ],
+      "accessed_modules_after_disclosure": [
+        "search-cities"
+      ],
+      "distractor_flight_disclosed": false,
+      "vista_metrics": {
+        "trigger_opportunities": 3,
+        "routable_feedback": 3,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    }
+  ]
+}

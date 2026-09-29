@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stock Sector Bubble Chart</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <h1>Stock Sector Visualization</h1>
+    <div id="subtitle">Each bubble represents one stock, sized by market cap and grouped by sector. Click a bubble or a table row to highlight it across both views.</div>
+    <div id="status">Loading data...</div>
+    <div id="main">
+        <div id="chart-panel">
+            <svg id="bubble-chart" width="760" height="640"></svg>
+            <div id="legend"></div>
+        </div>
+        <div id="table-panel">
+            <h2>All Stocks (50)</h2>
+            <div id="table-wrap">
+                <table id="stocks">
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th>Company</th>
+                            <th>Sector</th>
+                            <th>Market Cap</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="tooltip" class="tooltip"></div>
+    <script src="js/d3.v6.min.js"></script>
+    <script src="js/visualization.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+.FFFF                                                                    [100%]
+=================================== FAILURES ===================================
+_________________ TestOutputs.test_answer_structure_and_values _________________
+
+self = <test_outputs.TestOutputs object at 0x103a2fc50>
+
+    def test_answer_structure_and_values(self):
+        """Check answer structure and correctness for all questions."""
+>       actual = load_answer()
+                 ^^^^^^^^^^^^^
+
+test_outputs.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_answer():
+>       assert os.path.exists(ANSWER_PATH), f"Missing output file: {ANSWER_PATH}"
+E       AssertionError: Missing output file: /private/tmp/vista-task002-local-3x3-20260822-05/formal-task002-local-3x3-minimaxm3-20260822-05-native-replicate-01/workspace/answer.json
+E       assert False
+E        +  where False = <function exists at 0x102ca6c00>('/private/tmp/vista-task002-local-3x3-20260822-05/formal-task002-local-3x3-minimaxm3-20260822-05-native-replicate-01/workspace/answer.json')
+E        +    where <function exists at 0x102ca6c00> = <module 'posixpath' (frozen)>.exists
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+test_outputs.py:49: AssertionError
+____________________ TestOutputs.test_tokens_efficient[q1] _____________________
+
+self = <test_outputs.TestOutputs object at 0x1039c22c0>, q_key = 'q1'
+
+    @pytest.mark.parametrize("q_key", ["q1", "q2", "q3"])
+    def test_tokens_efficient(self, q_key):
+        """Check token field exists and is within bounds."""
+>       actual = load_answer()
+                 ^^^^^^^^^^^^^
+
+test_outputs.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_answer():
+>       assert os.path.exists(ANSWER_PATH), f"Missing output file: {ANSWER_PATH}"
+E       AssertionError: Missing output file: /private/tmp/vista-task002-local-3x3-20260822-05/formal-task002-local-3x3-minimaxm3-20260822-05-native-replicate-01/workspace/answer.json
+E       assert False
+E        +  where False = <function exists at 0x102ca6c00>('/private/tmp/vista-task002-local-3x3-20260822-05/formal-task002-local-3x3-minimaxm3-20260822-05-native-replicate-01/workspace/answer.json')
+E        +    where <function exists at 0x102ca6c00> = <module 'posixpath' (frozen)>.exists
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+test_outputs.py:49: AssertionError
+____________________ TestOutputs.test_tokens_efficient[q2] _____________________
+
+self = <test_outputs.TestOutputs object at 0x1039c23f0>, q_key = 'q2'
+
+    @pytest.mark.parametrize("q_key", ["q1", "q2", "q3"])
+    def test_tokens_efficient(self, q_key):
+        """Check token field exists and is within bounds."""
+>       actual = load_answer()
+                 ^^^^^^^^^^^^^
+
+test_outputs.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_answer():
+>       assert os.path.exists(ANSWER_PATH), f"Missing output file: {ANSWER_PATH}"
+E       AssertionError: Missing output file: /private/tmp/vista-task002-local-3x3-20260822-05/formal-task002-local-3x3-minimaxm3-20260822-05-native-replicate-01/workspace/answer.json
+E       assert False
+E        +  where False = <function exists at 0x102ca6c00>('/private/tmp/vista-task002-local-3x3-20260822-05/formal-task002-local-3x3-minimaxm3-20260822-05-native-replicate-01/workspace/answer.json')
+E        +    where <function exists at 0x102ca6c00> = <module 'posixpath' (frozen)>.exists
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+test_outputs.py:49: AssertionError
+____________________ TestOutputs.test_tokens_efficient[q3] _____________________
+
+self = <test_outputs.TestOutputs object at 0x103a172f0>, q_key = 'q3'
+
+    @pytest.mark.parametrize("q_key", ["q1", "q2", "q3"])
+    def test_tokens_efficient(self, q_key):
+        """Check token field exists and is within bounds."""
+>       actual = load_answer()
+                 ^^^^^^^^^^^^^
+
+test_outputs.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_answer():
+>       assert os.path.exists(ANSWER_PATH), f"Missing output file: {ANSWER_PATH}"
+E       AssertionError: Missing output file: /private/tmp/vista-task002-local-3x3-20260822-05/formal-task002-local-3x3-minimaxm3-20260822-05-native-replicate-01/workspace/answer.json
+E       assert False
+E        +  where False = <function exists at 0x102ca6c00>('/private/tmp/vista-task002-local-3x3-20260822-05/formal-task002-local-3x3-minimaxm3-20260822-05-native-replicate-01/workspace/answer.json')
+E        +    where <function exists at 0x102ca6c00> = <module 'posixpath' (frozen)>.exists
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+test_outputs.py:49: AssertionError
+=========================== short test summary info ============================
+FAILED test_outputs.py::TestOutputs::test_answer_structure_and_values - Asser...
+FAILED test_outputs.py::TestOutputs::test_tokens_efficient[q1] - AssertionErr...
+FAILED test_outputs.py::TestOutputs::test_tokens_efficient[q2] - AssertionErr...
+FAILED test_outputs.py::TestOutputs::test_tokens_efficient[q3] - AssertionErr...
+4 failed, 1 passed in 0.08s

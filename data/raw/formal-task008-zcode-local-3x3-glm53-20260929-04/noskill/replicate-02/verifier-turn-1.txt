@@ -1,0 +1,71 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.14, pytest-7.4.0, pluggy-1.6.0 -- /Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/bin/python
+rootdir: /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task008-zcode-local-3x3-glm53-20260929-04-noskill-replicate-02
+plugins: mock-3.15.1, asyncio-0.21.0, anyio-4.14.2, requests-mock-1.11.0
+asyncio: mode=Mode.STRICT
+collecting ... collected 12 items
+
+../verifier/test_outputs_local.py::TestInputFilesIntegrity::test_input_files_integrity PASSED [  8%]
+../verifier/test_outputs_local.py::TestPIDController::test_pid_controller PASSED [ 16%]
+../verifier/test_outputs_local.py::TestACCSystem::test_acc_system PASSED [ 25%]
+../verifier/test_outputs_local.py::TestTuningResults::test_tuning_results PASSED [ 33%]
+../verifier/test_outputs_local.py::TestSimulationResults::test_simulation_results PASSED [ 41%]
+../verifier/test_outputs_local.py::TestReport::test_report_keywords PASSED [ 50%]
+../verifier/test_outputs_local.py::TestSpeedControl::test_speed_control PASSED [ 58%]
+../verifier/test_outputs_local.py::TestDistanceControl::test_distance_control PASSED [ 66%]
+../verifier/test_outputs_local.py::TestSafety::test_safety PASSED        [ 75%]
+../verifier/test_outputs_local.py::TestScenario::test_scenario PASSED    [ 83%]
+../verifier/test_outputs_local.py::TestSimulationExecution::test_simulation_execution PASSED [ 91%]
+../verifier/test_outputs_local.py::TestAntiCheat::test_anti_cheat PASSED [100%]
+
+==================================== PASSES ====================================
+______________ TestSimulationExecution.test_simulation_execution _______________
+----------------------------- Captured stdout call -----------------------------
+{
+  "rise_time_s_90pct": null,
+  "overshoot_pct": 0.0,
+  "speed_ss_error_ms": 20.2862,
+  "distance_ss_error_m": 536.0749,
+  "distance_err_all_follow_mean_m": 1134.0981,
+  "max_abs_distance_error_m": 1969.0519,
+  "min_distance_m": 52.1,
+  "min_ttc_s": 140.5612,
+  "emergency_duration_s": 0.0,
+  "max_speed_ms": 16.2203,
+  "duration_s": 150.0,
+  "n_rows": 1501,
+  "min_distance_config": 10.0,
+  "time_headway": 1.5
+}
+Wrote 1501 rows to /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task008-zcode-local-3x3-glm53-20260929-04-noskill-replicate-02/workspace/simulation_results.csv
+{
+  "rise_time_s_90pct": 9.0,
+  "overshoot_pct": 0.0025,
+  "speed_ss_error_ms": 0.0013,
+  "distance_ss_error_m": 0.2685,
+  "distance_err_all_follow_mean_m": 14.6511,
+  "max_abs_distance_error_m": 62.0868,
+  "min_distance_m": 20.9036,
+  "min_ttc_s": 2.1748,
+  "emergency_duration_s": 1.7,
+  "max_speed_ms": 30.0007,
+  "duration_s": 150.0,
+  "n_rows": 1501,
+  "min_distance_config": 10.0,
+  "time_headway": 1.5
+}
+Wrote 1501 rows to /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task008-zcode-local-3x3-glm53-20260929-04-noskill-replicate-02/workspace/simulation_results.csv
+=========================== short test summary info ============================
+PASSED ../verifier/test_outputs_local.py::TestInputFilesIntegrity::test_input_files_integrity
+PASSED ../verifier/test_outputs_local.py::TestPIDController::test_pid_controller
+PASSED ../verifier/test_outputs_local.py::TestACCSystem::test_acc_system
+PASSED ../verifier/test_outputs_local.py::TestTuningResults::test_tuning_results
+PASSED ../verifier/test_outputs_local.py::TestSimulationResults::test_simulation_results
+PASSED ../verifier/test_outputs_local.py::TestReport::test_report_keywords
+PASSED ../verifier/test_outputs_local.py::TestSpeedControl::test_speed_control
+PASSED ../verifier/test_outputs_local.py::TestDistanceControl::test_distance_control
+PASSED ../verifier/test_outputs_local.py::TestSafety::test_safety
+PASSED ../verifier/test_outputs_local.py::TestScenario::test_scenario
+PASSED ../verifier/test_outputs_local.py::TestSimulationExecution::test_simulation_execution
+PASSED ../verifier/test_outputs_local.py::TestAntiCheat::test_anti_cheat
+============================== 12 passed in 5.32s ==============================

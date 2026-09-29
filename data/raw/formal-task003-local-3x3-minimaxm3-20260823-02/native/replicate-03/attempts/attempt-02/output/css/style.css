@@ -1,0 +1,244 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f5f7fa;
+    color: #1f2933;
+    padding: 24px;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 8px;
+    color: #102a43;
+    font-size: 28px;
+    letter-spacing: 0.5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #627d98;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+.app {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: flex-start;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.chart-panel {
+    flex: 1 1 auto;
+    min-width: 0;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
+.table-panel {
+    flex: 0 0 480px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+    max-height: 760px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-panel h2,
+.table-panel h2 {
+    font-size: 16px;
+    color: #243b53;
+    margin-bottom: 12px;
+}
+
+#bubble-chart {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.bubble {
+    cursor: pointer;
+    transition: stroke-width 0.15s ease, stroke-opacity 0.15s ease;
+}
+
+.bubble.dim {
+    opacity: 0.25;
+}
+
+.bubble.selected {
+    stroke: #102a43;
+    stroke-width: 3px;
+}
+
+.bubble-label {
+    pointer-events: none;
+    fill: #ffffff;
+    font-weight: 600;
+    text-anchor: middle;
+    dominant-baseline: central;
+    user-select: none;
+}
+
+.bubble-label.dim {
+    opacity: 0.25;
+}
+
+.bubble-label.selected {
+    fill: #102a43;
+    font-weight: 700;
+}
+
+#tooltip {
+    position: absolute;
+    padding: 8px 12px;
+    background: rgba(16, 42, 67, 0.95);
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 12px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 1000;
+    line-height: 1.45;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+    max-width: 260px;
+}
+
+#tooltip.visible {
+    opacity: 1;
+}
+
+#tooltip .tip-ticker {
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+#tooltip .tip-row {
+    color: #d9e2ec;
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e4e7eb;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #334e68;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.15s ease;
+}
+
+.legend-item:hover {
+    background: #f0f4f8;
+}
+
+.legend-item.disabled {
+    opacity: 0.4;
+}
+
+.legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid rgba(16, 42, 67, 0.15);
+    flex-shrink: 0;
+}
+
+.table-wrapper {
+    overflow-y: auto;
+    flex: 1 1 auto;
+    border: 1px solid #e4e7eb;
+    border-radius: 6px;
+}
+
+table.stock-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+table.stock-table thead th {
+    position: sticky;
+    top: 0;
+    background: #f0f4f8;
+    color: #243b53;
+    text-align: left;
+    padding: 10px 12px;
+    font-weight: 600;
+    border-bottom: 1px solid #d9e2ec;
+    z-index: 2;
+}
+
+table.stock-table tbody td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f0f4f8;
+    color: #334e68;
+}
+
+table.stock-table tbody tr {
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+table.stock-table tbody tr:hover {
+    background: #f7fafc;
+}
+
+table.stock-table tbody tr.selected {
+    background: #fef3c7;
+}
+
+table.stock-table tbody tr.selected td {
+    color: #102a43;
+    font-weight: 600;
+}
+
+table.stock-table tbody tr.dim {
+    opacity: 0.35;
+}
+
+.ticker-cell {
+    font-weight: 600;
+    color: #102a43;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.market-cap-cell {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 1100px) {
+    .app {
+        flex-direction: column;
+    }
+    .table-panel {
+        flex: 1 1 auto;
+        width: 100%;
+        max-height: 480px;
+    }
+}

@@ -1,0 +1,12 @@
+# Tuned PID gains for the Adaptive Cruise Control simulation
+# Tuned with tune.py (staged grid search): speed PID on the lead-free
+# cruise phase, distance PID on the full 150s lead scenario.
+# Loaded at runtime by simulation.py.
+pid_speed:
+  kp: 4.0
+  ki: 0.02
+  kd: 0.0
+pid_distance:
+  kp: 1.5
+  ki: 0.0
+  kd: 0.0

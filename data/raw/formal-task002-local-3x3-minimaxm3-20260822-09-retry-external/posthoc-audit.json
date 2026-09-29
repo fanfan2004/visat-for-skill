@@ -1,0 +1,408 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task002-local-3x3-minimaxm3-20260822-09-retry-external",
+  "audit_status": "completed_with_failures",
+  "completed_trials": 3,
+  "unique_sessions": 3,
+  "session_ids_complete": true,
+  "all_final_verifiers_passed": false,
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "provider_policy_errors": 0,
+  "session_identity_errors": 0,
+  "model_identity": {
+    "provider_id": "minimax-cn",
+    "model_id": "MiniMax-M3",
+    "consistent_across_all_trials": true,
+    "evidence": "read-only query of each isolated OpenCode opencode.db message table"
+  },
+  "conditions": {
+    "noskill": {
+      "completed_trials": 1,
+      "verifier_passes": 0,
+      "total_turns": 1,
+      "model_turn_timeouts": 0,
+      "requests": 0,
+      "tool_uses": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read_tokens": 0,
+      "input_plus_output_tokens": 0,
+      "recorded_cost": 0.0
+    },
+    "native": {
+      "completed_trials": 1,
+      "verifier_passes": 0,
+      "total_turns": 1,
+      "model_turn_timeouts": 0,
+      "requests": 0,
+      "tool_uses": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read_tokens": 0,
+      "input_plus_output_tokens": 0,
+      "recorded_cost": 0.0
+    },
+    "pd-vista": {
+      "completed_trials": 1,
+      "verifier_passes": 0,
+      "total_turns": 1,
+      "model_turn_timeouts": 0,
+      "requests": 0,
+      "tool_uses": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read_tokens": 0,
+      "input_plus_output_tokens": 0,
+      "recorded_cost": 0.0,
+      "trigger_opportunities": 0,
+      "routable_feedback": 0,
+      "successful_disclosures": 0,
+      "next_round_module_access": 0,
+      "clean_complete_closure": 0,
+      "disclosed_modules": []
+    }
+  },
+  "totals": {
+    "requests": 0,
+    "tool_uses": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 0,
+    "recorded_cost": 0.0
+  },
+  "trials": [
+    {
+      "schema_version": 1,
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-09-retry-external-pd-vista-replicate-03",
+      "task_id": "task-002",
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_actual_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd60e8b2bffecPj5cNPi72COrB",
+      "turns": [
+        {
+          "turn": 1,
+          "return_code": 1,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "error": 1
+            },
+            "session_ids": [
+              "ses_fd60e8b2bffecPj5cNPi72COrB"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 0,
+            "tool_uses": 0,
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cache_read_tokens": 0,
+            "accessed_modules": [],
+            "errors": [
+              {
+                "name": "APIError",
+                "status_code": 429,
+                "retryable": true,
+                "category": "api_error"
+              }
+            ],
+            "tool_errors": []
+          },
+          "answer_exists": false,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        }
+      ],
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "final_verifier_pass": false,
+      "stop_reason": "api_error",
+      "status": "quarantined_api_error",
+      "workspace": "/private/tmp/vista-task002-local-3x3-20260822-09/formal-task002-local-3x3-minimaxm3-20260822-09-retry-external-pd-vista-replicate-03/workspace",
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task002-local-3x3-20260822-09/formal-task002-local-3x3-minimaxm3-20260822-09-retry-external-pd-vista-replicate-03/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.0,
+        "assistant_messages": 1
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-09-retry-external-noskill-replicate-03",
+      "task_id": "task-002",
+      "condition": "noskill",
+      "replicate_id": 3,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_actual_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd60d50eaffeS0UPxfMl6a8eMR",
+      "turns": [
+        {
+          "turn": 1,
+          "return_code": 1,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "error": 1
+            },
+            "session_ids": [
+              "ses_fd60d50eaffeS0UPxfMl6a8eMR"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 0,
+            "tool_uses": 0,
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cache_read_tokens": 0,
+            "accessed_modules": [],
+            "errors": [
+              {
+                "name": "APIError",
+                "status_code": 429,
+                "retryable": true,
+                "category": "api_error"
+              }
+            ],
+            "tool_errors": []
+          },
+          "answer_exists": false,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        }
+      ],
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "final_verifier_pass": false,
+      "stop_reason": "api_error",
+      "status": "quarantined_api_error",
+      "workspace": "/private/tmp/vista-task002-local-3x3-20260822-09/formal-task002-local-3x3-minimaxm3-20260822-09-retry-external-noskill-replicate-03/workspace",
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task002-local-3x3-20260822-09/formal-task002-local-3x3-minimaxm3-20260822-09-retry-external-noskill-replicate-03/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.0,
+        "assistant_messages": 1
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-09-retry-external-native-replicate-03",
+      "task_id": "task-002",
+      "condition": "native",
+      "replicate_id": 3,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_actual_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd60bf4b5ffeAeLR4y27gieOZ4",
+      "turns": [
+        {
+          "turn": 1,
+          "return_code": 1,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "error": 1
+            },
+            "session_ids": [
+              "ses_fd60bf4b5ffeAeLR4y27gieOZ4"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 0,
+            "tool_uses": 0,
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cache_read_tokens": 0,
+            "accessed_modules": [],
+            "errors": [
+              {
+                "name": "APIError",
+                "status_code": 429,
+                "retryable": true,
+                "category": "api_error"
+              }
+            ],
+            "tool_errors": []
+          },
+          "answer_exists": false,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        }
+      ],
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "initially_available_modules": [
+        "enterprise-artifact-search"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "final_verifier_pass": false,
+      "stop_reason": "api_error",
+      "status": "quarantined_api_error",
+      "workspace": "/private/tmp/vista-task002-local-3x3-20260822-09/formal-task002-local-3x3-minimaxm3-20260822-09-retry-external-native-replicate-03/workspace",
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task002-local-3x3-20260822-09/formal-task002-local-3x3-minimaxm3-20260822-09-retry-external-native-replicate-03/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.0,
+        "assistant_messages": 1
+      }
+    }
+  ],
+  "excluded_runs": [
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-01",
+      "completed_result_files": 0,
+      "reason": "controller import-path diagnostic failed before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-02",
+      "completed_result_files": 0,
+      "reason": "controller workspace location was denied by the local sandbox before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-03",
+      "completed_result_files": 0,
+      "reason": "controller security gate rejected an in-repository workspace before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-04",
+      "completed_result_files": 9,
+      "reason": "network-isolated infrastructure diagnostic: all nine trials ended in retryable API connection errors with zero requests, tokens, tool uses, and task outputs; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-05",
+      "completed_result_files": 0,
+      "reason": "foreground-controller diagnostic: execution host ended the controller parent while an OpenCode child was still completing; incomplete controller evidence excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-06",
+      "completed_result_files": 0,
+      "reason": "background-controller diagnostic: background process did not persist in the execution host and made no model request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-07",
+      "completed_result_files": 0,
+      "reason": "foreground-controller retry diagnostic: execution host ended the controller before the first model turn could be reconciled; incomplete controller evidence excluded before formal comparison"
+    }
+  ],
+  "diagnostic_batches": [
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-01",
+      "completed_result_files": 0,
+      "reason": "controller import-path diagnostic failed before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-02",
+      "completed_result_files": 0,
+      "reason": "controller workspace location was denied by the local sandbox before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-03",
+      "completed_result_files": 0,
+      "reason": "controller security gate rejected an in-repository workspace before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-04",
+      "completed_result_files": 9,
+      "reason": "network-isolated infrastructure diagnostic: all nine trials ended in retryable API connection errors with zero requests, tokens, tool uses, and task outputs; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-05",
+      "completed_result_files": 0,
+      "reason": "foreground-controller diagnostic: execution host ended the controller parent while an OpenCode child was still completing; incomplete controller evidence excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-06",
+      "completed_result_files": 0,
+      "reason": "background-controller diagnostic: background process did not persist in the execution host and made no model request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-07",
+      "completed_result_files": 0,
+      "reason": "foreground-controller retry diagnostic: execution host ended the controller before the first model turn could be reconciled; incomplete controller evidence excluded before formal comparison"
+    }
+  ]
+}

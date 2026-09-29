@@ -1,0 +1,59 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.14, pytest-7.4.0, pluggy-1.6.0 -- /Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/bin/python
+rootdir: /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task008-zcode-local-3x3-glm53-20260929-04-native-replicate-03
+plugins: mock-3.15.1, asyncio-0.21.0, anyio-4.14.2, requests-mock-1.11.0
+asyncio: mode=Mode.STRICT
+collecting ... collected 12 items
+
+../verifier/test_outputs_local.py::TestInputFilesIntegrity::test_input_files_integrity PASSED [  8%]
+../verifier/test_outputs_local.py::TestPIDController::test_pid_controller PASSED [ 16%]
+../verifier/test_outputs_local.py::TestACCSystem::test_acc_system PASSED [ 25%]
+../verifier/test_outputs_local.py::TestTuningResults::test_tuning_results PASSED [ 33%]
+../verifier/test_outputs_local.py::TestSimulationResults::test_simulation_results PASSED [ 41%]
+../verifier/test_outputs_local.py::TestReport::test_report_keywords PASSED [ 50%]
+../verifier/test_outputs_local.py::TestSpeedControl::test_speed_control PASSED [ 58%]
+../verifier/test_outputs_local.py::TestDistanceControl::test_distance_control PASSED [ 66%]
+../verifier/test_outputs_local.py::TestSafety::test_safety PASSED        [ 75%]
+../verifier/test_outputs_local.py::TestScenario::test_scenario PASSED    [ 83%]
+../verifier/test_outputs_local.py::TestSimulationExecution::test_simulation_execution PASSED [ 91%]
+../verifier/test_outputs_local.py::TestAntiCheat::test_anti_cheat FAILED [100%]
+
+=================================== FAILURES ===================================
+________________________ TestAntiCheat.test_anti_cheat _________________________
+../verifier/test_outputs_local.py:416: in test_anti_cheat
+    assert ttc_val == '' or pd.isna(ttc_val), \
+E   AssertionError: TTC should be empty when not approaching at t=34.2
+E   assert (28205.3 == '' or False)
+E    +  where False = <function isna at 0x1084f8c20>(28205.3)
+E    +    where <function isna at 0x1084f8c20> = <module 'pandas' from '/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/lib/python3.13/site-packages/pandas/__init__.py'>.isna
+==================================== PASSES ====================================
+______________ TestSimulationExecution.test_simulation_execution _______________
+----------------------------- Captured stdout call -----------------------------
+Wrote 1501 rows to simulation_results.csv
+rise_time        : 26.699999999999996 s   (target < 10 s)
+overshoot        : 5.726995640902383 % (target < 5 %)
+speed_ss_error   : 1.0803907198048748 m/s (target < 0.5 m/s)
+distance_ss_error: 414.91010539271457 m (target < 2 m)
+min_distance     : 52.1 m (target > 5 m)
+mode_counts      : {'cruise': 501, 'follow': 1000}
+Wrote 1501 rows to simulation_results.csv
+rise_time        : 8.0 s   (target < 10 s)
+overshoot        : 0.0 % (target < 5 %)
+speed_ss_error   : 8.107647886390623e-11 m/s (target < 0.5 m/s)
+distance_ss_error: 0.16520186180482926 m (target < 2 m)
+min_distance     : 18.263866873780614 m (target > 5 m)
+mode_counts      : {'cruise': 501, 'follow': 983, 'emergency': 17}
+=========================== short test summary info ============================
+PASSED ../verifier/test_outputs_local.py::TestInputFilesIntegrity::test_input_files_integrity
+PASSED ../verifier/test_outputs_local.py::TestPIDController::test_pid_controller
+PASSED ../verifier/test_outputs_local.py::TestACCSystem::test_acc_system
+PASSED ../verifier/test_outputs_local.py::TestTuningResults::test_tuning_results
+PASSED ../verifier/test_outputs_local.py::TestSimulationResults::test_simulation_results
+PASSED ../verifier/test_outputs_local.py::TestReport::test_report_keywords
+PASSED ../verifier/test_outputs_local.py::TestSpeedControl::test_speed_control
+PASSED ../verifier/test_outputs_local.py::TestDistanceControl::test_distance_control
+PASSED ../verifier/test_outputs_local.py::TestSafety::test_safety
+PASSED ../verifier/test_outputs_local.py::TestScenario::test_scenario
+PASSED ../verifier/test_outputs_local.py::TestSimulationExecution::test_simulation_execution
+FAILED ../verifier/test_outputs_local.py::TestAntiCheat::test_anti_cheat - As...
+========================= 1 failed, 11 passed in 3.83s =========================

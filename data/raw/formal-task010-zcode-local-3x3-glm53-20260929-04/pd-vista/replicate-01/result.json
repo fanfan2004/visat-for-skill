@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task010-zcode-local-3x3-glm53-20260929-04-pd-vista-replicate-01",
+  "task_id": "task-010",
+  "condition": "pd-vista",
+  "replicate_id": 1,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_b7dc928d-8f2e-4650-af2e-d85be344a850",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_1fbb54b2-c5f6-4e45-86d3-1a42dc1cc7f0",
+      "requests": 7,
+      "tool_uses": 7,
+      "accessed_modules": [],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_41fdc22b-3e21-4818-8231-b74be56f92d1",
+      "requests": 9,
+      "tool_uses": 8,
+      "accessed_modules": [
+        "timeseries-detrending"
+      ],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 16,
+    "input_tokens": 479496,
+    "output_tokens": 23460,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 502956
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [
+    "timeseries-detrending"
+  ],
+  "accessed_modules_after_disclosure": [
+    "timeseries-detrending"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 1,
+    "routable_feedback": 1,
+    "successful_disclosures": 1,
+    "next_round_module_access": 1,
+    "clean_complete_closure": 1
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed_with_clean_vista_feedback_loop",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task010-zcode-local-3x3-glm53-20260929-04-pd-vista-replicate-01/workspace"
+}

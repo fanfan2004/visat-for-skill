@@ -1,0 +1,2467 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03",
+  "task_id": "task-004",
+  "benchmark_task_id": "powerlifting-coef-calc",
+  "audit_status": "passed",
+  "completed_trials": 9,
+  "planned_trials": 9,
+  "unique_sessions": 9,
+  "session_ids_complete": true,
+  "all_final_verifiers_passed": true,
+  "nine_result_files": true,
+  "all_final_output_files_present": true,
+  "formal_included_trials": 9,
+  "formal_all_final_verifiers_passed": true,
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "model_identity": {
+    "requested_provider_id": "minimax-cn",
+    "requested_model_id": "MiniMax-M3",
+    "consistent_across_events": true,
+    "consistent_across_isolated_databases": true,
+    "database_identity_complete_for_formal_trials": true,
+    "evidence": "read-only query of each isolated OpenCode opencode.db session and message tables"
+  },
+  "conditions": {
+    "noskill": {
+      "planned_trials": 3,
+      "result_files": 3,
+      "included_trials": 3,
+      "excluded_trials": 0,
+      "verifier_passes": 3,
+      "total_turns": 3,
+      "model_turn_timeouts": 0,
+      "verifier_timeouts": 0,
+      "unique_sessions": 3,
+      "formal_totals": {
+        "requests": 103,
+        "tool_uses": 100,
+        "input_tokens": 145692,
+        "output_tokens": 46081,
+        "cache_read_tokens": 3155496,
+        "input_plus_output_tokens": 191773,
+        "recorded_cost": 0.28833456
+      },
+      "all_attempt_totals": {
+        "requests": 103,
+        "tool_uses": 100,
+        "input_tokens": 145692,
+        "output_tokens": 46081,
+        "cache_read_tokens": 3155496,
+        "input_plus_output_tokens": 191773,
+        "recorded_cost": 0.28833456
+      }
+    },
+    "native": {
+      "planned_trials": 3,
+      "result_files": 3,
+      "included_trials": 3,
+      "excluded_trials": 0,
+      "verifier_passes": 3,
+      "total_turns": 3,
+      "model_turn_timeouts": 3,
+      "verifier_timeouts": 0,
+      "unique_sessions": 3,
+      "formal_totals": {
+        "requests": 75,
+        "tool_uses": 72,
+        "input_tokens": 108249,
+        "output_tokens": 20680,
+        "cache_read_tokens": 1723900,
+        "input_plus_output_tokens": 128929,
+        "recorded_cost": 0.1607247
+      },
+      "all_attempt_totals": {
+        "requests": 75,
+        "tool_uses": 72,
+        "input_tokens": 108249,
+        "output_tokens": 20680,
+        "cache_read_tokens": 1723900,
+        "input_plus_output_tokens": 128929,
+        "recorded_cost": 0.1607247
+      }
+    },
+    "pd-vista": {
+      "planned_trials": 3,
+      "result_files": 3,
+      "included_trials": 3,
+      "excluded_trials": 0,
+      "verifier_passes": 3,
+      "total_turns": 4,
+      "model_turn_timeouts": 0,
+      "verifier_timeouts": 0,
+      "unique_sessions": 3,
+      "formal_totals": {
+        "requests": 68,
+        "tool_uses": 64,
+        "input_tokens": 99568,
+        "output_tokens": 73984,
+        "cache_read_tokens": 1523864,
+        "input_plus_output_tokens": 173552,
+        "recorded_cost": 0.21008304
+      },
+      "all_attempt_totals": {
+        "requests": 68,
+        "tool_uses": 64,
+        "input_tokens": 99568,
+        "output_tokens": 73984,
+        "cache_read_tokens": 1523864,
+        "input_plus_output_tokens": 173552,
+        "recorded_cost": 0.21008304
+      },
+      "trigger_opportunities": 1,
+      "routable_feedback": 1,
+      "successful_disclosures": 1,
+      "next_round_module_access": 1,
+      "clean_complete_closure": 1,
+      "disclosed_modules": [
+        "powerlifting"
+      ]
+    }
+  },
+  "totals": {
+    "formal_included": {
+      "requests": 246,
+      "tool_uses": 236,
+      "input_tokens": 353509,
+      "output_tokens": 140745,
+      "cache_read_tokens": 6403260,
+      "input_plus_output_tokens": 494254,
+      "recorded_cost": 0.6591423
+    },
+    "all_observed_result_files": {
+      "requests": 246,
+      "tool_uses": 236,
+      "input_tokens": 353509,
+      "output_tokens": 140745,
+      "cache_read_tokens": 6403260,
+      "input_plus_output_tokens": 494254,
+      "recorded_cost": 0.6591423
+    }
+  },
+  "trials": [
+    {
+      "schema_version": 1,
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-01",
+      "task_id": "task-004",
+      "benchmark_task_id": "powerlifting-coef-calc",
+      "condition": "noskill",
+      "replicate_id": 1,
+      "attempt": 1,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd1473ad6ffet0yACfIgV5WI85",
+      "turns": [
+        {
+          "turn": 1,
+          "prompt": "Solve the isolated task-004 powerlifting spreadsheet task in this working directory. Work only inside this directory and do not access parent or external directories. First read task.md and data/data-readme.md, inspect the local workbook at ./data/openipf.xlsx, and preserve the Data sheet. The task text's /root/data/openipf.xlsx path is mapped to ./data/openipf.xlsx in this isolated workspace; save the completed workbook at that exact local path. Populate the Dots sheet with the requested columns in the required order, use Excel formulas for TotalKg and Dots, preserve three-decimal computation precision, and make sure the workbook is valid and readable by the local verifier. You may use local Python spreadsheet tools already present in the workspace, but do not fetch data or libraries. The controller runs the complete acceptance verifier after each turn. No task Skill is available in this condition; solve from task.md, data/data-readme.md, and the workbook only.",
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 36,
+              "tool_use": 35,
+              "step_finish": 36,
+              "text": 2
+            },
+            "session_ids": [
+              "ses_fd1473ad6ffet0yACfIgV5WI85"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 36,
+            "tool_uses": 35,
+            "input_tokens": 43934,
+            "output_tokens": 20185,
+            "cache_read_tokens": 987889,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": [
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-01-attempt-01/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dir",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-01-attempt-01/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dir"
+            ]
+          },
+          "accessed_modules_this_turn": [],
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false,
+          "verifier_timeout": false,
+          "public_feedback_types": [],
+          "public_diagnostic": "",
+          "newly_disclosed_modules": []
+        }
+      ],
+      "usage": {
+        "requests": 36,
+        "tool_uses": 35,
+        "input_tokens": 43934,
+        "output_tokens": 20185,
+        "cache_read_tokens": 987889
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "disclosure_events": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "rate_limit_excluded": false,
+      "rate_limit_reason": null,
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass",
+      "status": "passed",
+      "workspace": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-01-attempt-01/workspace",
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/noskill/replicate-01",
+      "final_output_files": [
+        "openipf.xlsx"
+      ],
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-01-attempt-01/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.09667554,
+        "assistant_messages": 36,
+        "session_rows": 1,
+        "message_rows": 37
+      },
+      "output_file_count": 1,
+      "included_in_formal_stats": true
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-01",
+      "task_id": "task-004",
+      "benchmark_task_id": "powerlifting-coef-calc",
+      "condition": "native",
+      "replicate_id": 1,
+      "attempt": 2,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd13dd961ffe4XXmmOssDmAObu",
+      "turns": [
+        {
+          "turn": 1,
+          "prompt": "Solve the isolated task-004 powerlifting spreadsheet task in this working directory. Work only inside this directory and do not access parent or external directories. First read task.md and data/data-readme.md, inspect the local workbook at ./data/openipf.xlsx, and preserve the Data sheet. The task text's /root/data/openipf.xlsx path is mapped to ./data/openipf.xlsx in this isolated workspace; save the completed workbook at that exact local path. Populate the Dots sheet with the requested columns in the required order, use Excel formulas for TotalKg and Dots, preserve three-decimal computation precision, and make sure the workbook is valid and readable by the local verifier. You may use local Python spreadsheet tools already present in the workspace, but do not fetch data or libraries. The controller runs the complete acceptance verifier after each turn. The full original guidance modules are available at ./modules/<module-id>/SKILL.md; read and use them.",
+          "return_code": 124,
+          "model_turn_timeout": true,
+          "event_summary": {
+            "event_types": {
+              "step_start": 25,
+              "tool_use": 24,
+              "step_finish": 24
+            },
+            "session_ids": [
+              "ses_fd13dd961ffe4XXmmOssDmAObu"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 25,
+            "tool_uses": 24,
+            "input_tokens": 30177,
+            "output_tokens": 5045,
+            "cache_read_tokens": 525564,
+            "accessed_modules": [
+              "powerlifting",
+              "senior-data-scientist",
+              "xlsx"
+            ],
+            "errors": [],
+            "tool_errors": [
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-01-attempt-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dire",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-01-attempt-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dire",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-01-attempt-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dire"
+            ]
+          },
+          "accessed_modules_this_turn": [],
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false,
+          "verifier_timeout": false,
+          "public_feedback_types": [],
+          "public_diagnostic": "",
+          "newly_disclosed_modules": []
+        }
+      ],
+      "usage": {
+        "requests": 25,
+        "tool_uses": 24,
+        "input_tokens": 30177,
+        "output_tokens": 5045,
+        "cache_read_tokens": 525564
+      },
+      "initially_available_modules": [
+        "powerlifting",
+        "senior-data-scientist",
+        "xlsx"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "disclosure_events": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "rate_limit_excluded": false,
+      "rate_limit_reason": null,
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass_after_model_timeout",
+      "status": "passed",
+      "workspace": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-01-attempt-02/workspace",
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/native/replicate-01",
+      "final_output_files": [
+        "openipf.xlsx"
+      ],
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-01-attempt-02/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.04664094,
+        "assistant_messages": 25,
+        "session_rows": 1,
+        "message_rows": 26
+      },
+      "output_file_count": 1,
+      "included_in_formal_stats": true
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-01",
+      "task_id": "task-004",
+      "benchmark_task_id": "powerlifting-coef-calc",
+      "condition": "pd-vista",
+      "replicate_id": 1,
+      "attempt": 2,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd1363642ffe0jY74nh5f09HD4",
+      "turns": [
+        {
+          "turn": 1,
+          "prompt": "Solve the isolated task-004 powerlifting spreadsheet task in this working directory. Work only inside this directory and do not access parent or external directories. First read task.md and data/data-readme.md, inspect the local workbook at ./data/openipf.xlsx, and preserve the Data sheet. The task text's /root/data/openipf.xlsx path is mapped to ./data/openipf.xlsx in this isolated workspace; save the completed workbook at that exact local path. Populate the Dots sheet with the requested columns in the required order, use Excel formulas for TotalKg and Dots, preserve three-decimal computation precision, and make sure the workbook is valid and readable by the local verifier. You may use local Python spreadsheet tools already present in the workspace, but do not fetch data or libraries. The controller runs the complete acceptance verifier after each turn. Read VISTA.md. The original guidance modules are initially hidden; after a public verifier failure, VISTA may disclose at most one relevant module under ./modules/<module-id>/SKILL.md. Read any disclosed module before the next repair turn.",
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 29,
+              "tool_use": 28,
+              "step_finish": 29,
+              "text": 4
+            },
+            "session_ids": [
+              "ses_fd1363642ffe0jY74nh5f09HD4"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 29,
+            "tool_uses": 28,
+            "input_tokens": 48066,
+            "output_tokens": 28295,
+            "cache_read_tokens": 799967,
+            "accessed_modules": [
+              "powerlifting"
+            ],
+            "errors": [],
+            "tool_errors": [
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-01-attempt-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_di",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-01-attempt-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_di"
+            ]
+          },
+          "accessed_modules_this_turn": [],
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false,
+          "verifier_timeout": false,
+          "public_feedback_types": [],
+          "public_diagnostic": "",
+          "newly_disclosed_modules": []
+        }
+      ],
+      "usage": {
+        "requests": 29,
+        "tool_uses": 28,
+        "input_tokens": 48066,
+        "output_tokens": 28295,
+        "cache_read_tokens": 799967
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "disclosure_events": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "rate_limit_excluded": false,
+      "rate_limit_reason": null,
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass",
+      "status": "passed_without_clean_vista_feedback_loop",
+      "workspace": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-01-attempt-02/workspace",
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/pd-vista/replicate-01",
+      "final_output_files": [
+        "openipf.xlsx"
+      ],
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-01-attempt-02/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.09637182,
+        "assistant_messages": 29,
+        "session_rows": 1,
+        "message_rows": 30
+      },
+      "output_file_count": 1,
+      "included_in_formal_stats": true
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-02",
+      "task_id": "task-004",
+      "benchmark_task_id": "powerlifting-coef-calc",
+      "condition": "noskill",
+      "replicate_id": 2,
+      "attempt": 4,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd10d1bd6ffexybKQCwZt4JKNM",
+      "turns": [
+        {
+          "turn": 1,
+          "prompt": "Solve the isolated task-004 powerlifting spreadsheet task in this working directory. Work only inside this directory and do not access parent or external directories. First read task.md and data/data-readme.md, inspect the local workbook at ./data/openipf.xlsx, and preserve the Data sheet. The task text's /root/data/openipf.xlsx path is mapped to ./data/openipf.xlsx in this isolated workspace; save the completed workbook at that exact local path. Populate the Dots sheet with the requested columns in the required order, use Excel formulas for TotalKg and Dots, preserve three-decimal computation precision, and make sure the workbook is valid and readable by the local verifier. You may use local Python spreadsheet tools already present in the workspace, but do not fetch data or libraries. The controller runs the complete acceptance verifier after each turn. No task Skill is available in this condition; solve from task.md, data/data-readme.md, and the workbook only.",
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 31,
+              "tool_use": 30,
+              "step_finish": 31,
+              "text": 5
+            },
+            "session_ids": [
+              "ses_fd10d1bd6ffexybKQCwZt4JKNM"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 31,
+            "tool_uses": 30,
+            "input_tokens": 59814,
+            "output_tokens": 9474,
+            "cache_read_tokens": 1155684,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": [
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-02-attempt-04/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dir",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-02-attempt-04/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dir",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-02-attempt-04/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dir",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-02-attempt-04/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dir",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-02-attempt-04/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dir",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-02-attempt-04/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dir"
+            ]
+          },
+          "accessed_modules_this_turn": [],
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false,
+          "verifier_timeout": false,
+          "public_feedback_types": [],
+          "public_diagnostic": "",
+          "newly_disclosed_modules": []
+        }
+      ],
+      "usage": {
+        "requests": 31,
+        "tool_uses": 30,
+        "input_tokens": 59814,
+        "output_tokens": 9474,
+        "cache_read_tokens": 1155684
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "disclosure_events": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "rate_limit_excluded": false,
+      "rate_limit_reason": null,
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass",
+      "status": "passed",
+      "workspace": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-02-attempt-04/workspace",
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/noskill/replicate-02",
+      "final_output_files": [
+        "openipf.xlsx"
+      ],
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-02-attempt-04/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.09865404,
+        "assistant_messages": 31,
+        "session_rows": 1,
+        "message_rows": 32
+      },
+      "output_file_count": 1,
+      "included_in_formal_stats": true
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-02",
+      "task_id": "task-004",
+      "benchmark_task_id": "powerlifting-coef-calc",
+      "condition": "native",
+      "replicate_id": 2,
+      "attempt": 1,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd130c01bffePIy1N6ZOUf0RzD",
+      "turns": [
+        {
+          "turn": 1,
+          "prompt": "Solve the isolated task-004 powerlifting spreadsheet task in this working directory. Work only inside this directory and do not access parent or external directories. First read task.md and data/data-readme.md, inspect the local workbook at ./data/openipf.xlsx, and preserve the Data sheet. The task text's /root/data/openipf.xlsx path is mapped to ./data/openipf.xlsx in this isolated workspace; save the completed workbook at that exact local path. Populate the Dots sheet with the requested columns in the required order, use Excel formulas for TotalKg and Dots, preserve three-decimal computation precision, and make sure the workbook is valid and readable by the local verifier. You may use local Python spreadsheet tools already present in the workspace, but do not fetch data or libraries. The controller runs the complete acceptance verifier after each turn. The full original guidance modules are available at ./modules/<module-id>/SKILL.md; read and use them.",
+          "return_code": 124,
+          "model_turn_timeout": true,
+          "event_summary": {
+            "event_types": {
+              "step_start": 34,
+              "tool_use": 33,
+              "step_finish": 33
+            },
+            "session_ids": [
+              "ses_fd130c01bffePIy1N6ZOUf0RzD"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 34,
+            "tool_uses": 33,
+            "input_tokens": 45374,
+            "output_tokens": 11180,
+            "cache_read_tokens": 950528,
+            "accessed_modules": [
+              "powerlifting",
+              "senior-data-scientist",
+              "xlsx"
+            ],
+            "errors": [],
+            "tool_errors": [
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-02-attempt-01/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dire",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-02-attempt-01/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dire"
+            ]
+          },
+          "accessed_modules_this_turn": [],
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false,
+          "verifier_timeout": false,
+          "public_feedback_types": [],
+          "public_diagnostic": "",
+          "newly_disclosed_modules": []
+        }
+      ],
+      "usage": {
+        "requests": 34,
+        "tool_uses": 33,
+        "input_tokens": 45374,
+        "output_tokens": 11180,
+        "cache_read_tokens": 950528
+      },
+      "initially_available_modules": [
+        "powerlifting",
+        "senior-data-scientist",
+        "xlsx"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "disclosure_events": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "rate_limit_excluded": false,
+      "rate_limit_reason": null,
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass_after_model_timeout",
+      "status": "passed",
+      "workspace": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-02-attempt-01/workspace",
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/native/replicate-02",
+      "final_output_files": [
+        "openipf.xlsx"
+      ],
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-02-attempt-01/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.08405988,
+        "assistant_messages": 34,
+        "session_rows": 1,
+        "message_rows": 35
+      },
+      "output_file_count": 1,
+      "included_in_formal_stats": true
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-02",
+      "task_id": "task-004",
+      "benchmark_task_id": "powerlifting-coef-calc",
+      "condition": "pd-vista",
+      "replicate_id": 2,
+      "attempt": 2,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd123e128ffe6oZCuXAD6Lvv5o",
+      "turns": [
+        {
+          "turn": 1,
+          "prompt": "Solve the isolated task-004 powerlifting spreadsheet task in this working directory. Work only inside this directory and do not access parent or external directories. First read task.md and data/data-readme.md, inspect the local workbook at ./data/openipf.xlsx, and preserve the Data sheet. The task text's /root/data/openipf.xlsx path is mapped to ./data/openipf.xlsx in this isolated workspace; save the completed workbook at that exact local path. Populate the Dots sheet with the requested columns in the required order, use Excel formulas for TotalKg and Dots, preserve three-decimal computation precision, and make sure the workbook is valid and readable by the local verifier. You may use local Python spreadsheet tools already present in the workspace, but do not fetch data or libraries. The controller runs the complete acceptance verifier after each turn. Read VISTA.md. The original guidance modules are initially hidden; after a public verifier failure, VISTA may disclose at most one relevant module under ./modules/<module-id>/SKILL.md. Read any disclosed module before the next repair turn.",
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 8,
+              "tool_use": 7,
+              "step_finish": 8
+            },
+            "session_ids": [
+              "ses_fd123e128ffe6oZCuXAD6Lvv5o"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 8,
+            "tool_uses": 7,
+            "input_tokens": 12875,
+            "output_tokens": 32768,
+            "cache_read_tokens": 74012,
+            "accessed_modules": [
+              "powerlifting"
+            ],
+            "errors": [],
+            "tool_errors": []
+          },
+          "accessed_modules_this_turn": [],
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false,
+          "verifier_timeout": false,
+          "public_feedback_types": [
+            "schema_error",
+            "wrong_format",
+            "test_failure"
+          ],
+          "public_diagnostic": "the Data/Dots sheet structure or required column order is invalid; TotalKg and Dots must be Excel formulas",
+          "newly_disclosed_modules": [
+            "powerlifting"
+          ],
+          "route_reason": "powerlifting matched schema_error",
+          "next_round_prompt": "The public workbook verifier failed with schema_error, wrong_format, test_failure. Public diagnostic: the Data/Dots sheet structure or required column order is invalid; TotalKg and Dots must be Excel formulas\nVISTA disclosed ./modules/powerlifting/SKILL.md. Read it before repairing. Continue in the same session, work only inside this directory, repair ./data/openipf.xlsx, and rerun local checks when useful."
+        },
+        {
+          "turn": 2,
+          "prompt": "The public workbook verifier failed with schema_error, wrong_format, test_failure. Public diagnostic: the Data/Dots sheet structure or required column order is invalid; TotalKg and Dots must be Excel formulas\nVISTA disclosed ./modules/powerlifting/SKILL.md. Read it before repairing. Continue in the same session, work only inside this directory, repair ./data/openipf.xlsx, and rerun local checks when useful.",
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 17,
+              "tool_use": 16,
+              "step_finish": 17,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd123e128ffe6oZCuXAD6Lvv5o"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 17,
+            "tool_uses": 16,
+            "input_tokens": 22078,
+            "output_tokens": 9253,
+            "cache_read_tokens": 482973,
+            "accessed_modules": [
+              "powerlifting"
+            ],
+            "errors": [],
+            "tool_errors": [
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-02-attempt-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_di",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-02-attempt-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_di",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-02-attempt-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_di",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-02-attempt-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_di"
+            ]
+          },
+          "accessed_modules_this_turn": [
+            "powerlifting"
+          ],
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false,
+          "verifier_timeout": false,
+          "public_feedback_types": [],
+          "public_diagnostic": "",
+          "newly_disclosed_modules": []
+        }
+      ],
+      "usage": {
+        "requests": 25,
+        "tool_uses": 23,
+        "input_tokens": 34953,
+        "output_tokens": 42021,
+        "cache_read_tokens": 556985
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [
+        "powerlifting"
+      ],
+      "accessed_modules_after_disclosure": [
+        "powerlifting"
+      ],
+      "disclosure_events": [
+        {
+          "module_id": "powerlifting",
+          "disclosure_turn": 1,
+          "next_round_turn": 2,
+          "accessed_next_round": true,
+          "route_reason": "powerlifting matched schema_error",
+          "feedback_types": [
+            "schema_error",
+            "wrong_format",
+            "test_failure"
+          ],
+          "public_diagnostic": "the Data/Dots sheet structure or required column order is invalid; TotalKg and Dots must be Excel formulas"
+        }
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 1
+      },
+      "rate_limit_excluded": false,
+      "rate_limit_reason": null,
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass",
+      "status": "passed_with_clean_vista_feedback_loop",
+      "workspace": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-02-attempt-02/workspace",
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/pd-vista/replicate-02",
+      "final_output_files": [
+        "openipf.xlsx"
+      ],
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-02-attempt-02/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.0943302,
+        "assistant_messages": 25,
+        "session_rows": 1,
+        "message_rows": 27
+      },
+      "output_file_count": 1,
+      "included_in_formal_stats": true
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-03",
+      "task_id": "task-004",
+      "benchmark_task_id": "powerlifting-coef-calc",
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 11,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fce61b317ffe78tZzkf7ukdkVB",
+      "turns": [
+        {
+          "turn": 1,
+          "prompt": "Solve the isolated task-004 powerlifting spreadsheet task in this working directory. Work only inside this directory and do not access parent or external directories. First read task.md and data/data-readme.md, inspect the local workbook at ./data/openipf.xlsx, and preserve the Data sheet. The task text's /root/data/openipf.xlsx path is mapped to ./data/openipf.xlsx in this isolated workspace; save the completed workbook at that exact local path. Populate the Dots sheet with the requested columns in the required order, use Excel formulas for TotalKg and Dots, preserve three-decimal computation precision, and make sure the workbook is valid and readable by the local verifier. You may use local Python spreadsheet tools already present in the workspace, but do not fetch data or libraries. The controller runs the complete acceptance verifier after each turn. No task Skill is available in this condition; solve from task.md, data/data-readme.md, and the workbook only.",
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 36,
+              "tool_use": 35,
+              "step_finish": 36,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fce61b317ffe78tZzkf7ukdkVB"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 36,
+            "tool_uses": 35,
+            "input_tokens": 41944,
+            "output_tokens": 16422,
+            "cache_read_tokens": 1011923,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": [
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-03-attempt-11/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dir",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-03-attempt-11/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dir",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-03-attempt-11/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dir",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-03-attempt-11/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dir",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-03-attempt-11/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_dir"
+            ]
+          },
+          "accessed_modules_this_turn": [],
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false,
+          "verifier_timeout": false,
+          "rate_limit_excluded": false,
+          "rate_limit_reason": null,
+          "public_feedback_types": [],
+          "public_diagnostic": "",
+          "newly_disclosed_modules": []
+        }
+      ],
+      "usage": {
+        "requests": 36,
+        "tool_uses": 35,
+        "input_tokens": 41944,
+        "output_tokens": 16422,
+        "cache_read_tokens": 1011923
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "disclosure_events": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "rate_limit_excluded": false,
+      "rate_limit_reason": null,
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass_after_controller_reclassification",
+      "status": "passed",
+      "workspace": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-03-attempt-11/workspace",
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/noskill/replicate-03",
+      "final_output_files": [
+        "openipf.xlsx"
+      ],
+      "controller_reclassification": {
+        "original_attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-11/result.json",
+        "original_status": "quarantined_rate_limit",
+        "reason": "The controller searched the raw JSONL for bare substring 429 and matched the decimal cost 0.00342978. No API error or 429 response event was present; manual final Verifier passed 11/11.",
+        "manual_verifier": "11 passed"
+      },
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-noskill-replicate-03-attempt-11/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.09300498,
+        "assistant_messages": 36,
+        "session_rows": 1,
+        "message_rows": 37
+      },
+      "output_file_count": 1,
+      "included_in_formal_stats": true
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-03",
+      "task_id": "task-004",
+      "benchmark_task_id": "powerlifting-coef-calc",
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 9,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fce6e8b46ffeYPLZgTKM1QGXlG",
+      "turns": [
+        {
+          "turn": 1,
+          "prompt": "Solve the isolated task-004 powerlifting spreadsheet task in this working directory. Work only inside this directory and do not access parent or external directories. First read task.md and data/data-readme.md, inspect the local workbook at ./data/openipf.xlsx, and preserve the Data sheet. The task text's /root/data/openipf.xlsx path is mapped to ./data/openipf.xlsx in this isolated workspace; save the completed workbook at that exact local path. Populate the Dots sheet with the requested columns in the required order, use Excel formulas for TotalKg and Dots, preserve three-decimal computation precision, and make sure the workbook is valid and readable by the local verifier. You may use local Python spreadsheet tools already present in the workspace, but do not fetch data or libraries. The controller runs the complete acceptance verifier after each turn. The full original guidance modules are available at ./modules/<module-id>/SKILL.md; read and use them.",
+          "return_code": 124,
+          "model_turn_timeout": true,
+          "event_summary": {
+            "event_types": {
+              "step_start": 16,
+              "tool_use": 15,
+              "step_finish": 15
+            },
+            "session_ids": [
+              "ses_fce6e8b46ffeYPLZgTKM1QGXlG"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 16,
+            "tool_uses": 15,
+            "input_tokens": 32698,
+            "output_tokens": 4455,
+            "cache_read_tokens": 247808,
+            "accessed_modules": [
+              "powerlifting",
+              "senior-data-scientist",
+              "xlsx"
+            ],
+            "errors": [],
+            "tool_errors": []
+          },
+          "accessed_modules_this_turn": [],
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false,
+          "verifier_timeout": false,
+          "public_feedback_types": [],
+          "public_diagnostic": "",
+          "newly_disclosed_modules": []
+        }
+      ],
+      "usage": {
+        "requests": 16,
+        "tool_uses": 15,
+        "input_tokens": 32698,
+        "output_tokens": 4455,
+        "cache_read_tokens": 247808
+      },
+      "initially_available_modules": [
+        "powerlifting",
+        "senior-data-scientist",
+        "xlsx"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "disclosure_events": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "rate_limit_excluded": false,
+      "rate_limit_reason": null,
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass_after_model_timeout",
+      "status": "passed",
+      "workspace": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-03-attempt-09/workspace",
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/native/replicate-03",
+      "final_output_files": [
+        "openipf.xlsx"
+      ],
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-03-attempt-09/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.03002388,
+        "assistant_messages": 16,
+        "session_rows": 1,
+        "message_rows": 17
+      },
+      "output_file_count": 1,
+      "included_in_formal_stats": true
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-03",
+      "task_id": "task-004",
+      "benchmark_task_id": "powerlifting-coef-calc",
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 10,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fce672c91ffeMD0d3tDMM4Ojvu",
+      "turns": [
+        {
+          "turn": 1,
+          "prompt": "Solve the isolated task-004 powerlifting spreadsheet task in this working directory. Work only inside this directory and do not access parent or external directories. First read task.md and data/data-readme.md, inspect the local workbook at ./data/openipf.xlsx, and preserve the Data sheet. The task text's /root/data/openipf.xlsx path is mapped to ./data/openipf.xlsx in this isolated workspace; save the completed workbook at that exact local path. Populate the Dots sheet with the requested columns in the required order, use Excel formulas for TotalKg and Dots, preserve three-decimal computation precision, and make sure the workbook is valid and readable by the local verifier. You may use local Python spreadsheet tools already present in the workspace, but do not fetch data or libraries. The controller runs the complete acceptance verifier after each turn. Read VISTA.md. The original guidance modules are initially hidden; after a public verifier failure, VISTA may disclose at most one relevant module under ./modules/<module-id>/SKILL.md. Read any disclosed module before the next repair turn.",
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 14,
+              "tool_use": 13,
+              "step_finish": 14,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fce672c91ffeMD0d3tDMM4Ojvu"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 14,
+            "tool_uses": 13,
+            "input_tokens": 16549,
+            "output_tokens": 3668,
+            "cache_read_tokens": 166912,
+            "accessed_modules": [
+              "powerlifting"
+            ],
+            "errors": [],
+            "tool_errors": []
+          },
+          "accessed_modules_this_turn": [],
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false,
+          "verifier_timeout": false,
+          "public_feedback_types": [],
+          "public_diagnostic": "",
+          "newly_disclosed_modules": []
+        }
+      ],
+      "usage": {
+        "requests": 14,
+        "tool_uses": 13,
+        "input_tokens": 16549,
+        "output_tokens": 3668,
+        "cache_read_tokens": 166912
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "disclosure_events": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "rate_limit_excluded": false,
+      "rate_limit_reason": null,
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass",
+      "status": "passed_without_clean_vista_feedback_loop",
+      "workspace": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-03-attempt-10/workspace",
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/pd-vista/replicate-03",
+      "final_output_files": [
+        "openipf.xlsx"
+      ],
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-pd-vista-replicate-03-attempt-10/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.01938102,
+        "assistant_messages": 14,
+        "session_rows": 1,
+        "message_rows": 15
+      },
+      "output_file_count": 1,
+      "included_in_formal_stats": true
+    }
+  ],
+  "excluded_runs": [
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-00-readiness",
+      "completed_result_files": 0,
+      "model_requests": 0,
+      "reason": "zero-model task identity, asset, dependency, public-entry, and full-verifier readiness only; excluded before the unique formal batch"
+    },
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-01",
+      "completed_result_files": 0,
+      "attempt_result_files": 1,
+      "model_requests": 0,
+      "reason": "controller diagnostic excluded: the first zero-request OpenCode API connection error was incorrectly classified as shared rate limiting, so the run was stopped before any formal trial completed; evidence is retained under data/raw/formal-task004-local-3x3-minimaxm3-20260823-01 and /private/tmp/vista-task004-local-3x3-20260823-01"
+    },
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-02",
+      "completed_result_files": 0,
+      "attempt_result_files": 9,
+      "model_requests": 0,
+      "reason": "provider diagnostic excluded: all nine serial OpenCode attempts returned the same zero-request API connection error before task verification; no alternate provider or model was used"
+    },
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-provider-diagnostic",
+      "completed_result_files": 0,
+      "model_requests": 0,
+      "reason": "provider diagnostic excluded: sandbox-local OpenCode connectivity check returned a zero-request API connection error; no task work was attempted"
+    },
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-provider-diagnostic-escalated",
+      "completed_result_files": 0,
+      "model_requests": 2,
+      "reason": "provider diagnostic excluded: one sandbox-external connectivity check confirmed the current configured minimax-cn/MiniMax-M3 provider is reachable; this was a readiness check, not a task trial"
+    }
+  ],
+  "diagnostic_batches": [
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-00-readiness",
+      "completed_result_files": 0,
+      "model_requests": 0,
+      "reason": "zero-model task identity, asset, dependency, public-entry, and full-verifier readiness only; excluded before the unique formal batch"
+    },
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-01",
+      "completed_result_files": 0,
+      "attempt_result_files": 1,
+      "model_requests": 0,
+      "reason": "controller diagnostic excluded: the first zero-request OpenCode API connection error was incorrectly classified as shared rate limiting, so the run was stopped before any formal trial completed; evidence is retained under data/raw/formal-task004-local-3x3-minimaxm3-20260823-01 and /private/tmp/vista-task004-local-3x3-20260823-01"
+    },
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-02",
+      "completed_result_files": 0,
+      "attempt_result_files": 9,
+      "model_requests": 0,
+      "reason": "provider diagnostic excluded: all nine serial OpenCode attempts returned the same zero-request API connection error before task verification; no alternate provider or model was used"
+    },
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-provider-diagnostic",
+      "completed_result_files": 0,
+      "model_requests": 0,
+      "reason": "provider diagnostic excluded: sandbox-local OpenCode connectivity check returned a zero-request API connection error; no task work was attempted"
+    },
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-provider-diagnostic-escalated",
+      "completed_result_files": 0,
+      "model_requests": 2,
+      "reason": "provider diagnostic excluded: one sandbox-external connectivity check confirmed the current configured minimax-cn/MiniMax-M3 provider is reachable; this was a readiness check, not a task trial"
+    }
+  ],
+  "excluded_attempts": [
+    {
+      "condition": "native",
+      "replicate_id": 1,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fd144434fffeCWF7ViG1xWR0iB",
+      "usage": {
+        "requests": 28,
+        "tool_uses": 27,
+        "input_tokens": 44394,
+        "output_tokens": 9469,
+        "cache_read_tokens": 628790
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-01-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-01-attempt-01/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0fe38f1ffe5Kuo19G3zClgps",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-01/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 2,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0fcf5edffeltUWeB49uGTkEi",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-02",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-02/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 3,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0fbd086ffezAkNeVeV3bZOh4",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-03",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-03/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 4,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0fa9594fferPcMlzf52bTAD4",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-04",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-04/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 5,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0f62f69ffeU1oUFn3PTEmJLY",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-05",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-05/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 6,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0ef3e91ffeJ82DS5eX1rZRvz",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-06",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-06/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 7,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0e5aeecffe3Zx2yLNixltm3W",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-07",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-07/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 8,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fcebfeb89ffe5SA2AuwYJUP72C",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-08",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-08/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fd11e8a73ffeZ27F4e6FW4NAnP",
+      "usage": {
+        "requests": 30,
+        "tool_uses": 29,
+        "input_tokens": 31703,
+        "output_tokens": 13461,
+        "cache_read_tokens": 635546
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-02-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-02-attempt-01/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "attempt": 2,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fd11c80eaffeLQGSmt1jIkWdVW",
+      "usage": {
+        "requests": 41,
+        "tool_uses": 38,
+        "input_tokens": 49590,
+        "output_tokens": 18072,
+        "cache_read_tokens": 1078272
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-02-attempt-02",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-02-attempt-02/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "attempt": 3,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fd111932cffeiXZM8UCd7PTJR1",
+      "usage": {
+        "requests": 32,
+        "tool_uses": 31,
+        "input_tokens": 66467,
+        "output_tokens": 17778,
+        "cache_read_tokens": 723200
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-02-attempt-03",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-02-attempt-03/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd10326b3ffe4xbt7vPjk0zI35",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-01/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 2,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd101f67fffejWkezC8DmJNqVj",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-02",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-02/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 3,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd100c3c6ffeeSrXD9XiUABGaK",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-03",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-03/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 4,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0ff7fc2ffet8AA2UIgqz3RT7",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-04",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-04/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 5,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0f761dbffePvxZiBHBra3l5q",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-05",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-05/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 6,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0f07faaffei92k9UIgzfAeLr",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-06",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-06/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 7,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0e6e4fbffen20TgkZIJggYmu",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-07",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-07/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 8,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fcec55634ffe68T4pSjkrS66V4",
+      "usage": {
+        "requests": 41,
+        "tool_uses": 41,
+        "input_tokens": 68795,
+        "output_tokens": 30612,
+        "cache_read_tokens": 1717542
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-08",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-08/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 9,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fce74f2c9ffe2z6yY2k0XXpsAe",
+      "usage": {
+        "requests": 49,
+        "tool_uses": 49,
+        "input_tokens": 64103,
+        "output_tokens": 19621,
+        "cache_read_tokens": 1851796
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-09",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-09/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 10,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fce65f399ffeA6VTKqEGpQdEQG",
+      "usage": {
+        "requests": 36,
+        "tool_uses": 35,
+        "input_tokens": 37009,
+        "output_tokens": 9030,
+        "cache_read_tokens": 848491
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-10",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-10/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 11,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fce61b317ffe78tZzkf7ukdkVB",
+      "usage": {
+        "requests": 36,
+        "tool_uses": 35,
+        "input_tokens": 41944,
+        "output_tokens": 16422,
+        "cache_read_tokens": 1011923
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-11",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-11/result.json",
+      "reason": "controller false positive: bare 429 substring occurred inside OpenCode cost 0.00342978; raw attempt retained and manually re-verified",
+      "classification": "controller_false_positive_rate_limit"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 1,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fd1376300ffexBOn1u1fDMAi64",
+      "usage": {
+        "requests": 21,
+        "tool_uses": 20,
+        "input_tokens": 25817,
+        "output_tokens": 6241,
+        "cache_read_tokens": 331761
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-01-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-01-attempt-01/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 2,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fd12a4b6affeiW2cuyt6HygkIe",
+      "usage": {
+        "requests": 74,
+        "tool_uses": 73,
+        "input_tokens": 98725,
+        "output_tokens": 31469,
+        "cache_read_tokens": 4103311
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-02-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-02-attempt-01/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fd10a87fcffevt4utsJRY3raGT",
+      "usage": {
+        "requests": 18,
+        "tool_uses": 17,
+        "input_tokens": 37502,
+        "output_tokens": 5335,
+        "cache_read_tokens": 239872
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-01/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 2,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd108bafeffegLub5MUi2gf4v8",
+      "usage": {
+        "requests": 23,
+        "tool_uses": 23,
+        "input_tokens": 23512,
+        "output_tokens": 6228,
+        "cache_read_tokens": 409856
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-02",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-02/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 3,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd105930dffe089DVnrKOmH06S",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-03",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-03/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 4,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd10462acffeUfrpZ9sYr6ftbD",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-04",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-04/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 5,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0f89494ffeTWdnGP9dDQjY32",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-05",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-05/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 6,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0f1acf5ffe3sVNBRA87ArvPB",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-06",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-06/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 7,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0e83aceffewAgLsqJFaVEVn2",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-07",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-07/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 8,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fcec7a4d1ffewH8SYz8Dsr6lJe",
+      "usage": {
+        "requests": 29,
+        "tool_uses": 28,
+        "input_tokens": 37849,
+        "output_tokens": 15215,
+        "cache_read_tokens": 659753
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-08",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-08/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 9,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fce79a8f3ffesuTeQpsIg1yp2F",
+      "usage": {
+        "requests": 36,
+        "tool_uses": 35,
+        "input_tokens": 46381,
+        "output_tokens": 25015,
+        "cache_read_tokens": 911317
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-09",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-09/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    }
+  ],
+  "excluded_rate_limit_attempts": [
+    {
+      "condition": "native",
+      "replicate_id": 1,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fd144434fffeCWF7ViG1xWR0iB",
+      "usage": {
+        "requests": 28,
+        "tool_uses": 27,
+        "input_tokens": 44394,
+        "output_tokens": 9469,
+        "cache_read_tokens": 628790
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-01-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-01-attempt-01/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0fe38f1ffe5Kuo19G3zClgps",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-01/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 2,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0fcf5edffeltUWeB49uGTkEi",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-02",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-02/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 3,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0fbd086ffezAkNeVeV3bZOh4",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-03",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-03/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 4,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0fa9594fferPcMlzf52bTAD4",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-04",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-04/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 5,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0f62f69ffeU1oUFn3PTEmJLY",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-05",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-05/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 6,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0ef3e91ffeJ82DS5eX1rZRvz",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-06",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-06/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 7,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0e5aeecffe3Zx2yLNixltm3W",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-07",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-07/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 8,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fcebfeb89ffe5SA2AuwYJUP72C",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-08",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/native/replicate-03-attempt-08/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fd11e8a73ffeZ27F4e6FW4NAnP",
+      "usage": {
+        "requests": 30,
+        "tool_uses": 29,
+        "input_tokens": 31703,
+        "output_tokens": 13461,
+        "cache_read_tokens": 635546
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-02-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-02-attempt-01/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "attempt": 2,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fd11c80eaffeLQGSmt1jIkWdVW",
+      "usage": {
+        "requests": 41,
+        "tool_uses": 38,
+        "input_tokens": 49590,
+        "output_tokens": 18072,
+        "cache_read_tokens": 1078272
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-02-attempt-02",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-02-attempt-02/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "attempt": 3,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fd111932cffeiXZM8UCd7PTJR1",
+      "usage": {
+        "requests": 32,
+        "tool_uses": 31,
+        "input_tokens": 66467,
+        "output_tokens": 17778,
+        "cache_read_tokens": 723200
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-02-attempt-03",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-02-attempt-03/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd10326b3ffe4xbt7vPjk0zI35",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-01/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 2,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd101f67fffejWkezC8DmJNqVj",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-02",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-02/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 3,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd100c3c6ffeeSrXD9XiUABGaK",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-03",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-03/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 4,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0ff7fc2ffet8AA2UIgqz3RT7",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-04",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-04/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 5,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0f761dbffePvxZiBHBra3l5q",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-05",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-05/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 6,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0f07faaffei92k9UIgzfAeLr",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-06",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-06/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 7,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0e6e4fbffen20TgkZIJggYmu",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-07",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-07/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 8,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fcec55634ffe68T4pSjkrS66V4",
+      "usage": {
+        "requests": 41,
+        "tool_uses": 41,
+        "input_tokens": 68795,
+        "output_tokens": 30612,
+        "cache_read_tokens": 1717542
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-08",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-08/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 9,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fce74f2c9ffe2z6yY2k0XXpsAe",
+      "usage": {
+        "requests": 49,
+        "tool_uses": 49,
+        "input_tokens": 64103,
+        "output_tokens": 19621,
+        "cache_read_tokens": 1851796
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-09",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-09/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 10,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fce65f399ffeA6VTKqEGpQdEQG",
+      "usage": {
+        "requests": 36,
+        "tool_uses": 35,
+        "input_tokens": 37009,
+        "output_tokens": 9030,
+        "cache_read_tokens": 848491
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-10",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-10/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 1,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fd1376300ffexBOn1u1fDMAi64",
+      "usage": {
+        "requests": 21,
+        "tool_uses": 20,
+        "input_tokens": 25817,
+        "output_tokens": 6241,
+        "cache_read_tokens": 331761
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-01-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-01-attempt-01/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 2,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fd12a4b6affeiW2cuyt6HygkIe",
+      "usage": {
+        "requests": 74,
+        "tool_uses": 73,
+        "input_tokens": 98725,
+        "output_tokens": 31469,
+        "cache_read_tokens": 4103311
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-02-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-02-attempt-01/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fd10a87fcffevt4utsJRY3raGT",
+      "usage": {
+        "requests": 18,
+        "tool_uses": 17,
+        "input_tokens": 37502,
+        "output_tokens": 5335,
+        "cache_read_tokens": 239872
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-01/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 2,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd108bafeffegLub5MUi2gf4v8",
+      "usage": {
+        "requests": 23,
+        "tool_uses": 23,
+        "input_tokens": 23512,
+        "output_tokens": 6228,
+        "cache_read_tokens": 409856
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-02",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-02/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 3,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd105930dffe089DVnrKOmH06S",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-03",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-03/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 4,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd10462acffeUfrpZ9sYr6ftbD",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-04",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-04/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 5,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0f89494ffeTWdnGP9dDQjY32",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-05",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-05/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 6,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0f1acf5ffe3sVNBRA87ArvPB",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-06",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-06/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 7,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fd0e83aceffewAgLsqJFaVEVn2",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-07",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-07/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 8,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fcec7a4d1ffewH8SYz8Dsr6lJe",
+      "usage": {
+        "requests": 29,
+        "tool_uses": 28,
+        "input_tokens": 37849,
+        "output_tokens": 15215,
+        "cache_read_tokens": 659753
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-08",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-08/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 9,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fce79a8f3ffesuTeQpsIg1yp2F",
+      "usage": {
+        "requests": 36,
+        "tool_uses": 35,
+        "input_tokens": 46381,
+        "output_tokens": 25015,
+        "cache_read_tokens": 911317
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-09",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/pd-vista/replicate-03-attempt-09/result.json",
+      "reason": "shared rate-limit attempt excluded"
+    }
+  ],
+  "excluded_api_error_attempts": [],
+  "controller_reclassified_attempts": [
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 11,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "rate_limit_response",
+      "session_id": "ses_fce61b317ffe78tZzkf7ukdkVB",
+      "usage": {
+        "requests": 36,
+        "tool_uses": 35,
+        "input_tokens": 41944,
+        "output_tokens": 16422,
+        "cache_read_tokens": 1011923
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-11",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-11/result.json",
+      "reason": "controller false positive: bare 429 substring occurred inside OpenCode cost 0.00342978; raw attempt retained and manually re-verified",
+      "classification": "controller_false_positive_rate_limit"
+    }
+  ],
+  "completion_note": "No-Skill-03 attempt-11 原始控制器因费用数字 0.00342978 的裸 429 子串发生误判；人工最终 Verifier 11/11 后已重新归类为正式通过，原始隔离证据保留。"
+}

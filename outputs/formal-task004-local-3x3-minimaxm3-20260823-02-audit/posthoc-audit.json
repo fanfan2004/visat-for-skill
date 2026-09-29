@@ -1,0 +1,515 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task004-local-3x3-minimaxm3-20260823-02",
+  "task_id": "task-004",
+  "benchmark_task_id": "powerlifting-coef-calc",
+  "audit_status": "completed_with_failures",
+  "completed_trials": 0,
+  "planned_trials": 9,
+  "unique_sessions": 0,
+  "session_ids_complete": true,
+  "all_final_verifiers_passed": false,
+  "nine_result_files": false,
+  "all_final_output_files_present": false,
+  "formal_included_trials": 0,
+  "formal_all_final_verifiers_passed": false,
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "model_identity": {
+    "requested_provider_id": "minimax-cn",
+    "requested_model_id": "MiniMax-M3",
+    "consistent_across_events": true,
+    "consistent_across_isolated_databases": true,
+    "database_identity_complete_for_formal_trials": true,
+    "evidence": "read-only query of each isolated OpenCode opencode.db session and message tables"
+  },
+  "conditions": {
+    "noskill": {
+      "planned_trials": 3,
+      "result_files": 0,
+      "included_trials": 0,
+      "excluded_trials": 0,
+      "verifier_passes": 0,
+      "total_turns": 0,
+      "model_turn_timeouts": 0,
+      "verifier_timeouts": 0,
+      "unique_sessions": 0,
+      "formal_totals": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 0,
+        "recorded_cost": 0
+      },
+      "all_attempt_totals": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 0,
+        "recorded_cost": 0
+      }
+    },
+    "native": {
+      "planned_trials": 3,
+      "result_files": 0,
+      "included_trials": 0,
+      "excluded_trials": 0,
+      "verifier_passes": 0,
+      "total_turns": 0,
+      "model_turn_timeouts": 0,
+      "verifier_timeouts": 0,
+      "unique_sessions": 0,
+      "formal_totals": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 0,
+        "recorded_cost": 0
+      },
+      "all_attempt_totals": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 0,
+        "recorded_cost": 0
+      }
+    },
+    "pd-vista": {
+      "planned_trials": 3,
+      "result_files": 0,
+      "included_trials": 0,
+      "excluded_trials": 0,
+      "verifier_passes": 0,
+      "total_turns": 0,
+      "model_turn_timeouts": 0,
+      "verifier_timeouts": 0,
+      "unique_sessions": 0,
+      "formal_totals": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 0,
+        "recorded_cost": 0
+      },
+      "all_attempt_totals": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 0,
+        "recorded_cost": 0
+      },
+      "trigger_opportunities": 0,
+      "routable_feedback": 0,
+      "successful_disclosures": 0,
+      "next_round_module_access": 0,
+      "clean_complete_closure": 0,
+      "disclosed_modules": []
+    }
+  },
+  "totals": {
+    "formal_included": {
+      "requests": 0,
+      "tool_uses": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read_tokens": 0,
+      "input_plus_output_tokens": 0,
+      "recorded_cost": 0
+    },
+    "all_observed_result_files": {
+      "requests": 0,
+      "tool_uses": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read_tokens": 0,
+      "input_plus_output_tokens": 0,
+      "recorded_cost": 0
+    }
+  },
+  "trials": [],
+  "excluded_runs": [
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-00-readiness",
+      "completed_result_files": 0,
+      "model_requests": 0,
+      "reason": "zero-model task identity, asset, dependency, public-entry, and full-verifier readiness only; excluded before the unique formal batch"
+    },
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-01",
+      "completed_result_files": 0,
+      "attempt_result_files": 1,
+      "model_requests": 0,
+      "reason": "controller diagnostic excluded: the first zero-request OpenCode API connection error was incorrectly classified as shared rate limiting, so the run was stopped before any formal trial completed; evidence is retained under data/raw/formal-task004-local-3x3-minimaxm3-20260823-01 and /private/tmp/vista-task004-local-3x3-20260823-01"
+    },
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-02",
+      "completed_result_files": 0,
+      "attempt_result_files": 9,
+      "model_requests": 0,
+      "reason": "provider diagnostic excluded: all nine serial OpenCode attempts returned the same zero-request API connection error before task verification; no alternate provider or model was used"
+    }
+  ],
+  "diagnostic_batches": [
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-00-readiness",
+      "completed_result_files": 0,
+      "model_requests": 0,
+      "reason": "zero-model task identity, asset, dependency, public-entry, and full-verifier readiness only; excluded before the unique formal batch"
+    },
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-01",
+      "completed_result_files": 0,
+      "attempt_result_files": 1,
+      "model_requests": 0,
+      "reason": "controller diagnostic excluded: the first zero-request OpenCode API connection error was incorrectly classified as shared rate limiting, so the run was stopped before any formal trial completed; evidence is retained under data/raw/formal-task004-local-3x3-minimaxm3-20260823-01 and /private/tmp/vista-task004-local-3x3-20260823-01"
+    },
+    {
+      "run_id": "formal-task004-local-3x3-minimaxm3-20260823-02",
+      "completed_result_files": 0,
+      "attempt_result_files": 9,
+      "model_requests": 0,
+      "reason": "provider diagnostic excluded: all nine serial OpenCode attempts returned the same zero-request API connection error before task verification; no alternate provider or model was used"
+    }
+  ],
+  "excluded_attempts": [
+    {
+      "condition": "native",
+      "replicate_id": 1,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd1556e5affehKfrz9q3VED3i5",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/native/replicate-01-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/native/replicate-01-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 2,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd15338d0ffeWP1108ZSPs0TrD",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/native/replicate-02-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/native/replicate-02-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd14dbd89ffeXZ1HULj4RU4U9B",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/native/replicate-03-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/native/replicate-03-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 1,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd1567f04ffeKazUSGeuOKZXCI",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/noskill/replicate-01-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/noskill/replicate-01-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd150fc0fffek87pJL8Dt2R5Jk",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/noskill/replicate-02-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/noskill/replicate-02-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd14ecfe7ffeYFCKgEzIDR502b",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/noskill/replicate-03-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/noskill/replicate-03-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 1,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd15455c6ffe71u0A0clqoooIU",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/pd-vista/replicate-01-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/pd-vista/replicate-01-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 2,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd1521ae5ffeSSlYj8VxXRwPz1",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/pd-vista/replicate-02-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/pd-vista/replicate-02-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd14fe582ffeYkMFCzW5ABqk4U",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/pd-vista/replicate-03-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/pd-vista/replicate-03-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    }
+  ],
+  "excluded_rate_limit_attempts": [],
+  "excluded_api_error_attempts": [
+    {
+      "condition": "native",
+      "replicate_id": 1,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd1556e5affehKfrz9q3VED3i5",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/native/replicate-01-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/native/replicate-01-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 2,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd15338d0ffeWP1108ZSPs0TrD",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/native/replicate-02-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/native/replicate-02-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd14dbd89ffeXZ1HULj4RU4U9B",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/native/replicate-03-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/native/replicate-03-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 1,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd1567f04ffeKazUSGeuOKZXCI",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/noskill/replicate-01-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/noskill/replicate-01-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd150fc0fffek87pJL8Dt2R5Jk",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/noskill/replicate-02-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/noskill/replicate-02-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd14ecfe7ffeYFCKgEzIDR502b",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/noskill/replicate-03-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/noskill/replicate-03-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 1,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd15455c6ffe71u0A0clqoooIU",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/pd-vista/replicate-01-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/pd-vista/replicate-01-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 2,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd1521ae5ffeSSlYj8VxXRwPz1",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/pd-vista/replicate-02-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/pd-vista/replicate-02-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "attempt": 1,
+      "status": "quarantined_api_error",
+      "stop_reason": "api_error",
+      "session_id": "ses_fd14fe582ffeYkMFCzW5ABqk4U",
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "result_directory": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/pd-vista/replicate-03-attempt-01",
+      "attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-02/_excluded_attempts/pd-vista/replicate-03-attempt-01/result.json",
+      "reason": "provider/controller/session attempt excluded"
+    }
+  ]
+}

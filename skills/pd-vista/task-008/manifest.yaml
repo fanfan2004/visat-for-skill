@@ -1,0 +1,18 @@
+schema_version: 1
+source_content_equivalence: byte-for-byte-under-modules
+modules:
+  - id: vehicle-dynamics
+    path: modules/vehicle-dynamics/SKILL.md
+    triggers: [test_failure, assertion_error]
+  - id: pid-controller
+    path: modules/pid-controller/SKILL.md
+    triggers: [runtime_error]
+  - id: simulation-metrics
+    path: modules/simulation-metrics/SKILL.md
+    triggers: [wrong_format, timeout]
+  - id: csv-processing
+    path: modules/csv-processing/SKILL.md
+    triggers: [incomplete_output, command_failure]
+  - id: yaml-config
+    path: modules/yaml-config/SKILL.md
+    triggers: [schema_error]

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stock Market Visualization</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="page-header">
+    <h1>Stock Market Visualization</h1>
+    <p class="subtitle">50 Stocks &amp; ETFs clustered by sector &middot; sized by market capitalization</p>
+  </header>
+
+  <main class="dashboard">
+    <section class="bubble-panel" aria-label="Bubble chart of stocks by sector">
+      <div class="panel-header">
+        <h2>Sector Bubble Chart</h2>
+        <p class="panel-hint">Hover for details &middot; Click a bubble to highlight its row</p>
+      </div>
+      <div id="chart-container" class="chart-container"></div>
+      <div id="legend" class="legend" aria-label="Sector legend"></div>
+    </section>
+
+    <section class="table-panel" aria-label="Stock data table">
+      <div class="panel-header">
+        <h2>Stock Data Table</h2>
+        <p class="panel-hint">50 rows &middot; Click a row to highlight its bubble</p>
+      </div>
+      <div class="table-wrapper">
+        <table id="stock-table" class="stock-table">
+          <thead>
+            <tr>
+              <th scope="col">Ticker symbol</th>
+              <th scope="col">Full company name</th>
+              <th scope="col">Sector</th>
+              <th scope="col" class="num">Market cap</th>
+            </tr>
+          </thead>
+          <tbody id="stock-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div id="tooltip" class="tooltip" role="tooltip" aria-hidden="true"></div>
+
+  <script src="js/d3.v6.min.js"></script>
+  <script src="js/visualization.js"></script>
+</body>
+</html>

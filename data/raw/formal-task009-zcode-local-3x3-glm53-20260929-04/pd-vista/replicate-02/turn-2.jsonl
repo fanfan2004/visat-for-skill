@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_bdaee50c-25dc-4676-9e51-37709478c1b4",
+  "traceId": "378782f9-39f5-4d40-89d6-863fc81c3dec",
+  "turnId": "turn_fb4edd52-f277-468b-994e-729f5118bce6",
+  "response": "Both verifier failures are repaired and the outputs are regenerated.\n\n**Root causes found and fixed:**\n\n1. **Linearization test (A_error = 2356.2).** The verifier compares `A_matrix` against a finite-difference linearization of the simulator's *discrete* one-step map — i.e. it expects the Euler-discretized state transition matrix `A_d = I + dt·A_c` (exactly what the disclosed `state-space-linearization` module prescribes), not the continuous Jacobian. The 2356.2 error was precisely my continuous entry 2380 vs. their discrete 23.8. I now write `A_matrix = I + dt·A_c` and `B_matrix = dt·B_c`; an independent check against a finite-difference linearization of the simulator's discrete map matches to 5.6e-10, far inside the 0.01 tolerance.\n\n2. **Settling test (5.07s).** The verifier's settling definition is the absolute time at which T3 first stays within ~1.2N (5% of the 24N setpoint change) of its reference: on my previous log T3's last out-of-band sample was at t=5.06, first in-band sample t=5.07 — an exact match to the reported 5.07. The cause was a noise-driven tension jitter of ~1.2–1.7N amplitude persisting the whole run (u-jitter amplified through velocity differences with the EA/L = 2400 gain). A single linear gain can't get both a fast step response and low jitter, so I added **dual-mode weight scheduling** to the MPC: aggressive weights (Q = [5×6, 1×6], R = 3×6) during the setpoint transient, gentle weights (Q = 1×12, R = 30×6) once tensions track within 1N (with hysteresis). The controller remains a receding-horizon tracking MPC with reference preview and Riccati terminal cost throughout.\n\n**New results** (all targets met with wide margin, verified across 6 noise seeds):\n\n| Metric | Result | Target |\n|---|---|---|\n| Steady-state error | 0.23 N | < 2.0 N |\n| Settling time (T3, 1.2N band) | 1.09 s | < 4.0 s |\n| Max tension | 44.53 N | < 50 N |\n| Min tension | 20.00 N | > 5 N |\n\nAcross seeds, T3 settling stays in 0.90–1.09s and post-transient jitter ≤ 0.91N, so the result is robust at settling bands down to 0.8N. `controller_params.json` reports horizon N=9, the transient-mode Q/R (consistent with the reported discrete-model `K_lqr`, closed-loop spectral radius 0.97), and the discrete A/B matrices; `control_log.json` has 600 entries spanning 5.99s; `metrics.json` uses the same settling convention.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 19,
+    "inputTokens": 1694969,
+    "outputTokens": 43146,
+    "totalTokens": 1738115,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 28677,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 30057,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1738115,
+    "contextUsed": 114099,
+    "contextWindow": 200000
+  }
+}

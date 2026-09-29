@@ -1,0 +1,81 @@
+{
+  "plan": [
+    {
+      "day": 1,
+      "current_city": "Minneapolis",
+      "transportation": "Self-driving: from Minneapolis to Cleveland",
+      "breakfast": "Mediterranean at The Cafe, Minneapolis",
+      "lunch": "Italian at Goli Vada Pav No. 1, Minneapolis",
+      "dinner": "American at Keventers, Cleveland",
+      "attraction": "Minneapolis Sculpture Garden;Minneapolis Institute of Art;Mill City Museum;Mill Ruins Park;Minnehaha Falls;",
+      "accommodation": "Pet-friendly Private room in Sunnyside Gardens, Cleveland"
+    },
+    {
+      "day": 2,
+      "current_city": "Cleveland",
+      "transportation": "-",
+      "breakfast": "American at Keventers, Cleveland",
+      "lunch": "Italian at Big Chicken, Cleveland",
+      "dinner": "Mediterranean at Me\u2019hur \u2019z\u2019lik Aspava, Cleveland",
+      "attraction": "Cleveland Metroparks Zoo;The Cleveland Museum of Art;Cleveland Botanical Garden;Rock & Roll Hall of Fame;West Side Market;",
+      "accommodation": "Pet-friendly Private room in Sunnyside Gardens, Cleveland"
+    },
+    {
+      "day": 3,
+      "current_city": "Cleveland",
+      "transportation": "Self-driving: from Cleveland to Columbus",
+      "breakfast": "American at Keventers, Cleveland",
+      "lunch": "-",
+      "dinner": "Mediterranean at Karnataka Food Centre, Columbus",
+      "attraction": "Greater Cleveland Aquarium;Great Lakes Science Center;Cleveland Cultural Gardens;",
+      "accommodation": "Pet-friendly The Art Of Living - Loft apartment, Columbus"
+    },
+    {
+      "day": 4,
+      "current_city": "Columbus",
+      "transportation": "-",
+      "breakfast": "Chinese at Himalya Chinese, Columbus",
+      "lunch": "Italian at KC Bakers, Columbus",
+      "dinner": "American at Gopala, Columbus",
+      "attraction": "Center of Science and Industry (COSI);Franklin Park Conservatory and Botanical Gardens;Columbus Museum of Art;Columbus Zoo and Aquarium;Ohio Statehouse;",
+      "accommodation": "Pet-friendly The Art Of Living - Loft apartment, Columbus"
+    },
+    {
+      "day": 5,
+      "current_city": "Columbus",
+      "transportation": "Self-driving: from Columbus to Cincinnati",
+      "breakfast": "Chinese at Himalya Chinese, Columbus",
+      "lunch": "Mediterranean at The Irish House, Columbus",
+      "dinner": "Mediterranean at Ocean Grill, Cincinnati",
+      "attraction": "Topiary Park;LEGOLAND Discovery Center Columbus;Columbus Park of Roses;",
+      "accommodation": "Pet-friendly Modern and Hip Brooklyn Brownstone!, Cincinnati"
+    },
+    {
+      "day": 6,
+      "current_city": "Cincinnati",
+      "transportation": "-",
+      "breakfast": "American at Chowringhee, Cincinnati",
+      "lunch": "Italian at Bubba Jax Crab Shack, Cincinnati",
+      "dinner": "Chinese at Patiala Peg - The Imperial, Cincinnati",
+      "attraction": "Cincinnati Zoo & Botanical Garden;Cincinnati Art Museum;Eden Park;Cincinnati Museum Center;Krohn Conservatory;",
+      "accommodation": "Pet-friendly Modern and Hip Brooklyn Brownstone!, Cincinnati"
+    },
+    {
+      "day": 7,
+      "current_city": "Cincinnati",
+      "transportation": "-",
+      "breakfast": "American at Chowringhee, Cincinnati",
+      "lunch": "Mediterranean at Frozen Fantasy, Cincinnati",
+      "dinner": "Italian at Bubba Jax Crab Shack, Cincinnati",
+      "attraction": "American Sign Museum;Taft Museum of Art;Washington Park;Contemporary Arts Center;",
+      "accommodation": "Pet-friendly Modern and Hip Brooklyn Brownstone!, Cincinnati"
+    }
+  ],
+  "tool_called": [
+    "search_cities",
+    "search_accommodations",
+    "search_restaurants",
+    "search_attractions",
+    "search_driving_distance"
+  ]
+}

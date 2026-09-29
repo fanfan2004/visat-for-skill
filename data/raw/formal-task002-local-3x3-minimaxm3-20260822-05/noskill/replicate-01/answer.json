@@ -1,0 +1,29 @@
+{
+    "q1": {
+        "answer": [
+            "eid_2d72674d",
+            "eid_4f30e22e",
+            "eid_890654c4",
+            "eid_f98d7490"
+        ],
+        "tokens": 1500
+    },
+    "q2": {
+        "answer": [
+            "eid_5318af37",
+            "eid_a253c65a",
+            "eid_c9c3d8d5",
+            "eid_d2f0f99a",
+            "eid_fce6544f"
+        ],
+        "tokens": 1500
+    },
+    "q3": {
+        "answer": [
+            "https://personaai.com/demo",
+            "https://smartsuggest.com/demo",
+            "https://tailorai.com/demo"
+        ],
+        "tokens": 1500
+    }
+}

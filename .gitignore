@@ -1,0 +1,27 @@
+# Local Python environment and credentials
+.venv/
+.env
+
+# Vendor read-only checkouts (full benchmark clone kept local only)
+skillsbench/
+vendor/visat-for-skill/
+
+# Tool environments and local state
+.tools/
+node_modules/
+.zcode/
+zcode-storage/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Generated experiment artifacts
+data/materialized/
+data/normalized/
+data/derived/
+reports/tables/
+reports/figures/
+reports/trajectory_cases/
+macos-preflight.json
+HANDOFF_CONTENTS.sha256
+

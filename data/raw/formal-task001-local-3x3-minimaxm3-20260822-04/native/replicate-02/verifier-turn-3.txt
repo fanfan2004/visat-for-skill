@@ -1,0 +1,190 @@
+
+============================================================
+Evaluating: /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-native-replicate-02/workspace/Tokenizer.scala
+============================================================
+
+✓ File exists
+✓ Source loaded (25497 characters)
+
+--- Checking Compilation ---
+✓ Compilation successful
+
+--- Running Unit Tests ---
+[info] welcome to sbt 1.12.0 (Eclipse Adoptium Java 17.0.20.1)
+[info] loading project definition from /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-native-replicate-02/verifier/localtest/project
+[info] loading settings for project root from build.sbt...
+[info] set current project to scala-tokenizer (in build file:/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-native-replicate-02/verifier/localtest/)
+[info] compiling 1 Scala source to /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-native-replicate-02/verifier/localtest/target/scala-2.13/test-classes ...
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-native-replicate-02/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:147:28: type mismatch;
+[error]  found   : (String, String)
+[error]  required: scala.collection.immutable.Map[String,Any]
+[error]       .withMetadata("type" -> "custom")
+[error]                            ^
+[error] one error found
+[error] (Test / compileIncremental) Compilation failed
+[error] Total time: 6 s, completed 2026年8月22日 下午4:44:44
+
+Tests passed: 0/0
+
+--- Evaluating Code Quality Criteria ---
+
+
+FUNCTIONALITY_PRESERVATION:
+----------------------------------------
+Score: 5/5 (EXCELLENT)
+  Found 9/9 required components
+  Found 4/4 key methods
+
+SCALA_CONVENTIONS:
+----------------------------------------
+Score: 4/5 (GOOD)
+  ✓ camelCase_methods: 104 occurrences
+  ✓ PascalCase_classes: 51 occurrences
+  ✓ immutable_val: 57 occurrences
+  ✓ case_class: 7 occurrences
+  ✓ sealed_trait: 2 occurrences
+  Suggestions:
+    → Consider refactoring: Null usage (prefer Option)
+    → Consider refactoring: Unsafe casting with asInstanceOf
+    → Consider refactoring: Explicit return statement (often unnecessary in Scala)
+
+READABILITY:
+----------------------------------------
+Score: 5/5 (EXCELLENT)
+  Total lines: 726
+  Scaladoc blocks: 49
+  Single-line comments: 36
+  Type annotations: 237
+
+PARADIGM_MATCH:
+----------------------------------------
+Score: 4/5 (GOOD)
+  ✓ map: 14 occurrences
+  ✓ flatMap: 1 occurrences
+  ✓ filter: 2 occurrences
+  ✓ fold: 3 occurrences
+  ✓ higher_order_func: 36 occurrences
+  Suggestions:
+    → Consider reducing mutable variables (5 vars found)
+    → Consider using Option instead of null
+
+APPROPRIATE_ABSTRACTIONS:
+----------------------------------------
+Score: 5/5 (EXCELLENT)
+  Traits defined: 5
+  ✓ Sealed hierarchies: 2
+  Generic type usages: 110
+  Objects/Companions: 18
+  ✓ Variance annotations: 3
+
+============================================================
+EVALUATION SUMMARY
+============================================================
+Overall Score: 23/25 (92.0%)
+Status: ❌ NEEDS IMPROVEMENT
+============================================================
+
+{
+  "file_path": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-native-replicate-02/workspace/Tokenizer.scala",
+  "file_exists": true,
+  "compilation": {
+    "success": true,
+    "errors": [],
+    "warnings": []
+  },
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "total": 0,
+    "errors": []
+  },
+  "criteria_evaluations": {
+    "FUNCTIONALITY_PRESERVATION": {
+      "criterion": "FUNCTIONALITY_PRESERVATION",
+      "score": 5,
+      "max_score": 5,
+      "findings": [
+        "Found 9/9 required components",
+        "Found 4/4 key methods"
+      ],
+      "suggestions": []
+    },
+    "SCALA_CONVENTIONS": {
+      "criterion": "SCALA_CONVENTIONS",
+      "score": 4,
+      "max_score": 5,
+      "findings": [
+        "\u2713 camelCase_methods: 104 occurrences",
+        "\u2713 PascalCase_classes: 51 occurrences",
+        "\u2713 immutable_val: 57 occurrences",
+        "\u2713 case_class: 7 occurrences",
+        "\u2713 sealed_trait: 2 occurrences",
+        "\u2713 option_type: 12 occurrences",
+        "\u2713 pattern_matching: 12 occurrences",
+        "\u2713 companion_object: 18 occurrences",
+        "\u26a0 Null usage (prefer Option): 5 occurrences",
+        "\u26a0 Unsafe casting with asInstanceOf: 3 occurrences",
+        "\u26a0 Explicit return statement (often unnecessary in Scala): 3 occurrences",
+        "\u2713 Uses variance annotations (+/-)",
+        "\u2713 Uses implicit definitions (type classes)"
+      ],
+      "suggestions": [
+        "Consider refactoring: Null usage (prefer Option)",
+        "Consider refactoring: Unsafe casting with asInstanceOf",
+        "Consider refactoring: Explicit return statement (often unnecessary in Scala)"
+      ]
+    },
+    "READABILITY": {
+      "criterion": "READABILITY",
+      "score": 5,
+      "max_score": 5,
+      "findings": [
+        "Total lines: 726",
+        "Scaladoc blocks: 49",
+        "Single-line comments: 36",
+        "Type annotations: 237"
+      ],
+      "suggestions": []
+    },
+    "PARADIGM_MATCH": {
+      "criterion": "PARADIGM_MATCH",
+      "score": 4,
+      "max_score": 5,
+      "findings": [
+        "\u2713 map: 14 occurrences",
+        "\u2713 flatMap: 1 occurrences",
+        "\u2713 filter: 2 occurrences",
+        "\u2713 fold: 3 occurrences",
+        "\u2713 higher_order_func: 36 occurrences",
+        "\u2713 immutable_collections: 25 occurrences",
+        "Immutability ratio (val/total): 91.94%",
+        "Option usage: 12, null usage: 8",
+        "\u2713 Uses Either/Try for error handling: 2",
+        "Case classes: 7, Case objects: 7"
+      ],
+      "suggestions": [
+        "Consider reducing mutable variables (5 vars found)",
+        "Consider using Option instead of null"
+      ]
+    },
+    "APPROPRIATE_ABSTRACTIONS": {
+      "criterion": "APPROPRIATE_ABSTRACTIONS",
+      "score": 5,
+      "max_score": 5,
+      "findings": [
+        "Traits defined: 5",
+        "\u2713 Sealed hierarchies: 2",
+        "Generic type usages: 110",
+        "Objects/Companions: 18",
+        "\u2713 Variance annotations: 3",
+        "\u2713 Type class instances: 1",
+        "\u2713 Higher-kinded type usage: 1",
+        "Encapsulation modifiers: 25"
+      ],
+      "suggestions": []
+    }
+  },
+  "overall_score": 23,
+  "max_score": 25,
+  "passed": false
+}

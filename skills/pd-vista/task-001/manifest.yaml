@@ -1,0 +1,21 @@
+schema_version: 1
+source_content_equivalence: byte-for-byte-under-modules
+modules:
+  - id: python-scala-syntax-mapping
+    path: modules/python-scala-syntax-mapping/SKILL.md
+    triggers: [compilation_error, schema_error, wrong_format]
+  - id: python-scala-idioms
+    path: modules/python-scala-idioms/SKILL.md
+    triggers: [test_failure, assertion_error]
+  - id: python-scala-oop
+    path: modules/python-scala-oop/SKILL.md
+    triggers: [runtime_error, incomplete_output]
+  - id: python-scala-functional
+    path: modules/python-scala-functional/SKILL.md
+    triggers: [repeated_failure]
+  - id: python-scala-collections
+    path: modules/python-scala-collections/SKILL.md
+    triggers: [command_failure]
+  - id: python-scala-libraries
+    path: modules/python-scala-libraries/SKILL.md
+    triggers: [dependency_error, timeout]

@@ -1,0 +1,6 @@
+source_task: vendor/skillsbench/tasks/travel-planning
+source_skills: vendor/skillsbench/tasks/travel-planning/environment/skills
+materialization: copy-complete-module-directory-at-disclosure
+adaptations:
+  - verifier absolute /app paths are replaced with per-replicate Windows workspace paths
+  - original skill module contents and scripts are otherwise copied byte-for-byte

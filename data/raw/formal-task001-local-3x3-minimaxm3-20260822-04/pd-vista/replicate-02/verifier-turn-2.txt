@@ -1,0 +1,198 @@
+
+============================================================
+Evaluating: /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-02/workspace/Tokenizer.scala
+============================================================
+
+✓ File exists
+✓ Source loaded (21666 characters)
+
+--- Checking Compilation ---
+✓ Compilation successful
+
+--- Running Unit Tests ---
+[info] welcome to sbt 1.12.0 (Eclipse Adoptium Java 17.0.20.1)
+[info] loading project definition from /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-02/verifier/localtest/project
+[info] loading settings for project root from build.sbt...
+[info] set current project to scala-tokenizer (in build file:/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-02/verifier/localtest/)
+[info] compiling 1 Scala source to /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-02/verifier/localtest/target/scala-2.13/test-classes ...
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-02/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:34:50: type mismatch;
+[error]  found   : (String, String)
+[error]  required: Map[String,Any]
+[error]     val tokenWithMeta = token.withMetadata("key" -> "value")
+[error]                                                  ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-02/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:60:27: value tokenizeNull is not a member of tokenizer.UniversalTokenizer
+[error] did you mean tokenizeAll?
+[error]     val token = tokenizer.tokenizeNull
+[error]                           ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-02/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:103:12: value get is not a member of tokenizer.TokenFunctor[Int]
+[error]     mapped.get shouldBe 10
+[error]            ^
+[error] three errors found
+[error] (Test / compileIncremental) Compilation failed
+[error] Total time: 6 s, completed 2026年8月22日 下午4:52:37
+
+Tests passed: 0/0
+
+--- Evaluating Code Quality Criteria ---
+
+
+FUNCTIONALITY_PRESERVATION:
+----------------------------------------
+Score: 5/5 (EXCELLENT)
+  Found 9/9 required components
+  Found 4/4 key methods
+
+SCALA_CONVENTIONS:
+----------------------------------------
+Score: 4/5 (GOOD)
+  ✓ camelCase_methods: 85 occurrences
+  ✓ PascalCase_classes: 41 occurrences
+  ✓ immutable_val: 54 occurrences
+  ✓ case_class: 1 occurrences
+  ✓ sealed_trait: 1 occurrences
+  Suggestions:
+    → Consider refactoring: Null usage (prefer Option)
+    → Consider refactoring: Unsafe casting with asInstanceOf
+    → Consider refactoring: Explicit return statement (often unnecessary in Scala)
+
+READABILITY:
+----------------------------------------
+Score: 5/5 (EXCELLENT)
+  Total lines: 690
+  Scaladoc blocks: 29
+  Single-line comments: 42
+  Type annotations: 193
+
+PARADIGM_MATCH:
+----------------------------------------
+Score: 5/5 (EXCELLENT)
+  ✓ map: 12 occurrences
+  ✓ flatMap: 4 occurrences
+  ✓ filter: 2 occurrences
+  ✓ for_comprehension: 1 occurrences
+  ✓ higher_order_func: 30 occurrences
+  Suggestions:
+    → Consider reducing mutable variables (8 vars found)
+    → Consider using Option instead of null
+
+APPROPRIATE_ABSTRACTIONS:
+----------------------------------------
+Score: 5/5 (EXCELLENT)
+  Traits defined: 4
+  ✓ Sealed hierarchies: 1
+  Generic type usages: 116
+  Objects/Companions: 16
+  ✓ Variance annotations: 3
+  Suggestions:
+    → Consider using type classes for polymorphism
+
+============================================================
+EVALUATION SUMMARY
+============================================================
+Overall Score: 24/25 (96.0%)
+Status: ❌ NEEDS IMPROVEMENT
+============================================================
+
+{
+  "file_path": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-02/workspace/Tokenizer.scala",
+  "file_exists": true,
+  "compilation": {
+    "success": true,
+    "errors": [],
+    "warnings": []
+  },
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "total": 0,
+    "errors": []
+  },
+  "criteria_evaluations": {
+    "FUNCTIONALITY_PRESERVATION": {
+      "criterion": "FUNCTIONALITY_PRESERVATION",
+      "score": 5,
+      "max_score": 5,
+      "findings": [
+        "Found 9/9 required components",
+        "Found 4/4 key methods"
+      ],
+      "suggestions": []
+    },
+    "SCALA_CONVENTIONS": {
+      "criterion": "SCALA_CONVENTIONS",
+      "score": 4,
+      "max_score": 5,
+      "findings": [
+        "\u2713 camelCase_methods: 85 occurrences",
+        "\u2713 PascalCase_classes: 41 occurrences",
+        "\u2713 immutable_val: 54 occurrences",
+        "\u2713 case_class: 1 occurrences",
+        "\u2713 sealed_trait: 1 occurrences",
+        "\u2713 option_type: 16 occurrences",
+        "\u2713 pattern_matching: 12 occurrences",
+        "\u2713 companion_object: 16 occurrences",
+        "\u26a0 Null usage (prefer Option): 2 occurrences",
+        "\u26a0 Unsafe casting with asInstanceOf: 3 occurrences",
+        "\u26a0 Explicit return statement (often unnecessary in Scala): 2 occurrences",
+        "\u2713 Uses variance annotations (+/-)"
+      ],
+      "suggestions": [
+        "Consider refactoring: Null usage (prefer Option)",
+        "Consider refactoring: Unsafe casting with asInstanceOf",
+        "Consider refactoring: Explicit return statement (often unnecessary in Scala)"
+      ]
+    },
+    "READABILITY": {
+      "criterion": "READABILITY",
+      "score": 5,
+      "max_score": 5,
+      "findings": [
+        "Total lines: 690",
+        "Scaladoc blocks: 29",
+        "Single-line comments: 42",
+        "Type annotations: 193"
+      ],
+      "suggestions": []
+    },
+    "PARADIGM_MATCH": {
+      "criterion": "PARADIGM_MATCH",
+      "score": 5,
+      "max_score": 5,
+      "findings": [
+        "\u2713 map: 12 occurrences",
+        "\u2713 flatMap: 4 occurrences",
+        "\u2713 filter: 2 occurrences",
+        "\u2713 for_comprehension: 1 occurrences",
+        "\u2713 higher_order_func: 30 occurrences",
+        "\u2713 immutable_collections: 24 occurrences",
+        "Immutability ratio (val/total): 87.10%",
+        "Option usage: 16, null usage: 2",
+        "Case classes: 1, Case objects: 6"
+      ],
+      "suggestions": [
+        "Consider reducing mutable variables (8 vars found)",
+        "Consider using Option instead of null"
+      ]
+    },
+    "APPROPRIATE_ABSTRACTIONS": {
+      "criterion": "APPROPRIATE_ABSTRACTIONS",
+      "score": 5,
+      "max_score": 5,
+      "findings": [
+        "Traits defined: 4",
+        "\u2713 Sealed hierarchies: 1",
+        "Generic type usages: 116",
+        "Objects/Companions: 16",
+        "\u2713 Variance annotations: 3",
+        "\u2713 Higher-kinded type usage: 2",
+        "Encapsulation modifiers: 22"
+      ],
+      "suggestions": [
+        "Consider using type classes for polymorphism"
+      ]
+    }
+  },
+  "overall_score": 24,
+  "max_score": 25,
+  "passed": false
+}

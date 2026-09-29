@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task002-local-3x3-minimaxm3-20260822-07-pd-vista-replicate-02",
+  "task_id": "task-002",
+  "condition": "pd-vista",
+  "replicate_id": 2,
+  "backend": "opencode-local-minimal-dependencies",
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "expected_provider": "minimax-cn",
+  "expected_actual_model": "MiniMax-M3",
+  "actual_provider_ids": [],
+  "actual_model_ids": [],
+  "session_id": "ses_fd67b93c4ffegKtfoXiYrzBK3r",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 124,
+      "model_turn_timeout": true,
+      "event_summary": {
+        "event_types": {
+          "step_start": 2,
+          "tool_use": 2,
+          "step_finish": 2
+        },
+        "session_ids": [
+          "ses_fd67b93c4ffegKtfoXiYrzBK3r"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 2,
+        "tool_uses": 2,
+        "input_tokens": 6094,
+        "output_tokens": 121,
+        "cache_read_tokens": 8960,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": false,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 124,
+      "model_turn_timeout": true,
+      "event_summary": {
+        "event_types": {
+          "step_start": 11,
+          "tool_use": 10,
+          "step_finish": 10
+        },
+        "session_ids": [
+          "ses_fd67b93c4ffegKtfoXiYrzBK3r"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 11,
+        "tool_uses": 10,
+        "input_tokens": 13060,
+        "output_tokens": 827,
+        "cache_read_tokens": 104320,
+        "accessed_modules": [
+          "enterprise-artifact-search"
+        ],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": false,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 3,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 36,
+          "tool_use": 35,
+          "step_finish": 36,
+          "text": 2
+        },
+        "session_ids": [
+          "ses_fd67b93c4ffegKtfoXiYrzBK3r"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 36,
+        "tool_uses": 35,
+        "input_tokens": 95305,
+        "output_tokens": 12530,
+        "cache_read_tokens": 1866624,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 4,
+      "return_code": 1,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 1,
+          "tool_use": 1,
+          "step_finish": 1,
+          "error": 1
+        },
+        "session_ids": [
+          "ses_fd67b93c4ffegKtfoXiYrzBK3r"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 1,
+        "tool_uses": 1,
+        "input_tokens": 434,
+        "output_tokens": 1231,
+        "cache_read_tokens": 90112,
+        "accessed_modules": [],
+        "errors": [
+          {
+            "name": "APIError",
+            "status_code": 429,
+            "retryable": true,
+            "category": "api_error"
+          }
+        ],
+        "tool_errors": []
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 50,
+    "tool_uses": 48,
+    "input_tokens": 114893,
+    "output_tokens": 14709,
+    "cache_read_tokens": 2070016
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [
+    "enterprise-artifact-search"
+  ],
+  "accessed_modules_after_disclosure": [
+    "enterprise-artifact-search"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 3,
+    "routable_feedback": 3,
+    "successful_disclosures": 1,
+    "next_round_module_access": 1,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": false,
+  "stop_reason": "api_error",
+  "status": "quarantined_api_error",
+  "workspace": "/private/tmp/vista-task002-local-3x3-20260822-07/formal-task002-local-3x3-minimaxm3-20260822-07-pd-vista-replicate-02/workspace"
+}

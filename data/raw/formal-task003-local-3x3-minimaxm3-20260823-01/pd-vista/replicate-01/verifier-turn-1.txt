@@ -1,0 +1,122 @@
+........FF.....                                                          [100%]
+=================================== FAILURES ===================================
+_______________________________ test_data_table ________________________________
+
+browser_page = <Page url='http://localhost:8765/index.html'>
+
+    def test_data_table(browser_page):
+        """Data table must display all stocks with required columns and be arranged side by side with chart."""
+        page = browser_page
+    
+        # Check for table element (instruction.md: "A data table next to the bubble chart")
+        table = page.locator('table')
+        assert table.count() > 0, \
+            "HTML must contain table element (instruction.md requirement)"
+    
+        # Validate side-by-side layout (instruction.md: "two main sections arranged side by side horizontally")
+        svg = page.locator('svg').first
+        table_elem = table.first
+    
+        svg_box = svg.bounding_box()
+        table_box = table_elem.bounding_box()
+    
+        if svg_box and table_box:
+            # Check that they are at similar vertical positions (side by side, not stacked)
+            y_difference = abs(svg_box['y'] - table_box['y'])
+>           assert y_difference < 200, \
+                f"Chart and table should be arranged side by side horizontally (instruction.md), " \
+                f"but have large vertical offset: {y_difference}px"
+E           AssertionError: Chart and table should be arranged side by side horizontally (instruction.md), but have large vertical offset: 807px
+E           assert 807 < 200
+
+/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-01-pd-vista-replicate-01/verifier/test_outputs.py:464: AssertionError
+________________________ test_tooltips_non_etf_and_etf _________________________
+
+browser_page = <Page url='http://localhost:8765/index.html'>
+
+    def test_tooltips_non_etf_and_etf(browser_page):
+        """Non-ETF bubbles should show tooltips; ETF bubbles should not."""
+        page = browser_page
+    
+        # Tooltip uses .visible class to show (opacity: 1), not display property
+        # Check for the .visible class specifically, not :visible pseudo-selector
+        tooltip_locator = '.tooltip.visible, #tooltip.visible, [role="tooltip"][class*="visible"]'
+        etf_tickers = ['SPY', 'VOO', 'QQQ', 'GLD', 'XLF', 'VWO', 'XLU', 'XLV', 'VEA', 'VTV']
+        svg_texts = page.locator('svg text')
+    
+        def hover_label_text(text_to_hover):
+            for i in range(svg_texts.count()):
+                text_elem = svg_texts.nth(i)
+                text_content = text_elem.text_content().strip()
+                if text_content == text_to_hover:
+                    box = text_elem.bounding_box()
+                    if box:
+                        page.mouse.move(box['x'] + box['width'] / 2, box['y'] + box['height'] / 2)
+                        page.wait_for_timeout(400)
+                        return True
+            return False
+    
+        def find_first_non_etf_label():
+            import re
+            ticker_pattern = re.compile(r'^[A-Z]{1,4}$')
+            for i in range(svg_texts.count()):
+                text_elem = svg_texts.nth(i)
+                text_content = text_elem.text_content().strip()
+                if ticker_pattern.match(text_content) and text_content not in etf_tickers:
+                    return text_content
+            return None
+    
+        # Test 1: ETF bubbles should NOT show tooltips
+        # Test this first in cleanest page state before any other interactions
+        # Move mouse to origin to ensure no hover state from page load
+        page.mouse.move(0, 0)
+        page.wait_for_timeout(500)
+    
+        etf_label = None
+        for candidate in etf_tickers:
+            if hover_label_text(candidate):
+                etf_label = candidate
+                break
+    
+        if etf_label is None:
+            print("⚠ Could not locate ETF bubble by ticker label for screenshot")
+        else:
+            # Wait for any tooltip to appear (if incorrectly configured)
+            page.wait_for_timeout(200)
+    
+            # Save screenshot showing ETF hover (should show no tooltip)
+            try:
+                page.screenshot(path="/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-01-pd-vista-replicate-01/verifier/logs/tooltip_etf_hover_no_tooltip.png", full_page=True)
+                print(f"✓ ETF hover screenshot saved for {etf_label} (should show no tooltip)")
+            except Exception as e:
+                print(f"⚠ Failed to save ETF hover screenshot: {e}")
+    
+            # After hovering ETF, ensure tooltip is not visible
+            etf_tooltip = page.locator(tooltip_locator)
+            assert etf_tooltip.count() == 0, \
+                "ETF bubble should not show a tooltip (instruction.md requirement)"
+    
+        # Test 2: Non-ETF bubbles should show tooltips with ticker, name, and sector
+        # Move mouse away to clear hover state before testing non-ETF
+        page.mouse.move(0, 0)
+        page.wait_for_timeout(500)
+    
+        non_etf_label = find_first_non_etf_label()
+        assert non_etf_label is not None, "Could not find a non-ETF ticker label to hover"
+    
+        assert hover_label_text(non_etf_label), f"Could not hover non-ETF label {non_etf_label}"
+    
+        tooltip = page.locator(tooltip_locator)
+>       assert tooltip.count() > 0, "Tooltip did not appear on non-ETF hover"
+E       AssertionError: Tooltip did not appear on non-ETF hover
+E       assert 0 > 0
+E        +  where 0 = count()
+E        +    where count = <Locator frame=<Frame name= url='http://localhost:8765/index.html'> selector='.tooltip.visible, #tooltip.visible, [role="tooltip"][class*="visible"]'>.count
+
+/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-01-pd-vista-replicate-01/verifier/test_outputs.py:573: AssertionError
+----------------------------- Captured stdout call -----------------------------
+✓ ETF hover screenshot saved for SPY (should show no tooltip)
+=========================== short test summary info ============================
+FAILED test_outputs.py::test_data_table - AssertionError: Chart and table sho...
+FAILED test_outputs.py::test_tooltips_non_etf_and_etf - AssertionError: Toolt...
+2 failed, 13 passed in 24.27s

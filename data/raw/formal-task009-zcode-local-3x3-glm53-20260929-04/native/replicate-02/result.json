@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task009-zcode-local-3x3-glm53-20260929-04-native-replicate-02",
+  "task_id": "task-009",
+  "condition": "native",
+  "replicate_id": 2,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_1cc44a81-3467-4cb8-b95c-c26e182ff735",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_e2413200-fdf4-4cd1-889f-6b282f448922",
+      "requests": 16,
+      "tool_uses": 20,
+      "accessed_modules": [],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 16,
+    "input_tokens": 526489,
+    "output_tokens": 15134,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 541623
+  },
+  "initially_available_modules": [
+    "finite-horizon-lqr",
+    "integral-action-design",
+    "mpc-horizon-tuning",
+    "state-space-linearization"
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "vista_metrics": {
+    "trigger_opportunities": 0,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task009-zcode-local-3x3-glm53-20260929-04-native-replicate-02/workspace"
+}

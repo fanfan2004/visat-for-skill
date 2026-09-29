@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task006-local-3x3-minimaxm3-20260824-164022-readiness",
+  "task_id": "task-006",
+  "benchmark_task_id": "fix-build-agentops",
+  "task_identity": {
+    "file": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/tasks/pilot/task-006/task.yaml",
+    "file_present": true,
+    "task_id": "task-006",
+    "benchmark_task_id": "fix-build-agentops",
+    "definition_path": "vendor/skillsbench/tasks/fix-build-agentops",
+    "resolved": true
+  },
+  "task_materials": {
+    "task_instruction": true,
+    "environment_directory": true,
+    "environment_files": [
+      "environment/Dockerfile",
+      "environment/skills/analyze-ci/SKILL.md",
+      "environment/skills/temporal-python-testing/SKILL.md",
+      "environment/skills/temporal-python-testing/resources/integration-testing.md",
+      "environment/skills/temporal-python-testing/resources/local-setup.md",
+      "environment/skills/temporal-python-testing/resources/replay-testing.md",
+      "environment/skills/temporal-python-testing/resources/unit-testing.md",
+      "environment/skills/testing-python/SKILL.md",
+      "environment/skills/uv-package-manager/SKILL.md"
+    ],
+    "dockerfile_present": true,
+    "local_failed_repo_present": false,
+    "local_failed_repo_path": "/home/github/build/failed/AgentOps-AI/agentops",
+    "source_code_files_present": false,
+    "native_modules": {
+      "analyze-ci": {
+        "skill": true,
+        "file_count": 1
+      },
+      "temporal-python-testing": {
+        "skill": true,
+        "file_count": 5
+      },
+      "testing-python": {
+        "skill": true,
+        "file_count": 1
+      },
+      "uv-package-manager": {
+        "skill": true,
+        "file_count": 1
+      }
+    },
+    "pd_vista_root": true,
+    "pd_vista_manifest": true,
+    "pd_vista_source": true
+  },
+  "verifier": {
+    "original_test_outputs": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/vendor/skillsbench/tasks/fix-build-agentops/verifier/test_outputs.py",
+    "test_outputs_present": true,
+    "test_script_present": true,
+    "local_run_passed_helper_present": true,
+    "collect": {
+      "ready": false,
+      "return_code": 2,
+      "output_tail": "\n==================================== ERRORS ====================================\n_ ERROR collecting vendor/skillsbench/tasks/fix-build-agentops/verifier/test_outputs.py _\nImportError while importing test module '/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/vendor/skillsbench/tasks/fix-build-agentops/verifier/test_outputs.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nverifier/test_outputs.py:23: in <module>\n    import unidiff\nE   ModuleNotFoundError: No module named 'unidiff'\n=========================== short test summary info ============================\nERROR verifier/test_outputs.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\nno tests collected, 1 error in 0.22s\n",
+      "test_count": 3
+    },
+    "hardcoded_build_path_present": true,
+    "full_verifier_ready": false,
+    "reason": "cannot reproduce BugSwarm image/build workspace from project-local materials under the requested constraints"
+  },
+  "dependencies": {
+    "python": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/bin/python",
+    "modules": {
+      "pytest": true,
+      "yaml": true,
+      "unidiff": false
+    },
+    "all_present": false
+  },
+  "opencode_config": {
+    "path": "/Users/wangjinhua/.config/opencode/opencode.json",
+    "requested_provider_model": "minimax-cn/MiniMax-M3",
+    "api_key_environment_variable": null,
+    "credential_source": "opencode_auth_store"
+  },
+  "opencode_launcher": {
+    "ready": true,
+    "launcher": "/Users/wangjinhua/.local/lib/node_modules/opencode-ai/bin/opencode.exe",
+    "binary": "/Users/wangjinhua/.local/lib/node_modules/opencode-ai/bin/opencode.exe",
+    "version": "1.18.18",
+    "launcher_sha256": "c9be687513fd652ca53018901457eb0911cb505dc9cdc494a0ae3645970699ee",
+    "binary_sha256": "c9be687513fd652ca53018901457eb0911cb505dc9cdc494a0ae3645970699ee"
+  },
+  "active_process_check": {
+    "available": false,
+    "active_matching_processes": [],
+    "clear": true,
+    "error": "PermissionError: [Errno 1] Operation not permitted: 'ps'",
+    "note": "An external read-only process check was performed separately before readiness was recorded."
+  },
+  "experiment_matrix": {
+    "conditions": [
+      "noskill",
+      "native",
+      "pd-vista"
+    ],
+    "replicates": [
+      1,
+      2,
+      3
+    ],
+    "planned_trials": 9,
+    "balanced_interleaved_schedule": true
+  },
+  "timeouts": {
+    "max_turns": 6,
+    "model_turn_timeout_seconds": 420,
+    "verifier_timeout_seconds": 240
+  },
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "direct_execution_ready": false,
+  "readiness_reasons": [
+    "task-006 environment contains a BugSwarm cached-image Dockerfile, not the failed AgentOps source tree",
+    "the required failed repository directory /home/github/build/failed/AgentOps-AI/agentops is absent on this macOS host",
+    "the verifier requires the missing BugSwarm run_passed.sh/build environment and cannot be executed faithfully from the local materials"
+  ],
+  "formal_execution_started": false,
+  "model_requests": 0,
+  "requested_provider_model": "minimax-cn/MiniMax-M3"
+}

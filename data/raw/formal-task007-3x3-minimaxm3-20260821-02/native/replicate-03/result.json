@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task007-3x3-minimaxm3-20260821-02-native-replicate-03",
+  "task_id": "task-007-travel-planning",
+  "replicate_id": 3,
+  "condition": "native",
+  "backend": "opencode-local-current-config",
+  "docker_used": false,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "expected_actual_model": "MiniMax-M3",
+  "actual_model_ids": [],
+  "expected_provider": "minimax-cn",
+  "actual_provider_ids": [],
+  "initially_available_modules": [
+    "search-cities",
+    "search-accommodations",
+    "search-restaurants",
+    "search-attractions",
+    "search-driving-distance",
+    "search-flights"
+  ],
+  "usage": {
+    "requests": 49,
+    "tool_uses": 48,
+    "input_tokens": 188237,
+    "output_tokens": 31420,
+    "cache_read_tokens": 1500544
+  },
+  "session_id": "ses_fdc8c373effep4e9fi15AXM1Wf",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "transport_attempts": [
+        {
+          "attempt": 1,
+          "return_code": 0,
+          "retryable_transport_error": false
+        }
+      ],
+      "event_summary": {
+        "event_types": {
+          "step_start": 49,
+          "tool_use": 48,
+          "step_finish": 49,
+          "text": 5
+        },
+        "session_ids": [
+          "ses_fdc8c373effep4e9fi15AXM1Wf"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 49,
+        "tool_uses": 48,
+        "input_tokens": 188237,
+        "output_tokens": 31420,
+        "cache_read_tokens": 1500544,
+        "accessed_modules": [
+          "search-cities",
+          "search-accommodations",
+          "search-restaurants",
+          "search-attractions",
+          "search-driving-distance",
+          "search-flights"
+        ],
+        "errors": [],
+        "tool_errors": []
+      },
+      "plan_exists": true,
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "distractor_flight_disclosed": false,
+  "vista_metrics": {
+    "trigger_opportunities": 0,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task007-3x3-minimaxm3-20260821-02-native-replicate-03/workspace"
+}

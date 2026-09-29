@@ -1,0 +1,20 @@
+{
+  "verifier_python": true,
+  "task_md": true,
+  "verifier_source": true,
+  "inputs_present": {
+    "vehicle_params.yaml": true,
+    "sensor_data.csv": true
+  },
+  "vista_manifest": true,
+  "vista_root_skill": true,
+  "native_modules": [
+    "csv-processing",
+    "pid-controller",
+    "simulation-metrics",
+    "vehicle-dynamics",
+    "yaml-config"
+  ],
+  "verifier_imports": true,
+  "ready": true
+}

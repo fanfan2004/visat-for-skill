@@ -1,0 +1,6 @@
+source_task: vendor/skillsbench/tasks/data-to-d3
+source_skills: vendor/skillsbench/tasks/data-to-d3/environment/skills
+materialization: copy-complete-module-directory-at-disclosure
+adaptations:
+  - The root file is a routing wrapper; the native D3 procedure remains a byte-for-byte module copy.
+  - The visualization module becomes agent-visible only after public feedback selects it.

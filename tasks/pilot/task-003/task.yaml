@@ -1,0 +1,10 @@
+task_id: task-003
+mapping_status: resolved
+source:
+  benchmark: skillsbench
+  benchmark_task_id: data-to-d3
+  definition_path: vendor/skillsbench/tasks/data-to-d3
+  skill_path: vendor/skillsbench/tasks/data-to-d3/environment/skills
+skill_paths:
+  native: vendor/skillsbench/tasks/data-to-d3/environment/skills
+  pd_vista: skills/pd-vista/task-003

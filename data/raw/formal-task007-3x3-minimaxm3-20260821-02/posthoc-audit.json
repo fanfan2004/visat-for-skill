@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task007-3x3-minimaxm3-20260821-02",
+  "audit_status": "passed",
+  "completed_trials": 9,
+  "unique_sessions": 9,
+  "all_final_verifiers_10_passed": true,
+  "all_itineraries_present": true,
+  "docker_used": false,
+  "provider_policy_errors": 0,
+  "session_identity_errors": 0,
+  "model_identity": {
+    "provider_id": "minimax-cn",
+    "model_id": "MiniMax-M3",
+    "consistent_across_all_trials": true,
+    "evidence": "read-only query of each isolated OpenCode opencode.db message table",
+    "note": "OpenCode JSON run events did not emit providerID/modelID, so group-summary actual_model_ids arrays are empty; database records provide the completed-message identity evidence."
+  },
+  "conditions": {
+    "noskill": {
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "total_turns": 4,
+      "requests": 125,
+      "tool_uses": 121,
+      "input_tokens": 147407,
+      "output_tokens": 57672,
+      "cache_read_tokens": 3329967,
+      "recorded_cost": 0.31322652
+    },
+    "native": {
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "total_turns": 4,
+      "requests": 162,
+      "tool_uses": 158,
+      "input_tokens": 316713,
+      "output_tokens": 87199,
+      "cache_read_tokens": 5109495,
+      "recorded_cost": 0.5062224
+    },
+    "pd-vista": {
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "total_turns": 4,
+      "requests": 132,
+      "tool_uses": 128,
+      "input_tokens": 138153,
+      "output_tokens": 66612,
+      "cache_read_tokens": 3520944,
+      "recorded_cost": 0.33263694,
+      "trigger_opportunities": 1,
+      "successful_disclosures": 1,
+      "next_round_module_access": 1,
+      "clean_complete_closures": 1,
+      "disclosed_modules": [
+        "search-attractions"
+      ],
+      "distractor_flight_disclosed": false
+    }
+  },
+  "total_recorded_cost": 1.15208586,
+  "excluded_diagnostic_run": {
+    "run_id": "formal-task007-3x3-minimaxm3-20260821-01",
+    "completed_trials": 0,
+    "reason": "verifier interpreter symlink was resolved outside the virtual environment before any model trial started"
+  }
+}

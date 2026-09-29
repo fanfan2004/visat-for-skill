@@ -1,0 +1,11 @@
+task_id: task-010
+mapping_status: resolved
+condition_backend: zcode
+source:
+  benchmark: skillsbench
+  benchmark_task_id: econ-detrending-correlation
+  definition_path: vendor/skillsbench/tasks/econ-detrending-correlation
+  skill_path: vendor/skillsbench/tasks/econ-detrending-correlation/environment/skills
+skill_paths:
+  native: vendor/skillsbench/tasks/econ-detrending-correlation/environment/skills
+  pd_vista: skills/pd-vista/task-010

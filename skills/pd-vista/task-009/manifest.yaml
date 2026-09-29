@@ -1,0 +1,15 @@
+schema_version: 1
+source_content_equivalence: byte-for-byte-under-modules
+modules:
+  - id: state-space-linearization
+    path: modules/state-space-linearization/SKILL.md
+    triggers: [test_failure, assertion_error]
+  - id: mpc-horizon-tuning
+    path: modules/mpc-horizon-tuning/SKILL.md
+    triggers: [runtime_error, command_failure, timeout]
+  - id: finite-horizon-lqr
+    path: modules/finite-horizon-lqr/SKILL.md
+    triggers: [wrong_format, incomplete_output]
+  - id: integral-action-design
+    path: modules/integral-action-design/SKILL.md
+    triggers: [schema_error]

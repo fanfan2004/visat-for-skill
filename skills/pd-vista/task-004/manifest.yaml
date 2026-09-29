@@ -1,0 +1,12 @@
+schema_version: 1
+source_content_equivalence: byte-for-byte-under-modules
+modules:
+  - id: powerlifting
+    path: modules/powerlifting/SKILL.md
+    triggers: [incomplete_output, schema_error, wrong_format]
+  - id: senior-data-scientist
+    path: modules/senior-data-scientist/SKILL.md
+    triggers: [assertion_error, test_failure, repeated_failure]
+  - id: xlsx
+    path: modules/xlsx/SKILL.md
+    triggers: [dependency_error, runtime_error, command_failure, timeout]

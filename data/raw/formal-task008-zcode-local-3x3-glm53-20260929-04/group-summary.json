@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "protocol": "task-008-zcode-local-glm53-noskill-native-pd-vista-3x3",
+  "task_id": "task-008",
+  "benchmark_task_id": "adaptive-cruise-control",
+  "conditions": [
+    "noskill",
+    "native",
+    "pd-vista"
+  ],
+  "replicates_per_condition": 3,
+  "planned_trials": 9,
+  "completed_trials": 9,
+  "requested_provider_model": "glm53-flash",
+  "backend": "zcode-local-minimal-dependencies",
+  "condition_summaries": {
+    "noskill": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "usage": {
+        "requests": 107,
+        "input_tokens": 6284741,
+        "output_tokens": 156882,
+        "cache_read_tokens": 0
+      }
+    },
+    "native": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "usage": {
+        "requests": 134,
+        "input_tokens": 10602351,
+        "output_tokens": 216014,
+        "cache_read_tokens": 0
+      }
+    },
+    "pd-vista": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "usage": {
+        "requests": 130,
+        "input_tokens": 10925111,
+        "output_tokens": 261729,
+        "cache_read_tokens": 0
+      }
+    }
+  },
+  "results": [
+    {
+      "condition": "noskill",
+      "replicate_id": 1,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_6e92e918-8e4e-442b-b573-a465c369dd73",
+      "usage": {
+        "requests": 43,
+        "input_tokens": 2547329,
+        "output_tokens": 51575,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 2598904
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 1,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_03f0dfc7-4ee9-47af-bdfe-8b85ae736ff9",
+      "usage": {
+        "requests": 27,
+        "input_tokens": 1589294,
+        "output_tokens": 44642,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1633936
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 1,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "sess_06c3b649-b1ca-4555-accb-67fa2a5226cb",
+      "usage": {
+        "requests": 37,
+        "input_tokens": 2271683,
+        "output_tokens": 56130,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 2327813
+      },
+      "disclosed_modules": [
+        "vehicle-dynamics"
+      ],
+      "accessed_modules_after_disclosure": [
+        "vehicle-dynamics"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_35462645-e49e-4a78-9cbf-03551217ff24",
+      "usage": {
+        "requests": 48,
+        "input_tokens": 4393676,
+        "output_tokens": 92540,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 4486216
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 2,
+      "status": "passed_without_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "sess_2798f0ae-e412-4e35-a066-b16f67c67dbd",
+      "usage": {
+        "requests": 28,
+        "input_tokens": 2047548,
+        "output_tokens": 76544,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 2124092
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_554a0b78-44f8-4040-873f-7345c5e020df",
+      "usage": {
+        "requests": 25,
+        "input_tokens": 1199114,
+        "output_tokens": 46477,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1245591
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "sess_e8a2f14e-1597-428f-aaa8-efea29cd1b8b",
+      "usage": {
+        "requests": 65,
+        "input_tokens": 6605880,
+        "output_tokens": 129055,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 6734935
+      },
+      "disclosed_modules": [
+        "vehicle-dynamics"
+      ],
+      "accessed_modules_after_disclosure": [
+        "vehicle-dynamics"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_45e2748f-e05c-4e9a-a0c9-bc50e93921cc",
+      "usage": {
+        "requests": 39,
+        "input_tokens": 2538298,
+        "output_tokens": 58830,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 2597128
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_36d7c2c1-ba96-4331-b748-57bcbbbba5f3",
+      "usage": {
+        "requests": 59,
+        "input_tokens": 4619381,
+        "output_tokens": 78832,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 4698213
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    }
+  ]
+}

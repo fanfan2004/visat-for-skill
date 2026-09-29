@@ -1,0 +1,51 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.14, pytest-7.4.0, pluggy-1.6.0 -- /Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/bin/python
+rootdir: /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task008-zcode-local-3x3-glm53-20260929-04-native-replicate-03
+plugins: mock-3.15.1, asyncio-0.21.0, anyio-4.14.2, requests-mock-1.11.0
+asyncio: mode=Mode.STRICT
+collecting ... collected 12 items
+
+../verifier/test_outputs_local.py::TestInputFilesIntegrity::test_input_files_integrity PASSED [  8%]
+../verifier/test_outputs_local.py::TestPIDController::test_pid_controller PASSED [ 16%]
+../verifier/test_outputs_local.py::TestACCSystem::test_acc_system PASSED [ 25%]
+../verifier/test_outputs_local.py::TestTuningResults::test_tuning_results PASSED [ 33%]
+../verifier/test_outputs_local.py::TestSimulationResults::test_simulation_results PASSED [ 41%]
+../verifier/test_outputs_local.py::TestReport::test_report_keywords PASSED [ 50%]
+../verifier/test_outputs_local.py::TestSpeedControl::test_speed_control PASSED [ 58%]
+../verifier/test_outputs_local.py::TestDistanceControl::test_distance_control PASSED [ 66%]
+../verifier/test_outputs_local.py::TestSafety::test_safety PASSED        [ 75%]
+../verifier/test_outputs_local.py::TestScenario::test_scenario PASSED    [ 83%]
+../verifier/test_outputs_local.py::TestSimulationExecution::test_simulation_execution PASSED [ 91%]
+../verifier/test_outputs_local.py::TestAntiCheat::test_anti_cheat PASSED [100%]
+
+==================================== PASSES ====================================
+______________ TestSimulationExecution.test_simulation_execution _______________
+----------------------------- Captured stdout call -----------------------------
+Wrote 1501 rows to simulation_results.csv
+rise_time        : 26.9 s   (target < 10 s)
+overshoot        : 5.666666666666664 % (target < 5 %)
+speed_ss_error   : 1.0847682119205295 m/s (target < 0.5 m/s)
+distance_ss_error: 414.8974666666666 m (target < 2 m)
+min_distance     : 52.1 m (target > 5 m)
+mode_counts      : {'cruise': 501, 'follow': 1000}
+Wrote 1501 rows to simulation_results.csv
+rise_time        : 8.0 s   (target < 10 s)
+overshoot        : 0.0 % (target < 5 %)
+speed_ss_error   : 0.0 m/s (target < 0.5 m/s)
+distance_ss_error: 0.1799111111111118 m (target < 2 m)
+min_distance     : 18.22 m (target > 5 m)
+mode_counts      : {'cruise': 501, 'follow': 983, 'emergency': 17}
+=========================== short test summary info ============================
+PASSED ../verifier/test_outputs_local.py::TestInputFilesIntegrity::test_input_files_integrity
+PASSED ../verifier/test_outputs_local.py::TestPIDController::test_pid_controller
+PASSED ../verifier/test_outputs_local.py::TestACCSystem::test_acc_system
+PASSED ../verifier/test_outputs_local.py::TestTuningResults::test_tuning_results
+PASSED ../verifier/test_outputs_local.py::TestSimulationResults::test_simulation_results
+PASSED ../verifier/test_outputs_local.py::TestReport::test_report_keywords
+PASSED ../verifier/test_outputs_local.py::TestSpeedControl::test_speed_control
+PASSED ../verifier/test_outputs_local.py::TestDistanceControl::test_distance_control
+PASSED ../verifier/test_outputs_local.py::TestSafety::test_safety
+PASSED ../verifier/test_outputs_local.py::TestScenario::test_scenario
+PASSED ../verifier/test_outputs_local.py::TestSimulationExecution::test_simulation_execution
+PASSED ../verifier/test_outputs_local.py::TestAntiCheat::test_anti_cheat
+============================== 12 passed in 3.66s ==============================

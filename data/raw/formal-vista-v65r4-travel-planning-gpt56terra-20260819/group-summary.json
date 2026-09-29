@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "protocol": "vista-v65r4-real-verifier-travel-planning-utf8",
+  "task_id": "task-007-travel-planning",
+  "condition": "pd-vista",
+  "planned_replicates": 2,
+  "completed_replicates": 1,
+  "controls_run": 0,
+  "results": [
+    {
+      "replicate_id": 1,
+      "status": "quarantined_provider_policy_rejection",
+      "final_verifier_pass": false,
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "distractor_flight_disclosed": false,
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,380 @@
+{
+  "schema_version": 1,
+  "protocol": "task002-local-opencode-minimaxm3-public-diagnostics-resumable-timeout-noskill-native-pdvista-3x3",
+  "task_id": "task-002",
+  "conditions": [
+    "noskill",
+    "native",
+    "pd-vista"
+  ],
+  "replicates_per_condition": 3,
+  "planned_trials": 9,
+  "completed_trials": 9,
+  "schedule": [
+    {
+      "replicate_id": 1,
+      "condition": "noskill"
+    },
+    {
+      "replicate_id": 1,
+      "condition": "native"
+    },
+    {
+      "replicate_id": 1,
+      "condition": "pd-vista"
+    },
+    {
+      "replicate_id": 2,
+      "condition": "native"
+    },
+    {
+      "replicate_id": 2,
+      "condition": "pd-vista"
+    },
+    {
+      "replicate_id": 2,
+      "condition": "noskill"
+    },
+    {
+      "replicate_id": 3,
+      "condition": "pd-vista"
+    },
+    {
+      "replicate_id": 3,
+      "condition": "noskill"
+    },
+    {
+      "replicate_id": 3,
+      "condition": "native"
+    }
+  ],
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "opencode": {
+    "config_path": "/Users/wangjinhua/.config/opencode/opencode.json",
+    "launcher": "/Users/wangjinhua/.local/lib/node_modules/opencode-ai/bin/opencode.exe",
+    "version": "1.18.18",
+    "binary_sha256": "c9be687513fd652ca53018901457eb0911cb505dc9cdc494a0ae3645970699ee"
+  },
+  "condition_summaries": {
+    "noskill": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 1,
+      "usage": {
+        "requests": 51,
+        "tool_uses": 49,
+        "input_tokens": 114649,
+        "output_tokens": 25205,
+        "cache_read_tokens": 2190464
+      }
+    },
+    "native": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 0,
+      "usage": {
+        "requests": 286,
+        "tool_uses": 277,
+        "input_tokens": 355143,
+        "output_tokens": 147984,
+        "cache_read_tokens": 28105556
+      }
+    },
+    "pd-vista": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 1,
+      "usage": {
+        "requests": 167,
+        "tool_uses": 160,
+        "input_tokens": 330188,
+        "output_tokens": 111362,
+        "cache_read_tokens": 14257408
+      }
+    }
+  },
+  "results": [
+    {
+      "condition": "noskill",
+      "replicate_id": 1,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd6cccd61ffeTACeYL3S6DwFvA",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 51,
+        "tool_uses": 49,
+        "input_tokens": 114649,
+        "output_tokens": 25205,
+        "cache_read_tokens": 2190464
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 1,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "ses_fd6c5d4daffeAmPNn6tR5AnxPB",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 178,
+        "tool_uses": 175,
+        "input_tokens": 222324,
+        "output_tokens": 100402,
+        "cache_read_tokens": 20803546
+      },
+      "initially_available_modules": [
+        "enterprise-artifact-search"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 1,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd6b02adeffeWh41ptRu2hHgXc",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 117,
+        "tool_uses": 112,
+        "input_tokens": 215295,
+        "output_tokens": 96653,
+        "cache_read_tokens": 12187392
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [
+        "enterprise-artifact-search"
+      ],
+      "accessed_modules_after_disclosure": [
+        "enterprise-artifact-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 5,
+        "routable_feedback": 5,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 2,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "ses_fd6984872ffeb9cUceEj1lGDHS",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 108,
+        "tool_uses": 102,
+        "input_tokens": 132819,
+        "output_tokens": 47582,
+        "cache_read_tokens": 7302010
+      },
+      "initially_available_modules": [
+        "enterprise-artifact-search"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 2,
+      "status": "quarantined_api_error",
+      "final_verifier_pass": false,
+      "session_id": "ses_fd67b93c4ffegKtfoXiYrzBK3r",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 50,
+        "tool_uses": 48,
+        "input_tokens": 114893,
+        "output_tokens": 14709,
+        "cache_read_tokens": 2070016
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [
+        "enterprise-artifact-search"
+      ],
+      "accessed_modules_after_disclosure": [
+        "enterprise-artifact-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 3,
+        "routable_feedback": 3,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "status": "quarantined_api_error",
+      "final_verifier_pass": false,
+      "session_id": "ses_fd62cfca6ffeXnlajKWC1wG0bE",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "status": "quarantined_api_error",
+      "final_verifier_pass": false,
+      "session_id": "ses_fd6292679ffeyUNtWYk59bLZ1d",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "status": "quarantined_api_error",
+      "final_verifier_pass": false,
+      "session_id": "ses_fd6278f1cffe1ifIseearFbOS8",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "status": "quarantined_api_error",
+      "final_verifier_pass": false,
+      "session_id": "ses_fd6265259ffencIBlS6vlCfFph",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 0,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "initially_available_modules": [
+        "enterprise-artifact-search"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    }
+  ],
+  "diagnostic_batches": [
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-01",
+      "completed_result_files": 0,
+      "reason": "controller import-path diagnostic failed before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-02",
+      "completed_result_files": 0,
+      "reason": "controller workspace location was denied by the local sandbox before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-03",
+      "completed_result_files": 0,
+      "reason": "controller security gate rejected an in-repository workspace before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-04",
+      "completed_result_files": 9,
+      "reason": "network-isolated infrastructure diagnostic: all nine trials ended in retryable API connection errors with zero requests, tokens, tool uses, and task outputs; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-05",
+      "completed_result_files": 0,
+      "reason": "foreground-controller diagnostic: execution host ended the controller parent while an OpenCode child was still completing; incomplete controller evidence excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-06",
+      "completed_result_files": 0,
+      "reason": "background-controller diagnostic: background process did not persist in the execution host and made no model request; excluded before formal comparison"
+    }
+  ],
+  "docker_used": false,
+  "skillbench_execution_route_used": false
+}

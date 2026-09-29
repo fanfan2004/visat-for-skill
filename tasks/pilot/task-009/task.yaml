@@ -1,0 +1,11 @@
+task_id: task-009
+mapping_status: resolved
+condition_backend: zcode
+source:
+  benchmark: skillsbench
+  benchmark_task_id: r2r-mpc-control
+  definition_path: vendor/skillsbench/tasks/r2r-mpc-control
+  skill_path: vendor/skillsbench/tasks/r2r-mpc-control/environment/skills
+skill_paths:
+  native: vendor/skillsbench/tasks/r2r-mpc-control/environment/skills
+  pd_vista: skills/pd-vista/task-009

@@ -1,0 +1,81 @@
+{
+  "plan": [
+    {
+      "day": 1,
+      "current_city": "from Minneapolis to Toledo",
+      "transportation": "Self-driving: from Minneapolis to Toledo (9 hours 43 mins, 1,057 km)",
+      "breakfast": "American at Bablu Chic-Inn, Minneapolis",
+      "lunch": "-",
+      "dinner": "Mediterranean at Bombay Brasserie, Toledo",
+      "attraction": "Mall of America;",
+      "accommodation": "Pet-friendly 'The home is where the heart is' (Entire home/apt), Toledo"
+    },
+    {
+      "day": 2,
+      "current_city": "Toledo",
+      "transportation": "-",
+      "breakfast": "American at Barbeque Nation, Toledo",
+      "lunch": "Italian at Crazy Kitchen Lounge & Terrace, Toledo",
+      "dinner": "Chinese at Devotay, Toledo",
+      "attraction": "Toledo Zoo;Toledo Museum of Art;Toledo Botanical Garden;",
+      "accommodation": "Pet-friendly 'The home is where the heart is' (Entire home/apt), Toledo"
+    },
+    {
+      "day": 3,
+      "current_city": "from Toledo to Cleveland",
+      "transportation": "Self-driving: from Toledo to Cleveland (1 hour 50 mins, 183 km)",
+      "breakfast": "Italian at Crazy Kitchen Lounge & Terrace, Toledo",
+      "lunch": "Mediterranean at Me\u0131hur \u00c6z\u00eelik Aspava, Cleveland",
+      "dinner": "Italian at Master Bakers, Cleveland",
+      "attraction": "Toledo Museum of Art;Cleveland Museum of Art;Rock & Roll Hall of Fame;",
+      "accommodation": "Pet-friendly 'Richmond Hill 3 Bedroom apartment in Private home' (Entire home/apt), Cleveland"
+    },
+    {
+      "day": 4,
+      "current_city": "Cleveland",
+      "transportation": "-",
+      "breakfast": "American at Keventers, Cleveland",
+      "lunch": "Chinese at Makhan Fish and Chicken Corner, Cleveland",
+      "dinner": "Mediterranean at Me\u0131hur \u00c6z\u00eelik Aspava, Cleveland",
+      "attraction": "Cleveland Botanical Garden;West Side Market;Cleveland Metroparks Zoo;",
+      "accommodation": "Pet-friendly 'Richmond Hill 3 Bedroom apartment in Private home' (Entire home/apt), Cleveland"
+    },
+    {
+      "day": 5,
+      "current_city": "from Cleveland to Columbus",
+      "transportation": "Self-driving: from Cleveland to Columbus (2 hours 8 mins, 228 km)",
+      "breakfast": "American at Keventers, Cleveland",
+      "lunch": "Chinese at Love Is Cakes, Columbus",
+      "dinner": "Mediterranean at The Irish House, Columbus",
+      "attraction": "Rock & Roll Hall of Fame;Columbus Museum of Art;Franklin Park Conservatory and Botanical Gardens;",
+      "accommodation": "Pet-friendly 'The Art Of Living - Loft apartment' (Entire home/apt), Columbus"
+    },
+    {
+      "day": 6,
+      "current_city": "Columbus",
+      "transportation": "-",
+      "breakfast": "American at Gopala, Columbus",
+      "lunch": "Italian at KC Bakers, Columbus",
+      "dinner": "Chinese at Love Is Cakes, Columbus",
+      "attraction": "Center of Science and Industry (COSI);Columbus Zoo and Aquarium;Ohio Statehouse;",
+      "accommodation": "Pet-friendly 'The Art Of Living - Loft apartment' (Entire home/apt), Columbus"
+    },
+    {
+      "day": 7,
+      "current_city": "from Columbus to Minneapolis",
+      "transportation": "Self-driving: from Columbus to Minneapolis (11 hours 19 mins, 1,233 km)",
+      "breakfast": "American at Gopala, Columbus",
+      "lunch": "-",
+      "dinner": "Mediterranean at The Cafe, Minneapolis",
+      "attraction": "Columbus Museum of Art;Minneapolis Institute of Art;",
+      "accommodation": "-"
+    }
+  ],
+  "tool_called": [
+    "search_cities",
+    "search_attractions",
+    "search_restaurants",
+    "search_accommodations",
+    "search_driving_distance"
+  ]
+}

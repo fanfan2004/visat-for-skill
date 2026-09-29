@@ -1,0 +1,81 @@
+{
+  "plan": [
+    {
+      "day": 1,
+      "current_city": "from Minneapolis to Cleveland",
+      "transportation": "Self-driving: from Minneapolis to Cleveland",
+      "breakfast": "American at Bablu Chic-Inn, Minneapolis",
+      "lunch": "-",
+      "dinner": "Chinese at Green Leaf, Cleveland",
+      "attraction": "Minnehaha Falls;Walker Art Center;Mill City Museum;",
+      "accommodation": "Pet-friendly Private room in Sunnyside Gardens, Cleveland"
+    },
+    {
+      "day": 2,
+      "current_city": "Cleveland",
+      "transportation": "-",
+      "breakfast": "Italian at Big Chicken, Cleveland",
+      "lunch": "Mediterranean at Bruncheez, Cleveland",
+      "dinner": "American at Keventers, Cleveland",
+      "attraction": "Rock & Roll Hall of Fame;The Cleveland Museum of Art;Cleveland Metroparks Zoo;",
+      "accommodation": "Pet-friendly Private room in Sunnyside Gardens, Cleveland"
+    },
+    {
+      "day": 3,
+      "current_city": "from Cleveland to Akron",
+      "transportation": "Self-driving: from Cleveland to Akron",
+      "breakfast": "Chinese at Makhan Fish and Chicken Corner, Cleveland",
+      "lunch": "Mediterranean at Barista, Akron",
+      "dinner": "American at Samarpan Fast Food, Akron",
+      "attraction": "Rock & Roll Hall of Fame;West Side Market;Edgewater Park;",
+      "accommodation": "Pet-friendly Sunny, Artistic Getaway Near Prospect Park, Akron"
+    },
+    {
+      "day": 4,
+      "current_city": "Akron",
+      "transportation": "-",
+      "breakfast": "Mediterranean at Green Chick Chop, Akron",
+      "lunch": "Chinese at Miann, Akron",
+      "dinner": "Italian at Delhi - Kingdom of Dreams, Akron",
+      "attraction": "Akron Zoo;Akron Art Museum;Stan Hywet Hall & Gardens;",
+      "accommodation": "Pet-friendly Sunny, Artistic Getaway Near Prospect Park, Akron"
+    },
+    {
+      "day": 5,
+      "current_city": "from Akron to Toledo",
+      "transportation": "Self-driving: from Akron to Toledo",
+      "breakfast": "American at Madras Cafe, Akron",
+      "lunch": "Italian at Spice Wok, Toledo",
+      "dinner": "Mediterranean at Bombay Brasserie, Toledo",
+      "attraction": "Akron Zoo;Akron Art Museum;Stan Hywet Hall & Gardens;",
+      "accommodation": "Pet-friendly The home is where the heart is., Toledo"
+    },
+    {
+      "day": 6,
+      "current_city": "Toledo",
+      "transportation": "-",
+      "breakfast": "Chinese at Devotay, Toledo",
+      "lunch": "Italian at Crazy Kitchen Lounge & Terrace, Toledo",
+      "dinner": "American at Barbeque Nation, Toledo",
+      "attraction": "Toledo Zoo;Toledo Museum of Art;National Museum of the Great Lakes;",
+      "accommodation": "Pet-friendly The home is where the heart is., Toledo"
+    },
+    {
+      "day": 7,
+      "current_city": "from Toledo to Minneapolis",
+      "transportation": "Self-driving: from Toledo to Minneapolis",
+      "breakfast": "Chinese at The Chocolate Room, Toledo",
+      "lunch": "-",
+      "dinner": "Italian at Nukkadwala, Minneapolis",
+      "attraction": "Toledo Zoo;Toledo Museum of Art;Imagination Station;",
+      "accommodation": "-"
+    }
+  ],
+  "tool_called": [
+    "search_cities",
+    "search_accommodations",
+    "search_restaurants",
+    "search_attractions",
+    "search_driving_distance"
+  ]
+}

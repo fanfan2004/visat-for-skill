@@ -1,0 +1,64 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.14, pytest-7.4.0, pluggy-1.6.0 -- /Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/bin/python
+rootdir: /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task008-zcode-local-3x3-glm53-20260929-04-noskill-replicate-01
+plugins: mock-3.15.1, asyncio-0.21.0, anyio-4.14.2, requests-mock-1.11.0
+asyncio: mode=Mode.STRICT
+collecting ... collected 12 items
+
+../verifier/test_outputs_local.py::TestInputFilesIntegrity::test_input_files_integrity PASSED [  8%]
+../verifier/test_outputs_local.py::TestPIDController::test_pid_controller PASSED [ 16%]
+../verifier/test_outputs_local.py::TestACCSystem::test_acc_system PASSED [ 25%]
+../verifier/test_outputs_local.py::TestTuningResults::test_tuning_results PASSED [ 33%]
+../verifier/test_outputs_local.py::TestSimulationResults::test_simulation_results PASSED [ 41%]
+../verifier/test_outputs_local.py::TestReport::test_report_keywords PASSED [ 50%]
+../verifier/test_outputs_local.py::TestSpeedControl::test_speed_control PASSED [ 58%]
+../verifier/test_outputs_local.py::TestDistanceControl::test_distance_control FAILED [ 66%]
+../verifier/test_outputs_local.py::TestSafety::test_safety PASSED        [ 75%]
+../verifier/test_outputs_local.py::TestScenario::test_scenario PASSED    [ 83%]
+../verifier/test_outputs_local.py::TestSimulationExecution::test_simulation_execution PASSED [ 91%]
+../verifier/test_outputs_local.py::TestAntiCheat::test_anti_cheat PASSED [100%]
+
+=================================== FAILURES ===================================
+__________________ TestDistanceControl.test_distance_control ___________________
+../verifier/test_outputs_local.py:245: in test_distance_control
+    assert (distances >= min_allowed).all()
+E   assert np.False_
+E    +  where np.False_ = <bound method Series.all of 300     True\n301     True\n302     True\n303     True\n304     True\n       ...  \n596    False\n597    False\n598    False\n599    False\n600    False\nLength: 301, dtype: bool>()
+E    +    where <bound method Series.all of 300     True\n301     True\n302     True\n303     True\n304     True\n       ...  \n596    False\n597    False\n598    False\n599    False\n600    False\nLength: 301, dtype: bool> = 300    52.10\n301    51.58\n302    51.13\n303    50.74\n304    50.21\n       ...  \n596    37.55\n597    37.58\n598    37.64\n599    37.68\n600    37.62\nName: distance, Length: 301, dtype: float64 >= 300    49.635\n301    49.635\n302    49.635\n303    49.635\n304    49.635\n        ...  \n596    42.750\n597    42.750\n598    42.750\n599    42.750\n600    42.750\nName: ego_speed, Length: 301, dtype: float64.all
+==================================== PASSES ====================================
+______________ TestSimulationExecution.test_simulation_execution _______________
+----------------------------- Captured stdout call -----------------------------
+ACC simulation complete: 1501 records written to simulation_results.csv
+  rise_time_90pct: 62.5
+  rise_time_to_set_speed: 64.4
+  max_speed: 30.167368024884052
+  overshoot_pct: 0.557893416280173
+  speed_ss_error: 0.1648636585939549
+  distance_ss_error: 497.9431397947925
+  min_distance: 52.1
+  mode_counts: {'cruise': 501, 'follow': 1000}
+  duration: 150.0
+ACC simulation complete: 1501 records written to simulation_results.csv
+  rise_time_90pct: 9.0
+  rise_time_to_set_speed: 10.0
+  max_speed: 30.20921210625
+  overshoot_pct: 0.6973736874999995
+  speed_ss_error: 0.01308745605406969
+  distance_ss_error: 0.37414610078538857
+  min_distance: 8.11748302407217
+  mode_counts: {'cruise': 501, 'follow': 981, 'emergency': 19}
+  duration: 150.0
+=========================== short test summary info ============================
+PASSED ../verifier/test_outputs_local.py::TestInputFilesIntegrity::test_input_files_integrity
+PASSED ../verifier/test_outputs_local.py::TestPIDController::test_pid_controller
+PASSED ../verifier/test_outputs_local.py::TestACCSystem::test_acc_system
+PASSED ../verifier/test_outputs_local.py::TestTuningResults::test_tuning_results
+PASSED ../verifier/test_outputs_local.py::TestSimulationResults::test_simulation_results
+PASSED ../verifier/test_outputs_local.py::TestReport::test_report_keywords
+PASSED ../verifier/test_outputs_local.py::TestSpeedControl::test_speed_control
+PASSED ../verifier/test_outputs_local.py::TestSafety::test_safety
+PASSED ../verifier/test_outputs_local.py::TestScenario::test_scenario
+PASSED ../verifier/test_outputs_local.py::TestSimulationExecution::test_simulation_execution
+PASSED ../verifier/test_outputs_local.py::TestAntiCheat::test_anti_cheat
+FAILED ../verifier/test_outputs_local.py::TestDistanceControl::test_distance_control
+======================== 1 failed, 11 passed in 10.85s =========================

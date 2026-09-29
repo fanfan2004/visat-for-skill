@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task002-local-3x3-minimaxm3-20260823-11-retry-external-native-replicate-03",
+  "task_id": "task-002",
+  "condition": "native",
+  "replicate_id": 3,
+  "backend": "opencode-local-minimal-dependencies",
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "expected_provider": "minimax-cn",
+  "expected_actual_model": "MiniMax-M3",
+  "actual_provider_ids": [],
+  "actual_model_ids": [],
+  "session_id": "ses_fd457fe83ffezs7DbgjjL7j0KG",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 51,
+          "tool_use": 50,
+          "step_finish": 51,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fd457fe83ffezs7DbgjjL7j0KG"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 51,
+        "tool_uses": 50,
+        "input_tokens": 78868,
+        "output_tokens": 17924,
+        "cache_read_tokens": 1574144,
+        "accessed_modules": [
+          "enterprise-artifact-search"
+        ],
+        "errors": [],
+        "tool_errors": [
+          "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task002-local-3x3-20260823-11/formal-task002-local-3x3-minimaxm3-20260823-11-retry-external-native-replicate-03/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_"
+        ]
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 20,
+          "tool_use": 19,
+          "step_finish": 20,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fd457fe83ffezs7DbgjjL7j0KG"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 20,
+        "tool_uses": 19,
+        "input_tokens": 30550,
+        "output_tokens": 11087,
+        "cache_read_tokens": 1454592,
+        "accessed_modules": [
+          "enterprise-artifact-search"
+        ],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": true,
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 71,
+    "tool_uses": 69,
+    "input_tokens": 109418,
+    "output_tokens": 29011,
+    "cache_read_tokens": 3028736
+  },
+  "initially_available_modules": [
+    "enterprise-artifact-search"
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "vista_metrics": {
+    "trigger_opportunities": 1,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/private/tmp/vista-task002-local-3x3-20260823-11/formal-task002-local-3x3-minimaxm3-20260823-11-retry-external-native-replicate-03/workspace"
+}

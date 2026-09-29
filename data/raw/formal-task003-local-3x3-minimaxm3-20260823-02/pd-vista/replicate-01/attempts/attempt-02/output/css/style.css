@@ -1,0 +1,230 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f5f6fa;
+  color: #222;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 16px;
+  gap: 12px;
+}
+
+#header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+#header h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#header .subtitle {
+  font-size: 13px;
+  color: #666;
+}
+
+#main {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+}
+
+#chart-panel {
+  flex: 1.4;
+  background: #ffffff;
+  border: 1px solid #e1e4eb;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+#table-panel {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid #e1e4eb;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+#chart-panel h2,
+#table-panel h2 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+#bubble-chart {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+#bubble-chart svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+  margin-top: 8px;
+  max-height: 110px;
+  overflow-y: auto;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  color: #333;
+  cursor: default;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+#table-wrap {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  border: 1px solid #eef0f5;
+  border-radius: 6px;
+}
+
+table#stocks-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+table#stocks-table thead th {
+  position: sticky;
+  top: 0;
+  background: #f7f8fc;
+  text-align: left;
+  font-weight: 600;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e1e4eb;
+  z-index: 1;
+}
+
+table#stocks-table tbody td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #f0f1f5;
+}
+
+table#stocks-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+}
+
+table#stocks-table tbody tr:hover {
+  background: #f3f6fc;
+}
+
+table#stocks-table tbody tr.highlighted {
+  background: #fff4cc;
+}
+
+table#stocks-table tbody tr.highlighted:hover {
+  background: #ffe999;
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: rgba(34, 34, 34, 0.92);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+  max-width: 240px;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+  z-index: 10;
+}
+
+.tooltip.visible {
+  opacity: 1;
+}
+
+.tooltip .tip-ticker {
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.tooltip .tip-sector {
+  display: inline-block;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 3px;
+  padding: 1px 5px;
+  margin-left: 4px;
+}
+
+.bubble {
+  cursor: pointer;
+  stroke: #fff;
+  stroke-width: 1.5;
+  transition: stroke 0.12s ease, stroke-width 0.12s ease, opacity 0.12s ease;
+}
+
+.bubble.dimmed {
+  opacity: 0.25;
+}
+
+.bubble.selected {
+  stroke: #222;
+  stroke-width: 2.5;
+}
+
+.bubble-label {
+  pointer-events: none;
+  font-size: 10px;
+  font-weight: 600;
+  fill: #1a1a1a;
+  text-anchor: middle;
+  dominant-baseline: central;
+  user-select: none;
+  paint-order: stroke;
+  stroke: rgba(255, 255, 255, 0.65);
+  stroke-width: 2px;
+  stroke-linejoin: round;
+}
+
+.bubble-label.dimmed {
+  opacity: 0.25;
+}

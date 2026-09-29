@@ -1,0 +1,91 @@
+.........F.....                                                          [100%]
+=================================== FAILURES ===================================
+________________________ test_tooltips_non_etf_and_etf _________________________
+
+browser_page = <Page url='http://localhost:59604/index.html'>
+
+    def test_tooltips_non_etf_and_etf(browser_page):
+        """Non-ETF bubbles should show tooltips; ETF bubbles should not."""
+        page = browser_page
+    
+        # Tooltip uses .visible class to show (opacity: 1), not display property
+        # Check for the .visible class specifically, not :visible pseudo-selector
+        tooltip_locator = '.tooltip.visible, #tooltip.visible, [role="tooltip"][class*="visible"]'
+        etf_tickers = ['SPY', 'VOO', 'QQQ', 'GLD', 'XLF', 'VWO', 'XLU', 'XLV', 'VEA', 'VTV']
+        svg_texts = page.locator('svg text')
+    
+        def hover_label_text(text_to_hover):
+            for i in range(svg_texts.count()):
+                text_elem = svg_texts.nth(i)
+                text_content = text_elem.text_content().strip()
+                if text_content == text_to_hover:
+                    box = text_elem.bounding_box()
+                    if box:
+                        page.mouse.move(box['x'] + box['width'] / 2, box['y'] + box['height'] / 2)
+                        page.wait_for_timeout(400)
+                        return True
+            return False
+    
+        def find_first_non_etf_label():
+            import re
+            ticker_pattern = re.compile(r'^[A-Z]{1,4}$')
+            for i in range(svg_texts.count()):
+                text_elem = svg_texts.nth(i)
+                text_content = text_elem.text_content().strip()
+                if ticker_pattern.match(text_content) and text_content not in etf_tickers:
+                    return text_content
+            return None
+    
+        # Test 1: ETF bubbles should NOT show tooltips
+        # Test this first in cleanest page state before any other interactions
+        # Move mouse to origin to ensure no hover state from page load
+        page.mouse.move(0, 0)
+        page.wait_for_timeout(500)
+    
+        etf_label = None
+        for candidate in etf_tickers:
+            if hover_label_text(candidate):
+                etf_label = candidate
+                break
+    
+        if etf_label is None:
+            print("⚠ Could not locate ETF bubble by ticker label for screenshot")
+        else:
+            # Wait for any tooltip to appear (if incorrectly configured)
+            page.wait_for_timeout(200)
+    
+            # Save screenshot showing ETF hover (should show no tooltip)
+            try:
+                page.screenshot(path="/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-05-noskill-replicate-03/verifier/logs/tooltip_etf_hover_no_tooltip.png", full_page=True)
+                print(f"✓ ETF hover screenshot saved for {etf_label} (should show no tooltip)")
+            except Exception as e:
+                print(f"⚠ Failed to save ETF hover screenshot: {e}")
+    
+            # After hovering ETF, ensure tooltip is not visible
+            etf_tooltip = page.locator(tooltip_locator)
+            assert etf_tooltip.count() == 0, \
+                "ETF bubble should not show a tooltip (instruction.md requirement)"
+    
+        # Test 2: Non-ETF bubbles should show tooltips with ticker, name, and sector
+        # Move mouse away to clear hover state before testing non-ETF
+        page.mouse.move(0, 0)
+        page.wait_for_timeout(500)
+    
+        non_etf_label = find_first_non_etf_label()
+        assert non_etf_label is not None, "Could not find a non-ETF ticker label to hover"
+    
+        assert hover_label_text(non_etf_label), f"Could not hover non-ETF label {non_etf_label}"
+    
+        tooltip = page.locator(tooltip_locator)
+>       assert tooltip.count() > 0, "Tooltip did not appear on non-ETF hover"
+E       AssertionError: Tooltip did not appear on non-ETF hover
+E       assert 0 > 0
+E        +  where 0 = count()
+E        +    where count = <Locator frame=<Frame name= url='http://localhost:59604/index.html'> selector='.tooltip.visible, #tooltip.visible, [role="tooltip"][class*="visible"]'>.count
+
+/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-05-noskill-replicate-03/verifier/test_outputs.py:574: AssertionError
+----------------------------- Captured stdout call -----------------------------
+✓ ETF hover screenshot saved for SPY (should show no tooltip)
+=========================== short test summary info ============================
+FAILED test_outputs.py::test_tooltips_non_etf_and_etf - AssertionError: Toolt...
+1 failed, 14 passed in 22.20s

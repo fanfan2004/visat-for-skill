@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Stock Sector Bubble Chart</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="app-header">
+  <h1>Stock Sector Visualization</h1>
+  <p class="subtitle">
+    Bubble chart of 50 stocks colored and clustered by sector, alongside an interactive data table.
+  </p>
+</header>
+
+<main class="app-main">
+  <section class="chart-panel" aria-label="Bubble chart panel">
+    <div id="chart-container">
+      <svg id="bubble-chart" role="img" aria-label="Stock sector bubble chart"></svg>
+      <div id="tooltip" role="tooltip" aria-hidden="true"></div>
+    </div>
+    <div id="legend" class="legend" aria-label="Sector legend"></div>
+  </section>
+
+  <section class="table-panel" aria-label="Data table panel">
+    <div class="table-title">All 50 Stocks</div>
+    <div class="table-scroll">
+      <table id="stock-table">
+        <thead>
+          <tr>
+            <th>Ticker symbol</th>
+            <th>Full company name</th>
+            <th>Sector</th>
+            <th>Market cap</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="js/d3.v6.min.js"></script>
+<script src="js/visualization.js"></script>
+</body>
+</html>

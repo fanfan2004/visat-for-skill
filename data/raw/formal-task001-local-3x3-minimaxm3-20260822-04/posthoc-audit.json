@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task001-local-3x3-minimaxm3-20260822-04",
+  "audit_status": "passed",
+  "completed_trials": 9,
+  "unique_sessions": 9,
+  "all_final_verifiers_passed": true,
+  "all_final_unit_tests_10_of_10": true,
+  "final_quality_score_range": {
+    "minimum": 19,
+    "maximum": 24,
+    "maximum_possible": 25
+  },
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "provider_policy_errors": 0,
+  "session_identity_errors": 0,
+  "model_turn_timeouts": 4,
+  "model_identity": {
+    "provider_id": "minimax-cn",
+    "model_id": "MiniMax-M3",
+    "consistent_across_all_trials": true,
+    "evidence": "read-only query of each isolated OpenCode opencode.db message table"
+  },
+  "conditions": {
+    "noskill": {
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "total_turns": 12,
+      "model_turn_timeouts": 0,
+      "requests": 84,
+      "tool_uses": 72,
+      "input_tokens": 161165,
+      "output_tokens": 198159,
+      "cache_read_tokens": 2586113,
+      "input_plus_output_tokens": 359324,
+      "recorded_cost": 0.44130708
+    },
+    "native": {
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "total_turns": 10,
+      "model_turn_timeouts": 2,
+      "requests": 151,
+      "tool_uses": 142,
+      "input_tokens": 421385,
+      "output_tokens": 136971,
+      "cache_read_tokens": 7920566,
+      "input_plus_output_tokens": 558356,
+      "recorded_cost": 0.76601466
+    },
+    "pd-vista": {
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "total_turns": 11,
+      "model_turn_timeouts": 2,
+      "requests": 116,
+      "tool_uses": 105,
+      "input_tokens": 161481,
+      "output_tokens": 117835,
+      "cache_read_tokens": 3706973,
+      "input_plus_output_tokens": 279316,
+      "recorded_cost": 0.41226468,
+      "trigger_opportunities": 8,
+      "routable_feedback": 8,
+      "successful_disclosures": 5,
+      "next_round_module_access": 5,
+      "clean_complete_closures": 3,
+      "disclosed_modules": [
+        "python-scala-oop",
+        "python-scala-syntax-mapping"
+      ]
+    }
+  },
+  "totals": {
+    "turns": 33,
+    "requests": 351,
+    "tool_uses": 319,
+    "input_tokens": 744031,
+    "output_tokens": 452965,
+    "cache_read_tokens": 14213652,
+    "input_plus_output_tokens": 1196996,
+    "recorded_cost": 1.61958642
+  },
+  "excluded_runs": [
+    {
+      "run_id": "formal-task001-local-3x3-minimaxm3-20260822-01",
+      "completed_result_files": 0,
+      "reason": "diagnostic run excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task001-local-3x3-minimaxm3-20260822-02",
+      "completed_result_files": 1,
+      "reason": "public-diagnostic protocol was corrected and an uncaught OpenCode tail-response stall interrupted the batch"
+    },
+    {
+      "run_id": "formal-task001-local-3x3-minimaxm3-20260822-03",
+      "completed_result_files": 1,
+      "reason": "timeout handling initially stopped a replicate before its public-diagnostic repair turn; controller behavior was corrected"
+    }
+  ]
+}

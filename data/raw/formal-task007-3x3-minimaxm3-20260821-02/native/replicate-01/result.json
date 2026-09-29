@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task007-3x3-minimaxm3-20260821-02-native-replicate-01",
+  "task_id": "task-007-travel-planning",
+  "replicate_id": 1,
+  "condition": "native",
+  "backend": "opencode-local-current-config",
+  "docker_used": false,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "expected_actual_model": "MiniMax-M3",
+  "actual_model_ids": [],
+  "expected_provider": "minimax-cn",
+  "actual_provider_ids": [],
+  "initially_available_modules": [
+    "search-cities",
+    "search-accommodations",
+    "search-restaurants",
+    "search-attractions",
+    "search-driving-distance",
+    "search-flights"
+  ],
+  "usage": {
+    "requests": 69,
+    "tool_uses": 68,
+    "input_tokens": 85464,
+    "output_tokens": 39127,
+    "cache_read_tokens": 2620607
+  },
+  "session_id": "ses_fdcbe018effeoT0CBV7JwP1YuN",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "transport_attempts": [
+        {
+          "attempt": 1,
+          "return_code": 0,
+          "retryable_transport_error": false
+        }
+      ],
+      "event_summary": {
+        "event_types": {
+          "step_start": 69,
+          "tool_use": 68,
+          "step_finish": 69,
+          "text": 2
+        },
+        "session_ids": [
+          "ses_fdcbe018effeoT0CBV7JwP1YuN"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 69,
+        "tool_uses": 68,
+        "input_tokens": 85464,
+        "output_tokens": 39127,
+        "cache_read_tokens": 2620607,
+        "accessed_modules": [
+          "search-cities",
+          "search-accommodations",
+          "search-restaurants",
+          "search-attractions",
+          "search-driving-distance",
+          "search-flights"
+        ],
+        "errors": [],
+        "tool_errors": [
+          "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task007-3x3-minimaxm3-20260821-02-native-replicate-01/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_directory\",\"pattern\"",
+          "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task007-3x3-minimaxm3-20260821-02-native-replicate-01/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_directory\",\"pattern\"",
+          "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task007-3x3-minimaxm3-20260821-02-native-replicate-01/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_directory\",\"pattern\"",
+          "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task007-3x3-minimaxm3-20260821-02-native-replicate-01/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_directory\",\"pattern\""
+        ]
+      },
+      "plan_exists": true,
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "distractor_flight_disclosed": false,
+  "vista_metrics": {
+    "trigger_opportunities": 0,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task007-3x3-minimaxm3-20260821-02-native-replicate-01/workspace"
+}

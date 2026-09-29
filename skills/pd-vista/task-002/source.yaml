@@ -1,0 +1,6 @@
+source_task: vendor/skillsbench/tasks/enterprise-information-search
+source_skills: vendor/skillsbench/tasks/enterprise-information-search/environment/skills
+materialization: copy-complete-module-directory-at-disclosure
+adaptations:
+  - The root file is a routing wrapper; the native search procedure remains a byte-for-byte module copy.
+  - The search module becomes agent-visible only after public feedback selects it.

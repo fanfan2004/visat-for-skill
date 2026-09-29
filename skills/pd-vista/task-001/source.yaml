@@ -1,0 +1,6 @@
+source_task: vendor/skillsbench/tasks/python-scala-translation
+source_skills: vendor/skillsbench/tasks/python-scala-translation/environment/skills
+materialization: copy-complete-module-directory-at-disclosure
+adaptations:
+  - The root file is a routing wrapper; native module files and bundled resources remain byte-for-byte copies.
+  - A module becomes agent-visible only after a public feedback classification selects it.

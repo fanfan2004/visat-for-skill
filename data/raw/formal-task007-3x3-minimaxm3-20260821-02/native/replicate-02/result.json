@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task007-3x3-minimaxm3-20260821-02-native-replicate-02",
+  "task_id": "task-007-travel-planning",
+  "replicate_id": 2,
+  "condition": "native",
+  "backend": "opencode-local-current-config",
+  "docker_used": false,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "expected_actual_model": "MiniMax-M3",
+  "actual_model_ids": [],
+  "expected_provider": "minimax-cn",
+  "actual_provider_ids": [],
+  "initially_available_modules": [
+    "search-cities",
+    "search-accommodations",
+    "search-restaurants",
+    "search-attractions",
+    "search-driving-distance",
+    "search-flights"
+  ],
+  "usage": {
+    "requests": 44,
+    "tool_uses": 42,
+    "input_tokens": 43012,
+    "output_tokens": 16652,
+    "cache_read_tokens": 988344
+  },
+  "session_id": "ses_fdcac20b8ffewizYoK0imtdOg8",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "transport_attempts": [
+        {
+          "attempt": 1,
+          "return_code": 0,
+          "retryable_transport_error": false
+        }
+      ],
+      "event_summary": {
+        "event_types": {
+          "step_start": 37,
+          "tool_use": 36,
+          "step_finish": 37,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fdcac20b8ffewizYoK0imtdOg8"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 37,
+        "tool_uses": 36,
+        "input_tokens": 40338,
+        "output_tokens": 14907,
+        "cache_read_tokens": 695939,
+        "accessed_modules": [
+          "search-cities",
+          "search-accommodations",
+          "search-restaurants",
+          "search-attractions",
+          "search-driving-distance",
+          "search-flights"
+        ],
+        "errors": [],
+        "tool_errors": []
+      },
+      "plan_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "transport_attempts": [
+        {
+          "attempt": 1,
+          "return_code": 0,
+          "retryable_transport_error": false
+        }
+      ],
+      "event_summary": {
+        "event_types": {
+          "step_start": 7,
+          "tool_use": 6,
+          "step_finish": 7,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fdcac20b8ffewizYoK0imtdOg8"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 7,
+        "tool_uses": 6,
+        "input_tokens": 2674,
+        "output_tokens": 1745,
+        "cache_read_tokens": 292405,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "plan_exists": true,
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "distractor_flight_disclosed": false,
+  "vista_metrics": {
+    "trigger_opportunities": 1,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task007-3x3-minimaxm3-20260821-02-native-replicate-02/workspace"
+}

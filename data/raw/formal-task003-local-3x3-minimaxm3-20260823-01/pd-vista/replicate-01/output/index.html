@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Stock Bubble Chart &amp; Table</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="app-header">
+    <h1>Stock Visualization</h1>
+    <p class="subtitle">Bubble chart (sized by market cap, clustered by sector) and stock data table. Click a bubble or row to cross-highlight.</p>
+  </header>
+
+  <main class="app-main">
+    <section class="chart-pane">
+      <h2 class="pane-title">Bubble Chart</h2>
+      <div id="chart-container"></div>
+      <div id="legend" class="legend"></div>
+    </section>
+
+    <section class="table-pane">
+      <h2 class="pane-title">Stock Data</h2>
+      <div class="table-controls">
+        <label for="filter-select">Filter:</label>
+        <select id="filter-select">
+          <option value="All">All</option>
+        </select>
+        <input type="search" id="search-input" placeholder="Search ticker or name…" />
+      </div>
+      <div class="table-scroll">
+        <table id="stock-table">
+          <thead>
+            <tr>
+              <th data-sort="ticker">Ticker symbol</th>
+              <th data-sort="name">Full company name</th>
+              <th data-sort="sector">Sector</th>
+              <th data-sort="marketCap" class="num">Market cap</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div id="tooltip" class="tooltip" role="tooltip"></div>
+</div>
+
+<script src="js/d3.v6.min.js"></script>
+<script src="js/visualization.js"></script>
+</body>
+</html>

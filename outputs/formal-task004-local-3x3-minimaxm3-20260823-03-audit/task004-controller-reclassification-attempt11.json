@@ -1,0 +1,6 @@
+{
+  "original_attempt_result": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task004-local-3x3-minimaxm3-20260823-03/_excluded_rate_limit_attempts/noskill/replicate-03-attempt-11/result.json",
+  "original_status": "quarantined_rate_limit",
+  "reason": "The controller searched the raw JSONL for bare substring 429 and matched the decimal cost 0.00342978. No API error or 429 response event was present; manual final Verifier passed 11/11.",
+  "manual_verifier": "11 passed"
+}

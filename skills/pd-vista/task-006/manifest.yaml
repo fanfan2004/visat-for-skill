@@ -1,0 +1,15 @@
+schema_version: 1
+source_content_equivalence: byte-for-byte-under-modules
+modules:
+  - id: analyze-ci
+    path: modules/analyze-ci/SKILL.md
+    triggers: [compilation_error, runtime_error]
+  - id: temporal-python-testing
+    path: modules/temporal-python-testing/SKILL.md
+    triggers: [timeout, repeated_failure]
+  - id: testing-python
+    path: modules/testing-python/SKILL.md
+    triggers: [test_failure, assertion_error]
+  - id: uv-package-manager
+    path: modules/uv-package-manager/SKILL.md
+    triggers: [dependency_error, command_failure]

@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "protocol": "task001-local-opencode-minimaxm3-public-diagnostics-resumable-timeout-noskill-native-pdvista-3x3",
+  "task_id": "task-001",
+  "conditions": [
+    "noskill",
+    "native",
+    "pd-vista"
+  ],
+  "replicates_per_condition": 3,
+  "planned_trials": 9,
+  "completed_trials": 9,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "opencode": {
+    "version": "1.18.18",
+    "launcher": "/Users/wangjinhua/.local/lib/node_modules/opencode-ai/bin/opencode.exe",
+    "binary_sha256": "c9be687513fd652ca53018901457eb0911cb505dc9cdc494a0ae3645970699ee"
+  },
+  "condition_summaries": {
+    "noskill": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "usage": {
+        "requests": 84,
+        "tool_uses": 72,
+        "input_tokens": 161165,
+        "output_tokens": 198159,
+        "cache_read_tokens": 2586113
+      }
+    },
+    "native": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "usage": {
+        "requests": 151,
+        "tool_uses": 142,
+        "input_tokens": 421385,
+        "output_tokens": 136971,
+        "cache_read_tokens": 7920566
+      }
+    },
+    "pd-vista": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "usage": {
+        "requests": 116,
+        "tool_uses": 105,
+        "input_tokens": 161481,
+        "output_tokens": 117835,
+        "cache_read_tokens": 3706973
+      }
+    }
+  },
+  "results": [
+    {
+      "condition": "noskill",
+      "replicate_id": 1,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd79e5f9dffe3ys413BeU2k7dD",
+      "usage": {
+        "requests": 29,
+        "tool_uses": 26,
+        "input_tokens": 58211,
+        "output_tokens": 34892,
+        "cache_read_tokens": 986249
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 1,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd795ceeaffeCPtj6k1ToB8W4U",
+      "usage": {
+        "requests": 56,
+        "tool_uses": 54,
+        "input_tokens": 237782,
+        "output_tokens": 50629,
+        "cache_read_tokens": 2969088
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 1,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd781cf93ffek5qQjPLF4Zkn6Y",
+      "usage": {
+        "requests": 45,
+        "tool_uses": 39,
+        "input_tokens": 49986,
+        "output_tokens": 50855,
+        "cache_read_tokens": 1259520
+      },
+      "disclosed_modules": [
+        "python-scala-oop",
+        "python-scala-syntax-mapping"
+      ],
+      "accessed_modules_after_disclosure": [
+        "python-scala-oop",
+        "python-scala-syntax-mapping"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 5,
+        "routable_feedback": 5,
+        "successful_disclosures": 2,
+        "next_round_module_access": 2,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd7676157ffedFdrRJoJgygDXJ",
+      "usage": {
+        "requests": 48,
+        "tool_uses": 44,
+        "input_tokens": 80080,
+        "output_tokens": 22403,
+        "cache_read_tokens": 2001664
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 3,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 2,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd75957f7ffeOzDxkzuVPQRcKj",
+      "usage": {
+        "requests": 39,
+        "tool_uses": 36,
+        "input_tokens": 45997,
+        "output_tokens": 23553,
+        "cache_read_tokens": 1095884
+      },
+      "disclosed_modules": [
+        "python-scala-oop",
+        "python-scala-syntax-mapping"
+      ],
+      "accessed_modules_after_disclosure": [
+        "python-scala-oop",
+        "python-scala-syntax-mapping"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 2,
+        "successful_disclosures": 2,
+        "next_round_module_access": 2,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd752d633ffe41C6PKcDJDJCkA",
+      "usage": {
+        "requests": 25,
+        "tool_uses": 22,
+        "input_tokens": 65744,
+        "output_tokens": 48265,
+        "cache_read_tokens": 957647
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd7474e56ffejmGvtxITBo7jSO",
+      "usage": {
+        "requests": 32,
+        "tool_uses": 30,
+        "input_tokens": 65498,
+        "output_tokens": 43427,
+        "cache_read_tokens": 1351569
+      },
+      "disclosed_modules": [
+        "python-scala-syntax-mapping"
+      ],
+      "accessed_modules_after_disclosure": [
+        "python-scala-syntax-mapping"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd73df16dffetmK7q8P1adKq1Y",
+      "usage": {
+        "requests": 30,
+        "tool_uses": 24,
+        "input_tokens": 37210,
+        "output_tokens": 115002,
+        "cache_read_tokens": 642217
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 5,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd722b4e8ffepwqUJ0WxgKFtXC",
+      "usage": {
+        "requests": 47,
+        "tool_uses": 44,
+        "input_tokens": 103523,
+        "output_tokens": 63939,
+        "cache_read_tokens": 2949814
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    }
+  ]
+}

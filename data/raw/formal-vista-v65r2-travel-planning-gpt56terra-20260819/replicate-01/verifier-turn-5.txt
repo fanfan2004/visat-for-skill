@@ -1,0 +1,59 @@
+.......FF.                                                               [100%]
+================================== FAILURES ===================================
+____________________ test_pet_friendly_accommodation_hint _____________________
+
+    def test_pet_friendly_accommodation_hint():
+        """Accommodation strings should signal pet-friendly preference."""
+        with open(PLAN_PATH) as f:
+            plan = json.load(f)["plan"]
+    
+        # Check for pet-friendly indicators: "pet", "dog", "cat", or similar terms
+        pet_keywords = ["pet", "dog", "cat", "animal"]
+        pet_hints = []
+        for day in plan:
+            acc = str(day.get("accommodation", "")).lower()
+            if any(kw in acc for kw in pet_keywords):
+                pet_hints.append(day.get("accommodation", ""))
+>       assert pet_hints, "At least one accommodation should indicate pet-friendly options (e.g., 'pet-friendly', 'dog-friendly')"
+E       AssertionError: At least one accommodation should indicate pet-friendly options (e.g., 'pet-friendly', 'dog-friendly')
+E       assert []
+
+test_outputs.py:147: AssertionError
+____________________ test_meals_include_requested_cuisines ____________________
+
+    def test_meals_include_requested_cuisines():
+        """Meals should reflect at least 3 of the 4 preferred cuisines by cross-referencing restaurant data."""
+        import csv
+        from pathlib import Path
+    
+        with open(PLAN_PATH) as f:
+            plan = json.load(f)["plan"]
+    
+        # Load restaurant data
+        restaurant_path = Path(r"C:\Users\С���\AppData\Local\VistaExperiments\formal-vista-v65r2-travel-planning-gpt56terra-20260819-replicate-01\workspace\data\restaurants\clean_restaurant_2022.csv")
+        restaurant_cuisines = {}  # (name_lower, city_lower) -> cuisines_lower
+        if restaurant_path.exists():
+            with open(restaurant_path) as f:
+                reader = csv.DictReader(f)
+>               for row in reader:
+
+test_outputs.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+E:\anaconda3\Lib\csv.py:115: in __next__
+    self.fieldnames
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <csv.DictReader object at 0x0000012808AAF320>
+
+    @property
+    def fieldnames(self):
+        if self._fieldnames is None:
+            try:
+>               self._fieldnames = next(self.reader)
+E               UnicodeDecodeError: 'gbk' codec can't decode byte 0x86 in position 1731: illegal multibyte sequence
+
+E:\anaconda3\Lib\csv.py:102: UnicodeDecodeError
+=========================== short test summary info ===========================
+FAILED test_outputs.py::test_pet_friendly_accommodation_hint - AssertionError...
+FAILED test_outputs.py::test_meals_include_requested_cuisines - UnicodeDecode...
+2 failed, 8 passed in 0.07s

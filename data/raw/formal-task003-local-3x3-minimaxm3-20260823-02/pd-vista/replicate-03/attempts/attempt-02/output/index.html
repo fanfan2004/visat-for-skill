@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Stock Bubble Chart</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header>
+  <h1>Stock Bubble Chart by Sector</h1>
+  <p class="subtitle">Bubble size encodes market capitalization; color encodes sector. Click a bubble or a row to cross-highlight.</p>
+</header>
+
+<main class="layout">
+  <section id="chart-section" class="panel">
+    <div id="bubble-chart"></div>
+    <div id="legend"></div>
+  </section>
+
+  <section id="table-section" class="panel">
+    <div class="table-header-row">
+      <h2>Stock List</h2>
+      <input id="filter-input" type="search" placeholder="Filter by ticker, name, or sector" />
+    </div>
+    <div class="table-wrapper">
+      <table id="stocks-table">
+        <thead>
+          <tr>
+            <th data-sort="ticker">Ticker symbol</th>
+            <th data-sort="name">Full company name</th>
+            <th data-sort="sector">Sector</th>
+            <th data-sort="marketCap" class="num">Market cap</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<div id="tooltip" class="tooltip" role="tooltip" aria-hidden="true"></div>
+
+<script src="js/d3.v6.min.js"></script>
+<script src="js/visualization.js"></script>
+</body>
+</html>

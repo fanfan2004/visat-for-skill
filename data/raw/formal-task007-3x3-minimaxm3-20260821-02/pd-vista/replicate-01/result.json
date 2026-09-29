@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task007-3x3-minimaxm3-20260821-02-pd-vista-replicate-01",
+  "task_id": "task-007-travel-planning",
+  "replicate_id": 1,
+  "condition": "pd-vista",
+  "backend": "opencode-local-current-config",
+  "docker_used": false,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "expected_actual_model": "MiniMax-M3",
+  "actual_model_ids": [],
+  "expected_provider": "minimax-cn",
+  "actual_provider_ids": [],
+  "initially_available_modules": [],
+  "usage": {
+    "requests": 23,
+    "tool_uses": 22,
+    "input_tokens": 38268,
+    "output_tokens": 18601,
+    "cache_read_tokens": 380540
+  },
+  "session_id": "ses_fdcb0da6fffe2hMcwKfbulTu1S",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "transport_attempts": [
+        {
+          "attempt": 1,
+          "return_code": 0,
+          "retryable_transport_error": false
+        }
+      ],
+      "event_summary": {
+        "event_types": {
+          "step_start": 23,
+          "tool_use": 22,
+          "step_finish": 23,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fdcb0da6fffe2hMcwKfbulTu1S"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 23,
+        "tool_uses": 22,
+        "input_tokens": 38268,
+        "output_tokens": 18601,
+        "cache_read_tokens": 380540,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "plan_exists": true,
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "distractor_flight_disclosed": false,
+  "vista_metrics": {
+    "trigger_opportunities": 0,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed_without_clean_vista_feedback_loop",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task007-3x3-minimaxm3-20260821-02-pd-vista-replicate-01/workspace"
+}

@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task002-local-3x3-minimaxm3-20260822-05-noskill-replicate-02",
+  "task_id": "task-002",
+  "condition": "noskill",
+  "replicate_id": 2,
+  "backend": "opencode-local-minimal-dependencies",
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "expected_provider": "minimax-cn",
+  "expected_actual_model": "MiniMax-M3",
+  "actual_provider_ids": [],
+  "actual_model_ids": [],
+  "session_id": "ses_fd642baa7ffeTnlj2YHCQ2VnH3",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 124,
+      "model_turn_timeout": true,
+      "event_summary": {
+        "event_types": {
+          "step_start": 23,
+          "tool_use": 23,
+          "step_finish": 23
+        },
+        "session_ids": [
+          "ses_fd642baa7ffeTnlj2YHCQ2VnH3"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 23,
+        "tool_uses": 23,
+        "input_tokens": 18165,
+        "output_tokens": 2992,
+        "cache_read_tokens": 286584,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": false,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 124,
+      "model_turn_timeout": true,
+      "event_summary": {
+        "event_types": {
+          "step_start": 6,
+          "tool_use": 5,
+          "step_finish": 5
+        },
+        "session_ids": [
+          "ses_fd642baa7ffeTnlj2YHCQ2VnH3"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 6,
+        "tool_uses": 5,
+        "input_tokens": 17253,
+        "output_tokens": 1322,
+        "cache_read_tokens": 117329,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": false,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 3,
+      "return_code": 1,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 6,
+          "tool_use": 6,
+          "step_finish": 6,
+          "error": 1
+        },
+        "session_ids": [
+          "ses_fd642baa7ffeTnlj2YHCQ2VnH3"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 6,
+        "tool_uses": 6,
+        "input_tokens": 11057,
+        "output_tokens": 4862,
+        "cache_read_tokens": 268767,
+        "accessed_modules": [],
+        "errors": [
+          {
+            "name": "APIError",
+            "status_code": 429,
+            "retryable": true,
+            "category": "api_error"
+          }
+        ],
+        "tool_errors": []
+      },
+      "answer_exists": false,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 35,
+    "tool_uses": 34,
+    "input_tokens": 46475,
+    "output_tokens": 9176,
+    "cache_read_tokens": 672680
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "vista_metrics": {
+    "trigger_opportunities": 2,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": false,
+  "stop_reason": "api_error",
+  "status": "quarantined_api_error",
+  "workspace": "/private/tmp/vista-task002-local-3x3-20260822-05/formal-task002-local-3x3-minimaxm3-20260822-05-noskill-replicate-02/workspace"
+}

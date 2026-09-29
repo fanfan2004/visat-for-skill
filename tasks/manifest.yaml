@@ -1,0 +1,89 @@
+experiment:
+  name: pd-vista-skillsbench-pilot
+  expected_task_count: 9
+  conditions: [noskill, native, pd-vista]
+  trials_per_task_condition: 3
+  expected_trial_count: 81
+  extension_note: task-007 (travel-planning) is an additional vista-only case; task-008..010 are the ZCode-backend extension batch scheduled after the original six-task pilot. Extension results are not compared with OpenCode-era results without a harness annotation.
+tasks:
+  - task_id: task-001
+    source: skillsbench
+    domain: software-engineering
+    workflow_type: code-translation
+    validation_type: compilation-and-tests
+    source_task_path: vendor/skillsbench/tasks/python-scala-translation
+    source_skill_path: vendor/skillsbench/tasks/python-scala-translation/environment/skills
+    native_skill_path: vendor/skillsbench/tasks/python-scala-translation/environment/skills
+    pd_vista_skill_path: skills/pd-vista/task-001
+  - task_id: task-002
+    source: skillsbench
+    domain: office-white-collar
+    workflow_type: enterprise-search
+    validation_type: structured-json
+    source_task_path: vendor/skillsbench/tasks/enterprise-information-search
+    source_skill_path: vendor/skillsbench/tasks/enterprise-information-search/environment/skills
+    native_skill_path: vendor/skillsbench/tasks/enterprise-information-search/environment/skills
+    pd_vista_skill_path: skills/pd-vista/task-002
+  - task_id: task-003
+    source: skillsbench
+    domain: software-engineering
+    workflow_type: interactive-visualization
+    validation_type: webpage-structure-and-assets
+    source_task_path: vendor/skillsbench/tasks/data-to-d3
+    source_skill_path: vendor/skillsbench/tasks/data-to-d3/environment/skills
+    native_skill_path: vendor/skillsbench/tasks/data-to-d3/environment/skills
+    pd_vista_skill_path: skills/pd-vista/task-003
+  - task_id: task-004
+    source: skillsbench
+    domain: office-white-collar
+    workflow_type: spreadsheet-calculation
+    validation_type: workbook-formulas-and-values
+    source_task_path: vendor/skillsbench/tasks/powerlifting-coef-calc
+    source_skill_path: vendor/skillsbench/tasks/powerlifting-coef-calc/environment/skills
+    native_skill_path: vendor/skillsbench/tasks/powerlifting-coef-calc/environment/skills
+    pd_vista_skill_path: skills/pd-vista/task-004
+  - task_id: task-005
+    source: skillsbench
+    domain: office-white-collar
+    workflow_type: mixed-document-classification
+    validation_type: complete-file-placement
+    source_task_path: vendor/skillsbench/tasks/organize-messy-files
+    source_skill_path: vendor/skillsbench/tasks/organize-messy-files/environment/skills
+    native_skill_path: vendor/skillsbench/tasks/organize-messy-files/environment/skills
+    pd_vista_skill_path: skills/pd-vista/task-005
+  - task_id: task-006
+    source: skillsbench
+    domain: software-engineering
+    workflow_type: build-repair
+    validation_type: patch-and-test
+    source_task_path: vendor/skillsbench/tasks/fix-build-agentops
+    source_skill_path: vendor/skillsbench/tasks/fix-build-agentops/environment/skills
+    native_skill_path: vendor/skillsbench/tasks/fix-build-agentops/environment/skills
+    pd_vista_skill_path: skills/pd-vista/task-006
+  - task_id: task-008
+    source: skillsbench
+    domain: industrial-physical-systems
+    workflow_type: control-simulation
+    validation_type: outputs-and-tests
+    source_task_path: vendor/skillsbench/tasks/adaptive-cruise-control
+    source_skill_path: vendor/skillsbench/tasks/adaptive-cruise-control/environment/skills
+    native_skill_path: vendor/skillsbench/tasks/adaptive-cruise-control/environment/skills
+    pd_vista_skill_path: skills/pd-vista/task-008
+  - task_id: task-009
+    source: skillsbench
+    domain: industrial-physical-systems
+    workflow_type: control-simulation
+    validation_type: outputs-and-tests
+    source_task_path: vendor/skillsbench/tasks/r2r-mpc-control
+    source_skill_path: vendor/skillsbench/tasks/r2r-mpc-control/environment/skills
+    native_skill_path: vendor/skillsbench/tasks/r2r-mpc-control/environment/skills
+    pd_vista_skill_path: skills/pd-vista/task-009
+  - task_id: task-010
+    source: skillsbench
+    domain: office-white-collar
+    workflow_type: numerical-constraint
+    validation_type: answer-file-and-tests
+    source_task_path: vendor/skillsbench/tasks/econ-detrending-correlation
+    source_skill_path: vendor/skillsbench/tasks/econ-detrending-correlation/environment/skills
+    native_skill_path: vendor/skillsbench/tasks/econ-detrending-correlation/environment/skills
+    pd_vista_skill_path: skills/pd-vista/task-010

@@ -1,0 +1,19 @@
+.........F                                                               [100%]
+=================================== FAILURES ===================================
+__________________________ test_attractions_non_empty __________________________
+
+    def test_attractions_non_empty():
+        """Attractions should not be empty placeholders."""
+        with open(PLAN_PATH) as f:
+            plan = json.load(f)["plan"]
+    
+        for idx, day in enumerate(plan, start=1):
+            attraction = str(day.get("attraction", "")).strip()
+>           assert attraction and attraction != "-", f"Day {idx} attraction should not be empty or '-'"
+E           AssertionError: Day 7 attraction should not be empty or '-'
+E           assert ('-' and '-' != '-')
+
+test_outputs.py:220: AssertionError
+=========================== short test summary info ============================
+FAILED test_outputs.py::test_attractions_non_empty - AssertionError: Day 7 at...
+1 failed, 9 passed in 0.13s

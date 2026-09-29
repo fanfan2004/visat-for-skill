@@ -1,0 +1,20 @@
+{
+  "coursier": true,
+  "sbt_wrapper": true,
+  "verifier_python": true,
+  "task": true,
+  "python_source": true,
+  "test_source": true,
+  "vista_manifest": true,
+  "native_modules": {
+    "python-scala-syntax-mapping": true,
+    "python-scala-idioms": true,
+    "python-scala-oop": true,
+    "python-scala-functional": true,
+    "python-scala-collections": true,
+    "python-scala-libraries": true
+  },
+  "java": true,
+  "java_home": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.tools/jdk17/jdk-17.0.20.1+1/Contents/Home",
+  "ready": true
+}

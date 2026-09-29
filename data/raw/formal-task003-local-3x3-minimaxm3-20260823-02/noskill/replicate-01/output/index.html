@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stock Universe — Bubble & Table</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Stock Universe Visualization</h1>
+      <p>Bubbles sized by market capitalization and clustered by sector. Click a bubble or a table row to cross-highlight.</p>
+    </header>
+    <div id="main">
+      <section id="chart-panel" aria-label="Stock bubble chart">
+        <svg id="bubble-chart" preserveAspectRatio="xMidYMid meet"></svg>
+      </section>
+      <section id="table-panel" aria-label="Stock data table">
+        <h2>All 50 Stocks</h2>
+        <div id="table-scroll">
+          <table id="stock-table">
+            <thead>
+              <tr>
+                <th>Ticker symbol</th>
+                <th>Full company name</th>
+                <th>Sector</th>
+                <th>Market cap</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="js/d3.v6.min.js"></script>
+  <script src="js/visualization.js"></script>
+</body>
+</html>

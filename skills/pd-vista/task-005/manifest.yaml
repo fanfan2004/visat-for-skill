@@ -1,0 +1,18 @@
+schema_version: 1
+source_content_equivalence: byte-for-byte-under-modules
+modules:
+  - id: planning-with-files
+    path: modules/planning-with-files/SKILL.md
+    triggers: [incomplete_output, command_failure]
+  - id: file-organizer
+    path: modules/file-organizer/SKILL.md
+    triggers: [schema_error, test_failure, assertion_error]
+  - id: pdf
+    path: modules/pdf/SKILL.md
+    triggers: [wrong_format, dependency_error]
+  - id: docx
+    path: modules/docx/SKILL.md
+    triggers: [runtime_error]
+  - id: pptx
+    path: modules/pptx/SKILL.md
+    triggers: [timeout, repeated_failure]

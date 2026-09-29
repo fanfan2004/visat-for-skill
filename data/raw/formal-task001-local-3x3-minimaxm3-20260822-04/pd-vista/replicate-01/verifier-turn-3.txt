@@ -1,0 +1,243 @@
+
+============================================================
+Evaluating: /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/workspace/Tokenizer.scala
+============================================================
+
+✓ File exists
+✓ Source loaded (18735 characters)
+
+--- Checking Compilation ---
+✓ Compilation successful
+
+--- Running Unit Tests ---
+[info] welcome to sbt 1.12.0 (Eclipse Adoptium Java 17.0.20.1)
+[info] loading project definition from /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/project
+[info] loading settings for project root from build.sbt...
+[info] set current project to scala-tokenizer (in build file:/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/)
+[info] compiling 1 Scala source to /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/target/scala-2.13/test-classes ...
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:19:5: not found: value TokenType
+[error]     TokenType.STRING.value shouldBe "string"
+[error]     ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:20:5: not found: value TokenType
+[error]     TokenType.NUMERIC.value shouldBe "numeric"
+[error]     ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:21:5: not found: value TokenType
+[error]     TokenType.TEMPORAL.value shouldBe "temporal"
+[error]     ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:22:5: not found: value TokenType
+[error]     TokenType.STRUCTURED.value shouldBe "structured"
+[error]     ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:23:5: not found: value TokenType
+[error]     TokenType.BINARY.value shouldBe "binary"
+[error]     ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:24:5: not found: value TokenType
+[error]     TokenType.NULL.value shouldBe "null"
+[error]     ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:33:17: not found: value Token
+[error]     val token = Token("test", TokenType.STRING)
+[error]                 ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:33:31: not found: value TokenType
+[error]     val token = Token("test", TokenType.STRING)
+[error]                               ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:47:25: not found: type TokenContainer
+[error]     val container = new TokenContainer(Seq("a", "b", "c"))
+[error]                         ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:59:25: not found: type UniversalTokenizer
+[error]     val tokenizer = new UniversalTokenizer()
+[error]                         ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:67:25: not found: type UniversalTokenizer
+[error]     val tokenizer = new UniversalTokenizer()
+[error]                         ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:81:24: not found: type TokenRegistry
+[error]     val registry = new TokenRegistry[String]
+[error]                        ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:82:25: not found: type TokenContainer
+[error]     val container = new TokenContainer(Seq("hello", "world"))
+[error]                         ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:100:23: not found: type TokenFunctor
+[error]     val functor = new TokenFunctor(5)
+[error]                       ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:112:25: not found: type JsonTokenizer
+[error]     val tokenizer = new JsonTokenizer()
+[error]                         ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:127:25: not found: type WhitespaceTokenizer
+[error]     val tokenizer = new WhitespaceTokenizer(
+[error]                         ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:128:7: not found: value lowercase
+[error]       lowercase = true,
+[error]       ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:129:7: not found: value minLength
+[error]       minLength = 2,
+[error]       ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:130:7: not found: value maxLength
+[error]       maxLength = Some(4),
+[error]       ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:131:7: not found: value stripPunctuation
+[error]       stripPunctuation = true
+[error]       ^
+[error] /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/verifier/localtest/src/test/scala/tokenizer/Tokenizertest.scala:143:21: not found: value TokenizerBuilder
+[error]     val tokenizer = TokenizerBuilder[String]()
+[error]                     ^
+[error] 21 errors found
+[error] (Test / compileIncremental) Compilation failed
+[error] Total time: 10 s, completed 2026年8月22日 下午4:19:44
+
+Tests passed: 0/0
+
+--- Evaluating Code Quality Criteria ---
+
+
+FUNCTIONALITY_PRESERVATION:
+----------------------------------------
+Score: 5/5 (EXCELLENT)
+  Found 9/9 required components
+  Found 4/4 key methods
+
+SCALA_CONVENTIONS:
+----------------------------------------
+Score: 5/5 (EXCELLENT)
+  ✓ camelCase_methods: 58 occurrences
+  ✓ PascalCase_classes: 29 occurrences
+  ✓ immutable_val: 41 occurrences
+  ✓ case_class: 5 occurrences
+  ✓ sealed_trait: 3 occurrences
+  Suggestions:
+    → Consider refactoring: Null usage (prefer Option)
+    → Consider refactoring: Explicit return statement (often unnecessary in Scala)
+
+READABILITY:
+----------------------------------------
+Score: 5/5 (EXCELLENT)
+  Total lines: 518
+  Scaladoc blocks: 39
+  Single-line comments: 33
+  Type annotations: 140
+
+PARADIGM_MATCH:
+----------------------------------------
+Score: 4/5 (GOOD)
+  ✓ map: 3 occurrences
+  ✓ filter: 3 occurrences
+  ✓ fold: 1 occurrences
+  ✓ higher_order_func: 13 occurrences
+  ✓ immutable_collections: 16 occurrences
+  Suggestions:
+    → Consider reducing mutable variables (4 vars found)
+    → Consider using Option instead of null
+
+APPROPRIATE_ABSTRACTIONS:
+----------------------------------------
+Score: 4/5 (GOOD)
+  Traits defined: 4
+  ✓ Sealed hierarchies: 3
+  Generic type usages: 49
+  Objects/Companions: 9
+  Encapsulation modifiers: 10
+  Suggestions:
+    → Consider using type classes for polymorphism
+
+============================================================
+EVALUATION SUMMARY
+============================================================
+Overall Score: 23/25 (92.0%)
+Status: ❌ NEEDS IMPROVEMENT
+============================================================
+
+{
+  "file_path": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-pd-vista-replicate-01/workspace/Tokenizer.scala",
+  "file_exists": true,
+  "compilation": {
+    "success": true,
+    "errors": [],
+    "warnings": []
+  },
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "total": 0,
+    "errors": []
+  },
+  "criteria_evaluations": {
+    "FUNCTIONALITY_PRESERVATION": {
+      "criterion": "FUNCTIONALITY_PRESERVATION",
+      "score": 5,
+      "max_score": 5,
+      "findings": [
+        "Found 9/9 required components",
+        "Found 4/4 key methods"
+      ],
+      "suggestions": []
+    },
+    "SCALA_CONVENTIONS": {
+      "criterion": "SCALA_CONVENTIONS",
+      "score": 5,
+      "max_score": 5,
+      "findings": [
+        "\u2713 camelCase_methods: 58 occurrences",
+        "\u2713 PascalCase_classes: 29 occurrences",
+        "\u2713 immutable_val: 41 occurrences",
+        "\u2713 case_class: 5 occurrences",
+        "\u2713 sealed_trait: 3 occurrences",
+        "\u2713 option_type: 6 occurrences",
+        "\u2713 pattern_matching: 7 occurrences",
+        "\u2713 companion_object: 9 occurrences",
+        "\u26a0 Null usage (prefer Option): 3 occurrences",
+        "\u26a0 Explicit return statement (often unnecessary in Scala): 1 occurrences"
+      ],
+      "suggestions": [
+        "Consider refactoring: Null usage (prefer Option)",
+        "Consider refactoring: Explicit return statement (often unnecessary in Scala)"
+      ]
+    },
+    "READABILITY": {
+      "criterion": "READABILITY",
+      "score": 5,
+      "max_score": 5,
+      "findings": [
+        "Total lines: 518",
+        "Scaladoc blocks: 39",
+        "Single-line comments: 33",
+        "Type annotations: 140"
+      ],
+      "suggestions": []
+    },
+    "PARADIGM_MATCH": {
+      "criterion": "PARADIGM_MATCH",
+      "score": 4,
+      "max_score": 5,
+      "findings": [
+        "\u2713 map: 3 occurrences",
+        "\u2713 filter: 3 occurrences",
+        "\u2713 fold: 1 occurrences",
+        "\u2713 higher_order_func: 13 occurrences",
+        "\u2713 immutable_collections: 16 occurrences",
+        "Immutability ratio (val/total): 91.11%",
+        "Option usage: 6, null usage: 3",
+        "\u2713 Uses Either/Try for error handling: 3",
+        "Case classes: 5, Case objects: 7"
+      ],
+      "suggestions": [
+        "Consider reducing mutable variables (4 vars found)",
+        "Consider using Option instead of null"
+      ]
+    },
+    "APPROPRIATE_ABSTRACTIONS": {
+      "criterion": "APPROPRIATE_ABSTRACTIONS",
+      "score": 4,
+      "max_score": 5,
+      "findings": [
+        "Traits defined: 4",
+        "\u2713 Sealed hierarchies: 3",
+        "Generic type usages: 49",
+        "Objects/Companions: 9",
+        "Encapsulation modifiers: 10"
+      ],
+      "suggestions": [
+        "Consider using type classes for polymorphism"
+      ]
+    }
+  },
+  "overall_score": 23,
+  "max_score": 25,
+  "passed": false
+}

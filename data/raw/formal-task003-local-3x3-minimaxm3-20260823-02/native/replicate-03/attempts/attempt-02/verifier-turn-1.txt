@@ -1,0 +1,147 @@
+.......F.......                                                          [100%]
+=================================== FAILURES ===================================
+_________________________ test_bubble_chart_rendering __________________________
+
+browser_page = <Page url='http://localhost:51632/index.html'>
+
+    def test_bubble_chart_rendering(browser_page):
+        """Bubble chart must render with correct number of bubbles, sizing, and coloring."""
+        page = browser_page
+    
+        # Wait a bit more for D3 animations to complete
+        page.wait_for_timeout(1000)
+    
+        # Check for SVG element first
+        svg = page.locator('svg')
+        assert svg.count() > 0, "No SVG element found - visualization may not be rendering"
+    
+        # Check for SVG bubbles (instruction.md: "50 stocks")
+        # Try multiple selectors
+        bubbles = page.locator('svg circle')
+        bubble_count = bubbles.count()
+    
+        # If no circles, try other selectors
+        if bubble_count == 0:
+            bubbles = page.locator('circle')
+            bubble_count = bubbles.count()
+    
+        if bubble_count == 0:
+            bubbles = page.locator('[class*="bubble"]')
+            bubble_count = bubbles.count()
+    
+        # If still no bubbles, provide detailed error info
+        if bubble_count == 0:
+            error_msg = f"Expected 50 bubbles for stocks, found {bubble_count}.\n"
+            error_msg += f"Console messages: {getattr(page, 'console_messages', [])}\n"
+            error_msg += f"Page errors: {getattr(page, 'page_errors', [])}\n"
+            error_msg += f"SVG innerHTML: {svg.first.inner_html()[:300] if svg.count() > 0 else 'No SVG'}"
+            pytest.fail(error_msg)
+    
+        assert bubble_count == 50, \
+            f"Expected 50 bubbles for stocks (instruction.md), found {bubble_count}"
+    
+        # Get all bubble radii
+        radii = []
+        positions = []
+        for i in range(bubble_count):
+            r = bubbles.nth(i).get_attribute('r')
+            cx = bubbles.nth(i).get_attribute('cx')
+            cy = bubbles.nth(i).get_attribute('cy')
+            if r:
+                radii.append(float(r))
+            if cx and cy:
+                positions.append((float(cx), float(cy)))
+    
+        assert len(radii) == 50, f"Could not get radius values from all bubbles, got {len(radii)}"
+    
+        # Basic overlap check (forceCollide requirement): most bubbles should not overlap
+        # Allow a small number of overlaps while the simulation settles
+        if len(positions) == bubble_count:
+            overlap_count = 0
+            max_checks = 300  # sample to avoid O(n^2) cost
+            checks = 0
+    
+            for i in range(bubble_count):
+                for j in range(i + 1, bubble_count):
+                    if checks >= max_checks:
+                        break
+                    dx = positions[i][0] - positions[j][0]
+                    dy = positions[i][1] - positions[j][1]
+                    dist = (dx * dx + dy * dy) ** 0.5
+                    min_dist = radii[i] + radii[j]
+                    if dist < min_dist - 1:  # small tolerance
+                        overlap_count += 1
+                    checks += 1
+                if checks >= max_checks:
+                    break
+    
+            assert overlap_count <= 5, \
+                f"Too many overlapping bubbles ({overlap_count}) - forceCollide not working properly"
+    
+        # Check that bubbles have varying sizes (market cap based)
+        # instruction.md: "Sized by market capitalization"
+        unique_radii = set(radii)
+>       assert len(unique_radii) >= 5, \
+            f"Bubbles should have varying sizes based on market cap, found only {len(unique_radii)} unique sizes"
+E       AssertionError: Bubbles should have varying sizes based on market cap, found only 2 unique sizes
+E       assert 2 >= 5
+E        +  where 2 = len({14.0, 36.0})
+
+/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-02-native-replicate-03/verifier/test_outputs.py:359: AssertionError
+---------------------------- Captured stdout setup -----------------------------
+
+============================================================
+BROWSER PAGE FIXTURE - Starting
+============================================================
+✓ index.html exists at /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-02-native-replicate-03/workspace/output/index.html
+✓ index.html size: 1378 bytes
+✓ HTTP server started on port 51632
+✓ HTML preview (first 500 chars):
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Stock Sector Bubble Chart</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <h1>Stock Sector Bubble Chart</h1>
+    <p class="subtitle">Stocks sized by market capitalization, clustered by sector. Click a bubble or table row to highlight.</p>
+
+    <div class="app">
+        <section class="chart-panel">
+            <h2>Bubble Chart</h2>
+            <svg id="bubble-chart" width="820" height="6
+
+✓ Playwright started
+✓ Chromium browser launched
+✓ New page created
+Loading http://localhost:51632/index.html
+✓ Page loaded (status: 200)
+✓ Page title: 'Stock Sector Bubble Chart'
+✓ Found 2 script tags
+✓ D3.js loaded: True
+✓ Found 1 SVG element(s)
+✓ Found 1 table element(s)
+
+Waiting for visualization to render...
+✓ Bubbles rendered: 50 circles found
+
+============================================================
+RENDER SUCCESS: True
+Console messages: 0
+Page errors: 0
+============================================================
+
+Waiting for D3 force simulation to settle...
+✓ Force simulation settled
+✓ Screenshot saved to /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-02-native-replicate-03/verifier/logs/visualization.png for review
+---------------------------- Captured stderr setup -----------------------------
+127.0.0.1 - - [23/Aug/2026 17:35:48] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2026 17:35:48] "GET /css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2026 17:35:48] "GET /js/d3.v6.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2026 17:35:48] "GET /js/visualization.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2026 17:35:48] "GET /data/stock-descriptions.csv HTTP/1.1" 200 -
+=========================== short test summary info ============================
+FAILED test_outputs.py::test_bubble_chart_rendering - AssertionError: Bubbles...
+1 failed, 14 passed in 22.05s

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>S&P-like Stocks: Sector Bubble & Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <h1>S&amp;P 50 Stocks &mdash; Sector Clusters &amp; Market Cap</h1>
+  <p class="intro">
+    Bubbles are sized by market capitalization and arranged by sector using a D3 force simulation.
+    Click a bubble or a table row to highlight the same stock in both views.
+  </p>
+  <div class="app">
+    <section class="chart-panel" aria-label="Bubble chart panel">
+      <svg id="bubble-chart" role="img" aria-label="Sector bubble chart" width="720" height="640"></svg>
+      <div id="legend" class="legend-list" aria-label="Sector legend"></div>
+    </section>
+    <section class="table-panel" aria-label="Stocks data table panel">
+      <div class="table-scroll">
+        <table class="data-table" id="stocks-table">
+          <thead>
+            <tr>
+              <th scope="col">Ticker symbol</th>
+              <th scope="col">Full company name</th>
+              <th scope="col">Sector</th>
+              <th scope="col">Market cap</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+  <div id="tooltip" role="tooltip" aria-hidden="true"></div>
+
+  <script src="js/d3.v6.min.js"></script>
+  <script src="js/visualization.js"></script>
+</body>
+</html>

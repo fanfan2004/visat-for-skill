@@ -1,0 +1,10 @@
+task_id: task-001
+mapping_status: resolved
+source:
+  benchmark: skillsbench
+  benchmark_task_id: python-scala-translation
+  definition_path: vendor/skillsbench/tasks/python-scala-translation
+  skill_path: vendor/skillsbench/tasks/python-scala-translation/environment/skills
+skill_paths:
+  native: vendor/skillsbench/tasks/python-scala-translation/environment/skills
+  pd_vista: skills/pd-vista/task-001

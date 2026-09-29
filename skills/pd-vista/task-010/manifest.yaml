@@ -1,0 +1,6 @@
+schema_version: 1
+source_content_equivalence: byte-for-byte-under-modules
+modules:
+  - id: timeseries-detrending
+    path: modules/timeseries-detrending/SKILL.md
+    triggers: [test_failure, assertion_error, runtime_error, wrong_format, schema_error, incomplete_output, command_failure, timeout]

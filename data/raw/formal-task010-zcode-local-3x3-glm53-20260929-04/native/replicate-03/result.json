@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task010-zcode-local-3x3-glm53-20260929-04-native-replicate-03",
+  "task_id": "task-010",
+  "condition": "native",
+  "replicate_id": 3,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_39f1ecee-458c-4351-b4e9-c3b6889dede1",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_b6757317-67f7-4f34-8ff1-726089c622db",
+      "requests": 10,
+      "tool_uses": 10,
+      "accessed_modules": [],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 10,
+    "input_tokens": 232730,
+    "output_tokens": 4759,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 237489
+  },
+  "initially_available_modules": [
+    "timeseries-detrending"
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "vista_metrics": {
+    "trigger_opportunities": 0,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task010-zcode-local-3x3-glm53-20260929-04-native-replicate-03/workspace"
+}

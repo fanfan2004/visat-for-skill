@@ -1,0 +1,13 @@
+{
+  "run_id": "formal-task006-docker-local-3x3-minimaxm3-20260826-08-pd-vista-replicate-01-attempt-01",
+  "condition": "pd-vista",
+  "replicate_id": 1,
+  "attempt": 1,
+  "initially_available_modules": [],
+  "workspace": "/private/tmp/vista-task006-docker-experiments-20260826-08/formal-task006-docker-local-3x3-minimaxm3-20260826-08-pd-vista-replicate-01-attempt-01/workspace",
+  "verifier": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/vendor/skillsbench/tasks/fix-build-agentops/verifier/test_outputs.py",
+  "docker_used": true,
+  "docker_image": "task6-agentops-24579293289-20260826",
+  "docker_container": "task6_imaxm3_20260826_08_pd_vista_01_01",
+  "skillbench_execution_route_used": false
+}

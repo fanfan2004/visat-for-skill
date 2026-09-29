@@ -1,0 +1,74 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.14, pytest-7.4.0, pluggy-1.6.0 -- /Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/bin/python
+rootdir: /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task008-zcode-local-3x3-glm53-20260929-04-pd-vista-replicate-03
+plugins: mock-3.15.1, asyncio-0.21.0, anyio-4.14.2, requests-mock-1.11.0
+asyncio: mode=Mode.STRICT
+collecting ... collected 12 items
+
+../verifier/test_outputs_local.py::TestInputFilesIntegrity::test_input_files_integrity PASSED [  8%]
+../verifier/test_outputs_local.py::TestPIDController::test_pid_controller PASSED [ 16%]
+../verifier/test_outputs_local.py::TestACCSystem::test_acc_system FAILED [ 25%]
+../verifier/test_outputs_local.py::TestTuningResults::test_tuning_results PASSED [ 33%]
+../verifier/test_outputs_local.py::TestSimulationResults::test_simulation_results PASSED [ 41%]
+../verifier/test_outputs_local.py::TestReport::test_report_keywords PASSED [ 50%]
+../verifier/test_outputs_local.py::TestSpeedControl::test_speed_control PASSED [ 58%]
+../verifier/test_outputs_local.py::TestDistanceControl::test_distance_control PASSED [ 66%]
+../verifier/test_outputs_local.py::TestSafety::test_safety FAILED        [ 75%]
+../verifier/test_outputs_local.py::TestScenario::test_scenario FAILED    [ 83%]
+../verifier/test_outputs_local.py::TestSimulationExecution::test_simulation_execution PASSED [ 91%]
+../verifier/test_outputs_local.py::TestAntiCheat::test_anti_cheat PASSED [100%]
+
+=================================== FAILURES ===================================
+________________________ TestACCSystem.test_acc_system _________________________
+../verifier/test_outputs_local.py:110: in test_acc_system
+    assert dist_err is None
+E   assert 0.0 is None
+____________________________ TestSafety.test_safety ____________________________
+../verifier/test_outputs_local.py:264: in test_safety
+    assert 'emergency' in simulation_data['mode'].unique()
+E   AssertionError: assert 'emergency' in array(['cruise', 'follow'], dtype=object)
+E    +  where array(['cruise', 'follow'], dtype=object) = <bound method Series.unique of 0       cruise\n1       cruise\n2       cruise\n3       cruise\n4       cruise\n         ...  \n1496    cruise\n1497    cruise\n1498    cruise\n1499    cruise\n1500    cruise\nName: mode, Length: 1501, dtype: object>()
+E    +    where <bound method Series.unique of 0       cruise\n1       cruise\n2       cruise\n3       cruise\n4       cruise\n         ...  \n1496    cruise\n1497    cruise\n1498    cruise\n1499    cruise\n1500    cruise\nName: mode, Length: 1501, dtype: object> = 0       cruise\n1       cruise\n2       cruise\n3       cruise\n4       cruise\n         ...  \n1496    cruise\n1497    cruise\n1498    cruise\n1499    cruise\n1500    cruise\nName: mode, Length: 1501, dtype: object.unique
+__________________________ TestScenario.test_scenario __________________________
+../verifier/test_outputs_local.py:306: in test_scenario
+    assert (period['mode'] == 'emergency').any()
+E   AssertionError: assert np.False_
+E    +  where np.False_ = <bound method Series.any of 1200    False\n1201    False\n1202    False\n1203    False\n1204    False\n1205    False\n1206    False\n1207    False\n1208    False\n1209    False\n1210    False\n1211    False\n1212    False\n1213    False\n1214    False\n1215    False\n1216    False\n1217    False\n1218    False\n1219    False\n1220    False\nName: mode, dtype: bool>()
+E    +    where <bound method Series.any of 1200    False\n1201    False\n1202    False\n1203    False\n1204    False\n1205    False\n1206    False\n1207    False\n1208    False\n1209    False\n1210    False\n1211    False\n1212    False\n1213    False\n1214    False\n1215    False\n1216    False\n1217    False\n1218    False\n1219    False\n1220    False\nName: mode, dtype: bool> = 1200    follow\n1201    follow\n1202    follow\n1203    follow\n1204    follow\n1205    follow\n1206    follow\n1207    follow\n1208    follow\n1209    follow\n1210    follow\n1211    follow\n1212    follow\n1213    follow\n1214    follow\n1215    follow\n1216    follow\n1217    follow\n1218    follow\n1219    follow\n1220    follow\nName: mode, dtype: object == 'emergency'.any
+==================================== PASSES ====================================
+______________ TestSimulationExecution.test_simulation_execution _______________
+----------------------------- Captured stdout call -----------------------------
+duration: 150.0 s
+rise time (10->90%): None s, time to set speed: None s
+max speed: 15.56 m/s, overshoot: 0.00%
+speed steady-state error: 21.449 m/s
+distance steady-state error (t=40-60): 484.148 m
+mean distance error (follow rows): -1138.588 m
+min distance: 52.10 m, min TTC: 146.68755802639774
+modes: {'cruise': 501, 'follow': 1000}
+
+wrote 1501 rows to simulation_results.csv
+duration: 150.0 s
+rise time (10->90%): 8.0 s, time to set speed: 29.8 s
+max speed: 30.00 m/s, overshoot: 0.00%
+speed steady-state error: 0.000 m/s
+distance steady-state error (t=40-60): 0.039 m
+mean distance error (follow rows): -18.929 m
+min distance: 46.74 m, min TTC: 3.819868611393864
+modes: {'cruise': 501, 'follow': 1000}
+
+wrote 1501 rows to simulation_results.csv
+=========================== short test summary info ============================
+PASSED ../verifier/test_outputs_local.py::TestInputFilesIntegrity::test_input_files_integrity
+PASSED ../verifier/test_outputs_local.py::TestPIDController::test_pid_controller
+PASSED ../verifier/test_outputs_local.py::TestTuningResults::test_tuning_results
+PASSED ../verifier/test_outputs_local.py::TestSimulationResults::test_simulation_results
+PASSED ../verifier/test_outputs_local.py::TestReport::test_report_keywords
+PASSED ../verifier/test_outputs_local.py::TestSpeedControl::test_speed_control
+PASSED ../verifier/test_outputs_local.py::TestDistanceControl::test_distance_control
+PASSED ../verifier/test_outputs_local.py::TestSimulationExecution::test_simulation_execution
+PASSED ../verifier/test_outputs_local.py::TestAntiCheat::test_anti_cheat
+FAILED ../verifier/test_outputs_local.py::TestACCSystem::test_acc_system - as...
+FAILED ../verifier/test_outputs_local.py::TestSafety::test_safety - Assertion...
+FAILED ../verifier/test_outputs_local.py::TestScenario::test_scenario - Asser...
+========================= 3 failed, 9 passed in 5.44s ==========================

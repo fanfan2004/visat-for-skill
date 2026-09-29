@@ -1,0 +1,101 @@
+FFFFFFFFFF                                                               [100%]
+================================== FAILURES ===================================
+____________________________ test_plan_file_exists ____________________________
+
+    def test_plan_file_exists():
+        """Plan file should be produced at the expected path."""
+>       assert os.path.exists(PLAN_PATH), f"Plan JSON not found at {PLAN_PATH}"
+E       AssertionError: Plan JSON not found at C:\Users\С���\AppData\Local\VistaExperiments\formal-vista-v65r2-travel-planning-gpt56terra-20260819-replicate-02\workspace\output\itinerary.json
+E       assert False
+E        +  where False = <built-in function _path_exists>('C:\\Users\\С���\\AppData\\Local\\VistaExperiments\\formal-vista-v65r2-travel-planning-gpt56terra-20260819-replicate-02\\workspace\\output\\itinerary.json')
+E        +    where <built-in function _path_exists> = <module 'ntpath' (frozen)>.exists
+E        +      where <module 'ntpath' (frozen)> = os.path
+
+test_outputs.py:24: AssertionError
+_______________________ test_plan_structure_and_length ________________________
+
+    def test_plan_structure_and_length():
+        """Plan should be a JSON object with a 7-day plan array."""
+>       with open(PLAN_PATH) as f:
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\С���\\AppData\\Local\\VistaExperiments\\formal-vista-v65r2-travel-planning-gpt56terra-20260819-replicate-02\\workspace\\output\\itinerary.json'
+
+test_outputs.py:29: FileNotFoundError
+_____________________ test_plan_required_fields_and_days ______________________
+
+    def test_plan_required_fields_and_days():
+        """Each day should have required fields and sequential day numbers."""
+>       with open(PLAN_PATH) as f:
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\С���\\AppData\\Local\\VistaExperiments\\formal-vista-v65r2-travel-planning-gpt56terra-20260819-replicate-02\\workspace\\output\\itinerary.json'
+
+test_outputs.py:41: FileNotFoundError
+______________________ test_no_flights_in_transportation ______________________
+
+    def test_no_flights_in_transportation():
+        """Transportation should respect no-flight preference."""
+>       with open(PLAN_PATH) as f:
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\С���\\AppData\\Local\\VistaExperiments\\formal-vista-v65r2-travel-planning-gpt56terra-20260819-replicate-02\\workspace\\output\\itinerary.json'
+
+test_outputs.py:54: FileNotFoundError
+_________________________ test_starts_in_minneapolis __________________________
+
+    def test_starts_in_minneapolis():
+        """Day 1 should start from Minneapolis."""
+>       with open(PLAN_PATH) as f:
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\С���\\AppData\\Local\\VistaExperiments\\formal-vista-v65r2-travel-planning-gpt56terra-20260819-replicate-02\\workspace\\output\\itinerary.json'
+
+test_outputs.py:64: FileNotFoundError
+______________________ test_visits_at_least_three_cities ______________________
+
+    def test_visits_at_least_three_cities():
+        """Plan should cover at least three distinct cities."""
+>       with open(PLAN_PATH) as f:
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\С���\\AppData\\Local\\VistaExperiments\\formal-vista-v65r2-travel-planning-gpt56terra-20260819-replicate-02\\workspace\\output\\itinerary.json'
+
+test_outputs.py:73: FileNotFoundError
+___________________________ test_visits_ohio_cities ___________________________
+
+    def test_visits_ohio_cities():
+        """Plan should visit cities in Ohio (the required destination state)."""
+>       with open(PLAN_PATH) as f:
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\С���\\AppData\\Local\\VistaExperiments\\formal-vista-v65r2-travel-planning-gpt56terra-20260819-replicate-02\\workspace\\output\\itinerary.json'
+
+test_outputs.py:85: FileNotFoundError
+____________________ test_pet_friendly_accommodation_hint _____________________
+
+    def test_pet_friendly_accommodation_hint():
+        """Accommodation strings should signal pet-friendly preference."""
+>       with open(PLAN_PATH) as f:
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\С���\\AppData\\Local\\VistaExperiments\\formal-vista-v65r2-travel-planning-gpt56terra-20260819-replicate-02\\workspace\\output\\itinerary.json'
+
+test_outputs.py:137: FileNotFoundError
+____________________ test_meals_include_requested_cuisines ____________________
+
+    def test_meals_include_requested_cuisines():
+        """Meals should reflect at least 3 of the 4 preferred cuisines by cross-referencing restaurant data."""
+        import csv
+        from pathlib import Path
+    
+>       with open(PLAN_PATH) as f:
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\С���\\AppData\\Local\\VistaExperiments\\formal-vista-v65r2-travel-planning-gpt56terra-20260819-replicate-02\\workspace\\output\\itinerary.json'
+
+test_outputs.py:155: FileNotFoundError
+_________________________ test_attractions_non_empty __________________________
+
+    def test_attractions_non_empty():
+        """Attractions should not be empty placeholders."""
+>       with open(PLAN_PATH) as f:
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\С���\\AppData\\Local\\VistaExperiments\\formal-vista-v65r2-travel-planning-gpt56terra-20260819-replicate-02\\workspace\\output\\itinerary.json'
+
+test_outputs.py:215: FileNotFoundError
+=========================== short test summary info ===========================
+FAILED test_outputs.py::test_plan_file_exists - AssertionError: Plan JSON not...
+FAILED test_outputs.py::test_plan_structure_and_length - FileNotFoundError: [...
+FAILED test_outputs.py::test_plan_required_fields_and_days - FileNotFoundErro...
+FAILED test_outputs.py::test_no_flights_in_transportation - FileNotFoundError...
+FAILED test_outputs.py::test_starts_in_minneapolis - FileNotFoundError: [Errn...
+FAILED test_outputs.py::test_visits_at_least_three_cities - FileNotFoundError...
+FAILED test_outputs.py::test_visits_ohio_cities - FileNotFoundError: [Errno 2...
+FAILED test_outputs.py::test_pet_friendly_accommodation_hint - FileNotFoundEr...
+FAILED test_outputs.py::test_meals_include_requested_cuisines - FileNotFoundE...
+FAILED test_outputs.py::test_attractions_non_empty - FileNotFoundError: [Errn...
+10 failed in 0.11s

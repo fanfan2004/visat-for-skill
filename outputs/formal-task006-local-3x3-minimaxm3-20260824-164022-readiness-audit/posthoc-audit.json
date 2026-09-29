@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task006-local-3x3-minimaxm3-20260824-164022-readiness",
+  "task_id": "task-006",
+  "benchmark_task_id": "fix-build-agentops",
+  "formal_trials": [],
+  "formal_result_files": 0,
+  "unique_formal_sessions": 0,
+  "excluded_attempts": [
+    {
+      "run_id": "formal-task006-local-3x3-minimaxm3-20260824-164022-readiness",
+      "status": "quarantined_readiness",
+      "model_requests": 0,
+      "reason": "task-006 environment contains a BugSwarm cached-image Dockerfile, not the failed AgentOps source tree; the required failed repository directory /home/github/build/failed/AgentOps-AI/agentops is absent on this macOS host; the verifier requires the missing BugSwarm run_passed.sh/build environment and cannot be executed faithfully from the local materials"
+    }
+  ],
+  "model_identity": {
+    "database_identity_complete_for_formal_trials": true,
+    "formal_trials": 0
+  },
+  "usage_totals": {
+    "requests": 0,
+    "tool_uses": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cache_read_tokens": 0,
+    "recorded_cost_usd": 0.0
+  },
+  "pd_vista_audit": {
+    "trigger_opportunities": 0,
+    "disclosed_modules": [],
+    "accessed_modules_after_disclosure": [],
+    "clean_closures": 0
+  },
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "status": "formal_batch_not_started_missing_local_task_source",
+  "evidence": "zero-model readiness plus separately confirmed no matching OpenCode process; no model/session/database was created"
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task006-docker-local-3x3-minimaxm3-20260826-06",
+  "task_id": "task-006",
+  "benchmark_task_id": "fix-build-agentops",
+  "status": "blocked_before_formal_statistics",
+  "diagnostic_batch": true,
+  "formal_statistics_included": false,
+  "formal_included_trials": 0,
+  "planned_trials": 9,
+  "completed_formal_trials": 0,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "docker_used": true,
+  "docker_image": "task6-agentops-24579293289-20260826",
+  "docker_platform": "linux/amd64",
+  "skillbench_execution_route_used": false,
+  "oracle_used": false,
+  "readiness": "passed; task identity, task materials, original modules, PD-VISTA manifest, BugSwarm runner and complete public Verifier were present and collected successfully",
+  "blocking_reason": "OpenCode provider returned HTTP 429 / Token Plan usage limit (error 2056); this is a shared external quota condition, not a task or Verifier failure",
+  "excluded_diagnostic_batches": [
+    "formal-task006-local-3x3-minimaxm3-20260824-164022-readiness",
+    "formal-task006-local-3x3-minimaxm3-20260824-02-readiness",
+    "formal-task006-local-3x3-minimaxm3-20260824-03-readiness-final",
+    "formal-task006-docker-local-3x3-minimaxm3-20260826-01",
+    "formal-task006-docker-local-3x3-minimaxm3-20260826-02",
+    "formal-task006-docker-local-3x3-minimaxm3-20260826-03",
+    "formal-task006-docker-local-3x3-minimaxm3-20260826-04",
+    "formal-task006-docker-local-3x3-minimaxm3-20260826-05",
+    "formal-task006-docker-local-3x3-minimaxm3-20260826-06"
+  ],
+  "excluded_attempts": [
+    {
+      "condition": "noskill",
+      "replicate_id": 1,
+      "attempt": 1,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fc258b69effeeVNxG6zBFBg34M",
+      "requests": 0,
+      "reason": "Provider response explicitly stated Token Plan usage limit; excluded from formal statistics"
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 1,
+      "attempt": 2,
+      "status": "quarantined_rate_limit",
+      "stop_reason": "http_429_rate_limit",
+      "session_id": "ses_fc256bfdcffe2qKOZxKCDUQm6h",
+      "requests": 0,
+      "reason": "Provider response explicitly stated Token Plan usage limit; excluded from formal statistics"
+    }
+  ]
+}

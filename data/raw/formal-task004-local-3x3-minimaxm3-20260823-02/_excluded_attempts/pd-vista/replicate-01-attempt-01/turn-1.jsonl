@@ -1,0 +1,1 @@
+{"type":"error","timestamp":1787489464976,"sessionID":"ses_fd15455c6ffe71u0A0clqoooIU","error":{"name":"APIError","data":{"message":"Cannot connect to API: Was there a typo in the url or port?","isRetryable":true,"metadata":{"url":"https://api.minimaxi.com/anthropic/v1/messages"}}}}

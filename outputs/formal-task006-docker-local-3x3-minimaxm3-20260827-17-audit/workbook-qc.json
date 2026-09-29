@@ -1,0 +1,51 @@
+{
+  "run_id": "formal-task006-docker-local-3x3-minimaxm3-20260827-17",
+  "workbook": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/outputs/formal-task006-docker-local-3x3-minimaxm3-20260827-17-audit/task6_final_audit_zh.xlsx",
+  "sheets": [
+    "实验总览",
+    "9组明细",
+    "Token与成本",
+    "方法与流程",
+    "三种条件及失败反馈",
+    "PD-VISTA披露证据",
+    "排除与诊断",
+    "字段映射"
+  ],
+  "formula_error_scan_ndjson": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+  "formula_error_count": 0,
+  "rendered_sheets": [
+    {
+      "sheet": "实验总览",
+      "preview": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/outputs/formal-task006-docker-local-3x3-minimaxm3-20260827-17-audit/preview-01.png"
+    },
+    {
+      "sheet": "9组明细",
+      "preview": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/outputs/formal-task006-docker-local-3x3-minimaxm3-20260827-17-audit/preview-02.png"
+    },
+    {
+      "sheet": "Token与成本",
+      "preview": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/outputs/formal-task006-docker-local-3x3-minimaxm3-20260827-17-audit/preview-03.png"
+    },
+    {
+      "sheet": "方法与流程",
+      "preview": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/outputs/formal-task006-docker-local-3x3-minimaxm3-20260827-17-audit/preview-04.png"
+    },
+    {
+      "sheet": "三种条件及失败反馈",
+      "preview": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/outputs/formal-task006-docker-local-3x3-minimaxm3-20260827-17-audit/preview-05.png"
+    },
+    {
+      "sheet": "PD-VISTA披露证据",
+      "preview": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/outputs/formal-task006-docker-local-3x3-minimaxm3-20260827-17-audit/preview-06.png"
+    },
+    {
+      "sheet": "排除与诊断",
+      "preview": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/outputs/formal-task006-docker-local-3x3-minimaxm3-20260827-17-audit/preview-07.png"
+    },
+    {
+      "sheet": "字段映射",
+      "preview": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/outputs/formal-task006-docker-local-3x3-minimaxm3-20260827-17-audit/preview-08.png"
+    }
+  ],
+  "overview_inspection_ndjson": "{\"kind\":\"table\",\"sheet\":\"实验总览\",\"address\":\"A1:H33\",\"rows\":33,\"cols\":8,\"values\":[[\"Vista task6 · 3条件 × 3重复正式审计\",\"Vista task6 · 3条件 × 3重复正式审计\",\"Vista task6 · 3条件 × 3重复正式审计\",\"Vista task6 · 3条件 × 3重复正式审计\",\"Vista task6 · 3条件 × 3重复正式审计\",\"Vista task6 · 3条件 × 3重复正式审计\",\"Vista task6 · 3条件 × 3重复正式审计\",\"Vista task6 · 3条件 × 3重复正式审计\"],[null,null,null,null,null,null,null,null],[\"正式批次\",\"formal-task006-docker-local-3x3-minimaxm3-20260827-17\",null,null,null,null,null,null],[\"审计状态\",\"已完成\",null,null,null,null,null,null],[\"正式组数\",9,null,null,null,null,null,null],[\"最终 Verifier 通过数\",8,null,null,null,null,null,null],[\"唯一 OpenCode session 数\",9,null,null,null,null,null,null],[\"Provider / Model 一致组数\",9,null,null,null,null,null,null],[\"Docker 使用组数\",9,null,null,null,null,null,null],[\"SkillBench 执行路线组数\",9,null,null,null,null,null,null],[\"排除的 429 尝试数\",7,null,null,null,null,null,null],[\"总体结论\",\"9组完成；8组通过，No-Skill R02 未通过\",null,null,null,null,null,null],[null,null,null,null,null,null,null,null],[\"三种条件汇总（公式驱动）\",\"三种条件汇总（公式驱动）\",\"三种条件汇总（公式驱动）\",\"三种条件汇总（公式驱动）\",\"三种条件汇总（公式驱动）\",\"三种条件汇总（公式驱动）\",\"三种条件汇总（公式驱动）\",\"三种条件汇总（公式驱动）\"],[\"条件\",\"组数\",\"通过数\",\"通过率\",\"请求数\",\"输入+输出Token\",\"Cache-read Token\",\"记录费用(USD)\"],[\"No-Skill\",3,2,0.6666666666666666,422,766597,26995679,2.0192681399999994],[\"Native\",3,3,1,535,580608,40508709,2.7497012400000003],[\"PD-VISTA\",3,3,1,494,623117,36588220,2.5359365999999994],[\"合计\",9,8,0.8888888888888888,1451,1970322,104092608,7.304905979999999],[null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null],[\"完整性与可审计性检查\",\"完整性与可审计性检查\",\"完整性与可审计性检查\",\"完整性与可审计性检查\",\"完整性与可审计性检查\",\"完整性与可审计性检查\",\"完整性与可审计性检查\",\"完整性与可审计性检查\"],[\"检查项\",\"结果\",null,null,null,null,null,null],[\"9 个结果文件齐全\",\"通过\",null,null,null,null,null,null],[\"9 个 session 且各组唯一\",\"通过\",null,null,null,null,null,null],[\"所有结果实际模型一致\",\"通过\",null,null,null,null,null,null],[\"Docker 路线已获授权并实际使用\",\"通过\",null,null,null,null,null,null],[\"SkillBench 平台执行路线未使用\",\"通过\",null,null,null,null,null,null],[\"No-Skill R02 的失败被保留而非排除\",\"通过\",null,null,null,null,null,null],[\"公开诊断按统一清洗规则记录\",\"通过\",null,null,null,null,null,null],[null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null],[\"来源：outputs/formal-task006-docker-local-3x3-minimaxm3-20260827-17-audit/posthoc-audit.json；8 组 DB 审计来自上一批次完成后的只读审计缓存，PD-VISTA R03 为本批次 fresh read-only sqlite query。\",null,null,null,null,null,null,null]]}"
+}

@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task006-docker-local-3x3-minimaxm3-20260827-16-00-readiness",
+  "task_id": "task-006",
+  "benchmark_task_id": "fix-build-agentops",
+  "status": "ready_for_formal",
+  "model_requests": 0,
+  "docker_used": true,
+  "skillbench_execution_route_used": false,
+  "readiness": {
+    "task_identity_file": true,
+    "task_instruction": true,
+    "original_verifier": true,
+    "original_verifier_script": true,
+    "original_runner": true,
+    "native_modules": {
+      "analyze-ci": true,
+      "temporal-python-testing": true,
+      "testing-python": true,
+      "uv-package-manager": true
+    },
+    "vista_root": true,
+    "vista_manifest": true,
+    "vista_source": true,
+    "docker_used": true,
+    "skillbench_execution_route_used": false,
+    "oracle_used": false,
+    "public_diagnostic_cleaning": true,
+    "task_source": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/vendor/skillsbench/tasks/fix-build-agentops",
+    "verifier_entry": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/vendor/skillsbench/tasks/fix-build-agentops/verifier/test_outputs.py",
+    "docker_image": "task6-agentops-24579293289-20260826",
+    "docker_base_image": "bugswarm/cached-images:AgentOps-AI-agentops-24579293289",
+    "docker_platform": "linux/amd64",
+    "asset_checksums": {
+      "tasks/pilot/task-006/task.yaml": {
+        "bytes": 379,
+        "sha256": "1a0a3b12f0c29d787338123829256918604dd0ce5feb69e3d7526f6e7298bc3f"
+      },
+      "vendor/skillsbench/tasks/fix-build-agentops/task.md": {
+        "bytes": 1851,
+        "sha256": "f1826ae6d9b1a0bdd3740368027b110d1307accb03c4fc0913e9b12f075a5308"
+      },
+      "vendor/skillsbench/tasks/fix-build-agentops/verifier/test_outputs.py": {
+        "bytes": 4073,
+        "sha256": "176f3fb3e55bb85a2ae886df604ea2788ada0a9dd69c0a458ed6c4a490275170"
+      },
+      "vendor/skillsbench/tasks/fix-build-agentops/verifier/test.sh": {
+        "bytes": 1355,
+        "sha256": "2314a4addf7d5bebfe1db7681704dd62dabb8b9e617155e50bdf2536d72bbb29"
+      },
+      "vendor/skillsbench/tasks/fix-build-agentops/verifier/run_passed.sh": {
+        "bytes": 26429,
+        "sha256": "2c38caede709c2b03a17a412f242656fd63c563a3c6e5ae52bf129a69a592783"
+      }
+    },
+    "task_identity_id": "task-006",
+    "task_identity_resolved": true,
+    "native_module_checksums": {
+      "analyze-ci": {
+        "bytes": 958,
+        "sha256": "f59a07dcffe019f17cfa6ec211cbfb070e6292257be7119ed55ffa0b9bce7197"
+      },
+      "temporal-python-testing": {
+        "bytes": 4937,
+        "sha256": "21e5d2382d474553eadb2771c764f4aa2b55a12bd75bc40894e68630c02db7bb"
+      },
+      "testing-python": {
+        "bytes": 5362,
+        "sha256": "2741f4b02a7021658993213ce85095871e30ebfc1eba2bbef9d56f0bb71dea32"
+      },
+      "uv-package-manager": {
+        "bytes": 16048,
+        "sha256": "85c71e75e63966eb06a72dc0a7ed2046c45c38bb5574d748603917c4a3801878"
+      }
+    },
+    "image": {
+      "image": "task6-agentops-24579293289-20260826",
+      "base_image": "bugswarm/cached-images:AgentOps-AI-agentops-24579293289",
+      "available": true,
+      "build_output_tail": "#0 building with \"desktop-linux\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 3.62kB 0.0s done\n#1 DONE 0.1s\n\n#2 [internal] load metadata for docker.io/bugswarm/cached-images:AgentOps-AI-agentops-24579293289\n#2 DONE 0.1s\n\n#3 [internal] load .dockerignore\n#3 transferring context: 2B done\n#3 DONE 0.0s\n\n#4 [1/8] FROM docker.io/bugswarm/cached-images:AgentOps-AI-agentops-24579293289@sha256:133b73b57ecbdd44e2454c62e1ce1c3386aa2fc6dfb0a76da6bd19bcd4b67d2c\n#4 resolve docker.io/bugswarm/cached-images:AgentOps-AI-agentops-24579293289@sha256:133b73b57ecbdd44e2454c62e1ce1c3386aa2fc6dfb0a76da6bd19bcd4b67d2c 0.1s done\n#4 DONE 0.1s\n\n#5 [4/8] RUN chmod -R a+rwX /home/github/build/failed\n#5 CACHED\n\n#6 [5/8] RUN set -eux;     arch=\"$(dpkg --print-architecture)\";     case \"$arch\" in         amd64) node_arch=x64 ;;         arm64) node_arch=arm64 ;;         *) echo \"Unsupported arch: $arch\" >&2; exit 1 ;;     esac;     rm -rf /usr/local/lib/node_modules/npm            /usr/local/lib/node_modules/corepack            /usr/local/bin/node /usr/local/bin/npm /usr/local/bin/npx            /usr/local/bin/corepack;     curl -fsSLo /tmp/node.tar.xz \"https://nodejs.org/dist/v22.12.0/node-v22.12.0-linux-${node_arch}.tar.xz\";     tar -xJf /tmp/node.tar.xz -C /usr/local --strip-components=1 --no-same-owner;     rm /tmp/node.tar.xz;     node --version;     npm --version;     npm config get prefix\n#6 CACHED\n\n#7 [6/8] RUN if [ -d /etc/skel/.nvm ] && [ ! -d /root/.nvm ]; then         cp -r /etc/skel/.nvm /root/.nvm;     fi\n#7 CACHED\n\n#8 [7/8] RUN curl -LsSf https://astral.sh/uv/0.9.22/install.sh | sh &&     install -m 0755 /root/.local/bin/uv /usr/local/bin/uv &&     install -m 0755 /root/.local/bin/uvx /usr/local/bin/uvx\n#8 CACHED\n\n#9 [2/8] RUN rm -rf /home/github/build/passed /usr/local/bin/run_passed.sh\n#9 CACHED\n\n#10 [3/8] RUN chmod 755 /home/github\n#10 CACHED\n\n#11 [8/8] WORKDIR /home/github/build\n#11 CACHED\n\n#12 exporting to image\n#12 exporting layers 0.1s done\n#12 exporting manifest sha256:716d9a4d1d6485eff3b56f835f9c1c1900d066a7d364b62a01209b4323285b20 done\n#12 exporting config sha256:55855def747ba8aa41163ac94648c0a6ac5ad842838d2133851bda6f29522be8 0.0s done\n#12 exporting attestation manifest sha256:702de4c5cd59483209d9b3394825fce11350744a4a9dac41e042a350be783421 0.0s done\n#12 exporting manifest list sha256:521106e3dfd872de0503445fe2fad6cb1778fd44a5d77fb7ed4988203ba9c8e7\n#12 exporting manifest list sha256:521106e3dfd872de0503445fe2fad6cb1778fd44a5d77fb7ed4988203ba9c8e7 0.0s done\n#12 naming to docker.io/library/task6-agentops-24579293289-20260826:latest done\n#12 unpacking to docker.io/library/task6-agentops-24579293289-20260826:latest\n#12 unpacking to docker.io/library/task6-agentops-24579293289-20260826:latest 0.2s done\n#12 DONE 0.9s\n",
+      "id": "sha256:521106e3dfd872de0503445fe2fad6cb1778fd44a5d77fb7ed4988203ba9c8e7",
+      "os": "linux",
+      "architecture": "amd64",
+      "repo_digests": [
+        "task6-agentops-24579293289-20260826@sha256:521106e3dfd872de0503445fe2fad6cb1778fd44a5d77fb7ed4988203ba9c8e7"
+      ]
+    },
+    "container_probe": {
+      "container_name": "task6_readiness_probe_37739",
+      "created": true,
+      "started": true,
+      "uv": {
+        "ok": true,
+        "output": "/root/.local/bin/uv\nuv 0.9.22"
+      },
+      "node": {
+        "ok": true,
+        "output": "v22.12.0"
+      },
+      "repo": {
+        "ok": true,
+        "output": ""
+      },
+      "runner": {
+        "ok": true,
+        "output": ""
+      },
+      "home_github": {
+        "ok": true,
+        "output": ""
+      },
+      "verifier_dirs": true,
+      "copied_test.sh": true,
+      "copied_test_outputs.py": true,
+      "copied_run_passed.sh": true,
+      "verifier_collect": {
+        "ok": true,
+        "output": "::test_note_exists\n::test_diff_exists\n::test_build_success\n\n3 tests collected in 0.04s"
+      },
+      "ready": true
+    },
+    "opencode": {
+      "config_path": "/Users/wangjinhua/.config/opencode/opencode.json",
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "launcher": "/Users/wangjinhua/.local/lib/node_modules/opencode-ai/bin/opencode.exe",
+      "version": "1.18.18",
+      "binary_sha256": "c9be687513fd652ca53018901457eb0911cb505dc9cdc494a0ae3645970699ee"
+    },
+    "concurrency": {
+      "clear": true,
+      "checks": [
+        {
+          "available": true,
+          "active_matching_processes": [],
+          "clear": true,
+          "poll_index": 0
+        }
+      ]
+    },
+    "timeouts": {
+      "max_turns": 6,
+      "model_turn_timeout_seconds": 420,
+      "verifier_timeout_seconds": 900
+    },
+    "ready": true,
+    "readiness_scope": "Container asset and verifier collection preflight; full public verifier is executed after every formal OpenCode turn."
+  }
+}

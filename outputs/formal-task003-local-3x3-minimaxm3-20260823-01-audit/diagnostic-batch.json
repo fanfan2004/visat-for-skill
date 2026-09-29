@@ -1,0 +1,12 @@
+{
+  "run_id": "formal-task003-local-3x3-minimaxm3-20260823-01",
+  "batch_kind": "diagnostic_excluded",
+  "task_id": "task-003",
+  "completed_result_files": 0,
+  "model_requests_observed_before_stop": 193,
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "reason": "The local copied verifier retained the benchmark's fixed TCP port 8765. A subsequent verifier process received Address already in use, which was a controller/verifier harness problem rather than a task result. The batch was stopped before completion and excluded from all formal statistics.",
+  "repair": "Each copied verifier now binds an ephemeral local port and uses the bound port in its browser URL.",
+  "formal_statistics_inclusion": false
+}

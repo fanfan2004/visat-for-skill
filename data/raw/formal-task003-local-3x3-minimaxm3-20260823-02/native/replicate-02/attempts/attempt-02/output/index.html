@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stock Cluster Visualization</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Stock Cluster Visualization</h1>
+    <p class="subtitle">
+      Bubbles are sized by market capitalization and clustered by sector using
+      a deterministic D3.js force simulation. Click a bubble or a row to link
+      the chart with the table.
+    </p>
+  </header>
+
+  <main class="layout">
+    <section class="chart-panel" aria-label="Bubble chart panel">
+      <div id="legend" class="legend" aria-label="Sector legend"></div>
+      <div id="chart" class="chart"></div>
+      <div id="tooltip" class="tooltip" role="tooltip"></div>
+    </section>
+
+    <section class="table-panel" aria-label="Stocks data table panel">
+      <h2 class="panel-title">All Stocks</h2>
+      <div class="table-scroll">
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th data-key="ticker" class="sortable">Ticker symbol</th>
+              <th data-key="fullName" class="sortable">Full company name</th>
+              <th data-key="sector" class="sortable">Sector</th>
+              <th data-key="marketCap" class="sortable num">Market cap</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/d3.v6.min.js"></script>
+  <script src="js/visualization.js"></script>
+</body>
+</html>

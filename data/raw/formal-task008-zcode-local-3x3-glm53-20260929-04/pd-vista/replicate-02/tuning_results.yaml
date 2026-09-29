@@ -1,0 +1,11 @@
+# Tuned PID gains for the ACC simulation (produced by tune.py:
+# coarse grid search + joint coordinate descent scored on rise time,
+# overshoot, steady-state errors, minimum gap, mode coverage and jerk).
+pid_speed:
+  kp: 9.0
+  ki: 0.1
+  kd: 0.0
+pid_distance:
+  kp: 1.5
+  ki: 0.125
+  kd: 0.3

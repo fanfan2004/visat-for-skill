@@ -1,0 +1,12 @@
+vendor/skillsbench/tasks/travel-planning/verifier/test_outputs.py::test_plan_file_exists
+vendor/skillsbench/tasks/travel-planning/verifier/test_outputs.py::test_plan_structure_and_length
+vendor/skillsbench/tasks/travel-planning/verifier/test_outputs.py::test_plan_required_fields_and_days
+vendor/skillsbench/tasks/travel-planning/verifier/test_outputs.py::test_no_flights_in_transportation
+vendor/skillsbench/tasks/travel-planning/verifier/test_outputs.py::test_starts_in_minneapolis
+vendor/skillsbench/tasks/travel-planning/verifier/test_outputs.py::test_visits_at_least_three_cities
+vendor/skillsbench/tasks/travel-planning/verifier/test_outputs.py::test_visits_ohio_cities
+vendor/skillsbench/tasks/travel-planning/verifier/test_outputs.py::test_pet_friendly_accommodation_hint
+vendor/skillsbench/tasks/travel-planning/verifier/test_outputs.py::test_meals_include_requested_cuisines
+vendor/skillsbench/tasks/travel-planning/verifier/test_outputs.py::test_attractions_non_empty
+
+10 tests collected in 0.02s

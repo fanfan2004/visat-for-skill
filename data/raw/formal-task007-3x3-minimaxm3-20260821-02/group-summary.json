@@ -1,0 +1,360 @@
+{
+  "schema_version": 1,
+  "protocol": "task007-opencode-current-minimaxm3-noskill-native-pdvista-3x3",
+  "task_id": "task-007-travel-planning",
+  "conditions": [
+    "noskill",
+    "native",
+    "pd-vista"
+  ],
+  "replicates_per_condition": 3,
+  "planned_trials": 9,
+  "completed_trials": 9,
+  "schedule": [
+    {
+      "replicate_id": 1,
+      "condition": "noskill"
+    },
+    {
+      "replicate_id": 1,
+      "condition": "native"
+    },
+    {
+      "replicate_id": 1,
+      "condition": "pd-vista"
+    },
+    {
+      "replicate_id": 2,
+      "condition": "native"
+    },
+    {
+      "replicate_id": 2,
+      "condition": "pd-vista"
+    },
+    {
+      "replicate_id": 2,
+      "condition": "noskill"
+    },
+    {
+      "replicate_id": 3,
+      "condition": "pd-vista"
+    },
+    {
+      "replicate_id": 3,
+      "condition": "noskill"
+    },
+    {
+      "replicate_id": 3,
+      "condition": "native"
+    }
+  ],
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "condition_summaries": {
+    "noskill": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "quarantined_trials": 0,
+      "usage": {
+        "requests": 125,
+        "tool_uses": 121,
+        "input_tokens": 147407,
+        "output_tokens": 57672,
+        "cache_read_tokens": 3329967
+      }
+    },
+    "native": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "quarantined_trials": 0,
+      "usage": {
+        "requests": 162,
+        "tool_uses": 158,
+        "input_tokens": 316713,
+        "output_tokens": 87199,
+        "cache_read_tokens": 5109495
+      }
+    },
+    "pd-vista": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "quarantined_trials": 0,
+      "usage": {
+        "requests": 132,
+        "tool_uses": 128,
+        "input_tokens": 138153,
+        "output_tokens": 66612,
+        "cache_read_tokens": 3520944
+      }
+    }
+  },
+  "opencode": {
+    "config_path": "/Users/wangjinhua/.config/opencode/opencode.json",
+    "launcher": "/Users/wangjinhua/.local/lib/node_modules/opencode-ai/bin/opencode.exe",
+    "version": "1.18.18",
+    "binary_sha256": "c9be687513fd652ca53018901457eb0911cb505dc9cdc494a0ae3645970699ee"
+  },
+  "results": [
+    {
+      "condition": "noskill",
+      "replicate_id": 1,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fdcc1da08ffe5mhB7M10OsZjVo",
+      "actual_model_ids": [],
+      "usage": {
+        "requests": 41,
+        "tool_uses": 40,
+        "input_tokens": 50439,
+        "output_tokens": 19978,
+        "cache_read_tokens": 1168683
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "distractor_flight_disclosed": false,
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 1,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fdcbe018effeoT0CBV7JwP1YuN",
+      "actual_model_ids": [],
+      "usage": {
+        "requests": 69,
+        "tool_uses": 68,
+        "input_tokens": 85464,
+        "output_tokens": 39127,
+        "cache_read_tokens": 2620607
+      },
+      "initially_available_modules": [
+        "search-cities",
+        "search-accommodations",
+        "search-restaurants",
+        "search-attractions",
+        "search-driving-distance",
+        "search-flights"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "distractor_flight_disclosed": false,
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 1,
+      "status": "passed_without_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "ses_fdcb0da6fffe2hMcwKfbulTu1S",
+      "actual_model_ids": [],
+      "usage": {
+        "requests": 23,
+        "tool_uses": 22,
+        "input_tokens": 38268,
+        "output_tokens": 18601,
+        "cache_read_tokens": 380540
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "distractor_flight_disclosed": false,
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fdcac20b8ffewizYoK0imtdOg8",
+      "actual_model_ids": [],
+      "usage": {
+        "requests": 44,
+        "tool_uses": 42,
+        "input_tokens": 43012,
+        "output_tokens": 16652,
+        "cache_read_tokens": 988344
+      },
+      "initially_available_modules": [
+        "search-cities",
+        "search-accommodations",
+        "search-restaurants",
+        "search-attractions",
+        "search-driving-distance",
+        "search-flights"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "distractor_flight_disclosed": false,
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 2,
+      "status": "passed_without_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "ses_fdca6287fffemjs83TbeC2wnbV",
+      "actual_model_ids": [],
+      "usage": {
+        "requests": 24,
+        "tool_uses": 23,
+        "input_tokens": 35246,
+        "output_tokens": 14805,
+        "cache_read_tokens": 436604
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "distractor_flight_disclosed": false,
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fdca0a6d3ffexBIOxOw5aUEols",
+      "actual_model_ids": [],
+      "usage": {
+        "requests": 45,
+        "tool_uses": 43,
+        "input_tokens": 62758,
+        "output_tokens": 25602,
+        "cache_read_tokens": 1499213
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "distractor_flight_disclosed": false,
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "ses_fdc99875bffeKKMbqtjnCRTm81",
+      "actual_model_ids": [],
+      "usage": {
+        "requests": 85,
+        "tool_uses": 83,
+        "input_tokens": 64639,
+        "output_tokens": 33206,
+        "cache_read_tokens": 2703800
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [
+        "search-attractions"
+      ],
+      "accessed_modules_after_disclosure": [
+        "search-attractions"
+      ],
+      "distractor_flight_disclosed": false,
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fdc8e7b4bffeb9pM3KhSf31BeQ",
+      "actual_model_ids": [],
+      "usage": {
+        "requests": 39,
+        "tool_uses": 38,
+        "input_tokens": 34210,
+        "output_tokens": 12092,
+        "cache_read_tokens": 662071
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "distractor_flight_disclosed": false,
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fdc8c373effep4e9fi15AXM1Wf",
+      "actual_model_ids": [],
+      "usage": {
+        "requests": 49,
+        "tool_uses": 48,
+        "input_tokens": 188237,
+        "output_tokens": 31420,
+        "cache_read_tokens": 1500544
+      },
+      "initially_available_modules": [
+        "search-cities",
+        "search-accommodations",
+        "search-restaurants",
+        "search-attractions",
+        "search-driving-distance",
+        "search-flights"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "distractor_flight_disclosed": false,
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    }
+  ]
+}

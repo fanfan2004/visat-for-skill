@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "protocol": "task002-local-opencode-minimaxm3-public-diagnostics-resumable-timeout-noskill-native-pdvista-3x3",
+  "task_id": "task-002",
+  "conditions": [
+    "noskill",
+    "native",
+    "pd-vista"
+  ],
+  "replicates_per_condition": 3,
+  "planned_trials": 3,
+  "completed_trials": 3,
+  "schedule": [
+    {
+      "replicate_id": 3,
+      "condition": "pd-vista"
+    },
+    {
+      "replicate_id": 3,
+      "condition": "noskill"
+    },
+    {
+      "replicate_id": 3,
+      "condition": "native"
+    }
+  ],
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "opencode": {
+    "config_path": "/Users/wangjinhua/.config/opencode/opencode.json",
+    "launcher": "/Users/wangjinhua/.local/lib/node_modules/opencode-ai/bin/opencode.exe",
+    "version": "1.18.18",
+    "binary_sha256": "c9be687513fd652ca53018901457eb0911cb505dc9cdc494a0ae3645970699ee"
+  },
+  "condition_summaries": {
+    "noskill": {
+      "planned_trials": 1,
+      "completed_trials": 1,
+      "verifier_passes": 1,
+      "usage": {
+        "requests": 50,
+        "tool_uses": 51,
+        "input_tokens": 98274,
+        "output_tokens": 34670,
+        "cache_read_tokens": 2273341
+      }
+    },
+    "native": {
+      "planned_trials": 1,
+      "completed_trials": 1,
+      "verifier_passes": 1,
+      "usage": {
+        "requests": 71,
+        "tool_uses": 69,
+        "input_tokens": 109418,
+        "output_tokens": 29011,
+        "cache_read_tokens": 3028736
+      }
+    },
+    "pd-vista": {
+      "planned_trials": 1,
+      "completed_trials": 1,
+      "verifier_passes": 0,
+      "usage": {
+        "requests": 164,
+        "tool_uses": 158,
+        "input_tokens": 244131,
+        "output_tokens": 116634,
+        "cache_read_tokens": 19673457
+      }
+    }
+  },
+  "results": [
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "ses_fd470e1fffferRyevlxS8scwz1",
+      "actual_model_ids": [
+        "MiniMax-M3"
+      ],
+      "actual_provider_ids": [
+        "minimax-cn"
+      ],
+      "usage": {
+        "requests": 164,
+        "tool_uses": 158,
+        "input_tokens": 244131,
+        "output_tokens": 116634,
+        "cache_read_tokens": 19673457
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [
+        "enterprise-artifact-search"
+      ],
+      "accessed_modules_after_disclosure": [
+        "enterprise-artifact-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 6,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd45d0f56ffeexyHfGKnE6b3Uf",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 50,
+        "tool_uses": 51,
+        "input_tokens": 98274,
+        "output_tokens": 34670,
+        "cache_read_tokens": 2273341
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "ses_fd457fe83ffezs7DbgjjL7j0KG",
+      "actual_model_ids": [],
+      "actual_provider_ids": [],
+      "usage": {
+        "requests": 71,
+        "tool_uses": 69,
+        "input_tokens": 109418,
+        "output_tokens": 29011,
+        "cache_read_tokens": 3028736
+      },
+      "initially_available_modules": [
+        "enterprise-artifact-search"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    }
+  ],
+  "diagnostic_batches": [
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-01",
+      "completed_result_files": 0,
+      "reason": "controller import-path diagnostic failed before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-02",
+      "completed_result_files": 0,
+      "reason": "controller workspace location was denied by the local sandbox before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-03",
+      "completed_result_files": 0,
+      "reason": "controller security gate rejected an in-repository workspace before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-04",
+      "completed_result_files": 9,
+      "reason": "network-isolated infrastructure diagnostic: all nine trials ended in retryable API connection errors with zero requests, tokens, tool uses, and task outputs; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-05",
+      "completed_result_files": 0,
+      "reason": "foreground-controller diagnostic: execution host ended the controller parent while an OpenCode child was still completing; incomplete controller evidence excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-06",
+      "completed_result_files": 0,
+      "reason": "background-controller diagnostic: background process did not persist in the execution host and made no model request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-07",
+      "completed_result_files": 0,
+      "reason": "foreground-controller retry diagnostic: execution host ended the controller before the first model turn could be reconciled; incomplete controller evidence excluded before formal comparison"
+    }
+  ],
+  "docker_used": false,
+  "skillbench_execution_route_used": false
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stock Cluster Visualization</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Cluster Visualization</h1>
+        <div class="subtitle">50 stocks (40 individual + 10 ETFs) clustered by sector, sized by market capitalization. Click a bubble or a row to highlight the matching item.</div>
+
+        <div class="charts-row">
+            <div class="bubble-panel">
+                <div class="panel-title">Sector bubble chart</div>
+                <div id="bubble-chart"></div>
+                <div id="legend" class="legend"></div>
+            </div>
+            <div class="table-panel">
+                <div class="panel-title">All stocks</div>
+                <div class="table-wrapper">
+                    <table class="stocks-table" id="stocks-table">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tooltip" class="tooltip"></div>
+
+    <script src="js/d3.v6.min.js"></script>
+    <script src="js/visualization.js"></script>
+</body>
+</html>

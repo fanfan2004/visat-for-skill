@@ -1,0 +1,81 @@
+{
+  "plan": [
+    {
+      "day": 1,
+      "current_city": "Minneapolis",
+      "transportation": "Self-driving: from Minneapolis to Cleveland",
+      "breakfast": "-",
+      "lunch": "American at Keventers, Cleveland",
+      "dinner": "Italian at Big Chicken, Cleveland",
+      "attraction": "Rock & Roll Hall of Fame;West Side Market;Cleveland Museum of Art;",
+      "accommodation": "Pet-friendly Richmond Hill 3 Bedroom apartment in Private home!, Cleveland"
+    },
+    {
+      "day": 2,
+      "current_city": "Cleveland",
+      "transportation": "-",
+      "breakfast": "Mediterranean at Bruncheez, Cleveland",
+      "lunch": "Chinese at Makhan Fish and Chicken Corner, Cleveland",
+      "dinner": "Italian at Master Bakers, Cleveland",
+      "attraction": "Cleveland Metroparks Zoo;Cleveland Botanical Garden;Greater Cleveland Aquarium;",
+      "accommodation": "Pet-friendly Richmond Hill 3 Bedroom apartment in Private home!, Cleveland"
+    },
+    {
+      "day": 3,
+      "current_city": "Cleveland",
+      "transportation": "Self-driving: from Cleveland to Columbus",
+      "breakfast": "Mediterranean at LSK Express, Cleveland",
+      "lunch": "Italian at KC Bakers, Columbus",
+      "dinner": "Chinese at Love Is Cakes, Columbus",
+      "attraction": "Center of Science and Industry (COSI);Columbus Museum of Art;",
+      "accommodation": "Pet-friendly Exquisite Private room Central Park Subway A,B,C, Columbus"
+    },
+    {
+      "day": 4,
+      "current_city": "Columbus",
+      "transportation": "-",
+      "breakfast": "American at Gopala, Columbus",
+      "lunch": "Mediterranean at The Irish House, Columbus",
+      "dinner": "Italian at Sanjha Chulha, Columbus",
+      "attraction": "Franklin Park Conservatory and Botanical Gardens;Columbus Zoo and Aquarium;Topiary Park;",
+      "accommodation": "Pet-friendly Exquisite Private room Central Park Subway A,B,C, Columbus"
+    },
+    {
+      "day": 5,
+      "current_city": "Columbus",
+      "transportation": "Self-driving: from Columbus to Cincinnati",
+      "breakfast": "American at Prem Ji Delhi Wale, Columbus",
+      "lunch": "American at Go Foodie, Cincinnati",
+      "dinner": "Mediterranean at Ocean Grill, Cincinnati",
+      "attraction": "Cincinnati Zoo & Botanical Garden;Eden Park;Cincinnati Art Museum;",
+      "accommodation": "Pet-friendly 2 BEDROOMS, 1 BATH, FULL FRONTAL OCEANVIEW, Cincinnati"
+    },
+    {
+      "day": 6,
+      "current_city": "Cincinnati",
+      "transportation": "-",
+      "breakfast": "American at Chowringhee, Cincinnati",
+      "lunch": "Chinese at Invitation Restaurant, Cincinnati",
+      "dinner": "Italian at Bubba Jax Crab Shack, Cincinnati",
+      "attraction": "Cincinnati Museum Center;Krohn Conservatory;Newport Aquarium;",
+      "accommodation": "Pet-friendly 2 BEDROOMS, 1 BATH, FULL FRONTAL OCEANVIEW, Cincinnati"
+    },
+    {
+      "day": 7,
+      "current_city": "Cincinnati",
+      "transportation": "Self-driving: from Cincinnati to Minneapolis",
+      "breakfast": "American at Pizza Hut Delivery, Cincinnati",
+      "lunch": "-",
+      "dinner": "-",
+      "attraction": "Taft Museum of Art;American Sign Museum;",
+      "accommodation": "-"
+    }
+  ],
+  "tool_called": [
+    "search_cities",
+    "search_accommodations",
+    "search_attractions",
+    "search_restaurants",
+    "search_driving_distance"
+  ]
+}

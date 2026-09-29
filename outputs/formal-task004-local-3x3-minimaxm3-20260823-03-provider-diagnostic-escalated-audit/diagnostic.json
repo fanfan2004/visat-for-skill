@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-provider-diagnostic-escalated",
+  "batch_type": "provider_availability_diagnostic",
+  "excluded_from_formal_statistics": true,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "config_path": "/Users/wangjinhua/.config/opencode/opencode.json",
+  "api_key_environment_variable": null,
+  "launcher": {
+    "path": "/Users/wangjinhua/.local/lib/node_modules/opencode-ai/bin/opencode.exe",
+    "version": "1.18.18",
+    "binary_sha256": "c9be687513fd652ca53018901457eb0911cb505dc9cdc494a0ae3645970699ee"
+  },
+  "return_code": 0,
+  "timed_out": false,
+  "event_summary": {
+    "event_types": {
+      "step_start": 2,
+      "tool_use": 1,
+      "step_finish": 2,
+      "text": 1
+    },
+    "session_ids": [
+      "ses_fd1481b9bffeYnpNwZMdhj3d4T"
+    ],
+    "actual_model_ids": [],
+    "provider_ids": [],
+    "requests": 2,
+    "tool_uses": 1,
+    "input_tokens": 5598,
+    "output_tokens": 185,
+    "cache_read_tokens": 9344,
+    "accessed_modules": [],
+    "errors": [],
+    "tool_errors": []
+  },
+  "stdout_tail": "{\"type\":\"step_start\",\"timestamp\":1787490202615,\"sessionID\":\"ses_fd1481b9bffeYnpNwZMdhj3d4T\",\"part\":{\"id\":\"prt_02eb7f3c9001kIXnJPAWHz4THC\",\"messageID\":\"msg_02eb7e9fc001TTu21EHb3m25Vl\",\"sessionID\":\"ses_fd1481b9bffeYnpNwZMdhj3d4T\",\"type\":\"step-start\"}}\n{\"type\":\"tool_use\",\"timestamp\":1787490204196,\"sessionID\":\"ses_fd1481b9bffeYnpNwZMdhj3d4T\",\"part\":{\"type\":\"tool\",\"tool\":\"bash\",\"callID\":\"call_a3372e9034376a36\",\"state\":{\"status\":\"completed\",\"input\":{\"command\":\"ls -la\"},\"output\":\"total 0\\ndrwxr-xr-x  2 wangjinhua  wheel   64 Aug 23 21:03 .\\ndrwxr-xr-x  4 wangjinhua  wheel  128 Aug 23 21:03 ..\\n\",\"metadata\":{\"output\":\"total 0\\ndrwxr-xr-x  2 wangjinhua  wheel   64 Aug 23 21:03 .\\ndrwxr-xr-x  4 wangjinhua  wheel  128 Aug 23 21:03 ..\\n\",\"exit\":0,\"truncated\":false},\"title\":\"ls -la\",\"time\":{\"start\":1787490203963,\"end\":1787490203999}},\"id\":\"prt_02eb7f7d0001JpTm4lgMIVb1OQ\",\"sessionID\":\"ses_fd1481b9bffeYnpNwZMdhj3d4T\",\"messageID\":\"msg_02eb7e9fc001TTu21EHb3m25Vl\"}}\n{\"type\":\"step_finish\",\"timestamp\":1787490204196,\"sessionID\":\"ses_fd1481b9bffeYnpNwZMdhj3d4T\",\"part\":{\"id\":\"prt_02eb7f981001YYlOLe9oBaWSQj\",\"reason\":\"tool-calls\",\"messageID\":\"msg_02eb7e9fc001TTu21EHb3m25Vl\",\"sessionID\":\"ses_fd1481b9bffeYnpNwZMdhj3d4T\",\"type\":\"step-finish\",\"tokens\":{\"total\":7497,\"input\":5456,\"output\":121,\"reasoning\":0,\"cache\":{\"write\":0,\"read\":1920}},\"cost\":0.0018972}}\n{\"type\":\"step_start\",\"timestamp\":1787490205397,\"sessionID\":\"ses_fd1481b9bffeYnpNwZMdhj3d4T\",\"part\":{\"id\":\"prt_02eb7fec10015g4fM1NLSx9VNp\",\"messageID\":\"msg_02eb7f9b10017nlY0eXh3wE3NA\",\"sessionID\":\"ses_fd1481b9bffeYnpNwZMdhj3d4T\",\"type\":\"step-start\"}}\n{\"type\":\"text\",\"timestamp\":1787490205700,\"sessionID\":\"ses_fd1481b9bffeYnpNwZMdhj3d4T\",\"part\":{\"id\":\"prt_02eb7ff7b00176szwgDiLOv6oY\",\"messageID\":\"msg_02eb7f9b10017nlY0eXh3wE3NA\",\"sessionID\":\"ses_fd1481b9bffeYnpNwZMdhj3d4T\",\"type\":\"text\",\"text\":\"READY\",\"time\":{\"start\":1787490205563,\"end\":1787490205666}}}\n{\"type\":\"step_finish\",\"timestamp\":1787490205700,\"sessionID\":\"ses_fd1481b9bffeYnpNwZMdhj3d4T\",\"part\":{\"id\":\"prt_02eb7ffec001eRTp0F7TpJNnxs\",\"reason\":\"stop\",\"messageID\":\"msg_02eb7f9b10017nlY0eXh3wE3NA\",\"sessionID\":\"ses_fd1481b9bffeYnpNwZMdhj3d4T\",\"type\":\"step-finish\",\"tokens\":{\"total\":7630,\"input\":142,\"output\":64,\"reasoning\":0,\"cache\":{\"write\":0,\"read\":7424}},\"cost\":0.00056484}}\n",
+  "stderr_tail": "",
+  "opencode_db": {
+    "db_path": "/private/tmp/vista-formal-task004-local-3x3-minimaxm3-20260823-03-provider-diagnostic-escalated/opencode-state/data/opencode/opencode.db",
+    "exists": true,
+    "read_only": true,
+    "provider_ids": [
+      "minimax-cn"
+    ],
+    "model_ids": [
+      "MiniMax-M3"
+    ],
+    "recorded_cost": 0.00246204,
+    "assistant_messages": 2,
+    "session_rows": 1,
+    "message_rows": 3
+  },
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "status": "provider_reachable"
+}

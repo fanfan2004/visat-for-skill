@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task006-docker-local-3x3-minimaxm3-20260826-06",
+  "task_id": "task-006",
+  "benchmark_task_id": "fix-build-agentops",
+  "diagnostic_batch": true,
+  "excluded_from_formal_statistics": true,
+  "formal_trial_count": 0,
+  "formal_result_files": 0,
+  "unique_formal_sessions": 0,
+  "formal_sessions_with_expected_provider_model": false,
+  "docker_used": true,
+  "docker_image": "task6-agentops-24579293289-20260826",
+  "skillbench_execution_route_used": false,
+  "oracle_used": false,
+  "readiness_evidence": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task006-docker-local-3x3-minimaxm3-20260826-06-00-readiness/readiness.json",
+  "excluded_attempt_evidence": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task006-docker-local-3x3-minimaxm3-20260826-06/excluded-attempts",
+  "blocking_reason": "OpenCode provider HTTP 429 / Token Plan usage limit (error 2056); no model/provider identity or task result was counted",
+  "note": "This is a blocked diagnostic audit only. No formal group-summary or final workbook is claimed because the required 9 independent formal groups were not executed."
+}

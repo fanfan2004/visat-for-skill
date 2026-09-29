@@ -1,0 +1,6 @@
+source_task: vendor/skillsbench/tasks/organize-messy-files
+source_skills: vendor/skillsbench/tasks/organize-messy-files/environment/skills
+materialization: copy-complete-module-directory-at-disclosure
+adaptations:
+  - The root file is a routing wrapper; native planning and format modules remain byte-for-byte copies.
+  - A module becomes agent-visible only after public feedback selects it.

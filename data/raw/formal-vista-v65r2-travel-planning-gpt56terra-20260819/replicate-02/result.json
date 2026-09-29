@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-vista-v65r2-travel-planning-gpt56terra-20260819-replicate-02",
+  "task_id": "task-007-travel-planning",
+  "replicate_id": 2,
+  "condition": "pd-vista",
+  "backend": "opencode-local-windows-responses",
+  "docker_used": false,
+  "requested_provider_model": "openai/gpt-5.6-terra",
+  "expected_actual_model": "gpt-5.6-terra",
+  "actual_model_ids": [],
+  "session_id": "ses_fe67ea1a4ffemdK0nRe3kp7xNh",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "transport_attempts": [
+        {
+          "attempt": 1,
+          "return_code": 0,
+          "retryable_transport_error": false
+        }
+      ],
+      "event_summary": {
+        "event_types": {
+          "step_start": 1,
+          "step_finish": 1
+        },
+        "session_ids": [
+          "ses_fe67ea1a4ffemdK0nRe3kp7xNh"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 1,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "plan_exists": false,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "transport_attempts": [
+        {
+          "attempt": 1,
+          "return_code": 0,
+          "retryable_transport_error": false
+        }
+      ],
+      "event_summary": {
+        "event_types": {
+          "step_start": 6,
+          "text": 3,
+          "tool_use": 5,
+          "step_finish": 6
+        },
+        "session_ids": [
+          "ses_fe67ea1a4ffemdK0nRe3kp7xNh"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 6,
+        "tool_uses": 5,
+        "input_tokens": 3271,
+        "output_tokens": 603,
+        "cache_read_tokens": 73600,
+        "accessed_modules": [
+          "search-cities",
+          "search-driving-distance"
+        ],
+        "errors": [],
+        "tool_errors": []
+      },
+      "plan_exists": false,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 3,
+      "return_code": 0,
+      "transport_attempts": [
+        {
+          "attempt": 1,
+          "return_code": 0,
+          "retryable_transport_error": false
+        }
+      ],
+      "event_summary": {
+        "event_types": {
+          "step_start": 1,
+          "step_finish": 1
+        },
+        "session_ids": [
+          "ses_fe67ea1a4ffemdK0nRe3kp7xNh"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 1,
+        "tool_uses": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "plan_exists": false,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 4,
+      "return_code": 1,
+      "transport_attempts": [
+        {
+          "attempt": 1,
+          "return_code": 1,
+          "retryable_transport_error": false
+        }
+      ],
+      "event_summary": {
+        "event_types": {
+          "step_start": 3,
+          "tool_use": 3,
+          "step_finish": 3,
+          "text": 1,
+          "error": 1
+        },
+        "session_ids": [
+          "ses_fe67ea1a4ffemdK0nRe3kp7xNh"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 3,
+        "tool_uses": 3,
+        "input_tokens": 40460,
+        "output_tokens": 2813,
+        "cache_read_tokens": 48384,
+        "accessed_modules": [],
+        "errors": [
+          {
+            "name": "APIError",
+            "status_code": 403,
+            "retryable": false,
+            "category": "provider_policy_rejection"
+          }
+        ],
+        "tool_errors": []
+      },
+      "plan_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "disclosed_modules": [
+    "search-cities"
+  ],
+  "accessed_modules_after_disclosure": [
+    "search-cities"
+  ],
+  "distractor_flight_disclosed": false,
+  "vista_metrics": {
+    "trigger_opportunities": 3,
+    "routable_feedback": 3,
+    "successful_disclosures": 1,
+    "next_round_module_access": 1,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": false,
+  "stop_reason": "provider_policy_rejection",
+  "status": "quarantined_provider_policy_rejection",
+  "workspace": "C:\\Users\\小咕嘟\\AppData\\Local\\VistaExperiments\\formal-vista-v65r2-travel-planning-gpt56terra-20260819-replicate-02\\workspace"
+}

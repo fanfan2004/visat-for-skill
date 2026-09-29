@@ -1,0 +1,29 @@
+.F...                                                                    [100%]
+=================================== FAILURES ===================================
+_________________ TestOutputs.test_answer_structure_and_values _________________
+
+self = <test_outputs.TestOutputs object at 0x102e5bc50>
+
+    def test_answer_structure_and_values(self):
+        """Check answer structure and correctness for all questions."""
+        actual = load_answer()
+        assert isinstance(actual, dict), f"Answer is not a dict. Got {type(actual)}"
+        missing = [k for k in EXPECTED_ANSWERS.keys() if k not in actual]
+        assert not missing, f"Answer missing keys: {missing}. Got keys: {list(actual.keys())}"
+    
+        for q_key, expected in EXPECTED_ANSWERS.items():
+            assert "answer" in actual[q_key], f"Missing 'answer' in {q_key}. Got {actual[q_key]}"
+            got = actual[q_key]["answer"]
+            assert isinstance(got, list), f"{q_key} answer is not a list. Got {type(got)}"
+>           assert len(got) == len(expected), (
+                f"{q_key} length mismatch. Expected {len(expected)}, got {len(got)}"
+            )
+E           AssertionError: q2 length mismatch. Expected 5, got 8
+E           assert 8 == 5
+E            +  where 8 = len(['eid_a253c65a', 'eid_5318af37', 'eid_fce6544f', 'eid_d2f0f99a', 'eid_c9c3d8d5', 'eid_b6a30126', ...])
+E            +  and   5 = len(['eid_5318af37', 'eid_c9c3d8d5', 'eid_d2f0f99a', 'eid_a253c65a', 'eid_fce6544f'])
+
+test_outputs.py:71: AssertionError
+=========================== short test summary info ============================
+FAILED test_outputs.py::TestOutputs::test_answer_structure_and_values - Asser...
+1 failed, 4 passed in 0.06s

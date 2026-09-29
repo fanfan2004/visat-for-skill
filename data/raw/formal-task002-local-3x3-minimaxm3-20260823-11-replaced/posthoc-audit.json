@@ -1,0 +1,1615 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task002-local-3x3-minimaxm3-20260823-11-replaced",
+  "audit_status": "completed_with_failures",
+  "completed_trials": 9,
+  "unique_sessions": 9,
+  "session_ids_complete": true,
+  "all_final_verifiers_passed": false,
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "provider_policy_errors": 0,
+  "session_identity_errors": 0,
+  "model_identity": {
+    "provider_id": "minimax-cn",
+    "model_id": "MiniMax-M3",
+    "consistent_across_all_trials": true,
+    "evidence": "read-only query of each isolated OpenCode opencode.db message table"
+  },
+  "conditions": {
+    "noskill": {
+      "completed_trials": 3,
+      "verifier_passes": 1,
+      "total_turns": 13,
+      "model_turn_timeouts": 4,
+      "requests": 249,
+      "tool_uses": 239,
+      "input_tokens": 1033091,
+      "output_tokens": 166132,
+      "cache_read_tokens": 23670895,
+      "input_plus_output_tokens": 1199223,
+      "recorded_cost": 2.54126082
+    },
+    "native": {
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "total_turns": 10,
+      "model_turn_timeouts": 2,
+      "requests": 360,
+      "tool_uses": 351,
+      "input_tokens": 469708,
+      "output_tokens": 160135,
+      "cache_read_tokens": 28860541,
+      "input_plus_output_tokens": 629843,
+      "recorded_cost": 2.06470686
+    },
+    "pd-vista": {
+      "completed_trials": 3,
+      "verifier_passes": 2,
+      "total_turns": 9,
+      "model_turn_timeouts": 0,
+      "requests": 288,
+      "tool_uses": 279,
+      "input_tokens": 411380,
+      "output_tokens": 152038,
+      "cache_read_tokens": 25200432,
+      "input_plus_output_tokens": 563418,
+      "recorded_cost": 2.41300404,
+      "trigger_opportunities": 7,
+      "routable_feedback": 7,
+      "successful_disclosures": 2,
+      "next_round_module_access": 2,
+      "clean_complete_closure": 1,
+      "disclosed_modules": [
+        "enterprise-artifact-search"
+      ]
+    }
+  },
+  "totals": {
+    "requests": 897,
+    "tool_uses": 869,
+    "input_tokens": 1914179,
+    "output_tokens": 478305,
+    "cache_read_tokens": 77731868,
+    "input_plus_output_tokens": 2392484,
+    "recorded_cost": 7.01897172
+  },
+  "trials": [
+    {
+      "schema_version": 1,
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-08-noskill-replicate-01",
+      "task_id": "task-002",
+      "condition": "noskill",
+      "replicate_id": 1,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_actual_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd6ca6ebdffeBHJg3box6ipZoo",
+      "turns": [
+        {
+          "turn": 1,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 50,
+              "tool_use": 49,
+              "step_finish": 50,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd6ca6ebdffeBHJg3box6ipZoo"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 50,
+            "tool_uses": 49,
+            "input_tokens": 130874,
+            "output_tokens": 23521,
+            "cache_read_tokens": 3407872,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 2,
+          "return_code": 124,
+          "model_turn_timeout": true,
+          "event_summary": {
+            "event_types": {
+              "step_start": 33,
+              "text": 2,
+              "tool_use": 32,
+              "step_finish": 32
+            },
+            "session_ids": [
+              "ses_fd6ca6ebdffeBHJg3box6ipZoo"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 33,
+            "tool_uses": 32,
+            "input_tokens": 70052,
+            "output_tokens": 29628,
+            "cache_read_tokens": 5128448,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 3,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 18,
+              "text": 4,
+              "tool_use": 17,
+              "step_finish": 18
+            },
+            "session_ids": [
+              "ses_fd6ca6ebdffeBHJg3box6ipZoo"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 18,
+            "tool_uses": 17,
+            "input_tokens": 452530,
+            "output_tokens": 14158,
+            "cache_read_tokens": 3271843,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 4,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 9,
+              "text": 4,
+              "tool_use": 8,
+              "step_finish": 9
+            },
+            "session_ids": [
+              "ses_fd6ca6ebdffeBHJg3box6ipZoo"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 9,
+            "tool_uses": 8,
+            "input_tokens": 21562,
+            "output_tokens": 13997,
+            "cache_read_tokens": 2086934,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 5,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 4,
+              "tool_use": 3,
+              "step_finish": 4,
+              "text": 2
+            },
+            "session_ids": [
+              "ses_fd6ca6ebdffeBHJg3box6ipZoo"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 4,
+            "tool_uses": 3,
+            "input_tokens": 6312,
+            "output_tokens": 3925,
+            "cache_read_tokens": 979455,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 6,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 7,
+              "tool_use": 6,
+              "step_finish": 7,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd6ca6ebdffeBHJg3box6ipZoo"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 7,
+            "tool_uses": 6,
+            "input_tokens": 10989,
+            "output_tokens": 4506,
+            "cache_read_tokens": 1767674,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        }
+      ],
+      "usage": {
+        "requests": 121,
+        "tool_uses": 115,
+        "input_tokens": 692319,
+        "output_tokens": 89735,
+        "cache_read_tokens": 16642226
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "final_verifier_pass": false,
+      "stop_reason": "max_turns",
+      "status": "failed_max_turns",
+      "workspace": "/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-noskill-replicate-01/workspace",
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-noskill-replicate-01/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 1.92563268,
+        "assistant_messages": 121
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-08-native-replicate-01",
+      "task_id": "task-002",
+      "condition": "native",
+      "replicate_id": 1,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_actual_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd6b4f98affer5X04RClZpSKbB",
+      "turns": [
+        {
+          "turn": 1,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 60,
+              "tool_use": 59,
+              "step_finish": 60,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd6b4f98affer5X04RClZpSKbB"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 60,
+            "tool_uses": 59,
+            "input_tokens": 84041,
+            "output_tokens": 30329,
+            "cache_read_tokens": 2672424,
+            "accessed_modules": [
+              "enterprise-artifact-search"
+            ],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 2,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 8,
+              "tool_use": 7,
+              "step_finish": 8
+            },
+            "session_ids": [
+              "ses_fd6b4f98affer5X04RClZpSKbB"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 8,
+            "tool_uses": 7,
+            "input_tokens": 8315,
+            "output_tokens": 1989,
+            "cache_read_tokens": 632926,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 3,
+          "return_code": 124,
+          "model_turn_timeout": true,
+          "event_summary": {
+            "event_types": {
+              "step_start": 52,
+              "tool_use": 51,
+              "step_finish": 51
+            },
+            "session_ids": [
+              "ses_fd6b4f98affer5X04RClZpSKbB"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 52,
+            "tool_uses": 51,
+            "input_tokens": 52548,
+            "output_tokens": 28040,
+            "cache_read_tokens": 6245623,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false
+        }
+      ],
+      "usage": {
+        "requests": 120,
+        "tool_uses": 117,
+        "input_tokens": 144904,
+        "output_tokens": 60358,
+        "cache_read_tokens": 9550973
+      },
+      "initially_available_modules": [
+        "enterprise-artifact-search"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass_after_model_timeout",
+      "status": "passed",
+      "workspace": "/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-native-replicate-01/workspace",
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-native-replicate-01/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.68895918,
+        "assistant_messages": 120
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-08-pd-vista-replicate-01",
+      "task_id": "task-002",
+      "condition": "pd-vista",
+      "replicate_id": 1,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_actual_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd6a85723ffekMROM6qOjxKUIF",
+      "turns": [
+        {
+          "turn": 1,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 48,
+              "tool_use": 47,
+              "step_finish": 48,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd6a85723ffekMROM6qOjxKUIF"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 48,
+            "tool_uses": 47,
+            "input_tokens": 64741,
+            "output_tokens": 15163,
+            "cache_read_tokens": 1627194,
+            "accessed_modules": [
+              "enterprise-artifact-search"
+            ],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false
+        }
+      ],
+      "usage": {
+        "requests": 48,
+        "tool_uses": 47,
+        "input_tokens": 64741,
+        "output_tokens": 15163,
+        "cache_read_tokens": 1627194
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass",
+      "status": "passed_without_clean_vista_feedback_loop",
+      "workspace": "/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-pd-vista-replicate-01/workspace",
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-pd-vista-replicate-01/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.13524954,
+        "assistant_messages": 48
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-08-native-replicate-02",
+      "task_id": "task-002",
+      "condition": "native",
+      "replicate_id": 2,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_actual_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd6a59dc0ffefGLvhDrPwYyyin",
+      "turns": [
+        {
+          "turn": 1,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 59,
+              "tool_use": 58,
+              "step_finish": 59,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd6a59dc0ffefGLvhDrPwYyyin"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 59,
+            "tool_uses": 58,
+            "input_tokens": 78881,
+            "output_tokens": 16935,
+            "cache_read_tokens": 1731840,
+            "accessed_modules": [
+              "enterprise-artifact-search"
+            ],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 2,
+          "return_code": 124,
+          "model_turn_timeout": true,
+          "event_summary": {
+            "event_types": {
+              "step_start": 41,
+              "tool_use": 41,
+              "step_finish": 41
+            },
+            "session_ids": [
+              "ses_fd6a59dc0ffefGLvhDrPwYyyin"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 41,
+            "tool_uses": 41,
+            "input_tokens": 61039,
+            "output_tokens": 17790,
+            "cache_read_tokens": 3895296,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 3,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 28,
+              "tool_use": 27,
+              "step_finish": 28,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd6a59dc0ffefGLvhDrPwYyyin"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 28,
+            "tool_uses": 27,
+            "input_tokens": 34493,
+            "output_tokens": 16169,
+            "cache_read_tokens": 3762816,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 4,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 18,
+              "tool_use": 17,
+              "step_finish": 18,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd6a59dc0ffefGLvhDrPwYyyin"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 18,
+            "tool_uses": 17,
+            "input_tokens": 18413,
+            "output_tokens": 8515,
+            "cache_read_tokens": 2865280,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 5,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 23,
+              "tool_use": 22,
+              "step_finish": 23,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd6a59dc0ffefGLvhDrPwYyyin"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 23,
+            "tool_uses": 22,
+            "input_tokens": 22560,
+            "output_tokens": 11357,
+            "cache_read_tokens": 4025600,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false
+        }
+      ],
+      "usage": {
+        "requests": 169,
+        "tool_uses": 165,
+        "input_tokens": 215386,
+        "output_tokens": 70766,
+        "cache_read_tokens": 16280832
+      },
+      "initially_available_modules": [
+        "enterprise-artifact-search"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 4,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass_after_model_timeout",
+      "status": "passed",
+      "workspace": "/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-native-replicate-02/workspace",
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-native-replicate-02/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 1.12638492,
+        "assistant_messages": 170
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-08-pd-vista-replicate-02",
+      "task_id": "task-002",
+      "condition": "pd-vista",
+      "replicate_id": 2,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_actual_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd68e032fffe5HenUGg5OpX8KV",
+      "turns": [
+        {
+          "turn": 1,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 63,
+              "tool_use": 62,
+              "step_finish": 63,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd68e032fffe5HenUGg5OpX8KV"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 63,
+            "tool_uses": 62,
+            "input_tokens": 83884,
+            "output_tokens": 13275,
+            "cache_read_tokens": 2658399,
+            "accessed_modules": [
+              "enterprise-artifact-search"
+            ],
+            "errors": [],
+            "tool_errors": [
+              "File not found: /private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-pd-vista-replicate-02/workspace/opencode-state/data/opencode/tool-output/tool_029748f5b001SAIoUwHilsKq1D",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-pd-vista-replicate-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_directory\",\"p",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-pd-vista-replicate-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_directory\",\"p",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-pd-vista-replicate-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_directory\",\"p",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-pd-vista-replicate-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_directory\",\"p",
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-pd-vista-replicate-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_directory\",\"p"
+            ]
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 2,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 13,
+              "tool_use": 12,
+              "step_finish": 13,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd68e032fffe5HenUGg5OpX8KV"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 13,
+            "tool_uses": 12,
+            "input_tokens": 18624,
+            "output_tokens": 6966,
+            "cache_read_tokens": 1241382,
+            "accessed_modules": [
+              "enterprise-artifact-search"
+            ],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false
+        }
+      ],
+      "usage": {
+        "requests": 76,
+        "tool_uses": 74,
+        "input_tokens": 102508,
+        "output_tokens": 20241,
+        "cache_read_tokens": 3899781
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [
+        "enterprise-artifact-search"
+      ],
+      "accessed_modules_after_disclosure": [
+        "enterprise-artifact-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 1
+      },
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass",
+      "status": "passed_with_clean_vista_feedback_loop",
+      "workspace": "/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-pd-vista-replicate-02/workspace",
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-pd-vista-replicate-02/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.28902846,
+        "assistant_messages": 76
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-08-noskill-replicate-02",
+      "task_id": "task-002",
+      "condition": "noskill",
+      "replicate_id": 2,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_actual_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd6855227ffe0KSRsG7urk053A",
+      "turns": [
+        {
+          "turn": 1,
+          "return_code": 124,
+          "model_turn_timeout": true,
+          "event_summary": {
+            "event_types": {
+              "step_start": 50,
+              "tool_use": 49,
+              "step_finish": 49
+            },
+            "session_ids": [
+              "ses_fd6855227ffe0KSRsG7urk053A"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 50,
+            "tool_uses": 49,
+            "input_tokens": 101158,
+            "output_tokens": 16469,
+            "cache_read_tokens": 1884416,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": false,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 2,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 3,
+              "tool_use": 2,
+              "step_finish": 3,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd6855227ffe0KSRsG7urk053A"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 3,
+            "tool_uses": 2,
+            "input_tokens": 1636,
+            "output_tokens": 853,
+            "cache_read_tokens": 246144,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 3,
+          "return_code": 124,
+          "model_turn_timeout": true,
+          "event_summary": {
+            "event_types": {
+              "step_start": 4,
+              "tool_use": 4,
+              "step_finish": 4
+            },
+            "session_ids": [
+              "ses_fd6855227ffe0KSRsG7urk053A"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 4,
+            "tool_uses": 4,
+            "input_tokens": 6678,
+            "output_tokens": 4607,
+            "cache_read_tokens": 336384,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 4,
+          "return_code": 124,
+          "model_turn_timeout": true,
+          "event_summary": {
+            "event_types": {
+              "step_start": 5,
+              "tool_use": 4,
+              "step_finish": 4
+            },
+            "session_ids": [
+              "ses_fd6855227ffe0KSRsG7urk053A"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 5,
+            "tool_uses": 4,
+            "input_tokens": 100917,
+            "output_tokens": 6481,
+            "cache_read_tokens": 285312,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 5,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 6,
+              "tool_use": 5,
+              "step_finish": 6,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd6855227ffe0KSRsG7urk053A"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 6,
+            "tool_uses": 5,
+            "input_tokens": 14303,
+            "output_tokens": 7093,
+            "cache_read_tokens": 695040,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 6,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 10,
+              "tool_use": 9,
+              "step_finish": 10,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd6855227ffe0KSRsG7urk053A"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 10,
+            "tool_uses": 9,
+            "input_tokens": 17806,
+            "output_tokens": 6224,
+            "cache_read_tokens": 1308032,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        }
+      ],
+      "usage": {
+        "requests": 78,
+        "tool_uses": 73,
+        "input_tokens": 242498,
+        "output_tokens": 41727,
+        "cache_read_tokens": 4755328
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "final_verifier_pass": false,
+      "stop_reason": "max_turns",
+      "status": "failed_max_turns",
+      "workspace": "/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-noskill-replicate-02/workspace",
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task002-local-3x3-20260822-08/formal-task002-local-3x3-minimaxm3-20260822-08-noskill-replicate-02/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.40814148,
+        "assistant_messages": 79
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260823-11-retry-external-pd-vista-replicate-03",
+      "task_id": "task-002",
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_actual_model": "MiniMax-M3",
+      "actual_provider_ids": [
+        "minimax-cn"
+      ],
+      "actual_model_ids": [
+        "MiniMax-M3"
+      ],
+      "session_id": "ses_fd470e1fffferRyevlxS8scwz1",
+      "turns": [
+        {
+          "turn": 1,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 85,
+              "tool_use": 84,
+              "step_finish": 85,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd470e1fffferRyevlxS8scwz1"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 85,
+            "tool_uses": 84,
+            "input_tokens": 107408,
+            "output_tokens": 29637,
+            "cache_read_tokens": 5406333,
+            "accessed_modules": [
+              "enterprise-artifact-search"
+            ],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 2,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 34,
+              "tool_use": 33,
+              "step_finish": 34,
+              "text": 2
+            },
+            "session_ids": [
+              "ses_fd470e1fffferRyevlxS8scwz1"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 34,
+            "tool_uses": 33,
+            "input_tokens": 64488,
+            "output_tokens": 36726,
+            "cache_read_tokens": 4718069,
+            "accessed_modules": [
+              "enterprise-artifact-search"
+            ],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 3,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 10,
+              "tool_use": 9,
+              "step_finish": 10,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd470e1fffferRyevlxS8scwz1"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 10,
+            "tool_uses": 9,
+            "input_tokens": 21818,
+            "output_tokens": 15889,
+            "cache_read_tokens": 1829355,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 4,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 14,
+              "tool_use": 13,
+              "step_finish": 14,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd470e1fffferRyevlxS8scwz1"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 14,
+            "tool_uses": 13,
+            "input_tokens": 25064,
+            "output_tokens": 16469,
+            "cache_read_tokens": 2879244,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 5,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 11,
+              "tool_use": 10,
+              "step_finish": 11,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd470e1fffferRyevlxS8scwz1"
+            ],
+            "actual_model_ids": [
+              "MiniMax-M3"
+            ],
+            "provider_ids": [
+              "minimax-cn"
+            ],
+            "requests": 11,
+            "tool_uses": 10,
+            "input_tokens": 13666,
+            "output_tokens": 8534,
+            "cache_read_tokens": 2470460,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 6,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 10,
+              "tool_use": 9,
+              "step_finish": 10,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd470e1fffferRyevlxS8scwz1"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 10,
+            "tool_uses": 9,
+            "input_tokens": 11687,
+            "output_tokens": 9379,
+            "cache_read_tokens": 2369996,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        }
+      ],
+      "usage": {
+        "requests": 164,
+        "tool_uses": 158,
+        "input_tokens": 244131,
+        "output_tokens": 116634,
+        "cache_read_tokens": 19673457
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [
+        "enterprise-artifact-search"
+      ],
+      "accessed_modules_after_disclosure": [
+        "enterprise-artifact-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 6,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      },
+      "final_verifier_pass": false,
+      "stop_reason": "max_turns",
+      "status": "failed_max_turns",
+      "workspace": "/private/tmp/vista-task002-local-3x3-20260823-11/formal-task002-local-3x3-minimaxm3-20260823-11-retry-external-pd-vista-replicate-03/workspace",
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task002-local-3x3-20260823-11/formal-task002-local-3x3-minimaxm3-20260823-11-retry-external-pd-vista-replicate-03/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 1.98872604,
+        "assistant_messages": 190
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260823-11-retry-external-noskill-replicate-03",
+      "task_id": "task-002",
+      "condition": "noskill",
+      "replicate_id": 3,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_actual_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd45d0f56ffeexyHfGKnE6b3Uf",
+      "turns": [
+        {
+          "turn": 1,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 50,
+              "tool_use": 51,
+              "step_finish": 50,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd45d0f56ffeexyHfGKnE6b3Uf"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 50,
+            "tool_uses": 51,
+            "input_tokens": 98274,
+            "output_tokens": 34670,
+            "cache_read_tokens": 2273341,
+            "accessed_modules": [],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false
+        }
+      ],
+      "usage": {
+        "requests": 50,
+        "tool_uses": 51,
+        "input_tokens": 98274,
+        "output_tokens": 34670,
+        "cache_read_tokens": 2273341
+      },
+      "initially_available_modules": [],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass",
+      "status": "passed",
+      "workspace": "/private/tmp/vista-task002-local-3x3-20260823-11/formal-task002-local-3x3-minimaxm3-20260823-11-retry-external-noskill-replicate-03/workspace",
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task002-local-3x3-20260823-11/formal-task002-local-3x3-minimaxm3-20260823-11-retry-external-noskill-replicate-03/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.20748666,
+        "assistant_messages": 50
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260823-11-retry-external-native-replicate-03",
+      "task_id": "task-002",
+      "condition": "native",
+      "replicate_id": 3,
+      "backend": "opencode-local-minimal-dependencies",
+      "docker_used": false,
+      "skillbench_execution_route_used": false,
+      "requested_provider_model": "minimax-cn/MiniMax-M3",
+      "expected_provider": "minimax-cn",
+      "expected_actual_model": "MiniMax-M3",
+      "actual_provider_ids": [],
+      "actual_model_ids": [],
+      "session_id": "ses_fd457fe83ffezs7DbgjjL7j0KG",
+      "turns": [
+        {
+          "turn": 1,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 51,
+              "tool_use": 50,
+              "step_finish": 51,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd457fe83ffezs7DbgjjL7j0KG"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 51,
+            "tool_uses": 50,
+            "input_tokens": 78868,
+            "output_tokens": 17924,
+            "cache_read_tokens": 1574144,
+            "accessed_modules": [
+              "enterprise-artifact-search"
+            ],
+            "errors": [],
+            "tool_errors": [
+              "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task002-local-3x3-20260823-11/formal-task002-local-3x3-minimaxm3-20260823-11-retry-external-native-replicate-03/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_"
+            ]
+          },
+          "answer_exists": true,
+          "verifier_pass": false,
+          "verifier_infrastructure_error": false
+        },
+        {
+          "turn": 2,
+          "return_code": 0,
+          "model_turn_timeout": false,
+          "event_summary": {
+            "event_types": {
+              "step_start": 20,
+              "tool_use": 19,
+              "step_finish": 20,
+              "text": 1
+            },
+            "session_ids": [
+              "ses_fd457fe83ffezs7DbgjjL7j0KG"
+            ],
+            "actual_model_ids": [],
+            "provider_ids": [],
+            "requests": 20,
+            "tool_uses": 19,
+            "input_tokens": 30550,
+            "output_tokens": 11087,
+            "cache_read_tokens": 1454592,
+            "accessed_modules": [
+              "enterprise-artifact-search"
+            ],
+            "errors": [],
+            "tool_errors": []
+          },
+          "answer_exists": true,
+          "verifier_pass": true,
+          "verifier_infrastructure_error": false
+        }
+      ],
+      "usage": {
+        "requests": 71,
+        "tool_uses": 69,
+        "input_tokens": 109418,
+        "output_tokens": 29011,
+        "cache_read_tokens": 3028736
+      },
+      "initially_available_modules": [
+        "enterprise-artifact-search"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      },
+      "final_verifier_pass": true,
+      "stop_reason": "verifier_pass",
+      "status": "passed",
+      "workspace": "/private/tmp/vista-task002-local-3x3-20260823-11/formal-task002-local-3x3-minimaxm3-20260823-11-retry-external-native-replicate-03/workspace",
+      "opencode_db": {
+        "db_path": "/private/tmp/vista-task002-local-3x3-20260823-11/formal-task002-local-3x3-minimaxm3-20260823-11-retry-external-native-replicate-03/opencode-state/data/opencode/opencode.db",
+        "exists": true,
+        "read_only": true,
+        "provider_ids": [
+          "minimax-cn"
+        ],
+        "model_ids": [
+          "MiniMax-M3"
+        ],
+        "recorded_cost": 0.24936276,
+        "assistant_messages": 71
+      }
+    }
+  ],
+  "excluded_runs": [
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-01",
+      "completed_result_files": 0,
+      "reason": "controller import-path diagnostic failed before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-02",
+      "completed_result_files": 0,
+      "reason": "controller workspace location was denied by the local sandbox before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-03",
+      "completed_result_files": 0,
+      "reason": "controller security gate rejected an in-repository workspace before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-04",
+      "completed_result_files": 9,
+      "reason": "network-isolated infrastructure diagnostic: all nine trials ended in retryable API connection errors with zero requests, tokens, tool uses, and task outputs; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-05",
+      "completed_result_files": 0,
+      "reason": "foreground-controller diagnostic: execution host ended the controller parent while an OpenCode child was still completing; incomplete controller evidence excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-06",
+      "completed_result_files": 0,
+      "reason": "background-controller diagnostic: background process did not persist in the execution host and made no model request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-07",
+      "completed_result_files": 0,
+      "reason": "foreground-controller retry diagnostic: execution host ended the controller before the first model turn could be reconciled; incomplete controller evidence excluded before formal comparison"
+    }
+  ],
+  "diagnostic_batches": [
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-01",
+      "completed_result_files": 0,
+      "reason": "controller import-path diagnostic failed before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-02",
+      "completed_result_files": 0,
+      "reason": "controller workspace location was denied by the local sandbox before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-03",
+      "completed_result_files": 0,
+      "reason": "controller security gate rejected an in-repository workspace before any OpenCode request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-04",
+      "completed_result_files": 9,
+      "reason": "network-isolated infrastructure diagnostic: all nine trials ended in retryable API connection errors with zero requests, tokens, tool uses, and task outputs; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-05",
+      "completed_result_files": 0,
+      "reason": "foreground-controller diagnostic: execution host ended the controller parent while an OpenCode child was still completing; incomplete controller evidence excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-06",
+      "completed_result_files": 0,
+      "reason": "background-controller diagnostic: background process did not persist in the execution host and made no model request; excluded before formal comparison"
+    },
+    {
+      "run_id": "formal-task002-local-3x3-minimaxm3-20260822-07",
+      "completed_result_files": 0,
+      "reason": "foreground-controller retry diagnostic: execution host ended the controller before the first model turn could be reconciled; incomplete controller evidence excluded before formal comparison"
+    }
+  ],
+  "replacement_provenance": {
+    "replaced_original_run": "formal-task002-local-3x3-minimaxm3-20260822-08",
+    "retry_run": "formal-task002-local-3x3-minimaxm3-20260823-11-retry-external",
+    "excluded_recovery_diagnostics": [
+      "formal-task002-local-3x3-minimaxm3-20260822-09-retry-external",
+      "formal-task002-local-3x3-minimaxm3-20260822-10-retry-external"
+    ],
+    "reason": "Three replicate-03 records were quarantined solely for retryable provider HTTP 429 rate limiting; rerun with fresh isolated workspace, OpenCode state, and session.",
+    "replaced_trials": [
+      {
+        "condition": "native",
+        "replicate_id": 3
+      },
+      {
+        "condition": "noskill",
+        "replicate_id": 3
+      },
+      {
+        "condition": "pd-vista",
+        "replicate_id": 3
+      }
+    ]
+  }
+}

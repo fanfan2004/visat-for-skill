@@ -1,0 +1,23 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.14, pytest-7.4.0, pluggy-1.6.0 -- /Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/bin/python
+rootdir: /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task009-zcode-local-3x3-glm53-20260929-04-pd-vista-replicate-01
+plugins: mock-3.15.1, asyncio-0.21.0, anyio-4.14.2, requests-mock-1.11.0
+asyncio: mode=Mode.STRICT
+collecting ... collected 6 items
+
+../verifier/test_outputs_local.py::TestControllerParams::test_controller_params PASSED [ 16%]
+../verifier/test_outputs_local.py::TestControllerParams::test_linearization_correctness PASSED [ 33%]
+../verifier/test_outputs_local.py::TestControlLog::test_control_log PASSED [ 50%]
+../verifier/test_outputs_local.py::TestMetrics::test_metrics PASSED      [ 66%]
+../verifier/test_outputs_local.py::TestPerformance::test_performance PASSED [ 83%]
+../verifier/test_outputs_local.py::TestSafety::test_safety PASSED        [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../verifier/test_outputs_local.py::TestControllerParams::test_controller_params
+PASSED ../verifier/test_outputs_local.py::TestControllerParams::test_linearization_correctness
+PASSED ../verifier/test_outputs_local.py::TestControlLog::test_control_log
+PASSED ../verifier/test_outputs_local.py::TestMetrics::test_metrics
+PASSED ../verifier/test_outputs_local.py::TestPerformance::test_performance
+PASSED ../verifier/test_outputs_local.py::TestSafety::test_safety
+============================== 6 passed in 0.44s ===============================

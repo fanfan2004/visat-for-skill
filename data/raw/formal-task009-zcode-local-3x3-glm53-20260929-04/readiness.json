@@ -1,0 +1,19 @@
+{
+  "verifier_python": true,
+  "task_md": true,
+  "verifier_source": true,
+  "inputs_present": {
+    "r2r_simulator.py": true,
+    "system_config.json": true
+  },
+  "vista_manifest": true,
+  "vista_root_skill": true,
+  "native_modules": [
+    "finite-horizon-lqr",
+    "integral-action-design",
+    "mpc-horizon-tuning",
+    "state-space-linearization"
+  ],
+  "verifier_imports": true,
+  "ready": true
+}

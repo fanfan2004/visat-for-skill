@@ -1,0 +1,477 @@
+{
+  "task_identity_file": true,
+  "task_instruction": true,
+  "original_verifier": true,
+  "original_verifier_script": true,
+  "asset_root": true,
+  "pdf_count": 100,
+  "office_input_count": 3,
+  "task_asset_count": 103,
+  "native_modules": {
+    "planning-with-files": true,
+    "file-organizer": true,
+    "pdf": true,
+    "docx": true,
+    "pptx": true
+  },
+  "native_module_file_counts": {
+    "planning-with-files": 8,
+    "file-organizer": 1,
+    "pdf": 12,
+    "docx": 59,
+    "pptx": 56
+  },
+  "vista_root": true,
+  "vista_manifest": true,
+  "vista_source": true,
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "public_diagnostic_cleaning": true,
+  "public_verifier_entry": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/vendor/skillsbench/tasks/organize-messy-files/verifier/test_outputs.py",
+  "asset_checksums": {
+    "0704.0117v1.pdf": {
+      "bytes": 129813,
+      "sha256": "d1622d1adad040c2c8c177c6c7e65aed55b1d197371acd1af36f717808f22427"
+    },
+    "0707.1221v1.pdf": {
+      "bytes": 896903,
+      "sha256": "a6eb223be241a02c27162f7d10f17ccdeff629c2e53aa628388b61e456a3143f"
+    },
+    "0707.3224v1.pdf": {
+      "bytes": 251914,
+      "sha256": "9580a37b54318dcbfdf274ea2cad85cf4c2d5bdb8a5558ea77a6cbc00dc5e7f9"
+    },
+    "0710.4345v1.pdf": {
+      "bytes": 1988119,
+      "sha256": "a8f844b7ef268608ceed1ed941056e85c0f2c4aa6ffcb6164fcee332eb67c48c"
+    },
+    "0711.1406v1.pdf": {
+      "bytes": 606432,
+      "sha256": "a704e49cfe1ba6eb6d82fdfe6dbeab89c92942bf2b9ebd8462f1b27183e1e27e"
+    },
+    "0809.1063v1.pdf": {
+      "bytes": 1870333,
+      "sha256": "230bf1af279cca4578c7b52b29f8d09e5223ee6c02a17a9227b9a3436eea54f8"
+    },
+    "0810.0078v2.pdf": {
+      "bytes": 211640,
+      "sha256": "fe42544bef87c9d496d711052f33c88fc3a18dd27db12d5152ddad1378891a52"
+    },
+    "0901.0603v2.pdf": {
+      "bytes": 148901,
+      "sha256": "8847dd7cb8b47de012ecd66f7134ea66efa95b62e71744cf735458d3b89c93c1"
+    },
+    "0905.4129v3.pdf": {
+      "bytes": 256880,
+      "sha256": "dd8de085cffceaaa3b90117b2ad3ed808717a809de99e47277860ed5beaa23e1"
+    },
+    "0907.2248v2.pdf": {
+      "bytes": 684606,
+      "sha256": "6386facf384464ce3c8629e7d0bf77f5b7bc398c51cf64cb8bc80cb0f675f7f5"
+    },
+    "0907.4819v1.pdf": {
+      "bytes": 399327,
+      "sha256": "d124bc8a5468c4e636a19f89872d2597db633189ccb7d5a5f0d81b972402995e"
+    },
+    "1002.2759v1.pdf": {
+      "bytes": 165355,
+      "sha256": "eded6e6f18fdb2edc1ea0d5650adf67cd443b56a5488e1e4922377d29689b740"
+    },
+    "1011.5614v2.pdf": {
+      "bytes": 153228,
+      "sha256": "8142ad1df94da1630e51d032c30eb3397e1497eb1aa857b0e87c046e65848506"
+    },
+    "1101.5182v2.pdf": {
+      "bytes": 832460,
+      "sha256": "949b73c72af4b76a2499a514123a80b3c5a55f1d6524226907dc5998cd79dee9"
+    },
+    "1109.4653v1.pdf": {
+      "bytes": 250461,
+      "sha256": "71ec3af223e94ed632c86a5993edc1a7434bc7aaad067ae4ad3949308586128a"
+    },
+    "1202.2518v4.pdf": {
+      "bytes": 562678,
+      "sha256": "d8c243a16e514ef6aaaf42e9d324f19d5bcbd6cf94d33bc34a8150a9b91a4a75"
+    },
+    "1205.5651v1.pdf": {
+      "bytes": 635263,
+      "sha256": "9e212f10f894f14391ab454db9456c86353fa798488f5d0d32100a71f05815e4"
+    },
+    "1210.7091v2.pdf": {
+      "bytes": 5338193,
+      "sha256": "cc2a3c0298f00a458aba6798b2fbfc739680fb8d6bdfc8a50619d7d2183746a1"
+    },
+    "1306.5298v2.pdf": {
+      "bytes": 191353,
+      "sha256": "e04fac62e86e2c4e48e7b07971274106e25c53a7b032eebe1407e7ebc00476c2"
+    },
+    "1308.3843v1.pdf": {
+      "bytes": 7880648,
+      "sha256": "7406cccf5306a457954f6677e9ad38a1d31b0f25f68ec3837fec94738d6ac465"
+    },
+    "1309.3658v2.pdf": {
+      "bytes": 379979,
+      "sha256": "9a0d6a9357820d97226f4ff3461b1edc13c4e9db202d851cdcfb0ae8f9f1bd05"
+    },
+    "1311.5931v2.pdf": {
+      "bytes": 2097465,
+      "sha256": "963d78279dc0014fdffd52b79b7a33a8e94992f20fc84391d85ad82ca796abd1"
+    },
+    "1312.2849v3.pdf": {
+      "bytes": 2110738,
+      "sha256": "aed5ffbb62008948b6fdd74d7ce6cf6783b6b885f0272748c930e38d073058c8"
+    },
+    "1401.4725v1.pdf": {
+      "bytes": 1279570,
+      "sha256": "d00a6f90f0d73bd44f0e0627ac5275c9a8568ac73ee8cd273c0b3222baa5a2a7"
+    },
+    "1402.5127v3.pdf": {
+      "bytes": 551090,
+      "sha256": "7f33c1ac0e4444380eacdf7a9deb0e9f27335b514b8d3b96630ea6a8cec168bc"
+    },
+    "1403.1523v2.pdf": {
+      "bytes": 243818,
+      "sha256": "38224e262331e448e5ce7998b70e1ffbd383b4413f752043b3e382be4bf33ac6"
+    },
+    "1403.4513v1.pdf": {
+      "bytes": 537516,
+      "sha256": "82e97aca0e45065fe723b22f600e5be3b66a84aa34b559918eeae2049fba1512"
+    },
+    "1404.2126v1.pdf": {
+      "bytes": 228423,
+      "sha256": "171635fb33b251582af5285ff10141d2b2b4e7338821cf3b8b9ec58cb57a571f"
+    },
+    "1411.1974v2.pdf": {
+      "bytes": 158927,
+      "sha256": "98976f7b04daa531f738bd1ee8b5d908c5e16fcb4147e14bc1cd30cec81d2ac4"
+    },
+    "1501.07133v2.pdf": {
+      "bytes": 340301,
+      "sha256": "23941c9ade2b00ba018d1d7b8e44235d2af6752b94c9fdbc8a0f8c08130dac28"
+    },
+    "1502.05417v1.pdf": {
+      "bytes": 3372546,
+      "sha256": "4ee5810237db4fff15cacd5be0bbb90c71cdbd802ec631fd20f00132a74d6984"
+    },
+    "1502.07298v1.pdf": {
+      "bytes": 395967,
+      "sha256": "56e7dd6074563cf380aec453aae1506915a57fdc3ce27565ecce22177d911d56"
+    },
+    "1511.08445v1.pdf": {
+      "bytes": 1567849,
+      "sha256": "2cd0944053ecca157b7b251005362c2aa9005daba428f7d8fd2fe16adbbe8b96"
+    },
+    "1607.00266v1.pdf": {
+      "bytes": 1137476,
+      "sha256": "8842f894dd26ec0a4bb8592814b90873a3897e0c2a7f7ee952cd7ebef861bb5e"
+    },
+    "1609.05333v2.pdf": {
+      "bytes": 1390353,
+      "sha256": "0a1637a0a2eb4de588b4c0abbbddeef51e4e7e830aafaeac316e4d0ff8261602"
+    },
+    "1708.07404v3.pdf": {
+      "bytes": 125580,
+      "sha256": "edd1bc16316e39cf2a71ab958aa685928902a33d14b3e466d78332e7f9f8fc83"
+    },
+    "1712.05683v3.pdf": {
+      "bytes": 1686998,
+      "sha256": "d0c60a0463c4867211ced1fb93a281f5cd7081839726d18e56cc2d6d951991b5"
+    },
+    "1804.04839v1.pdf": {
+      "bytes": 445507,
+      "sha256": "1044162ad9113088eebf3a1bcc338bc87064603763581ef40033e84c431dc349"
+    },
+    "1807.00924v2.pdf": {
+      "bytes": 1241016,
+      "sha256": "097f7d5afc2b0b30c9ef53ddfcd2fa1b83131b56fea9bc46bc5bb34d91edd06f"
+    },
+    "1808.04531v1.pdf": {
+      "bytes": 115301,
+      "sha256": "cbbb3a0fb0a0e92cd94cb20e5d943fa8fb26d6378f85c520d6c276ef14ed9a63"
+    },
+    "1901.01045v1.pdf": {
+      "bytes": 264694,
+      "sha256": "59789b3749eb3e32e1fbbd0413147fdc9d9a03e6d85be77b1edd97e7f67f767d"
+    },
+    "1901.01149v1.pdf": {
+      "bytes": 63719,
+      "sha256": "40fbb1c4fb8bcb0e98f177babfec96b7f87ca1ea3e6281206883642560d0a25c"
+    },
+    "1902.00206v1.pdf": {
+      "bytes": 3225612,
+      "sha256": "82ac9ccd9d8780e8839ed4b788cc5acd78343ee468d77a9d04c6b3d74aa03176"
+    },
+    "1904.04178v1.pdf": {
+      "bytes": 7884880,
+      "sha256": "120774f31a9ca8d6b0644ba7097d5e5ec40707dcdcf27b661825324fe2f60607"
+    },
+    "1904.10193v2.pdf": {
+      "bytes": 258533,
+      "sha256": "9c43d3c14c5f67c91602de8f025f6ba944355abb5c61993cd810c153b570477b"
+    },
+    "1907.04292v1.pdf": {
+      "bytes": 399522,
+      "sha256": "64ba422dc9b4dcb3f5923bf99df372117374b6043c94d95484a9823c9514ae18"
+    },
+    "1908.10275v1.pdf": {
+      "bytes": 293239,
+      "sha256": "d3975a56fef5e6f1c52f2a2dcacae8c249978ee0795074cee69167bd30c03cd7"
+    },
+    "1909.05563v1.pdf": {
+      "bytes": 917669,
+      "sha256": "1d7030ceb21caf2667cfbdb8a97beb56cbee22ca4725dfe4256683e83298605b"
+    },
+    "1909.06259v1.pdf": {
+      "bytes": 174638,
+      "sha256": "4e4df324a7aa718735fa7a83b64ad82587dc7c953485124089f4f837c974e8aa"
+    },
+    "1911.10219v2.pdf": {
+      "bytes": 961350,
+      "sha256": "71eba1c17b84c7b96094bd86187c2ed8840aa43708cf84ebae94fe73565be5d4"
+    },
+    "2005.11841v3.pdf": {
+      "bytes": 1969718,
+      "sha256": "df5b30492c090b74e1bb3a3d826cc3db022f69c3533709a75ad2f78374da5b0f"
+    },
+    "2007.07950v2.pdf": {
+      "bytes": 1376388,
+      "sha256": "108027da908600a7298befc38ee12376925e45fe8ae94bedb5c61a7542adc984"
+    },
+    "2011.02460v1.pdf": {
+      "bytes": 3488792,
+      "sha256": "2f81cc7a39e67243978f9a0ef4b1d11c7c066eca18d82f47545d49b5e6edbd81"
+    },
+    "2012.02117v1.pdf": {
+      "bytes": 1154053,
+      "sha256": "b383aefdea7b2128d52acc09cf1af80f0a062d95b761ae9a84b76fc9ca0568e4"
+    },
+    "2103.05832v2.pdf": {
+      "bytes": 1374864,
+      "sha256": "1bf8ab59315e354380233433c5e3e387469ff5d1d6d415102ad0b0483d144308"
+    },
+    "2105.03431v1.pdf": {
+      "bytes": 703338,
+      "sha256": "d4750fbc36eb0a033674703d97bb5fec5780a97bf06caddd8b40fbe81d7d42fe"
+    },
+    "2205.14860v1.pdf": {
+      "bytes": 17964970,
+      "sha256": "a73bf31f800177e386df9bdc752b827199a7df83743f27b3469d52431930a8d3"
+    },
+    "2206.06546v1.pdf": {
+      "bytes": 1544213,
+      "sha256": "923ab65815baa4c7a50242138542742397b3c6a4c568e7198fe6225cfc6203e4"
+    },
+    "2206.07754v1.pdf": {
+      "bytes": 948540,
+      "sha256": "9d84f3057a6cafb2fa98bb6e8a86390548d597efdf608bd11d6637b124e59b9a"
+    },
+    "2207.01964v4.pdf": {
+      "bytes": 3692166,
+      "sha256": "510014effab48f72d4e91c26c2043132f7ee06f881fdbc5466bafa05fd59bfd3"
+    },
+    "2303.07661v1.pdf": {
+      "bytes": 696570,
+      "sha256": "2688f9985c0b90cc63196780470890a6f86b1ad117de6df1d0735f91ef04fd5f"
+    },
+    "2305.12773v1.pdf": {
+      "bytes": 1257516,
+      "sha256": "6d84a4a67e6c89b3a04fc5a30ad5bcdf33754870eb5c7d81e46e86231b142308"
+    },
+    "2306.08568v2.pdf": {
+      "bytes": 1273887,
+      "sha256": "4d7c344c0fdd4489bfd5e7e5ffe2c8f416094fc6a05df342056cfd241ad099c3"
+    },
+    "2308.03224v1.pdf": {
+      "bytes": 30503946,
+      "sha256": "a540ed9479fcb882112d5d855c8e1a9ba3bfde731d3afa1e8cc3e11f68ab80e8"
+    },
+    "2308.16149v2.pdf": {
+      "bytes": 1134944,
+      "sha256": "930edd6becf2ce4093ba27c41ad5417c2f6a09f83b24f0e7001038314c1c3c7f"
+    },
+    "2309.09686v1.pdf": {
+      "bytes": 581673,
+      "sha256": "a234ece4bd83ac74e1456c902a4d52bdf071115a08c8400b24f1dcf0e7bc5c62"
+    },
+    "2310.00034v2.pdf": {
+      "bytes": 959389,
+      "sha256": "093196c4f1e025f0990260b5b70185dc258c9207d9c28c44315376185f29fcc6"
+    },
+    "2311.01825v2.pdf": {
+      "bytes": 662165,
+      "sha256": "9bdad8b7c58fe8907ba9cae5231a6e4abd92a069f0368be115c98eb347657d81"
+    },
+    "2311.17557v1.pdf": {
+      "bytes": 3449673,
+      "sha256": "6f802ea2403b47e332b9ecd43acdb5b5cd75da6797a68485e794a4f1a2ec3648"
+    },
+    "2312.08588v3.pdf": {
+      "bytes": 1653315,
+      "sha256": "256d0e68cff4b982b54663f4f1963a02018e20c43d5617ff66f2bb6d4300f430"
+    },
+    "2312.10793v3.pdf": {
+      "bytes": 557017,
+      "sha256": "5d48b713a8ff3ce55aa375dfb8c9057b88a96f4cf6efe51535a6159cdf67924f"
+    },
+    "2312.13585v1.pdf": {
+      "bytes": 609304,
+      "sha256": "f658d06fd01e16bfd867b9ccc97ebc1574f7a6ff7505f9d23ae3bed2a6acc5c8"
+    },
+    "2312.14036v1.pdf": {
+      "bytes": 558885,
+      "sha256": "d5f928df22da27ada432799253a4dd25e92801e842f777dc81da301bbfda99ae"
+    },
+    "2401.10034v3.pdf": {
+      "bytes": 463962,
+      "sha256": "5a649e26d6f7f53378c8d5e6598614f787f116620176af74370670d647e36dee"
+    },
+    "2402.06079v2.pdf": {
+      "bytes": 3974840,
+      "sha256": "551124266e631f7c87185d7281eb1be0fc725e1b38514e21ab48bee614ddd23e"
+    },
+    "2402.11651v2.pdf": {
+      "bytes": 585083,
+      "sha256": "2482e63ca6c231a3937908b80caf98ad88820e08df926bdcc9dca117158c47ee"
+    },
+    "2403.07378v5.pdf": {
+      "bytes": 1459349,
+      "sha256": "4f6cd3bd8b53208f297b0f6e50889ea1e9e4355fbb12af343dd3a09f9b2f4189"
+    },
+    "2404.11572v1.pdf": {
+      "bytes": 1989954,
+      "sha256": "6063df2916f1461a9a6a1116bec93c2d5eaedc1dd166ef2247972d44be87d456"
+    },
+    "2405.07574v1.pdf": {
+      "bytes": 514525,
+      "sha256": "e94943f52e01e656e340a2520a61c0142970f9bd6d902fd67d0d8a3eaff9f28b"
+    },
+    "2405.17104v2.pdf": {
+      "bytes": 4370905,
+      "sha256": "29108bc59fae400f63c4cb0ea39767a4c179c08f8630b12f42b3c256d1640890"
+    },
+    "2405.19266v4.pdf": {
+      "bytes": 2786689,
+      "sha256": "958824e5ec1103f4a233962bea1ce6278e4930812397fa111d0458cb0049e509"
+    },
+    "2407.07093v1.pdf": {
+      "bytes": 808889,
+      "sha256": "2f995749eea5abaf51aee0bd540b2f3177b23b1749689649b219bb733f79afd8"
+    },
+    "2407.12036v2.pdf": {
+      "bytes": 3989183,
+      "sha256": "d74fe49eb26ae8c9a8fabf1f9bf17339d13a16ed832a3f82a427217cc80c1e94"
+    },
+    "2408.08127v1.pdf": {
+      "bytes": 5954515,
+      "sha256": "1b9d18228a75bcf30a7cb18ec97d433b847a02b8b739c7b3e7bcd9d1422f5b6a"
+    },
+    "2408.12633v1.pdf": {
+      "bytes": 5554657,
+      "sha256": "84116c92697dde26e371b51f3382dc995dc25290302a1c72932873082ed6d2d1"
+    },
+    "2409.11272v7.pdf": {
+      "bytes": 1888027,
+      "sha256": "e9b32beeef2b3e1b5d547cf6a1bb1b67f6975cd79930ce995588cd4fd6becc34"
+    },
+    "2409.15949v1.pdf": {
+      "bytes": 607715,
+      "sha256": "112b60de3fd3dc9f68a95da2d9c41622b714ae0e109fcaf04113266e8f7ddd1f"
+    },
+    "2410.03129v2.pdf": {
+      "bytes": 4179193,
+      "sha256": "48f2912c6d66a1413e743329532d20edca481b51bd349f3146faf26b60412552"
+    },
+    "2411.04734v2.pdf": {
+      "bytes": 236129,
+      "sha256": "585523825a18e6408c5a42002d848f29273c4b0bd7610f3cb447939feee378a9"
+    },
+    "2411.16408v1.pdf": {
+      "bytes": 5886931,
+      "sha256": "d84fd631d20ec432a28e21febca09e859a9bf6c8b7e2e728326cf013ca256042"
+    },
+    "2501.07557v1.pdf": {
+      "bytes": 5101871,
+      "sha256": "fac093548b83161b759342532c3ed726db15aebdc96b03ad5e82335784245f3e"
+    },
+    "2501.14424v2.pdf": {
+      "bytes": 3250969,
+      "sha256": "c02ab70fd59b68c709cae3d49331487a18ac6a926195331f2758c1663943f706"
+    },
+    "2502.18036v5.pdf": {
+      "bytes": 828569,
+      "sha256": "bea1fb14a20b08170588ba6801c214f5ffa9c6bb29905fde56829f126c2946e8"
+    },
+    "2502.21321v2.pdf": {
+      "bytes": 2824474,
+      "sha256": "2045cafb2d4cb167faa68393abdaa24bcec58fe3e7bbc2c25b6dabeb0eeef7ff"
+    },
+    "2503.12340v1.pdf": {
+      "bytes": 631941,
+      "sha256": "d54c6e9e9e45f15bb3562fbf1d567aeb9a2439f3c2f65acb24b2f519865b0b37"
+    },
+    "2504.10415v2.pdf": {
+      "bytes": 5082718,
+      "sha256": "5ad550be674b1ce31b4b28d2412d0241a2d34d7d953ae1d7ac7e27f9baf189d4"
+    },
+    "2505.00035v1.pdf": {
+      "bytes": 1370077,
+      "sha256": "52a78ff354fbcfd53fbeb6a7681a546fb6926119a24aea1cfd49539cf2f93677"
+    },
+    "2506.14877v1.pdf": {
+      "bytes": 868448,
+      "sha256": "586c4879ae2162c7f1c7cf337b2dd8823e485120a79410ef2f03f66592f4772b"
+    },
+    "2510.00990v1.pdf": {
+      "bytes": 5539867,
+      "sha256": "67f28220bd9da656287e9f31d3793bab4f297740a6f28d4b77683f0724c2bf17"
+    },
+    "2510.18339v1.pdf": {
+      "bytes": 581480,
+      "sha256": "851d85cb432206773f6a94b2358597d1d3202e5375718dddd56ee653116cbe0c"
+    },
+    "DAMOP.pptx": {
+      "bytes": 35155947,
+      "sha256": "eee2462bfba571cf8c9c3ff7df6d8fd715c9b92b6a8b712d2cfedad3c3eeaf5d"
+    },
+    "paper_file_1.docx": {
+      "bytes": 7552,
+      "sha256": "793f5358aab3867c2948896ac84a18158512c7ae576c6e4bee5386a3123cba28"
+    },
+    "paper_file_2.docx": {
+      "bytes": 12007,
+      "sha256": "5a4dc2898c13d3c4d4dfba9545794463d5bf9017c4447f9a1fa4293aff625f08"
+    }
+  },
+  "task_identity_id": "task-005",
+  "task_identity_resolved": true,
+  "verifier_python": true,
+  "verifier_dependencies": true,
+  "verifier_dependency_probe": "pytest 8.4.2\nPyPDF2 3.0.1",
+  "verifier_collect_ok": true,
+  "verifier_collect_output": "vendor/skillsbench/tasks/organize-messy-files/verifier/test_outputs.py::test_expected_files_present_in_each_folder[papers-expected_map0-.pdf-normalize_pdf_name]\nvendor/skillsbench/tasks/organize-messy-files/verifier/test_outputs.py::test_expected_files_present_in_each_folder[presentations-expected_map1-.pptx-normalize_filename]\nvendor/skillsbench/tasks/organize-messy-files/verifier/test_outputs.py::test_expected_files_present_in_each_folder[Word docs-expected_map2-.docx-normalize_filename]\nvendor/skillsbench/tasks/organize-messy-files/verifier/test_outputs.py::test_all_files_sorted_once_and_in_correct_subject\nvendor/skillsbench/tasks/organize-messy-files/verifier/test_outputs.py::test_no_leftover_expected_files_in_unsorted_folder\nvendor/skillsbench/tasks/organize-messy-files/verifier/test_outputs.py::test_no_allowed_files_outside_subject_folders\nvendor/skillsbench/tasks/organize-messy-files/verifier/test_outputs.py::test_no_unexpected_file_types_in_subject_folders\nvendor/skillsbench/tasks/organize-messy-files/verifier/test_outputs.py::test_all_files_are_readable\n\n=============================== warnings summary ===============================\n../../../../.venv/lib/python3.13/site-packages/PyPDF2/__init__.py:21\n  /Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/lib/python3.13/site-packages/PyPDF2/__init__.py:21: DeprecationWarning: PyPDF2 is deprecated. Please move to the pypdf library instead.\n    warnings.warn(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n8 tests collected in 0.10s",
+  "assets_readable_by_file": true,
+  "ready": true,
+  "active_process_check": {
+    "available": true,
+    "active_matching_processes": [
+      "45751    01:13:11 /bin/bash -c cd /private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-03-attempt-09/workspace && python3 modules/xlsx/recalc.py data/openipf.xlsx 120 2>&1",
+      "45754    01:13:10 /Users/wangjinhua/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override/../../native/libreoffice-headless/libreoffice/LibreOfficeDev.app/Contents/MacOS/soffice --headless --norestore vnd.sun.star.script:Standard.Module1.RecalculateAndSave?language=Basic&location=application /private/tmp/vista-task004-local-3x3-20260823-03/formal-task004-local-3x3-minimaxm3-20260823-03-native-replicate-03-attempt-09/workspace/data/openipf.xlsx",
+      "47875       00:05 /Library/Frameworks/Python.framework/Versions/3.13/Resources/Python.app/Contents/MacOS/Python -m experiments.formal.run_task005_local_group"
+    ],
+    "clear": false
+  },
+  "opencode": {
+    "launcher": "/Users/wangjinhua/.local/lib/node_modules/opencode-ai/bin/opencode.exe",
+    "binary": "/Users/wangjinhua/.local/lib/node_modules/opencode-ai/bin/opencode.exe",
+    "version": "1.18.18",
+    "launcher_sha256": "c9be687513fd652ca53018901457eb0911cb505dc9cdc494a0ae3645970699ee",
+    "binary_sha256": "c9be687513fd652ca53018901457eb0911cb505dc9cdc494a0ae3645970699ee"
+  },
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "timeouts": {
+    "max_turns": 6,
+    "model_turn_timeout_seconds": 420,
+    "verifier_timeout_seconds": 900
+  },
+  "concurrency_note": "Pre-formal controller check found no active task2-task5 OpenCode process and no current shared 429 call; historical 429 records were retained only as prior evidence."
+}

@@ -1,0 +1,12 @@
+........                                                                 [100%]
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../verifier/test_outputs.py::test_expected_files_present_in_each_folder[papers-expected_map0-.pdf-normalize_pdf_name]
+PASSED ../verifier/test_outputs.py::test_expected_files_present_in_each_folder[presentations-expected_map1-.pptx-normalize_filename]
+PASSED ../verifier/test_outputs.py::test_expected_files_present_in_each_folder[Word docs-expected_map2-.docx-normalize_filename]
+PASSED ../verifier/test_outputs.py::test_all_files_sorted_once_and_in_correct_subject
+PASSED ../verifier/test_outputs.py::test_no_leftover_expected_files_in_unsorted_folder
+PASSED ../verifier/test_outputs.py::test_no_allowed_files_outside_subject_folders
+PASSED ../verifier/test_outputs.py::test_no_unexpected_file_types_in_subject_folders
+PASSED ../verifier/test_outputs.py::test_all_files_are_readable
+8 passed, 1 warning in 0.66s

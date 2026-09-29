@@ -1,0 +1,21 @@
+schema_version: 1
+source_content_equivalence: byte-for-byte-under-modules
+modules:
+  - id: search-cities
+    path: modules/search-cities/SKILL.md
+    triggers: [geographic_constraint, incomplete_output, schema_error, wrong_format, runtime_error, test_failure]
+  - id: search-accommodations
+    path: modules/search-accommodations/SKILL.md
+    triggers: [accommodation_constraint]
+  - id: search-restaurants
+    path: modules/search-restaurants/SKILL.md
+    triggers: [cuisine_constraint]
+  - id: search-attractions
+    path: modules/search-attractions/SKILL.md
+    triggers: [attraction_constraint]
+  - id: search-driving-distance
+    path: modules/search-driving-distance/SKILL.md
+    triggers: [transportation_constraint]
+  - id: search-flights
+    path: modules/search-flights/SKILL.md
+    triggers: [flight_required]

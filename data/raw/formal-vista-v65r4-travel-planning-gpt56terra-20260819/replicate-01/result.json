@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-vista-v65r4-travel-planning-gpt56terra-20260819-replicate-01",
+  "task_id": "task-007-travel-planning",
+  "replicate_id": 1,
+  "condition": "pd-vista",
+  "backend": "opencode-local-windows-responses",
+  "docker_used": false,
+  "requested_provider_model": "openai/gpt-5.6-terra",
+  "expected_actual_model": "gpt-5.6-terra",
+  "actual_model_ids": [],
+  "session_id": "ses_fe65c6881ffewwO3P2Yqvi6eOo",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 1,
+      "transport_attempts": [
+        {
+          "attempt": 1,
+          "return_code": 1,
+          "retryable_transport_error": false
+        }
+      ],
+      "event_summary": {
+        "event_types": {
+          "step_start": 9,
+          "text": 5,
+          "tool_use": 24,
+          "step_finish": 9,
+          "error": 1
+        },
+        "session_ids": [
+          "ses_fe65c6881ffewwO3P2Yqvi6eOo"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 9,
+        "tool_uses": 24,
+        "input_tokens": 40134,
+        "output_tokens": 7850,
+        "cache_read_tokens": 232704,
+        "accessed_modules": [],
+        "errors": [
+          {
+            "name": "APIError",
+            "status_code": 403,
+            "retryable": false,
+            "category": "provider_policy_rejection"
+          }
+        ],
+        "tool_errors": []
+      },
+      "plan_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "distractor_flight_disclosed": false,
+  "vista_metrics": {
+    "trigger_opportunities": 0,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": false,
+  "stop_reason": "provider_policy_rejection",
+  "status": "quarantined_provider_policy_rejection",
+  "workspace": "C:\\Users\\小咕嘟\\AppData\\Local\\VistaExperiments\\formal-vista-v65r4-travel-planning-gpt56terra-20260819-replicate-01\\workspace"
+}

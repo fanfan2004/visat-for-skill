@@ -1,0 +1,81 @@
+{
+  "plan": [
+    {
+      "day": 1,
+      "current_city": "Minneapolis",
+      "transportation": "Self-driving: from Minneapolis to Cleveland",
+      "breakfast": "Mediterranean cuisine at The Cafe, Minneapolis",
+      "lunch": "Chinese cuisine at Big Biryani, Minneapolis",
+      "dinner": "American cuisine at Keventers, Cleveland",
+      "attraction": "Rock & Roll Hall of Fame;West Side Market;",
+      "accommodation": "Pet-friendly Private room in Sunnyside Gardens, Cleveland"
+    },
+    {
+      "day": 2,
+      "current_city": "Cleveland",
+      "transportation": "Self-driving: in Cleveland",
+      "breakfast": "Italian cuisine at Master Bakers, Cleveland",
+      "lunch": "Mediterranean cuisine at Wild Chef House, Cleveland",
+      "dinner": "Chinese cuisine at Green Leaf, Cleveland",
+      "attraction": "Cleveland Metroparks Zoo;The Cleveland Museum of Art;Cleveland Botanical Garden;",
+      "accommodation": "Pet-friendly Private room in Sunnyside Gardens, Cleveland"
+    },
+    {
+      "day": 3,
+      "current_city": "from Cleveland to Akron",
+      "transportation": "Self-driving: from Cleveland to Akron",
+      "breakfast": "American cuisine at Keventers, Cleveland",
+      "lunch": "Mediterranean cuisine at LSK Express, Cleveland",
+      "dinner": "Italian cuisine at Delhi - Kingdom of Dreams, Akron",
+      "attraction": "Akron Art Museum;Stan Hywet Hall & Gardens;",
+      "accommodation": "Pet-friendly Ft. Greene Loft, Akron"
+    },
+    {
+      "day": 4,
+      "current_city": "Akron",
+      "transportation": "Self-driving: in Akron",
+      "breakfast": "Chinese cuisine at Miann, Akron",
+      "lunch": "American cuisine at Cafe Foto Club, Akron",
+      "dinner": "Mediterranean cuisine at Barista, Akron",
+      "attraction": "Akron Zoo;F.A. Seiberling Nature Realm;",
+      "accommodation": "Pet-friendly Ft. Greene Loft, Akron"
+    },
+    {
+      "day": 5,
+      "current_city": "from Akron to Toledo",
+      "transportation": "Self-driving: from Akron to Toledo",
+      "breakfast": "Chinese cuisine at Samarpan Fast Food, Akron",
+      "lunch": "American cuisine at Subway, Akron",
+      "dinner": "Italian cuisine at Crazy Kitchen Lounge & Terrace, Toledo",
+      "attraction": "Toledo Museum of Art;Toledo Zoo;",
+      "accommodation": "Pet-friendly The home is where the heart is., Toledo"
+    },
+    {
+      "day": 6,
+      "current_city": "Toledo",
+      "transportation": "Self-driving: in Toledo",
+      "breakfast": "Chinese cuisine at Devotay, Toledo",
+      "lunch": "Mediterranean cuisine at Bombay Brasserie, Toledo",
+      "dinner": "Italian cuisine at Pita Pit, Toledo",
+      "attraction": "National Museum of the Great Lakes;Imagination Station;Toledo Botanical Garden;",
+      "accommodation": "Pet-friendly The home is where the heart is., Toledo"
+    },
+    {
+      "day": 7,
+      "current_city": "Minneapolis",
+      "transportation": "Self-driving: from Toledo to Minneapolis",
+      "breakfast": "American cuisine at Barbeque Nation, Toledo",
+      "lunch": "Chinese cuisine at Agent Jack's Bar, Minneapolis",
+      "dinner": "Italian cuisine at Haveliram, Minneapolis",
+      "attraction": "Minneapolis Sculpture Garden;Walker Art Center;",
+      "accommodation": "-"
+    }
+  ],
+  "tool_called": [
+    "search_cities",
+    "search_accommodations",
+    "search_restaurants",
+    "search_attractions",
+    "search_driving_distance"
+  ]
+}

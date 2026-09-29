@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task001-local-3x3-minimaxm3-20260822-04-noskill-replicate-01",
+  "task_id": "task-001",
+  "condition": "noskill",
+  "replicate_id": 1,
+  "backend": "opencode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "session_id": "ses_fd79e5f9dffe3ys413BeU2k7dD",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 19,
+          "tool_use": 18,
+          "step_finish": 19,
+          "text": 3
+        },
+        "session_ids": [
+          "ses_fd79e5f9dffe3ys413BeU2k7dD"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 19,
+        "tool_uses": 18,
+        "input_tokens": 36698,
+        "output_tokens": 22733,
+        "cache_read_tokens": 478009,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 6,
+          "text": 3,
+          "tool_use": 5,
+          "step_finish": 6
+        },
+        "session_ids": [
+          "ses_fd79e5f9dffe3ys413BeU2k7dD"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 6,
+        "tool_uses": 5,
+        "input_tokens": 19054,
+        "output_tokens": 10456,
+        "cache_read_tokens": 273046,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 3,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 4,
+          "tool_use": 3,
+          "step_finish": 4,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fd79e5f9dffe3ys413BeU2k7dD"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 4,
+        "tool_uses": 3,
+        "input_tokens": 2459,
+        "output_tokens": 1703,
+        "cache_read_tokens": 235194,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 29,
+    "tool_uses": 26,
+    "input_tokens": 58211,
+    "output_tokens": 34892,
+    "cache_read_tokens": 986249
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "vista_metrics": {
+    "trigger_opportunities": 2,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task001-local-3x3-minimaxm3-20260822-04-noskill-replicate-01/workspace"
+}

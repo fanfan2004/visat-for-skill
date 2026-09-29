@@ -1,0 +1,10 @@
+task_id: task-005
+mapping_status: resolved
+source:
+  benchmark: skillsbench
+  benchmark_task_id: organize-messy-files
+  definition_path: vendor/skillsbench/tasks/organize-messy-files
+  skill_path: vendor/skillsbench/tasks/organize-messy-files/environment/skills
+skill_paths:
+  native: vendor/skillsbench/tasks/organize-messy-files/environment/skills
+  pd_vista: skills/pd-vista/task-005

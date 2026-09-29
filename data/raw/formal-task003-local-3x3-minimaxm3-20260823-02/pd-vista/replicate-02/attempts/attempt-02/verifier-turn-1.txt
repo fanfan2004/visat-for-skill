@@ -1,0 +1,243 @@
+.......F.F...F.                                                          [100%]
+=================================== FAILURES ===================================
+_________________________ test_bubble_chart_rendering __________________________
+
+browser_page = <Page url='http://localhost:49613/index.html'>
+
+    def test_bubble_chart_rendering(browser_page):
+        """Bubble chart must render with correct number of bubbles, sizing, and coloring."""
+        page = browser_page
+    
+        # Wait a bit more for D3 animations to complete
+        page.wait_for_timeout(1000)
+    
+        # Check for SVG element first
+        svg = page.locator('svg')
+        assert svg.count() > 0, "No SVG element found - visualization may not be rendering"
+    
+        # Check for SVG bubbles (instruction.md: "50 stocks")
+        # Try multiple selectors
+        bubbles = page.locator('svg circle')
+        bubble_count = bubbles.count()
+    
+        # If no circles, try other selectors
+        if bubble_count == 0:
+            bubbles = page.locator('circle')
+            bubble_count = bubbles.count()
+    
+        if bubble_count == 0:
+            bubbles = page.locator('[class*="bubble"]')
+            bubble_count = bubbles.count()
+    
+        # If still no bubbles, provide detailed error info
+        if bubble_count == 0:
+            error_msg = f"Expected 50 bubbles for stocks, found {bubble_count}.\n"
+            error_msg += f"Console messages: {getattr(page, 'console_messages', [])}\n"
+            error_msg += f"Page errors: {getattr(page, 'page_errors', [])}\n"
+            error_msg += f"SVG innerHTML: {svg.first.inner_html()[:300] if svg.count() > 0 else 'No SVG'}"
+            pytest.fail(error_msg)
+    
+>       assert bubble_count == 50, \
+            f"Expected 50 bubbles for stocks (instruction.md), found {bubble_count}"
+E       AssertionError: Expected 50 bubbles for stocks (instruction.md), found 55
+E       assert 55 == 50
+
+/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-02-pd-vista-replicate-02/verifier/test_outputs.py:315: AssertionError
+---------------------------- Captured stdout setup -----------------------------
+
+============================================================
+BROWSER PAGE FIXTURE - Starting
+============================================================
+✓ index.html exists at /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-02-pd-vista-replicate-02/workspace/output/index.html
+✓ index.html size: 1146 bytes
+✓ HTTP server started on port 49613
+✓ HTML preview (first 500 chars):
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stock Sector Bubble Visualization</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Stock Sector Bubble Visualization</h1>
+    <p>Bubble chart clustered by sector (sized by market cap) with a synchronized stock table.</p>
+  </header>
+
+  <main class="layout">
+    <section class="chart-pane
+
+✓ Playwright started
+✓ Chromium browser launched
+✓ New page created
+Loading http://localhost:49613/index.html
+✓ Page loaded (status: 200)
+✓ Page title: 'Stock Sector Bubble Visualization'
+✓ Found 2 script tags
+✓ D3.js loaded: True
+✓ Found 1 SVG element(s)
+✓ Found 1 table element(s)
+
+Waiting for visualization to render...
+✓ Bubbles rendered: 55 circles found
+
+============================================================
+RENDER SUCCESS: True
+Console messages: 0
+Page errors: 0
+============================================================
+
+Waiting for D3 force simulation to settle...
+✓ Force simulation settled
+✓ Screenshot saved to /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-02-pd-vista-replicate-02/verifier/logs/visualization.png for review
+---------------------------- Captured stderr setup -----------------------------
+127.0.0.1 - - [23/Aug/2026 17:08:13] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2026 17:08:13] "GET /css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2026 17:08:13] "GET /js/d3.v6.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2026 17:08:13] "GET /js/visualization.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Aug/2026 17:08:13] "GET /data/stock-descriptions.csv HTTP/1.1" 200 -
+________________________ test_tooltips_non_etf_and_etf _________________________
+
+browser_page = <Page url='http://localhost:49613/index.html'>
+
+    def test_tooltips_non_etf_and_etf(browser_page):
+        """Non-ETF bubbles should show tooltips; ETF bubbles should not."""
+        page = browser_page
+    
+        # Tooltip uses .visible class to show (opacity: 1), not display property
+        # Check for the .visible class specifically, not :visible pseudo-selector
+        tooltip_locator = '.tooltip.visible, #tooltip.visible, [role="tooltip"][class*="visible"]'
+        etf_tickers = ['SPY', 'VOO', 'QQQ', 'GLD', 'XLF', 'VWO', 'XLU', 'XLV', 'VEA', 'VTV']
+        svg_texts = page.locator('svg text')
+    
+        def hover_label_text(text_to_hover):
+            for i in range(svg_texts.count()):
+                text_elem = svg_texts.nth(i)
+                text_content = text_elem.text_content().strip()
+                if text_content == text_to_hover:
+                    box = text_elem.bounding_box()
+                    if box:
+                        page.mouse.move(box['x'] + box['width'] / 2, box['y'] + box['height'] / 2)
+                        page.wait_for_timeout(400)
+                        return True
+            return False
+    
+        def find_first_non_etf_label():
+            import re
+            ticker_pattern = re.compile(r'^[A-Z]{1,4}$')
+            for i in range(svg_texts.count()):
+                text_elem = svg_texts.nth(i)
+                text_content = text_elem.text_content().strip()
+                if ticker_pattern.match(text_content) and text_content not in etf_tickers:
+                    return text_content
+            return None
+    
+        # Test 1: ETF bubbles should NOT show tooltips
+        # Test this first in cleanest page state before any other interactions
+        # Move mouse to origin to ensure no hover state from page load
+        page.mouse.move(0, 0)
+        page.wait_for_timeout(500)
+    
+        etf_label = None
+        for candidate in etf_tickers:
+            if hover_label_text(candidate):
+                etf_label = candidate
+                break
+    
+        if etf_label is None:
+            print("⚠ Could not locate ETF bubble by ticker label for screenshot")
+        else:
+            # Wait for any tooltip to appear (if incorrectly configured)
+            page.wait_for_timeout(200)
+    
+            # Save screenshot showing ETF hover (should show no tooltip)
+            try:
+                page.screenshot(path="/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-02-pd-vista-replicate-02/verifier/logs/tooltip_etf_hover_no_tooltip.png", full_page=True)
+                print(f"✓ ETF hover screenshot saved for {etf_label} (should show no tooltip)")
+            except Exception as e:
+                print(f"⚠ Failed to save ETF hover screenshot: {e}")
+    
+            # After hovering ETF, ensure tooltip is not visible
+            etf_tooltip = page.locator(tooltip_locator)
+            assert etf_tooltip.count() == 0, \
+                "ETF bubble should not show a tooltip (instruction.md requirement)"
+    
+        # Test 2: Non-ETF bubbles should show tooltips with ticker, name, and sector
+        # Move mouse away to clear hover state before testing non-ETF
+        page.mouse.move(0, 0)
+        page.wait_for_timeout(500)
+    
+        non_etf_label = find_first_non_etf_label()
+        assert non_etf_label is not None, "Could not find a non-ETF ticker label to hover"
+    
+        assert hover_label_text(non_etf_label), f"Could not hover non-ETF label {non_etf_label}"
+    
+        tooltip = page.locator(tooltip_locator)
+>       assert tooltip.count() > 0, "Tooltip did not appear on non-ETF hover"
+E       AssertionError: Tooltip did not appear on non-ETF hover
+E       assert 0 > 0
+E        +  where 0 = count()
+E        +    where count = <Locator frame=<Frame name= url='http://localhost:49613/index.html'> selector='.tooltip.visible, #tooltip.visible, [role="tooltip"][class*="visible"]'>.count
+
+/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-02-pd-vista-replicate-02/verifier/test_outputs.py:574: AssertionError
+----------------------------- Captured stdout call -----------------------------
+✓ ETF hover screenshot saved for SPY (should show no tooltip)
+___________________________ test_legend_completeness ___________________________
+
+browser_page = <Page url='http://localhost:49613/index.html'>
+
+    def test_legend_completeness(browser_page):
+        """Legend must show all 5 sectors with correct colors."""
+        page = browser_page
+    
+        # Find legend
+        legend = page.locator('[class*="legend"], #legend')
+        assert legend.count() > 0, "Legend not found"
+    
+>       legend_text = legend.first.inner_text().lower()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task003-local-3x3-minimaxm3-20260823-02-resume-02-pd-vista-replicate-02/verifier/test_outputs.py:825: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py:19446: in inner_text
+    self._sync(self._impl_obj.inner_text(timeout=to_milliseconds(timeout)))
+/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/lib/python3.13/site-packages/playwright/_impl/_locator.py:498: in inner_text
+    return await self._frame.inner_text(
+/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/lib/python3.13/site-packages/playwright/_impl/_frame.py:743: in inner_text
+    return await self._channel.send(
+/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/lib/python3.13/site-packages/playwright/_impl/_connection.py:76: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x111105bd0>
+cb = <function Channel.send.<locals>.<lambda> at 0x111276700>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: Locator.inner_text: Error: Node is not an HTMLElement
+E           Call log:
+E             - waiting for locator("[class*=\"legend\"], #legend").first
+
+/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/lib/python3.13/site-packages/playwright/_impl/_connection.py:632: Error
+=========================== short test summary info ============================
+FAILED test_outputs.py::test_bubble_chart_rendering - AssertionError: Expecte...
+FAILED test_outputs.py::test_tooltips_non_etf_and_etf - AssertionError: Toolt...
+FAILED test_outputs.py::test_legend_completeness - playwright._impl._errors.E...
+3 failed, 12 passed in 19.76s

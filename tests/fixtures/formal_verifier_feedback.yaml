@@ -1,0 +1,32 @@
+schema_version: 1
+cases:
+  - task_id: task-001
+    benchmark_task_id: python-scala-translation
+    source_check: Compilation failed
+    failing_checks: [verifier_output_log]
+    feedback_types: [compilation_error, test_failure]
+  - task_id: task-002
+    benchmark_task_id: enterprise-information-search
+    source_check: test_answer_structure_and_values
+    failing_checks: [test_answer_structure_and_values]
+    feedback_types: [schema_error, test_failure]
+  - task_id: task-003
+    benchmark_task_id: data-to-d3
+    source_check: test_bubble_chart_rendering
+    failing_checks: [test_bubble_chart_rendering]
+    feedback_types: [test_failure]
+  - task_id: task-004
+    benchmark_task_id: powerlifting-coef-calc
+    source_check: test_dots_sheet_has_correct_columns
+    failing_checks: [test_dots_sheet_has_correct_columns]
+    feedback_types: [schema_error, test_failure]
+  - task_id: task-005
+    benchmark_task_id: organize-messy-files
+    source_check: test_expected_files_present_in_each_folder
+    failing_checks: [test_expected_files_present_in_each_folder]
+    feedback_types: [incomplete_output, test_failure]
+  - task_id: task-006
+    benchmark_task_id: fix-build-agentops
+    source_check: test_build_success
+    failing_checks: [test_build_success]
+    feedback_types: [test_failure]

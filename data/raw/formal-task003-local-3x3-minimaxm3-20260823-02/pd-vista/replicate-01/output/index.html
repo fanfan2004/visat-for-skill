@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Bubble Chart &amp; Table</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>U.S. Stocks Visualized by Sector</h1>
+    <p class="subtitle">S&amp;P 500 subset &mdash; 40 stocks and 10 ETFs &mdash; sized by market capitalization</p>
+    <div class="app">
+        <section class="chart-panel">
+            <p class="panel-title">Bubble Chart</p>
+            <div class="legend" id="legend"></div>
+            <div id="bubble-chart"></div>
+        </section>
+        <section class="table-panel">
+            <p class="panel-title">Stock Reference Table</p>
+            <div class="search-row">
+                <input id="search-input" type="text" placeholder="Filter ticker, name, or sector…" autocomplete="off" />
+            </div>
+            <div style="overflow:auto; flex:1 1 auto;">
+                <table id="stock-table">
+                    <thead>
+                        <tr>
+                            <th style="width:14%">Ticker symbol</th>
+                            <th style="width:46%">Full company name</th>
+                            <th style="width:24%">Sector</th>
+                            <th style="width:16%">Market cap</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <script src="js/d3.v6.min.js"></script>
+    <script src="js/visualization.js"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #fafafa;
+  color: #222;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 16px;
+}
+
+#title {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#main {
+  display: flex;
+  flex: 1;
+  gap: 16px;
+  min-height: 0;
+}
+
+#chart-panel {
+  flex: 1.2;
+  min-width: 0;
+  background: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+#bubble-chart {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+#table-panel {
+  flex: 1;
+  min-width: 0;
+  background: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  padding: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#table-panel h2 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.table-scroll {
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  border: 1px solid #eee;
+  border-radius: 6px;
+}
+
+table#stocks-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+
+table#stocks-table thead th {
+  position: sticky;
+  top: 0;
+  background: #f4f6f8;
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e2e2e2;
+  font-weight: 600;
+}
+
+table#stocks-table tbody td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #f0f0f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+table#stocks-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+table#stocks-table tbody tr:hover {
+  background: #f6f9ff;
+}
+
+table#stocks-table tbody tr.selected {
+  background: #fff3bf;
+}
+
+table#stocks-table tbody tr.selected td {
+  font-weight: 600;
+}
+
+.sector-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sector-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+#legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: rgba(34, 34, 34, 0.95);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.4;
+  max-width: 260px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s ease;
+  z-index: 10;
+}
+
+#tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#tooltip .tt-ticker {
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+#tooltip .tt-name {
+  font-weight: 500;
+}
+
+#tooltip .tt-sector {
+  margin-top: 4px;
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+.bubble circle {
+  cursor: pointer;
+  transition: stroke-width 0.15s ease;
+}
+
+.bubble circle.selected {
+  stroke: #222;
+  stroke-width: 3px;
+}
+
+.bubble text {
+  pointer-events: none;
+  font-size: 11px;
+  font-weight: 600;
+  fill: #fff;
+  text-anchor: middle;
+  dominant-baseline: central;
+  user-select: none;
+}
+
+.bubble.energy text,
+.bubble.financial text {
+  fill: #fff;
+}

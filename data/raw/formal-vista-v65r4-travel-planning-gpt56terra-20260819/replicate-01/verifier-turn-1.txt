@@ -1,0 +1,24 @@
+.......F..                                                               [100%]
+================================== FAILURES ===================================
+____________________ test_pet_friendly_accommodation_hint _____________________
+
+    def test_pet_friendly_accommodation_hint():
+        """Accommodation strings should signal pet-friendly preference."""
+        with open(PLAN_PATH) as f:
+            plan = json.load(f)["plan"]
+    
+        # Check for pet-friendly indicators: "pet", "dog", "cat", or similar terms
+        pet_keywords = ["pet", "dog", "cat", "animal"]
+        pet_hints = []
+        for day in plan:
+            acc = str(day.get("accommodation", "")).lower()
+            if any(kw in acc for kw in pet_keywords):
+                pet_hints.append(day.get("accommodation", ""))
+>       assert pet_hints, "At least one accommodation should indicate pet-friendly options (e.g., 'pet-friendly', 'dog-friendly')"
+E       AssertionError: At least one accommodation should indicate pet-friendly options (e.g., 'pet-friendly', 'dog-friendly')
+E       assert []
+
+test_outputs.py:147: AssertionError
+=========================== short test summary info ===========================
+FAILED test_outputs.py::test_pet_friendly_accommodation_hint - AssertionError...
+1 failed, 9 passed in 0.14s

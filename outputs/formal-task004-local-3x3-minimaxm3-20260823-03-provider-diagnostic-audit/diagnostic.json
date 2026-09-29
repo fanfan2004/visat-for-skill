@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task004-local-3x3-minimaxm3-20260823-03-provider-diagnostic",
+  "batch_type": "provider_availability_diagnostic",
+  "excluded_from_formal_statistics": true,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "config_path": "/Users/wangjinhua/.config/opencode/opencode.json",
+  "api_key_environment_variable": null,
+  "launcher": {
+    "path": "/Users/wangjinhua/.local/lib/node_modules/opencode-ai/bin/opencode.exe",
+    "version": "1.18.18",
+    "binary_sha256": "c9be687513fd652ca53018901457eb0911cb505dc9cdc494a0ae3645970699ee"
+  },
+  "return_code": 1,
+  "timed_out": false,
+  "event_summary": {
+    "event_types": {
+      "error": 1
+    },
+    "session_ids": [
+      "ses_fd14aac3cffeolZ6HJmgBUKL4I"
+    ],
+    "actual_model_ids": [],
+    "provider_ids": [],
+    "requests": 0,
+    "tool_uses": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cache_read_tokens": 0,
+    "accessed_modules": [],
+    "errors": [
+      {
+        "name": "APIError",
+        "status_code": null,
+        "retryable": true,
+        "category": "api_error"
+      }
+    ],
+    "tool_errors": []
+  },
+  "stdout_tail": "{\"type\":\"error\",\"timestamp\":1787490097540,\"sessionID\":\"ses_fd14aac3cffeolZ6HJmgBUKL4I\",\"error\":{\"name\":\"APIError\",\"data\":{\"message\":\"Cannot connect to API: Was there a typo in the url or port?\",\"isRetryable\":true,\"metadata\":{\"url\":\"https://api.minimaxi.com/anthropic/v1/messages\"}}}}\n",
+  "stderr_tail": "",
+  "opencode_db": {
+    "db_path": "/private/tmp/vista-formal-task004-local-3x3-minimaxm3-20260823-03-provider-diagnostic/opencode-state/data/opencode/opencode.db",
+    "exists": true,
+    "read_only": true,
+    "provider_ids": [
+      "minimax-cn"
+    ],
+    "model_ids": [
+      "MiniMax-M3"
+    ],
+    "recorded_cost": 0.0,
+    "assistant_messages": 1,
+    "session_rows": 1,
+    "message_rows": 2
+  },
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "status": "provider_unavailable"
+}

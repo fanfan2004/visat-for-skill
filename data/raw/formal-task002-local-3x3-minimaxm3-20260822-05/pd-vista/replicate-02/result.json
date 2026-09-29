@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task002-local-3x3-minimaxm3-20260822-05-pd-vista-replicate-02",
+  "task_id": "task-002",
+  "condition": "pd-vista",
+  "replicate_id": 2,
+  "backend": "opencode-local-minimal-dependencies",
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "expected_provider": "minimax-cn",
+  "expected_actual_model": "MiniMax-M3",
+  "actual_provider_ids": [],
+  "actual_model_ids": [],
+  "session_id": "ses_fd6962221ffeC5rcYQVEZ6Z7Un",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 72,
+          "tool_use": 71,
+          "step_finish": 72,
+          "text": 2
+        },
+        "session_ids": [
+          "ses_fd6962221ffeC5rcYQVEZ6Z7Un"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 72,
+        "tool_uses": 71,
+        "input_tokens": 116599,
+        "output_tokens": 31403,
+        "cache_read_tokens": 3689109,
+        "accessed_modules": [
+          "enterprise-artifact-search"
+        ],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 13,
+          "tool_use": 12,
+          "step_finish": 13,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fd6962221ffeC5rcYQVEZ6Z7Un"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 13,
+        "tool_uses": 12,
+        "input_tokens": 33235,
+        "output_tokens": 17159,
+        "cache_read_tokens": 1768393,
+        "accessed_modules": [
+          "enterprise-artifact-search"
+        ],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 3,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 12,
+          "tool_use": 11,
+          "step_finish": 12,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fd6962221ffeC5rcYQVEZ6Z7Un"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 12,
+        "tool_uses": 11,
+        "input_tokens": 22211,
+        "output_tokens": 17161,
+        "cache_read_tokens": 1922124,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 4,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 34,
+          "tool_use": 33,
+          "step_finish": 34,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fd6962221ffeC5rcYQVEZ6Z7Un"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 34,
+        "tool_uses": 33,
+        "input_tokens": 36167,
+        "output_tokens": 20815,
+        "cache_read_tokens": 6526064,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 5,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 14,
+          "tool_use": 13,
+          "step_finish": 14,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fd6962221ffeC5rcYQVEZ6Z7Un"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 14,
+        "tool_uses": 13,
+        "input_tokens": 19405,
+        "output_tokens": 8807,
+        "cache_read_tokens": 3046677,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 6,
+      "return_code": 124,
+      "model_turn_timeout": true,
+      "event_summary": {
+        "event_types": {
+          "step_start": 2,
+          "tool_use": 1,
+          "step_finish": 1
+        },
+        "session_ids": [
+          "ses_fd6962221ffeC5rcYQVEZ6Z7Un"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 2,
+        "tool_uses": 1,
+        "input_tokens": 169,
+        "output_tokens": 616,
+        "cache_read_tokens": 229553,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 147,
+    "tool_uses": 141,
+    "input_tokens": 227786,
+    "output_tokens": 95961,
+    "cache_read_tokens": 17181920
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [
+    "enterprise-artifact-search"
+  ],
+  "accessed_modules_after_disclosure": [
+    "enterprise-artifact-search"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 6,
+    "routable_feedback": 6,
+    "successful_disclosures": 1,
+    "next_round_module_access": 1,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": false,
+  "stop_reason": "max_turns",
+  "status": "failed_max_turns",
+  "workspace": "/private/tmp/vista-task002-local-3x3-20260822-05/formal-task002-local-3x3-minimaxm3-20260822-05-pd-vista-replicate-02/workspace"
+}

@@ -1,0 +1,6 @@
+source_task: vendor/skillsbench/tasks/fix-build-agentops
+source_skills: vendor/skillsbench/tasks/fix-build-agentops/environment/skills
+materialization: copy-complete-module-directory-at-disclosure
+adaptations:
+  - The root file is a routing wrapper; native repair modules and resources remain byte-for-byte copies.
+  - A module becomes agent-visible only after public feedback selects it.

@@ -1,0 +1,10 @@
+task_id: task-004
+mapping_status: resolved
+source:
+  benchmark: skillsbench
+  benchmark_task_id: powerlifting-coef-calc
+  definition_path: vendor/skillsbench/tasks/powerlifting-coef-calc
+  skill_path: vendor/skillsbench/tasks/powerlifting-coef-calc/environment/skills
+skill_paths:
+  native: vendor/skillsbench/tasks/powerlifting-coef-calc/environment/skills
+  pd_vista: skills/pd-vista/task-004

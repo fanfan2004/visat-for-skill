@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task002-local-3x3-minimaxm3-20260822-05-native-replicate-02",
+  "task_id": "task-002",
+  "condition": "native",
+  "replicate_id": 2,
+  "backend": "opencode-local-minimal-dependencies",
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "expected_provider": "minimax-cn",
+  "expected_actual_model": "MiniMax-M3",
+  "actual_provider_ids": [],
+  "actual_model_ids": [],
+  "session_id": "ses_fd6ab0fcdffeCT0Vxgjbz4HReM",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 63,
+          "tool_use": 62,
+          "step_finish": 63,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fd6ab0fcdffeCT0Vxgjbz4HReM"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 63,
+        "tool_uses": 62,
+        "input_tokens": 77833,
+        "output_tokens": 27482,
+        "cache_read_tokens": 2322543,
+        "accessed_modules": [
+          "enterprise-artifact-search"
+        ],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 43,
+          "tool_use": 42,
+          "step_finish": 43,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fd6ab0fcdffeCT0Vxgjbz4HReM"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 43,
+        "tool_uses": 42,
+        "input_tokens": 63246,
+        "output_tokens": 22368,
+        "cache_read_tokens": 4451460,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 3,
+      "return_code": 124,
+      "model_turn_timeout": true,
+      "event_summary": {
+        "event_types": {
+          "step_start": 43,
+          "tool_use": 42,
+          "step_finish": 42
+        },
+        "session_ids": [
+          "ses_fd6ab0fcdffeCT0Vxgjbz4HReM"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 43,
+        "tool_uses": 42,
+        "input_tokens": 58052,
+        "output_tokens": 31594,
+        "cache_read_tokens": 7438532,
+        "accessed_modules": [
+          "enterprise-artifact-search"
+        ],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 4,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 21,
+          "tool_use": 20,
+          "step_finish": 21,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fd6ab0fcdffeCT0Vxgjbz4HReM"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 21,
+        "tool_uses": 20,
+        "input_tokens": 15988,
+        "output_tokens": 11792,
+        "cache_read_tokens": 4374986,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 5,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 30,
+          "tool_use": 29,
+          "step_finish": 30,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fd6ab0fcdffeCT0Vxgjbz4HReM"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 30,
+        "tool_uses": 29,
+        "input_tokens": 21499,
+        "output_tokens": 15009,
+        "cache_read_tokens": 6837339,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": [
+          "The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/private/tmp/vista-task002-local-3x3-20260822-05/formal-task002-local-3x3-minimaxm3-20260822-05-native-replicate-02/opencode-state/data/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"external_directory\",\"pat"
+        ]
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 6,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "event_summary": {
+        "event_types": {
+          "step_start": 14,
+          "tool_use": 13,
+          "step_finish": 14,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fd6ab0fcdffeCT0Vxgjbz4HReM"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 14,
+        "tool_uses": 13,
+        "input_tokens": 8072,
+        "output_tokens": 5558,
+        "cache_read_tokens": 3407343,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "answer_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 214,
+    "tool_uses": 208,
+    "input_tokens": 244690,
+    "output_tokens": 113803,
+    "cache_read_tokens": 28832203
+  },
+  "initially_available_modules": [
+    "enterprise-artifact-search"
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "vista_metrics": {
+    "trigger_opportunities": 6,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": false,
+  "stop_reason": "max_turns",
+  "status": "failed_max_turns",
+  "workspace": "/private/tmp/vista-task002-local-3x3-20260822-05/formal-task002-local-3x3-minimaxm3-20260822-05-native-replicate-02/workspace"
+}

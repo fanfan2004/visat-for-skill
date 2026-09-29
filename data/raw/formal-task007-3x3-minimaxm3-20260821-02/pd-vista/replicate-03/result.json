@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task007-3x3-minimaxm3-20260821-02-pd-vista-replicate-03",
+  "task_id": "task-007-travel-planning",
+  "replicate_id": 3,
+  "condition": "pd-vista",
+  "backend": "opencode-local-current-config",
+  "docker_used": false,
+  "requested_provider_model": "minimax-cn/MiniMax-M3",
+  "expected_actual_model": "MiniMax-M3",
+  "actual_model_ids": [],
+  "expected_provider": "minimax-cn",
+  "actual_provider_ids": [],
+  "initially_available_modules": [],
+  "usage": {
+    "requests": 85,
+    "tool_uses": 83,
+    "input_tokens": 64639,
+    "output_tokens": 33206,
+    "cache_read_tokens": 2703800
+  },
+  "session_id": "ses_fdc99875bffeKKMbqtjnCRTm81",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "transport_attempts": [
+        {
+          "attempt": 1,
+          "return_code": 0,
+          "retryable_transport_error": false
+        }
+      ],
+      "event_summary": {
+        "event_types": {
+          "step_start": 71,
+          "tool_use": 70,
+          "step_finish": 71,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fdc99875bffeKKMbqtjnCRTm81"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 71,
+        "tool_uses": 70,
+        "input_tokens": 57987,
+        "output_tokens": 30515,
+        "cache_read_tokens": 1827285,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "plan_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "transport_attempts": [
+        {
+          "attempt": 1,
+          "return_code": 0,
+          "retryable_transport_error": false
+        }
+      ],
+      "event_summary": {
+        "event_types": {
+          "step_start": 14,
+          "tool_use": 13,
+          "step_finish": 14,
+          "text": 1
+        },
+        "session_ids": [
+          "ses_fdc99875bffeKKMbqtjnCRTm81"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 14,
+        "tool_uses": 13,
+        "input_tokens": 6652,
+        "output_tokens": 2691,
+        "cache_read_tokens": 876515,
+        "accessed_modules": [
+          "search-attractions"
+        ],
+        "errors": [],
+        "tool_errors": [
+          "Found multiple matches for oldString. Provide more surrounding context to make the match unique."
+        ]
+      },
+      "plan_exists": true,
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "disclosed_modules": [
+    "search-attractions"
+  ],
+  "accessed_modules_after_disclosure": [
+    "search-attractions"
+  ],
+  "distractor_flight_disclosed": false,
+  "vista_metrics": {
+    "trigger_opportunities": 1,
+    "routable_feedback": 1,
+    "successful_disclosures": 1,
+    "next_round_module_access": 1,
+    "clean_complete_closure": 1
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed_with_clean_vista_feedback_loop",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task007-3x3-minimaxm3-20260821-02-pd-vista-replicate-03/workspace"
+}

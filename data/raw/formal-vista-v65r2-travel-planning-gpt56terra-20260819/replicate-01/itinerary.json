@@ -1,0 +1,81 @@
+{
+  "plan": [
+    {
+      "day": 1,
+      "current_city": "from Minneapolis to Cincinnati",
+      "transportation": "Self-driving: from Minneapolis to Cincinnati",
+      "breakfast": "-",
+      "lunch": "Bubba Jax Crab Shack, Cincinnati",
+      "dinner": "Go Foodie, Cincinnati",
+      "attraction": "Eden Park;Cincinnati Art Museum;",
+      "accommodation": "Pet-friendly Modern and Hip Brooklyn Brownstone!, Cincinnati"
+    },
+    {
+      "day": 2,
+      "current_city": "Cincinnati",
+      "transportation": "-",
+      "breakfast": "Pizza Hut Delivery, Cincinnati",
+      "lunch": "The Bridge - Hotel Clark Inn Gurgaon, Cincinnati",
+      "dinner": "Patiala Peg - The Imperial, Cincinnati",
+      "attraction": "Cincinnati Museum Center;National Underground Railroad Freedom Center;",
+      "accommodation": "Pet-friendly Modern and Hip Brooklyn Brownstone!, Cincinnati"
+    },
+    {
+      "day": 3,
+      "current_city": "from Cincinnati to Columbus",
+      "transportation": "Self-driving: from Cincinnati to Columbus",
+      "breakfast": "Daily Belly, Cincinnati",
+      "lunch": "Karnataka Food Centre, Columbus",
+      "dinner": "Prem Ji Delhi Wale, Columbus",
+      "attraction": "Ohio Statehouse;John F. Wolfe Columbus Commons;",
+      "accommodation": "Pet-friendly The Art Of Living - Loft apartment, Columbus"
+    },
+    {
+      "day": 4,
+      "current_city": "Columbus",
+      "transportation": "-",
+      "breakfast": "Himalya Chinese, Columbus",
+      "lunch": "KC Bakers, Columbus",
+      "dinner": "Taste Zone, Columbus",
+      "attraction": "Center of Science and Industry (COSI);Columbus Museum of Art;",
+      "accommodation": "Pet-friendly The Art Of Living - Loft apartment, Columbus"
+    },
+    {
+      "day": 5,
+      "current_city": "from Columbus to Cleveland",
+      "transportation": "Self-driving: from Columbus to Cleveland",
+      "breakfast": "Khan Tandoori Nights, Columbus",
+      "lunch": "Bikanerwala, Cleveland",
+      "dinner": "Me Kong Bowl, Cleveland",
+      "attraction": "Rock & Roll Hall of Fame;Great Lakes Science Center;",
+      "accommodation": "Pet-friendly Richmond Hill 3 Bedroom apartment in Private home!, Cleveland"
+    },
+    {
+      "day": 6,
+      "current_city": "Cleveland",
+      "transportation": "-",
+      "breakfast": "Southern Santushti Cafe, Cleveland",
+      "lunch": "Makhan Fish and Chicken Corner, Cleveland",
+      "dinner": "Big Chicken, Cleveland",
+      "attraction": "The Cleveland Museum of Art;West Side Market;",
+      "accommodation": "Pet-friendly Richmond Hill 3 Bedroom apartment in Private home!, Cleveland"
+    },
+    {
+      "day": 7,
+      "current_city": "Cleveland",
+      "transportation": "-",
+      "breakfast": "LSK Express, Cleveland",
+      "lunch": "Bruncheez, Cleveland",
+      "dinner": "Nineties, Cleveland",
+      "attraction": "Edgewater Park;",
+      "accommodation": "Pet-friendly Richmond Hill 3 Bedroom apartment in Private home!, Cleveland"
+    }
+  ],
+  "tool_called": [
+    "search_cities",
+    "search_accommodations",
+    "search_restaurants",
+    "search_attractions",
+    "search_driving_distance"
+  ]
+}

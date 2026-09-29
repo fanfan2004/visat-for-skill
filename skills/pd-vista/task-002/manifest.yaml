@@ -1,0 +1,6 @@
+schema_version: 1
+source_content_equivalence: byte-for-byte-under-modules
+modules:
+  - id: enterprise-artifact-search
+    path: modules/enterprise-artifact-search/SKILL.md
+    triggers: [incomplete_output, schema_error, wrong_format, test_failure, assertion_error, runtime_error, command_failure, timeout]

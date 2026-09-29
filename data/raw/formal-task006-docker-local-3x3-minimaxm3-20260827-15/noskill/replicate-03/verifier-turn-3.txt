@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-8.4.1, pluggy-1.6.0 -- /home/github/build/.venv/bin/python
+rootdir: /dev
+configfile: null
+plugins: json-ctrf-0.3.5
+collecting ... collected 3 items
+
+../../../dev::test_note_exists PASSED                                    [ 33%]
+../../../dev::test_diff_exists PASSED                                    [ 66%]
+../../../dev::test_build_success PASSED                                  [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../../../dev::test_note_exists
+PASSED ../../../dev::test_diff_exists
+PASSED ../../../dev::test_build_success
+======================== 3 passed in 161.56s (0:02:41) =========================
+error: Project is already initialized in `/home/github/build` (`pyproject.toml` file exists)
+Resolved 12 packages in 1ms
+Audited 10 packages in 0.83ms
+Resolved 12 packages in 2ms
+Audited 10 packages in 0.30ms
+Resolved 12 packages in 1ms
+Audited 10 packages in 5ms
+
+[reward=1]

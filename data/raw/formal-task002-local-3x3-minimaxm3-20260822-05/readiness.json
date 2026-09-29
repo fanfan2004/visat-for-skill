@@ -1,0 +1,19 @@
+{
+  "task_identity": true,
+  "task_instruction": true,
+  "data_directory": true,
+  "question": true,
+  "original_verifier": true,
+  "verifier_python": true,
+  "native_modules": {
+    "enterprise-artifact-search": true
+  },
+  "vista_root": true,
+  "vista_manifest": true,
+  "vista_source": true,
+  "public_compile_entry": "not_applicable_python_retrieval_task",
+  "verifier_collect_returncode": 0,
+  "verifier_collect_output": "vendor/skillsbench/tasks/enterprise-information-search/verifier/test_outputs.py::TestOutputs::test_inputs_exist\nvendor/skillsbench/tasks/enterprise-information-search/verifier/test_outputs.py::TestOutputs::test_answer_structure_and_values\nvendor/skillsbench/tasks/enterprise-information-search/verifier/test_outputs.py::TestOutputs::test_tokens_efficient[q1]\nvendor/skillsbench/tasks/enterprise-information-search/verifier/test_outputs.py::TestOutputs::test_tokens_efficient[q2]\nvendor/skillsbench/tasks/enterprise-information-search/verifier/test_outputs.py::TestOutputs::test_tokens_efficient[q3]\n\n5 tests collected in 0.02s\n",
+  "verifier_collect": true,
+  "ready": true
+}

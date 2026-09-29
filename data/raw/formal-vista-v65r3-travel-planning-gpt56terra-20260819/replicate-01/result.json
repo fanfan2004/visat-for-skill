@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-vista-v65r3-travel-planning-gpt56terra-20260819-replicate-01",
+  "task_id": "task-007-travel-planning",
+  "replicate_id": 1,
+  "condition": "pd-vista",
+  "backend": "opencode-local-windows-responses",
+  "docker_used": false,
+  "requested_provider_model": "openai/gpt-5.6-terra",
+  "expected_actual_model": "gpt-5.6-terra",
+  "actual_model_ids": [],
+  "session_id": "ses_fe67873d2ffeCPpJpoHNMfmQa3",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "transport_attempts": [
+        {
+          "attempt": 1,
+          "return_code": 0,
+          "retryable_transport_error": false
+        }
+      ],
+      "event_summary": {
+        "event_types": {
+          "step_start": 17,
+          "tool_use": 33,
+          "step_finish": 17,
+          "text": 7
+        },
+        "session_ids": [
+          "ses_fe67873d2ffeCPpJpoHNMfmQa3"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 17,
+        "tool_uses": 33,
+        "input_tokens": 192432,
+        "output_tokens": 10856,
+        "cache_read_tokens": 375552,
+        "accessed_modules": [],
+        "errors": [],
+        "tool_errors": []
+      },
+      "plan_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 1,
+      "transport_attempts": [
+        {
+          "attempt": 1,
+          "return_code": 1,
+          "retryable_transport_error": false
+        }
+      ],
+      "event_summary": {
+        "event_types": {
+          "step_start": 7,
+          "text": 3,
+          "tool_use": 13,
+          "step_finish": 7,
+          "error": 1
+        },
+        "session_ids": [
+          "ses_fe67873d2ffeCPpJpoHNMfmQa3"
+        ],
+        "actual_model_ids": [],
+        "provider_ids": [],
+        "requests": 7,
+        "tool_uses": 13,
+        "input_tokens": 96975,
+        "output_tokens": 3277,
+        "cache_read_tokens": 273408,
+        "accessed_modules": [
+          "search-accommodations"
+        ],
+        "errors": [
+          {
+            "name": "APIError",
+            "status_code": 403,
+            "retryable": false,
+            "category": "provider_policy_rejection"
+          }
+        ],
+        "tool_errors": []
+      },
+      "plan_exists": true,
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "disclosed_modules": [
+    "search-accommodations"
+  ],
+  "accessed_modules_after_disclosure": [
+    "search-accommodations"
+  ],
+  "distractor_flight_disclosed": false,
+  "vista_metrics": {
+    "trigger_opportunities": 1,
+    "routable_feedback": 1,
+    "successful_disclosures": 1,
+    "next_round_module_access": 1,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": false,
+  "stop_reason": "provider_policy_rejection",
+  "status": "quarantined_provider_policy_rejection",
+  "workspace": "C:\\Users\\小咕嘟\\AppData\\Local\\VistaExperiments\\formal-vista-v65r3-travel-planning-gpt56terra-20260819-replicate-01\\workspace"
+}

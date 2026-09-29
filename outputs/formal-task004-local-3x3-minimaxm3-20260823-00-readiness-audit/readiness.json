@@ -1,0 +1,108 @@
+{
+  "task_identity": true,
+  "task_identity_id": "task-004",
+  "task_identity_resolved": true,
+  "task_instruction": true,
+  "data_readme": true,
+  "input_workbook": true,
+  "original_verifier": true,
+  "ground_truth": true,
+  "verifier_python": true,
+  "native_modules": {
+    "powerlifting": true,
+    "senior-data-scientist": true,
+    "xlsx": true
+  },
+  "native_module_file_counts": {
+    "powerlifting": 1,
+    "senior-data-scientist": 7,
+    "xlsx": 3
+  },
+  "vista_root": true,
+  "vista_manifest": true,
+  "vista_source": true,
+  "docker_used": false,
+  "skillbench_execution_route_used": false,
+  "public_diagnostic_cleaning": true,
+  "public_verifier_entry": "copied verifier/test_outputs.py with only path aliases rewritten",
+  "input_workbook_sheets": [
+    "Data",
+    "Dots"
+  ],
+  "input_data_rows": 20,
+  "input_data_columns": 25,
+  "input_has_empty_dots_sheet": true,
+  "verifier_collect_returncode": 0,
+  "verifier_collect_output_tail": "vendor/skillsbench/tasks/powerlifting-coef-calc/verifier/test_outputs.py::TestSheetStructure::test_data_sheet_exists\nvendor/skillsbench/tasks/powerlifting-coef-calc/verifier/test_outputs.py::TestSheetStructure::test_dots_sheet_exists\nvendor/skillsbench/tasks/powerlifting-coef-calc/verifier/test_outputs.py::TestSheetStructure::test_dots_sheet_has_correct_columns\nvendor/skillsbench/tasks/powerlifting-coef-calc/verifier/test_outputs.py::TestSheetStructure::test_row_count_matches\nvendor/skillsbench/tasks/powerlifting-coef-calc/verifier/test_outputs.py::TestDotsSheetFormulas::test_dots_sheet_not_empty\nvendor/skillsbench/tasks/powerlifting-coef-calc/verifier/test_outputs.py::TestDotsSheetFormulas::test_total_column_is_formula\nvendor/skillsbench/tasks/powerlifting-coef-calc/verifier/test_outputs.py::TestDotsSheetFormulas::test_dots_column_is_formula\nvendor/skillsbench/tasks/powerlifting-coef-calc/verifier/test_outputs.py::TestDotsAccuracy::test_dots_values_match_ground_truth\nvendor/skillsbench/tasks/powerlifting-coef-calc/verifier/test_outputs.py::TestDotsAccuracy::test_all_lifters_have_ground_truth\nvendor/skillsbench/tasks/powerlifting-coef-calc/verifier/test_outputs.py::TestDotsAccuracy::test_dots_formula_handles_male_lifters\nvendor/skillsbench/tasks/powerlifting-coef-calc/verifier/test_outputs.py::TestDotsAccuracy::test_dots_formula_handles_female_lifters\n\n11 tests collected in 0.56s\n",
+  "verifier_collect": true,
+  "opencode_config": {
+    "path": "/Users/wangjinhua/.config/opencode/opencode.json",
+    "requested_provider_model": "minimax-cn/MiniMax-M3",
+    "api_key_environment_variable": null,
+    "credential_source": "opencode_auth_store"
+  },
+  "opencode_launcher": {
+    "launcher": "/Users/wangjinhua/.local/lib/node_modules/opencode-ai/bin/opencode.exe",
+    "version": "1.18.18",
+    "binary_sha256": "c9be687513fd652ca53018901457eb0911cb505dc9cdc494a0ae3645970699ee"
+  },
+  "experiment_matrix": {
+    "conditions": [
+      "noskill",
+      "native",
+      "pd-vista"
+    ],
+    "replicates": [
+      1,
+      2,
+      3
+    ],
+    "planned_trials": 9,
+    "unique_cells": 9,
+    "balanced_interleaved_schedule": true,
+    "schedule": [
+      {
+        "replicate_id": 1,
+        "condition": "noskill"
+      },
+      {
+        "replicate_id": 1,
+        "condition": "native"
+      },
+      {
+        "replicate_id": 1,
+        "condition": "pd-vista"
+      },
+      {
+        "replicate_id": 2,
+        "condition": "native"
+      },
+      {
+        "replicate_id": 2,
+        "condition": "pd-vista"
+      },
+      {
+        "replicate_id": 2,
+        "condition": "noskill"
+      },
+      {
+        "replicate_id": 3,
+        "condition": "pd-vista"
+      },
+      {
+        "replicate_id": 3,
+        "condition": "noskill"
+      },
+      {
+        "replicate_id": 3,
+        "condition": "native"
+      }
+    ]
+  },
+  "ready_before_probe": true,
+  "full_verifier_probe": true,
+  "full_verifier_probe_returncode": 0,
+  "full_verifier_probe_output_tail": "...........                                                              [100%]\n11 passed in 0.75s\n",
+  "full_verifier_probe_id": "formal-task004-local-3x3-minimaxm3-20260823-00-readiness",
+  "ready": true
+}

@@ -1,0 +1,1 @@
+{"type":"error","timestamp":1787396821397,"sessionID":"ses_fd6d9f816ffe0Vv37HsOFEmXFH","error":{"name":"APIError","data":{"message":"Cannot connect to API: Unable to connect. Is the computer able to access the url?","isRetryable":true,"metadata":{"url":"https://api.minimaxi.com/anthropic/v1/messages"}}}}
