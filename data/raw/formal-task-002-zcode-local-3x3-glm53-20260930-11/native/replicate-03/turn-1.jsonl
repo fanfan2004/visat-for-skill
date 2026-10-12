@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_58580d05-4bb1-42ec-abfb-74130ccc408f",
+  "traceId": "6f6aef80-bd82-4c66-804f-d69a89240cc3",
+  "turnId": "turn_b64f636e-7a19-4e68-ba3d-a8a627ce4472",
+  "response": "Done — `./answer.json` is written with all three answers, each as a list with token counts, per the format in task.md.\n\n**How I resolved the questions:**\n\n**Q1 — CoachForce Market Research Report (authors + key reviewers):** The key trap here was that `DATA/products/CoachForce.json` mixes three products' artifacts: the real CoachForce data, a codename \"CoFoAIX\", and a distractor \"SalesCoach\". I confirmed CoFoAIX is CoachForce's codename — the `develop-hannahmiller-CoachForce` channel's admin log shows it was created as `develop-hannahmiller-CoFoAIX` and later renamed to CoachForce, and internal PRs point at `github.com/salesforce/CoFoAIX`. The Gong.io report and SalesCoach report discussions were rejected as distractors. The report exists in three versions (original/final/latest), all authored by **eid_890654c4** (Julia Smith, a Marketing Research Analyst). Key reviewers come from the MRR review meeting `CoFoAIX_planning_1` (document_type \"Market Research Report\"), where all 7 participants gave concrete section-level feedback — their eids map exactly to the attendee names via the employee directory: eid_99835861, eid_50da4819, eid_ee9ca887, eid_8df92d08, eid_85a4de81, eid_965867b8, eid_59bbe6f6. Answer: 8 employee IDs (author first, then reviewers).\n\n**Q2 — insight providers on PersonalizeForce's competitors:** Competitor discussions across three channels cover PersonaAI, SmartSuggest, and TailorAI. The five members who presented the strengths/weaknesses analyses are eid_5318af37, eid_fce6544f, eid_c9c3d8d5, eid_d2f0f99a, and eid_a253c65a. I excluded members who only asked questions or shared links, and excluded demo sharers, per the evidence-based contributor rules in the enterprise-artifact-search module.\n\n**Q3 — competitor demo URLs:** Team members shared exactly three competitor demos — https://personaai.com/demo, https://smartsuggest.com/demo, https://tailorai.com/demo. The six `sf-internal.slack.com/archives/PersonalizeForce/demo_*` links are PersonalizeForce's own product demos, so they were excluded.\n\nToken counts in the file are estimates of consumption per question (55000 / 35000 / 20000), since the environment provides no exact usage meter.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 46,
+    "inputTokens": 2340479,
+    "outputTokens": 36597,
+    "totalTokens": 2377076,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 28638,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 30749,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 2377076,
+    "contextUsed": 101348,
+    "contextWindow": 200000
+  }
+}

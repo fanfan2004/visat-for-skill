@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "protocol": "task-002-zcode-local-glm53-pd-self-3x3",
+  "task_id": "task-002",
+  "benchmark_task_id": "enterprise-information-search",
+  "condition_semantics": "pd-self = PD-format root skill (VISTA.md) plus all guidance modules visible upfront; the agent self-selects which modules to read; no feedback-driven disclosure routing. Public verifier diagnostics in the repair loop are identical to all other conditions.",
+  "requested_provider_model": "glm53-flash",
+  "backend": "zcode-local-minimal-dependencies",
+  "condition_summaries": {
+    "pd-self": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "usage": {
+        "requests": 98,
+        "input_tokens": 4115748,
+        "output_tokens": 49788,
+        "cache_read_tokens": 0
+      }
+    }
+  },
+  "base_batch_reference": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/data/raw/formal-task-002-zcode-local-3x3-glm53-20260930-10",
+  "results": [
+    {
+      "condition": "pd-self",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_6bf01e07-fa75-44ea-aa73-40ae3352e2ae",
+      "usage": {
+        "requests": 31,
+        "input_tokens": 1235647,
+        "output_tokens": 14428,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1250075
+      },
+      "initially_available_modules": [
+        "enterprise-artifact-search"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "enterprise-artifact-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-self",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_b5e27914-b1b9-4139-804a-2ae87c421c5b",
+      "usage": {
+        "requests": 31,
+        "input_tokens": 1398064,
+        "output_tokens": 15044,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1413108
+      },
+      "initially_available_modules": [
+        "enterprise-artifact-search"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "enterprise-artifact-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-self",
+      "replicate_id": 1,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_e6d44b36-3c3f-4bcd-9b21-50a9e8fba832",
+      "usage": {
+        "requests": 36,
+        "input_tokens": 1482037,
+        "output_tokens": 20316,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1502353
+      },
+      "initially_available_modules": [
+        "enterprise-artifact-search"
+      ],
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "enterprise-artifact-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    }
+  ],
+  "base_batch_condition_summaries": {
+    "noskill": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "usage": {
+        "requests": 108,
+        "input_tokens": 4361485,
+        "output_tokens": 48670,
+        "cache_read_tokens": 0
+      }
+    },
+    "native": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "usage": {
+        "requests": 120,
+        "input_tokens": 5781826,
+        "output_tokens": 79872,
+        "cache_read_tokens": 0
+      }
+    },
+    "pd-vista": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 3,
+      "usage": {
+        "requests": 94,
+        "input_tokens": 3706494,
+        "output_tokens": 53475,
+        "cache_read_tokens": 0
+      }
+    }
+  }
+}

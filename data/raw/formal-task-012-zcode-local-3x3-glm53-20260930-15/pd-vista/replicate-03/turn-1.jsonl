@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_b1e07b32-a148-4d8a-abb7-2116ec319a5f",
+  "traceId": "eee246aa-cdcd-4392-80b4-50c8fb4d7301",
+  "turnId": "turn_96edd0d4-abd7-41c5-b532-b27a1e09bfd3",
+  "response": "Done. `./fraud_report.json` is written with 50 flagged invoices out of 53 pages.\n\n**How the analysis worked:**\n- Parsed all 53 one-per-page invoices from `invoices.pdf` with pdfplumber (vendor name, total amount, payment IBAN, PO number).\n- Loaded the vendor registry from `vendors.xlsx` (V001–V500 plus three special vendors) and the 2,503 purchase orders from `purchase_orders.csv`.\n- Applied the five fraud criteria in the task's priority order: Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch → Vendor Mismatch, using exact-match first and then normalized fuzzy matching (rapidfuzz WRatio ≥ 85, with \"Ltd\"/\"Inc.\"/\"Corp.\" suffixes stripped) for vendor names.\n\n**Findings breakdown:**\n- **Unknown Vendor (11):** all \"Fraudulent Corp\" invoices — fuzzy matching confirms they don't resemble any registered vendor (best candidate \"Boundary Corp\" scores only 50, well below threshold).\n- **IBAN Mismatch (12):** invoices from legitimate vendors where the payment IBAN is `FRADULENT_IBAN` instead of the vendor's authorized IBAN.\n- **Invalid PO (7):** invoices citing `PO-INVALID`, which doesn't exist in the purchase order file.\n- **Amount Mismatch (20):** valid POs but invoice totals differing from the PO amount by more than 0.01.\n\nThe three clean invoices are pages 51–53 (\"Safe Vendor Ltd\", \"Fuzzy Match Systems Inc.\" — which fuzzy-matches to registered vendor \"Fuzzy Match Systems\" — and \"Boundary Corp\"): all have matching IBANs, existing POs, and exact amounts, so they were correctly excluded. No invoice landed on \"Vendor Mismatch\" as its top reason — every vendor mismatch case also had an amount discrepancy, which ranks higher in the priority order.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 8,
+    "inputTokens": 228501,
+    "outputTokens": 5233,
+    "totalTokens": 233734,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 1707,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 2670,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 233734,
+    "contextUsed": 39964,
+    "contextWindow": 200000
+  }
+}

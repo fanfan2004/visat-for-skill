@@ -1,0 +1,17 @@
+{
+  "verifier_python": true,
+  "task_md": true,
+  "verifier_source": true,
+  "inputs_present": {
+    "data.xlsx": true,
+    "background.pdf": true
+  },
+  "vista_manifest": true,
+  "vista_root_skill": true,
+  "native_modules": [
+    "pdf",
+    "xlsx"
+  ],
+  "verifier_imports": true,
+  "ready": true
+}

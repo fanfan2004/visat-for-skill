@@ -1,0 +1,12 @@
+schema_version: 1
+source_content_equivalence: byte-for-byte-under-modules
+modules:
+  - id: fuzzy-match
+    path: modules/fuzzy-match/SKILL.md
+    triggers: [incomplete_output, schema_error, wrong_format, test_failure, assertion_error, runtime_error, command_failure, timeout]
+  - id: pdf
+    path: modules/pdf/SKILL.md
+    triggers: [incomplete_output, schema_error, wrong_format, test_failure, assertion_error, runtime_error, command_failure, timeout]
+  - id: xlsx
+    path: modules/xlsx/SKILL.md
+    triggers: [incomplete_output, schema_error, wrong_format, test_failure, assertion_error, runtime_error, command_failure, timeout]

@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "protocol": "task-012-zcode-local-glm53-noskill-native-pd-vista-3x3",
+  "task_id": "task-012",
+  "benchmark_task_id": "invoice-fraud-detection",
+  "conditions": [
+    "noskill",
+    "native",
+    "pd-vista",
+    "pd-self"
+  ],
+  "replicates_per_condition": 3,
+  "planned_trials": 12,
+  "completed_trials": 12,
+  "requested_provider_model": "glm53-flash",
+  "backend": "zcode-local-minimal-dependencies",
+  "condition_summaries": {
+    "noskill": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 1,
+      "usage": {
+        "requests": 109,
+        "input_tokens": 5971079,
+        "output_tokens": 133577,
+        "cache_read_tokens": 0
+      }
+    },
+    "native": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 1,
+      "usage": {
+        "requests": 76,
+        "input_tokens": 3575641,
+        "output_tokens": 118987,
+        "cache_read_tokens": 0
+      }
+    },
+    "pd-vista": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 0,
+      "usage": {
+        "requests": 103,
+        "input_tokens": 6987583,
+        "output_tokens": 183433,
+        "cache_read_tokens": 0
+      }
+    },
+    "pd-self": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 0,
+      "usage": {
+        "requests": 96,
+        "input_tokens": 5065937,
+        "output_tokens": 166755,
+        "cache_read_tokens": 0
+      }
+    }
+  },
+  "results": [
+    {
+      "condition": "noskill",
+      "replicate_id": 1,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_3361531b-062b-4cbb-a013-be7e641bd452",
+      "usage": {
+        "requests": 36,
+        "input_tokens": 1528365,
+        "output_tokens": 34445,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1562810
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 1,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_2bc55be8-fc05-427d-a984-9ca02657c5ad",
+      "usage": {
+        "requests": 26,
+        "input_tokens": 1632890,
+        "output_tokens": 62902,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1695792
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "fuzzy-match",
+        "pdf",
+        "xlsx"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 1,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_7491dacd-113a-44b6-b9db-69242a0f2ccc",
+      "usage": {
+        "requests": 28,
+        "input_tokens": 1772564,
+        "output_tokens": 48748,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1821312
+      },
+      "disclosed_modules": [
+        "fuzzy-match",
+        "pdf",
+        "xlsx"
+      ],
+      "accessed_modules_after_disclosure": [
+        "fuzzy-match",
+        "pdf",
+        "xlsx"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 6,
+        "successful_disclosures": 3,
+        "next_round_module_access": 3,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_82b2cf7b-f169-471e-abd3-286eb905b1a9",
+      "usage": {
+        "requests": 20,
+        "input_tokens": 655136,
+        "output_tokens": 12513,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 667649
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "pdf",
+        "fuzzy-match"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 2,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_54eddaf5-0697-4766-ae57-81049a07a0d4",
+      "usage": {
+        "requests": 35,
+        "input_tokens": 1963820,
+        "output_tokens": 48583,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 2012403
+      },
+      "disclosed_modules": [
+        "fuzzy-match",
+        "pdf",
+        "xlsx"
+      ],
+      "accessed_modules_after_disclosure": [
+        "fuzzy-match",
+        "pdf",
+        "xlsx"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 6,
+        "successful_disclosures": 3,
+        "next_round_module_access": 3,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_983492b6-fc12-40aa-9474-b0d1d75a58fe",
+      "usage": {
+        "requests": 45,
+        "input_tokens": 3439185,
+        "output_tokens": 73532,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 3512717
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 4,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_b1e07b32-a148-4d8a-abb7-2116ec319a5f",
+      "usage": {
+        "requests": 40,
+        "input_tokens": 3251199,
+        "output_tokens": 86102,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 3337301
+      },
+      "disclosed_modules": [
+        "fuzzy-match",
+        "pdf",
+        "xlsx"
+      ],
+      "accessed_modules_after_disclosure": [
+        "fuzzy-match",
+        "pdf",
+        "xlsx"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 6,
+        "successful_disclosures": 3,
+        "next_round_module_access": 3,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_36cd984c-0e1e-4c87-bc2b-690cf802df51",
+      "usage": {
+        "requests": 28,
+        "input_tokens": 1003529,
+        "output_tokens": 25600,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1029129
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_e28166bc-eca6-4d01-a46f-5cbaef748e52",
+      "usage": {
+        "requests": 30,
+        "input_tokens": 1287615,
+        "output_tokens": 43572,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1331187
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "fuzzy-match"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-self",
+      "replicate_id": 1,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_428de17c-3b53-4870-b2bd-3862a22d7d43",
+      "usage": {
+        "requests": 32,
+        "input_tokens": 1577890,
+        "output_tokens": 50587,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1628477
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "fuzzy-match",
+        "xlsx",
+        "pdf"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 2,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-self",
+      "replicate_id": 2,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_dc18599d-9f9b-47c0-8f4d-6d146e84a9bf",
+      "usage": {
+        "requests": 36,
+        "input_tokens": 2036315,
+        "output_tokens": 48981,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 2085296
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "fuzzy-match",
+        "pdf",
+        "xlsx"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 2,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-self",
+      "replicate_id": 3,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_2bd3b6dd-266d-46aa-b3f2-139c425e2061",
+      "usage": {
+        "requests": 28,
+        "input_tokens": 1451732,
+        "output_tokens": 67187,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1518919
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "fuzzy-match",
+        "pdf",
+        "xlsx"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    }
+  ]
+}

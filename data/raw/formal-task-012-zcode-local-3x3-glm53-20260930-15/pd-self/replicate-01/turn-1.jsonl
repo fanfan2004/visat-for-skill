@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_428de17c-3b53-4870-b2bd-3862a22d7d43",
+  "traceId": "5ee26792-5305-4fa1-a759-ec1804e518f9",
+  "turnId": "turn_d10a0842-ec11-4ddf-9eeb-a71e74a02eb8",
+  "response": "The task is complete. `./fraud_report.json` has been written with **50 of the 53 invoices flagged as fraudulent** (3 came out clean).\n\n## What I did\n\nI read `task.md`, `VISTA.md`, and the three input files, then wrote a Python analysis script (`analyze.py`) that:\n\n1. **Loaded vendors** from `vendors.xlsx` — 500 regular vendors (\"Vendor 1\"–\"Vendor 500\") plus 3 trap vendors (\"Safe Vendor Ltd\", \"Fuzzy Match Systems\", \"Boundary Corp\").\n2. **Loaded 2,503 purchase orders** from `purchase_orders.csv`.\n3. **Extracted all 53 invoice pages** from `invoices.pdf` with PyPDF2 (vendor name, amount, IBAN, PO number).\n4. **Resolved vendor names** using exact match first, then punctuation-normalized matching, then fuzzy matching with a conservative 0.85 cutoff (verified: \"Fraudulent Corp\" scores at most 0.429 against any real vendor, while \"Fuzzy Match Systems Inc.\" scores 0.905 against \"Fuzzy Match Systems\", so the boundary held cleanly).\n5. **Applied the fraud criteria in the priority order** given in the task: Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch (>0.01) → Vendor Mismatch, taking the first criterion that applies.\n\n## Findings\n\n| Reason | Count |\n|---|---|\n| Amount Mismatch | 27 |\n| IBAN Mismatch | 9 |\n| Unknown Vendor | 9 |\n| Invalid PO | 5 |\n\n- All 9 \"Fraudulent Corp\" invoices are Unknown Vendor.\n- The 9 IBAN Mismatch invoices use the placeholder `FRADULENT_IBAN` instead of the vendor's authorized IBAN.\n- 5 invoices cite `PO-INVALID`, which doesn't exist in the PO register.\n- The remaining 27 invoices have valid vendors and IBANs but either an amount that differs from the linked PO by more than $0.01 or a PO assigned to a different vendor ID — with the amount check correctly taking priority over the vendor-ID check.\n- Pages 51–53 correctly passed as legitimate: their vendors exist in the vendor master (resolved via normalization/fuzzy matching for \"Fuzzy Match Systems Inc.\"), their IBANs match, and PO-9001/9002/9003 exist with exact amounts and matching vendor IDs. These are the near-match boundary traps, and none were falsely flagged.\n\nThe report uses 1-based page indexing, echoes the invoice's own fields, and only includes flagged invoices; `po_number` would be `null` if an invoice lacked one (none did). The output validates as proper JSON matching the required schema.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 11,
+    "inputTokens": 276917,
+    "outputTokens": 7078,
+    "totalTokens": 283995,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 3675,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4748,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 283995,
+    "contextUsed": 34531,
+    "contextWindow": 200000
+  }
+}

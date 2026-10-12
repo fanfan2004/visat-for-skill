@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_54eddaf5-0697-4766-ae57-81049a07a0d4",
+  "traceId": "5bb58f65-a6a0-444b-9c75-b12b5021ac62",
+  "turnId": "turn_1fd009f5-0dfc-44e8-9931-7e794bff36db",
+  "response": "Done. `fraud_report.json` is written to the working directory with 50 flagged invoices (pages 1–50), and the three edge-case invoices on pages 51–53 correctly pass as legitimate.\n\n**How the analysis worked:**\n- Extracted all 53 invoices from `invoices.pdf` (vendor name, amount, IBAN, PO number per page).\n- Loaded 503 vendors from `vendors.xlsx` and 2,503 purchase orders from `purchase_orders.csv`.\n- Applied the five fraud criteria in the order specified in task.md, with fuzzy matching via normalized `difflib.SequenceMatcher` at a 0.85 threshold (legal suffixes like Ltd/Limited/Inc./Corp stripped before comparison).\n\n**Findings breakdown:**\n- **Amount Mismatch: 27 invoices** — every main-run invoice whose PO exists has an invoice amount differing from the PO amount (all by far more than 0.01; I spot-checked several against the raw CSV to confirm).\n- **Unknown Vendor: 9 invoices** — all from \"Fraudulent Corp\", which fuzzy-matches to nothing (best score 0.286, below threshold).\n- **IBAN Mismatch: 9 invoices** — legitimate vendor names but paying to `FRADULENT_IBAN`.\n- **Invalid PO: 5 invoices** — PO number literally `PO-INVALID`, not in the CSV; reported with the printed PO string since the invoice does contain a PO number (null is only used when no PO appears, per the task's example).\n- **Clean: pages 51, 52, 53** — the deliberate boundary cases: \"Safe Vendor Ltd\" exact-matches V_NF1; \"Fuzzy Match Systems Inc.\" fuzzy-matches V_NF2 despite the suffix; \"Boundary Corp\" matches V_NF3 with the amount exactly equal (500.01 vs 500.01, so the 0.01-difference rule is not exceeded). No \"Vendor Mismatch\" reason surfaced because Amount Mismatch takes priority whenever both would apply.\n\nThe report follows the required schema exactly: 1-based page numbers, invoice amounts as floats, ordered by page, only flagged invoices included.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 10,
+    "inputTokens": 274352,
+    "outputTokens": 5169,
+    "totalTokens": 279521,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 1992,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 2977,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 279521,
+    "contextUsed": 37394,
+    "contextWindow": 200000
+  }
+}

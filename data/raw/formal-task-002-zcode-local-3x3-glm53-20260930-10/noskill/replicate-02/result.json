@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-002-zcode-local-3x3-glm53-20260930-10-noskill-replicate-02",
+  "task_id": "task-002",
+  "condition": "noskill",
+  "replicate_id": 2,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_97db9fdd-7666-4041-8167-7a18952c8af3",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_276fb0ad-129f-4753-a8ef-72baac288035",
+      "requests": 30,
+      "tool_uses": 32,
+      "accessed_modules": [],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_c13fc828-89af-48bb-9f7c-af7ab7a12021",
+      "requests": 3,
+      "tool_uses": 2,
+      "accessed_modules": [],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 33,
+    "input_tokens": 1140975,
+    "output_tokens": 8910,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 1149885
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "vista_metrics": {
+    "trigger_opportunities": 1,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-002-zcode-local-3x3-glm53-20260930-10-noskill-replicate-02/workspace"
+}

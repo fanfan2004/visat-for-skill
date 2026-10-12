@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-013-zcode-local-3x3-glm53-20260930-15-noskill-replicate-02",
+  "task_id": "task-013",
+  "condition": "noskill",
+  "replicate_id": 2,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_b7f0de54-dacb-4436-b74c-9ac51dac3ef8",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_42790d07-fe70-4be0-b406-fc162810c644",
+      "requests": 10,
+      "tool_uses": 11,
+      "accessed_modules": [],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_503c4251-8e37-4ddd-bac0-3a7a914f3297",
+      "requests": 5,
+      "tool_uses": 5,
+      "accessed_modules": [],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 3,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_8b27a201-5bc7-4d63-8cc0-56c2b1780576",
+      "requests": 6,
+      "tool_uses": 5,
+      "accessed_modules": [],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 21,
+    "input_tokens": 592593,
+    "output_tokens": 16102,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 608695
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "vista_metrics": {
+    "trigger_opportunities": 2,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-013-zcode-local-3x3-glm53-20260930-15-noskill-replicate-02/workspace"
+}

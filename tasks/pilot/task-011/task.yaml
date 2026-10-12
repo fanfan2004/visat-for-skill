@@ -1,0 +1,11 @@
+task_id: task-011
+mapping_status: resolved
+condition_backend: zcode
+source:
+  benchmark: skillsbench
+  benchmark_task_id: sec-financial-report
+  definition_path: vendor/skillsbench/tasks/sec-financial-report
+  skill_path: vendor/skillsbench/tasks/sec-financial-report/environment/skills
+skill_paths:
+  native: vendor/skillsbench/tasks/sec-financial-report/environment/skills
+  pd_vista: skills/pd-vista/task-011

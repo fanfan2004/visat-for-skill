@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-002-zcode-local-3x3-glm53-pdself-20260930-11-pd-self-replicate-03",
+  "task_id": "task-002",
+  "condition": "pd-self",
+  "replicate_id": 3,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_6bf01e07-fa75-44ea-aa73-40ae3352e2ae",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_ba55a3b3-a824-4e6e-a399-b5149c4ea5e9",
+      "requests": 26,
+      "tool_uses": 28,
+      "accessed_modules": [
+        "enterprise-artifact-search"
+      ],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_9a1ef48f-f6fc-468b-88a2-778a68b3fba9",
+      "requests": 5,
+      "tool_uses": 4,
+      "accessed_modules": [],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 31,
+    "input_tokens": 1235647,
+    "output_tokens": 14428,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 1250075
+  },
+  "initially_available_modules": [
+    "enterprise-artifact-search"
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [
+    "enterprise-artifact-search"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 1,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 1,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-002-zcode-local-3x3-glm53-pdself-20260930-11-pd-self-replicate-03/workspace"
+}

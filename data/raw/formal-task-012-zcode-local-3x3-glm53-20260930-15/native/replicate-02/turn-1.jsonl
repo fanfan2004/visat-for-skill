@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_82b2cf7b-f169-471e-abd3-286eb905b1a9",
+  "traceId": "3c0a0a24-fd02-4f8f-92bd-061f554e87ef",
+  "turnId": "turn_49714a04-cc20-49c5-9273-4efc1cf08ab8",
+  "response": "The fraud report is complete and validated. Here's a summary of the work:\n\n## Result: 50 of 53 invoices flagged as fraudulent → `./fraud_report.json`\n\n**Process:** I extracted all 53 invoices from `invoices.pdf` (one per page, using pdfplumber per the `pdf` module), loaded the 503 approved vendors from `vendors.xlsx` and the 2,503 purchase orders from `purchase_orders.csv`, then applied the five fraud criteria in the priority order given in task.md (Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch → Vendor Mismatch).\n\n**Findings by reason:**\n- **Unknown Vendor (9):** All \"Fraudulent Corp\" invoices. Fuzzy matching uses exact-match-first, then containment, then a high-cutoff (85) Levenshtein fallback — I verified \"Fraudulent Corp\" scores only 50 against its nearest real name \"Boundary Corp\", so it correctly stays unmatched, while \"Fuzzy Match Systems Inc.\" correctly resolves to \"Fuzzy Match Systems\".\n- **IBAN Mismatch (9):** Known vendors invoicing with `FRADULENT_IBAN` instead of their authorized IBAN.\n- **Invalid PO (5):** Invoices citing `PO-INVALID`, which doesn't exist in the CSV.\n- **Amount Mismatch (27):** The PO exists but the invoiced amount differs by more than 0.01. I spot-checked several (e.g., page 2: invoice $8,347.33 vs PO-1412's $1,587.74) — the differences are real, not a parsing bug. These 27 also happen to reference POs linked to other vendor IDs, but since Amount Mismatch precedes Vendor Mismatch in the stated priority order, that's the correct reason. No pure Vendor Mismatch case exists in this dataset (no invoice has a matching amount with a wrong vendor).\n\n**The only clean invoices are pages 51–53**, which are deliberate positive controls: \"Safe Vendor Ltd\" (PO-9001), \"Fuzzy Match Systems Inc.\" (PO-9002, exercising the Ltd/Inc. name-variation rule), and \"Boundary Corp\" (PO-9003, exercising the exactly-0.01-difference boundary — its amount matches exactly). All match vendor, IBAN, PO, and amount, so none are flagged.\n\nThe output follows the required schema exactly — 1-based page numbers, `po_number: null` when missing (none in this dataset), and validated structure with only flagged invoices included.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 320592,
+    "outputTokens": 7549,
+    "totalTokens": 328141,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 3197,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4360,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 328141,
+    "contextUsed": 37713,
+    "contextWindow": 200000
+  }
+}

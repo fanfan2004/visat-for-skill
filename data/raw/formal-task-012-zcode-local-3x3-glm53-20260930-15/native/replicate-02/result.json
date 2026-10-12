@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-012-zcode-local-3x3-glm53-20260930-15-native-replicate-02",
+  "task_id": "task-012",
+  "condition": "native",
+  "replicate_id": 2,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_82b2cf7b-f169-471e-abd3-286eb905b1a9",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_49714a04-cc20-49c5-9273-4efc1cf08ab8",
+      "requests": 12,
+      "tool_uses": 15,
+      "accessed_modules": [
+        "pdf",
+        "fuzzy-match"
+      ],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_5c1bb361-fd41-4d57-b651-612389b1eaa0",
+      "requests": 8,
+      "tool_uses": 7,
+      "accessed_modules": [],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 20,
+    "input_tokens": 655136,
+    "output_tokens": 12513,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 667649
+  },
+  "initially_available_modules": [
+    "fuzzy-match",
+    "pdf",
+    "xlsx"
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [
+    "pdf",
+    "fuzzy-match"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 1,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 1,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-012-zcode-local-3x3-glm53-20260930-15-native-replicate-02/workspace"
+}

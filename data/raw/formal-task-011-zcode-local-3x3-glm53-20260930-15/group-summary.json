@@ -1,0 +1,377 @@
+{
+  "schema_version": 1,
+  "protocol": "task-011-zcode-local-glm53-noskill-native-pd-vista-3x3",
+  "task_id": "task-011",
+  "benchmark_task_id": "sec-financial-report",
+  "conditions": [
+    "noskill",
+    "native",
+    "pd-vista",
+    "pd-self"
+  ],
+  "replicates_per_condition": 3,
+  "planned_trials": 12,
+  "completed_trials": 12,
+  "requested_provider_model": "glm53-flash",
+  "backend": "zcode-local-minimal-dependencies",
+  "condition_summaries": {
+    "noskill": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 0,
+      "usage": {
+        "requests": 89,
+        "input_tokens": 3673430,
+        "output_tokens": 88676,
+        "cache_read_tokens": 0
+      }
+    },
+    "native": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 1,
+      "usage": {
+        "requests": 112,
+        "input_tokens": 4616728,
+        "output_tokens": 76056,
+        "cache_read_tokens": 0
+      }
+    },
+    "pd-vista": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 1,
+      "usage": {
+        "requests": 154,
+        "input_tokens": 10665104,
+        "output_tokens": 240031,
+        "cache_read_tokens": 0
+      }
+    },
+    "pd-self": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "verifier_passes": 0,
+      "usage": {
+        "requests": 142,
+        "input_tokens": 7773373,
+        "output_tokens": 236700,
+        "cache_read_tokens": 0
+      }
+    }
+  },
+  "results": [
+    {
+      "condition": "noskill",
+      "replicate_id": 1,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_638835ef-e478-4c34-8050-13cb712a395a",
+      "usage": {
+        "requests": 27,
+        "input_tokens": 1025407,
+        "output_tokens": 15978,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1041385
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 1,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_fb603669-1e4b-4de6-85af-7c075a8bb1fc",
+      "usage": {
+        "requests": 36,
+        "input_tokens": 1829315,
+        "output_tokens": 36386,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1865701
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 1,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "sess_834e4d84-2d85-4af0-b561-91e646728876",
+      "usage": {
+        "requests": 61,
+        "input_tokens": 4129291,
+        "output_tokens": 69928,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 4199219
+      },
+      "disclosed_modules": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 5,
+        "routable_feedback": 5,
+        "successful_disclosures": 2,
+        "next_round_module_access": 2,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_bda1f083-fd46-4a41-859c-0a7f892649dc",
+      "usage": {
+        "requests": 41,
+        "input_tokens": 1470660,
+        "output_tokens": 16418,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1487078
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 2,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_1278f9f4-5fb1-420c-9233-6076c53f7429",
+      "usage": {
+        "requests": 42,
+        "input_tokens": 2929396,
+        "output_tokens": 93640,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 3023036
+      },
+      "disclosed_modules": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 6,
+        "successful_disclosures": 2,
+        "next_round_module_access": 2,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_31834017-95b3-44e3-9210-67d4f769dbb1",
+      "usage": {
+        "requests": 35,
+        "input_tokens": 1598585,
+        "output_tokens": 40137,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1638722
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_98fe07fc-e283-4509-9568-6114d1f13164",
+      "usage": {
+        "requests": 51,
+        "input_tokens": 3606417,
+        "output_tokens": 76463,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 3682880
+      },
+      "disclosed_modules": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 6,
+        "successful_disclosures": 2,
+        "next_round_module_access": 2,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_76bddb44-4ddb-4649-90fd-0bd756c533ec",
+      "usage": {
+        "requests": 27,
+        "input_tokens": 1049438,
+        "output_tokens": 32561,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1081999
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_aedaf0d7-d1ea-4a13-8f8f-9289349af472",
+      "usage": {
+        "requests": 35,
+        "input_tokens": 1316753,
+        "output_tokens": 23252,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1340005
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-self",
+      "replicate_id": 1,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_16bddaf9-b3da-4058-be6e-b6b0afcd161f",
+      "usage": {
+        "requests": 35,
+        "input_tokens": 1412654,
+        "output_tokens": 53583,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1466237
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-self",
+      "replicate_id": 2,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_e4dc36c6-0978-4e77-8875-5785f643822e",
+      "usage": {
+        "requests": 59,
+        "input_tokens": 2984573,
+        "output_tokens": 72226,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 3056799
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-self",
+      "replicate_id": 3,
+      "status": "failed_max_turns",
+      "final_verifier_pass": false,
+      "session_id": "sess_0952071a-056f-4126-a9cb-296020394d46",
+      "usage": {
+        "requests": 48,
+        "input_tokens": 3376146,
+        "output_tokens": 110891,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 3487037
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 6,
+        "routable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 2,
+        "clean_complete_closure": 0
+      }
+    }
+  ]
+}

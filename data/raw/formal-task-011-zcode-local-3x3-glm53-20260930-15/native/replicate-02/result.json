@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-011-zcode-local-3x3-glm53-20260930-15-native-replicate-02",
+  "task_id": "task-011",
+  "condition": "native",
+  "replicate_id": 2,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_bda1f083-fd46-4a41-859c-0a7f892649dc",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_ef4b62db-cd5a-45bc-b3c6-97f4de646d16",
+      "requests": 24,
+      "tool_uses": 25,
+      "accessed_modules": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_88da5275-fb92-4859-9ddd-ec430b6dee95",
+      "requests": 11,
+      "tool_uses": 10,
+      "accessed_modules": [],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 3,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_dfdd9e3d-08d2-4932-a2f4-1c327844436b",
+      "requests": 6,
+      "tool_uses": 5,
+      "accessed_modules": [],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 41,
+    "input_tokens": 1470660,
+    "output_tokens": 16418,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 1487078
+  },
+  "initially_available_modules": [
+    "13f-analyzer",
+    "fuzzy-name-search"
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [
+    "13f-analyzer",
+    "fuzzy-name-search"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 2,
+    "routable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 1,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-011-zcode-local-3x3-glm53-20260930-15-native-replicate-02/workspace"
+}

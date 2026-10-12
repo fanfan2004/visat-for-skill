@@ -1,0 +1,20 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.14, pytest-7.4.0, pluggy-1.6.0 -- /Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/bin/python
+rootdir: /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-012-zcode-local-3x3-glm53-20260930-15-pd-self-replicate-03
+plugins: mock-3.15.1, asyncio-0.21.0, anyio-4.14.2, requests-mock-1.11.0
+asyncio: mode=Mode.STRICT
+collecting ... collected 2 items
+
+../verifier/test_outputs_local.py::TestOutputs::test_file_exists PASSED  [ 50%]
+../verifier/test_outputs_local.py::TestOutputs::test_content FAILED      [100%]
+
+=================================== FAILURES ===================================
+___________________________ TestOutputs.test_content ___________________________
+../verifier/test_outputs_local.py:21: in test_content
+    with open(gt_path) as f:
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-012-zcode-local-3x3-glm53-20260930-15-pd-self-replicate-03/verifier/ground_truth.json'
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../verifier/test_outputs_local.py::TestOutputs::test_file_exists
+FAILED ../verifier/test_outputs_local.py::TestOutputs::test_content - FileNot...
+========================= 1 failed, 1 passed in 0.17s ==========================

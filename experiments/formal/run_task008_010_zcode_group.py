@@ -1,7 +1,9 @@
 """Run the ZCode extension tasks locally with ZCode in three conditions and three replicates.
 
-Covers task-008 (adaptive-cruise-control), task-009 (r2r-mpc-control) and
-task-010 (econ-detrending-correlation) with the ``glm53-flash`` ZCode backend.
+Covers task-002 (enterprise-information-search), task-008 (adaptive-cruise-control),
+task-009 (r2r-mpc-control), task-010 (econ-detrending-correlation), task-011
+(sec-financial-report), task-012 (invoice-fraud-detection) and task-013
+(financial-modeling-qa) with the ``glm53-flash`` ZCode backend.
 Each replicate is one headless ZCode session driven by the same turn loop as
 ``run_task001_local_group.py``; the local verifier is a path-rewritten copy of
 the SkillsBench ``test_outputs.py`` so every check stays byte-identical and
@@ -17,6 +19,7 @@ import re
 import shutil
 import subprocess
 import time
+import zipfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
@@ -50,12 +53,13 @@ LOCAL_ROOT = Path(
 MAX_TURNS = 6
 MODEL_TURN_TIMEOUT_SECONDS = 1800
 VERIFIER_TIMEOUT_SECONDS = 900
-CONDITIONS = ("noskill", "native", "pd-vista")
+CONDITIONS = ("noskill", "native", "pd-vista", "pd-self")
 REPLICATES = (1, 2, 3)
 SCHEDULE = (
     (1, "noskill"), (1, "native"), (1, "pd-vista"),
     (2, "native"), (2, "pd-vista"), (2, "noskill"),
     (3, "pd-vista"), (3, "noskill"), (3, "native"),
+    (1, "pd-self"), (2, "pd-self"), (3, "pd-self"),
 )
 
 TASKS: dict[str, dict[str, Any]] = {
@@ -77,6 +81,30 @@ TASKS: dict[str, dict[str, Any]] = {
         "inputs": ["CPI.xlsx", "ERP-2025-table10.xls", "ERP-2025-table12.xls"],
         "output_files": ["answer.txt"],
     },
+    "task-002": {
+        "benchmark": "enterprise-information-search",
+        "inputs": ["DATA", "question.txt"],
+        "output_files": ["answer.json"],
+    },
+    "task-011": {
+        "benchmark": "sec-financial-report",
+        "inputs": ["13f-2025-q2.zip", "13f-2025-q3.zip"],
+        "output_files": ["answers.json"],
+        "unzip": [
+            {"zip": "13f-2025-q2.zip", "dest": ".", "move_top_to": "2025-q2"},
+            {"zip": "13f-2025-q3.zip", "dest": "2025-q3"},
+        ],
+    },
+    "task-012": {
+        "benchmark": "invoice-fraud-detection",
+        "inputs": ["invoices.pdf", "vendors.xlsx", "purchase_orders.csv"],
+        "output_files": ["fraud_report.json"],
+    },
+    "task-013": {
+        "benchmark": "financial-modeling-qa",
+        "inputs": ["data.xlsx", "background.pdf"],
+        "output_files": ["answer.txt"],
+    },
 }
 
 COMMON_PROMPT = """Solve the isolated {benchmark} task in this working directory. \
@@ -90,6 +118,7 @@ INITIAL_PROMPTS = {
     "noskill": " No task Skill is available in this condition.",
     "native": " All original guidance modules are available under ./modules/<module-id>/SKILL.md; read and use the relevant modules.",
     "pd-vista": " Read VISTA.md. Original guidance modules are initially hidden; after a public verifier failure, VISTA may disclose one module under ./modules/<module-id>/SKILL.md.",
+    "pd-self": " Read VISTA.md. The original guidance modules are available under ./modules/<module-id>/SKILL.md; decide for yourself which modules to read and use. There is no disclosure step.",
 }
 
 
@@ -119,6 +148,19 @@ def tool_environment() -> dict[str, str]:
     return env
 
 
+def clone_copy(src: Path, dst: Path) -> None:
+    # APFS clonefile（cp -c）零额外空间；跨卷或失败时回退真实拷贝
+    try:
+        subprocess.run(
+            ["cp", "-cR", str(src), str(dst)], check=True, capture_output=True
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        if src.is_dir():
+            shutil.copytree(src, dst)
+        else:
+            shutil.copy2(src, dst)
+
+
 def dependency_readiness(task_id: str) -> dict[str, Any]:
     source, environment, native_source, vista_source = task_paths(task_id)
     spec = TASKS[task_id]
@@ -127,7 +169,7 @@ def dependency_readiness(task_id: str) -> dict[str, Any]:
         "task_md": (source / "task.md").is_file(),
         "verifier_source": (source / "verifier" / "test_outputs.py").is_file(),
         "inputs_present": {
-            name: (environment / name).is_file() for name in spec["inputs"]
+            name: (environment / name).exists() for name in spec["inputs"]
         },
         "vista_manifest": (vista_source / "manifest.yaml").is_file(),
         "vista_root_skill": (vista_source / "SKILL.md").is_file(),
@@ -138,7 +180,7 @@ def dependency_readiness(task_id: str) -> dict[str, Any]:
     try:
         completed = subprocess.run(
             [str(VERIFIER_PYTHON), "-c",
-             "import pytest, numpy, pandas, yaml; print('ok')"],
+             "import pytest, numpy, pandas, yaml, rapidfuzz, openpyxl; print('ok')"],
             capture_output=True, text=True, timeout=60, check=False,
         )
         checks["verifier_imports"] = completed.returncode == 0
@@ -160,7 +202,9 @@ def write_local_verifier(source: Path, verifier: Path, workspace: Path) -> Path:
     """
 
     text = (source / "verifier" / "test_outputs.py").read_text(encoding="utf-8")
-    rewritten = text.replace("/root", str(workspace))
+    rewritten = text.replace("/root", str(workspace)).replace(
+        '"/verifier/', f'"{verifier}/'
+    )
     path = verifier / "test_outputs_local.py"
     path.write_text(rewritten, encoding="utf-8")
     return path
@@ -183,7 +227,35 @@ def prepare_trial(task_id: str, condition: str, replicate: int) -> dict[str, Pat
     (workspace / "modules").mkdir(exist_ok=True)
     shutil.copy2(source / "task.md", workspace / "task.md")
     for name in spec["inputs"]:
-        shutil.copy2(environment / name, workspace / name)
+        item = environment / name
+        if item.is_dir():
+            shutil.copytree(item, workspace / name)
+        else:
+            clone_copy(item, workspace / name)
+    for step in spec.get("unzip", []):
+        # 大输入只解压一次进共享缓存，各试验用 APFS clone 进工作区，
+        # 避免 12 试验 × ~800MB 把磁盘写满
+        zip_path = environment / step["zip"]
+        cache = LOCAL_ROOT / ".shared-inputs" / task_id / zip_path.stem
+        marker = cache / ".complete"
+        if not marker.exists():
+            cache.mkdir(parents=True, exist_ok=True)
+            with zipfile.ZipFile(zip_path) as archive:
+                archive.extractall(cache)
+            marker.write_text("ok", encoding="utf-8")
+        payload = cache
+        if step.get("move_top_to"):
+            # zip 内部顶目录名（如 01JUN2025-31AUG2025_form13f）与
+            # move_top_to 目标名（如 2025-q2）不同，取缓存里唯一的顶层目录
+            tops = [p for p in cache.iterdir() if p.name != ".complete"]
+            if len(tops) == 1 and tops[0].is_dir():
+                payload = tops[0]
+        target = workspace / (step.get("move_top_to") or step["dest"])
+        target.mkdir(parents=True, exist_ok=True)
+        for entry in sorted(payload.iterdir()):
+            if entry.name.startswith("."):
+                continue
+            clone_copy(entry, target / entry.name)
 
     module_ids = [item.parent.name for item in sorted(native_source.glob("*/SKILL.md"))]
     if condition == "native":
@@ -194,6 +266,10 @@ def prepare_trial(task_id: str, condition: str, replicate: int) -> dict[str, Pat
         shutil.copy2(vista_source / "manifest.yaml", router_source / "manifest.yaml")
         for module_id in module_ids:
             shutil.copytree(native_source / module_id, router_source / "modules" / module_id)
+    elif condition == "pd-self":
+        shutil.copy2(vista_source / "SKILL.md", workspace / "VISTA.md")
+        for module_id in module_ids:
+            shutil.copytree(native_source / module_id, workspace / "modules" / module_id)
 
     write_local_verifier(source, verifier, workspace)
     return {
@@ -376,7 +452,8 @@ def run_replicate(task_id: str, condition: str, replicate: int, *, model: str) -
                 turn_payload = {}
         tool_uses = sum(len((r.get("response") or {}).get("toolCalls") or []) for r in records)
         accessed_now = module_accesses(records, module_ids)
-        accessed_now = [module for module in accessed_now if module in disclosed]
+        if condition == "pd-vista":
+            accessed_now = [module for module in accessed_now if module in disclosed]
         if accessed_now:
             access_rounds += 1
             accessed_after_disclosure.extend(accessed_now)
@@ -450,6 +527,8 @@ def run_replicate(task_id: str, condition: str, replicate: int, *, model: str) -
             instruction = "VISTA disclosed " + ", ".join(
                 f"./modules/{module}/SKILL.md" for module in newly_disclosed
             ) + ". Read it before repairing."
+        elif condition == "pd-self":
+            instruction = "The guidance modules are already available under ./modules/; decide which are relevant and read them before repairing."
         elif condition == "native":
             instruction = "Use the original modules already available under ./modules/."
         elif disclosed:
@@ -495,7 +574,7 @@ def run_replicate(task_id: str, condition: str, replicate: int, *, model: str) -
         "backend": "zcode-local-minimal-dependencies", "docker_used": False,
         "requested_provider_model": model, "session_id": session_id,
         "turns": turns, "usage": usage,
-        "initially_available_modules": module_ids if condition == "native" else [],
+        "initially_available_modules": module_ids if condition in ("native", "pd-self") else [],
         "disclosed_modules": disclosed,
         "accessed_modules_after_disclosure": list(dict.fromkeys(accessed_after_disclosure)),
         "vista_metrics": {
@@ -555,8 +634,9 @@ def run_group(task_id: str, *, model: str, jobs: int = 1, max_quarantine_break: 
     condition_summaries = {}
     for condition in CONDITIONS:
         values = [result for result in results if result["condition"] == condition]
+        planned = sum(1 for _, scheduled in SCHEDULE if scheduled == condition)
         condition_summaries[condition] = {
-            "planned_trials": 3, "completed_trials": len(values),
+            "planned_trials": planned, "completed_trials": len(values),
             "verifier_passes": sum(result["final_verifier_pass"] for result in values),
             "usage": {
                 key: sum(result["usage"].get(key, 0) for result in values)
@@ -569,7 +649,7 @@ def run_group(task_id: str, *, model: str, jobs: int = 1, max_quarantine_break: 
         "task_id": task_id,
         "benchmark_task_id": TASKS[task_id]["benchmark"],
         "conditions": list(CONDITIONS), "replicates_per_condition": 3,
-        "planned_trials": 9, "completed_trials": len(results),
+        "planned_trials": len(SCHEDULE), "completed_trials": len(results),
         "requested_provider_model": model,
         "backend": "zcode-local-minimal-dependencies",
         "condition_summaries": condition_summaries,
@@ -588,7 +668,7 @@ def run_group(task_id: str, *, model: str, jobs: int = 1, max_quarantine_break: 
     (root / "group-summary.json").write_text(
         json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    return 0 if len(results) == 9 else 1
+    return 0 if len(results) == len(SCHEDULE) else 1
 
 
 def main(argv: list[str] | None = None) -> int:

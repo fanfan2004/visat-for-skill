@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-011-zcode-local-3x3-glm53-20260930-15-pd-vista-replicate-01",
+  "task_id": "task-011",
+  "condition": "pd-vista",
+  "replicate_id": 1,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_834e4d84-2d85-4af0-b561-91e646728876",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_f5e9e060-a07f-43f5-af8e-ed06e7fbdc5e",
+      "requests": 13,
+      "tool_uses": 13,
+      "accessed_modules": [],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_11070359-3384-4f99-8625-0439cb53e266",
+      "requests": 14,
+      "tool_uses": 16,
+      "accessed_modules": [
+        "13f-analyzer"
+      ],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 3,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_80784878-cc8b-46d0-89e4-f14a389977ae",
+      "requests": 7,
+      "tool_uses": 9,
+      "accessed_modules": [
+        "fuzzy-name-search"
+      ],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 4,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_3fa7b190-02c0-49d8-8bfb-a08338ecdce7",
+      "requests": 12,
+      "tool_uses": 16,
+      "accessed_modules": [],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 5,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_84044949-0e96-4e29-a779-d0a0f7fa98ce",
+      "requests": 4,
+      "tool_uses": 3,
+      "accessed_modules": [],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 6,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_b69f53d2-6aae-4285-8751-db1bc038c7c6",
+      "requests": 11,
+      "tool_uses": 10,
+      "accessed_modules": [],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 61,
+    "input_tokens": 4129291,
+    "output_tokens": 69928,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 4199219
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [
+    "13f-analyzer",
+    "fuzzy-name-search"
+  ],
+  "accessed_modules_after_disclosure": [
+    "13f-analyzer",
+    "fuzzy-name-search"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 5,
+    "routable_feedback": 5,
+    "successful_disclosures": 2,
+    "next_round_module_access": 2,
+    "clean_complete_closure": 1
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed_with_clean_vista_feedback_loop",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-011-zcode-local-3x3-glm53-20260930-15-pd-vista-replicate-01/workspace"
+}

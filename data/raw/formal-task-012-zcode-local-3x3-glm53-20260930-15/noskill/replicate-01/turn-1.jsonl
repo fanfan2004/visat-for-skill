@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_3361531b-062b-4cbb-a013-be7e641bd452",
+  "traceId": "7df7f477-880c-4773-af5f-fa70c20b3047",
+  "turnId": "turn_3ae8f480-8c7a-4ca9-b398-90e557709811",
+  "response": "Done. `fraud_report.json` is written to the working directory with 50 flagged invoices out of 53 pages, and every entry was cross-checked against the raw sources.\n\n**How the analysis worked:**\n- Extracted all 53 invoices from `invoices.pdf` (vendor, amount, IBAN, PO number) with pdfplumber — every page followed the same 5-line format.\n- Resolved vendor names against `vendors.xlsx` using fuzzy matching (rapidfuzz, threshold 95 after lowercasing, punctuation removal, and stripping corporate suffixes like Ltd/Inc/Corp). This correctly maps \"Fuzzy Match Systems Inc.\" → \"Fuzzy Match Systems\" while keeping \"Vendor 11\" from matching \"Vendor 411\" (true matches score 100; the nearest false candidate scores 94.7).\n- Applied the five criteria in the specified precedence order, comparing IBANs, PO existence, amounts (tolerance 0.01), and PO-to-vendor ID linkage.\n\n**Results by reason:** 11 Unknown Vendor (all \"Fraudulent Corp\" invoices), 11 IBAN Mismatch, 28 Amount Mismatch, 6 Invalid PO, and 0 Vendor Mismatch.\n\n**The 3 clean pages** are deliberate \"not-fraud\" test cases — vendors `V_NF1`–`V_NF3` (Safe Vendor Ltd, Fuzzy Match Systems Inc., Boundary Corp) whose IBANs, POs, amounts, and vendor IDs all match the registries, so they are correctly excluded from the report.\n\nNo invoice had a missing PO field, so no `null` `po_number` entries were needed (the spec's null rule applies only when the PO is absent). The analysis script is saved at `modules/analyze.py` if you want to re-run or adjust it.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 14,
+    "inputTokens": 331863,
+    "outputTokens": 7195,
+    "totalTokens": 339058,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 1926,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 3212,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 339058,
+    "contextUsed": 30868,
+    "contextWindow": 200000
+  }
+}

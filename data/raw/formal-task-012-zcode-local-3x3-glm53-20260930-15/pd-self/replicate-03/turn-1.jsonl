@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_2bd3b6dd-266d-46aa-b3f2-139c425e2061",
+  "traceId": "90c65b01-87ec-45e6-8590-910e66b547d1",
+  "turnId": "turn_26965e64-4b64-43fb-b7bd-bdc79cd7682e",
+  "response": "Done. I analyzed all 53 invoice pages against `vendors.xlsx` and `purchase_orders.csv` and wrote `./fraud_report.json` with 50 flagged invoices — pages 1 through 50 are all fraudulent, and only pages 51–53 are clean.\n\n**How the analysis worked:** I extracted each invoice's vendor name, total amount, payment IBAN, and PO number from the PDF with pdfplumber, then checked each invoice against the five fraud criteria in the required priority order (Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch → Vendor Mismatch), using normalized exact matching first and a rapidfuzz fallback (cutoff 85) for vendor-name typos and variations like \"Ltd\" vs \"Limited\".\n\n**Results by reason:**\n- **Unknown Vendor (9):** all the \"Fraudulent Corp\" invoices (pages 3, 6, 12, 20, 26, 30, 31, 47, 48) — that vendor doesn't exist in the vendor list.\n- **IBAN Mismatch (9):** real vendors billing with the decoy IBAN \"FRADULENT_IBAN\" (pages 1, 17, 19, 22, 29, 36, 39, 42, 44).\n- **Invalid PO (5):** invoices citing \"PO-INVALID\" (pages 4, 8, 15, 38, 45).\n- **Amount Mismatch (27):** the remaining pages, where a valid PO exists but the invoice total differs from the PO amount by more than $0.01.\n\nNo invoices were flagged as Vendor Mismatch on its own — in this dataset every case where the PO belongs to a different vendor also has an amount mismatch, and Amount Mismatch takes precedence in the required ordering. The three clean pages are deliberate boundary tests I verified and correctly excluded: \"Safe Vendor Ltd\" (exact match, exact amount), \"Fuzzy Match Systems Inc.\" (matched fuzzily to the approved \"Fuzzy Match Systems\"), and \"Boundary Corp\" (amount difference of exactly zero against PO-9003, within the 0.01 tolerance). I also spot-checked the underlying PO rows (e.g., PO-1412 = V413/$1,587.74 vs. the invoice's $8,347.33) to confirm the flags reflect the data rather than a parsing error.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 15,
+    "inputTokens": 482702,
+    "outputTokens": 9029,
+    "totalTokens": 491731,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 3951,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 5202,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 491731,
+    "contextUsed": 42411,
+    "contextWindow": 200000
+  }
+}

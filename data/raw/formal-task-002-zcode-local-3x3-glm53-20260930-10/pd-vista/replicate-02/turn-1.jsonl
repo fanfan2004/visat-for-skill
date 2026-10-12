@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_a0c05499-14eb-4ccb-8098-1fc6078d46d3",
+  "traceId": "7d60dcb2-83e1-400f-b5b8-caa0d7a3877c",
+  "turnId": "turn_d662cf93-166a-4da6-95ae-321bb38d546f",
+  "response": "All three questions are answered and written to `./answer.json` in the required format (list-valued answers, with token logging).\n\n**How each answer was derived:**\n\n**Q1 — CoachForce (CoFoAIX) Market Research Report authors and key reviewers:** The product file's `documents` list shows all three versions of the Market Research Report authored by `eid_890654c4` (Julia Smith, Marketing Research Analyst). The review meeting `CoFoAIX_planning_1` has `document_type: Market Research Report` with 7 participants (`eid_99835861`, `eid_50da4819`, `eid_ee9ca887`, `eid_8df92d08`, `eid_85a4de81`, `eid_965867b8`, `eid_59bbe6f6`), and the transcript confirms every one of them gave substantive feedback on the report, so all 7 are key reviewers.\n\n**Q2 — Insight providers on competitor strengths/weaknesses:** The PersonalizeForce Slack corpus contains discussions of three competitors — TailorAI, SmartSuggest, and PersonaAI. The members who provided the actual insights (features/strengths or weaknesses) are `eid_5318af37` (TailorAI strengths; SmartSuggest weaknesses), `eid_c9c3d8d5` (SmartSuggest strengths), `eid_d2f0f99a` (PersonaAI strengths and weaknesses), `eid_fce6544f` (PersonaAI weaknesses), and `eid_a253c65a` (TailorAI weaknesses). Members who only asked questions or said \"thanks for the insights\" (e.g. `eid_2d8eff4d`, `eid_df282afb`) were excluded.\n\n**Q3 — Competitor demo URLs:** Team members shared exactly three competitor demo links: `https://personaai.com/demo`, `https://smartsuggest.com/demo`, and `https://tailorai.com/demo` (the internal `demo_1`–`demo_6` Slack links are PersonalizeForce's own product demos, not competitors, so they were excluded).\n\nOne caveat: the tokens field values are estimates of the tokens consumed per question, since the harness doesn't expose exact per-question token counts.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 19,
+    "inputTokens": 548211,
+    "outputTokens": 7974,
+    "totalTokens": 556185,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 4245,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 5414,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 556185,
+    "contextUsed": 40350,
+    "contextWindow": 200000
+  }
+}
