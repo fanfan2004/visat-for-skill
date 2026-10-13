@@ -18,11 +18,11 @@
     "noskill": {
       "planned_trials": 5,
       "completed_trials": 5,
-      "verifier_passes": 4,
+      "verifier_passes": 5,
       "usage": {
-        "requests": 269,
-        "input_tokens": 14982082,
-        "output_tokens": 242240,
+        "requests": 261,
+        "input_tokens": 14248035,
+        "output_tokens": 231853,
         "cache_read_tokens": 0
       }
     },
@@ -298,6 +298,33 @@
       }
     },
     {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_40570fb3-26ab-48e9-a847-090e9d1bd8e3",
+      "usage": {
+        "requests": 74,
+        "input_tokens": 4595526,
+        "output_tokens": 69671,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 4665197
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
       "condition": "native",
       "replicate_id": 3,
       "status": "passed",
@@ -507,6 +534,33 @@
       }
     },
     {
+      "condition": "noskill",
+      "replicate_id": 5,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_e301b36c-1eb5-4efe-8d51-9a9dff1f0920",
+      "usage": {
+        "requests": 55,
+        "input_tokens": 2938509,
+        "output_tokens": 47344,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 2985853
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
       "condition": "native",
       "replicate_id": 5,
       "status": "passed",
@@ -594,60 +648,6 @@
         "disclosure_to_pass_gap": null,
         "access_after_last_disclosure": false,
         "first_turn_pass": true,
-        "clean_complete_closure": 0
-      }
-    },
-    {
-      "condition": "noskill",
-      "replicate_id": 3,
-      "status": "passed",
-      "final_verifier_pass": true,
-      "session_id": "sess_40570fb3-26ab-48e9-a847-090e9d1bd8e3",
-      "usage": {
-        "requests": 74,
-        "input_tokens": 4595526,
-        "output_tokens": 69671,
-        "cache_read_tokens": 0,
-        "input_plus_output_tokens": 4665197
-      },
-      "disclosed_modules": [],
-      "accessed_modules_after_disclosure": [],
-      "vista_metrics": {
-        "trigger_opportunities": 2,
-        "routable_feedback": 0,
-        "unroutable_feedback": 0,
-        "successful_disclosures": 0,
-        "next_round_module_access": 0,
-        "disclosure_to_pass_gap": null,
-        "access_after_last_disclosure": false,
-        "first_turn_pass": false,
-        "clean_complete_closure": 0
-      }
-    },
-    {
-      "condition": "noskill",
-      "replicate_id": 5,
-      "status": "quarantined_model_turn_timeout",
-      "final_verifier_pass": false,
-      "session_id": "sess_aeb47828-551f-4b92-b123-43286497ef72",
-      "usage": {
-        "requests": 63,
-        "input_tokens": 3672556,
-        "output_tokens": 57731,
-        "cache_read_tokens": 0,
-        "input_plus_output_tokens": 3730287
-      },
-      "disclosed_modules": [],
-      "accessed_modules_after_disclosure": [],
-      "vista_metrics": {
-        "trigger_opportunities": 1,
-        "routable_feedback": 0,
-        "unroutable_feedback": 0,
-        "successful_disclosures": 0,
-        "next_round_module_access": 0,
-        "disclosure_to_pass_gap": null,
-        "access_after_last_disclosure": false,
-        "first_turn_pass": false,
         "clean_complete_closure": 0
       }
     }

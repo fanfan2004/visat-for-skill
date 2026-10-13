@@ -17,4 +17,4 @@ E   assert 3457 == 2451
 =========================== short test summary info ============================
 PASSED ../../.verifiers/formal-task-011-zcode-local-4cond-x5-glm53-20261013-noskill-replicate-05/test_outputs_local.py::test_file_exists
 FAILED ../../.verifiers/formal-task-011-zcode-local-4cond-x5-glm53-20261013-noskill-replicate-05/test_outputs_local.py::test_answer_quality
-========================= 1 failed, 1 passed in 0.13s ==========================
+========================= 1 failed, 1 passed in 0.10s ==========================

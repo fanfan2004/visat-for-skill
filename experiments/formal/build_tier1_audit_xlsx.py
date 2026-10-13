@@ -1,9 +1,10 @@
-"""Build per-task Chinese audit workbooks for the ZCode Tier 1 batch (task-011/012/013).
+"""Build per-task Chinese audit workbooks for the ZCode Tier 1 batches (task-011/012/013).
 
 Mirrors the task-001/008 audit format (7 sheets: 实验总览 / 单组明细 / Token与成本 /
 方法与流程 / 条件提示词 / 披露证据 / 字段映射) but extends to the 4-condition
-protocol (noskill / native / pd-vista / pd-self, 12 trials per task). Writes
-computed values instead of live formulas — the workbooks are verified
+protocol (noskill / native / pd-vista / pd-self). task-011/012 use the post-review
+rerun batches (4 conditions × 5 replicates); task-013 keeps the 3-replicate batch.
+Writes computed values instead of live formulas — the workbooks are verified
 programmatically, so no LibreOffice recalculation is needed. Native and PD-SELF
 module access comes from the per-turn telemetry in result.json (no post-hoc
 scan needed for this batch).
@@ -34,9 +35,15 @@ from openpyxl import Workbook  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[2]
 BATCH = {
-    "task-011": "formal-task-011-zcode-local-3x3-glm53-20260930-15",
-    "task-012": "formal-task-012-zcode-local-3x3-glm53-20260930-15",
+    "task-011": "formal-task-011-zcode-local-4cond-x5-glm53-20261013",
+    "task-012": "formal-task-012-zcode-local-4cond-x5-glm53-20261013",
     "task-013": "formal-task-013-zcode-local-3x3-glm53-20260930-15",
+}
+# 评审后重跑批次 task-011/012 为 4 条件 × 5 复现；task-013 维持 3 复现
+REPLICATES_BY_TASK = {
+    "task-011": (1, 2, 3, 4, 5),
+    "task-012": (1, 2, 3, 4, 5),
+    "task-013": (1, 2, 3),
 }
 BENCH_ZH = {
     "task-011": "SEC 13F 财报多跳检索（sec-financial-report）",
@@ -58,12 +65,12 @@ def load_task(task_id: str) -> dict:
     summary = json.loads((root / "group-summary.json").read_text())
     trials = []
     for condition in CONDITIONS:
-        for replicate in (1, 2, 3):
+        for replicate in REPLICATES_BY_TASK[task_id]:
             r = json.loads((root / condition / f"replicate-{replicate:02d}" / "result.json").read_text())
             trials.append(r)
     final_tests = {}
     for condition in CONDITIONS:
-        for replicate in (1, 2, 3):
+        for replicate in REPLICATES_BY_TASK[task_id]:
             trial_dir = root / condition / f"replicate-{replicate:02d}"
             logs = sorted(trial_dir.glob("verifier-turn-*.txt"))
             passed = None
@@ -89,16 +96,17 @@ def sheet_overview(wb: Workbook, task_id: str, data: dict) -> None:
     ws = wb.create_sheet("实验总览")
     summary, trials = data["summary"], data["trials"]
     sessions = {t["session_id"] for t in trials if t["session_id"]}
-    setup_sheet(ws, title=f"Vista {task_id} · 四条件 × 三重复 ZCode（glm53-flash）实验审计", last_col=10)
+    reps = len(REPLICATES_BY_TASK[task_id])
+    setup_sheet(ws, title=f"Vista {task_id} · 四条件 × {reps}重复 ZCode（glm53-flash）实验审计", last_col=10)
     row = kv_block(ws, 4, [
         ("正式批次", BATCH[task_id]),
         ("任务", f"{task_id} · {BENCH_ZH[task_id]}"),
         ("审计状态", "通过"),
         ("完成试验", str(len(trials))),
         ("独立会话", str(len(sessions))),
-        ("最终验收", f"{sum(1 for t in trials if t['final_verifier_pass'])}/12 通过"),
+        ("最终验收", f"{sum(1 for t in trials if t['final_verifier_pass'])}/{len(trials)} 通过"),
         ("实际提供商 / 模型", "new-provider / glm53-flash（宿主 provider_config 钉扎）"),
-        ("Docker", "未使用；本地验证器为 /root 路径改写副本，逐字节等价"),
+        ("Docker", "未使用；本地验证器为 /root 路径改写副本，逐字节等价，ground truth 随附于控制器侧隐藏验证器目录"),
         ("记录费用", "无（glm53-flash 无单价记录；Token 见「Token与成本」表）"),
         ("pd-self 条件", "PD 格式 skill + 全部模块预先可见，代理自选读取，无反馈披露步骤"),
     ])
@@ -137,13 +145,14 @@ DETAIL_HEADERS = [
     "试验 ID", "条件", "重复", "状态", "最终通过", "轮次", "模型超时", "请求数",
     "工具调用", "输入 Token", "输出 Token", "缓存读取", "新鲜 Token", "总 Token",
     "最终测试", "会话 ID", "初始可见模块", "披露模块", "披露后访问",
-    "触发机会", "可路由反馈", "成功披露", "后续访问", "干净闭环",
+    "触发机会", "可路由反馈", "不可路由反馈", "成功披露", "后续访问",
+    "披露→通过差", "干净闭环",
 ]
 
 
 def sheet_detail(wb: Workbook, task_id: str, data: dict) -> None:
     ws = wb.create_sheet("单组明细")
-    setup_sheet(ws, title=f"{task_id} 单组审计明细（12 个独立 ZCode 会话）", last_col=len(DETAIL_HEADERS) + 1)
+    setup_sheet(ws, title=f"{task_id} 单组审计明细（{len(data['trials'])} 个独立 ZCode 会话）", last_col=len(DETAIL_HEADERS) + 1)
     for col, h in enumerate(DETAIL_HEADERS, 2):
         ws.cell(row=4, column=col, value=h)
     style_header_row(ws, row_num=4, col_start=2, col_end=len(DETAIL_HEADERS) + 1)
@@ -184,8 +193,11 @@ def sheet_detail(wb: Workbook, task_id: str, data: dict) -> None:
             disclosure, access,
             trial["vista_metrics"]["trigger_opportunities"],
             trial["vista_metrics"]["routable_feedback"],
+            trial["vista_metrics"]["unroutable_feedback"],
             trial["vista_metrics"]["successful_disclosures"],
             trial["vista_metrics"]["next_round_module_access"],
+            trial["vista_metrics"]["disclosure_to_pass_gap"]
+            if trial["vista_metrics"]["disclosure_to_pass_gap"] is not None else "—",
             trial["vista_metrics"]["clean_complete_closure"],
         ]
         for col, value in enumerate(values, 2):
@@ -248,7 +260,7 @@ def sheet_tokens(wb: Workbook, task_id: str, data: dict) -> None:
     vista_trials = [t for t in trials if t["condition"] == "pd-vista"]
     pdself_trials = [t for t in trials if t["condition"] == "pd-self"]
     checks = [
-        ("12 组总 Token", totals["total"], "输入 + 输出 + 缓存读取，覆盖全部 12 组"),
+        (f"{len(trials)} 组总 Token", totals["total"], f"输入 + 输出 + 缓存读取，覆盖全部 {len(trials)} 组"),
         ("新鲜 Token", totals["fresh"], "输入 + 输出，不含缓存读取"),
         ("PD-VISTA 干净闭环",
          sum(1 for t in vista_trials if t["vista_metrics"]["clean_complete_closure"]),
@@ -373,35 +385,37 @@ def sheet_disclosure(wb: Workbook, task_id: str, data: dict) -> None:
     vista = [t for t in trials if t["condition"] == "pd-vista"]
     pdself = [t for t in trials if t["condition"] == "pd-self"]
     first_failed = lambda group: sum(1 for t in group if len(t["turns"]) > 1 or not t["final_verifier_pass"])
-    rows: list[tuple] = [(
-        "No-Skill · 3 组", "无模块",
-        f"{first_failed(noskill)} 组首轮失败",
-        sum(len(t["turns"]) for t in noskill),
-        sum(t["vista_metrics"]["trigger_opportunities"] for t in noskill),
-        "无", "无",
-        sum(1 for t in noskill for turn in t["turns"] if turn["model_turn_timeout"]),
-        f"{sum(1 for t in noskill if t['final_verifier_pass'])}/3 通过；无 Skill 对照",
-    ), (
-        "Native · 3 组", "全部模块前置可见",
-        f"{first_failed(native)} 组首轮失败",
-        sum(len(t["turns"]) for t in native),
-        sum(t["vista_metrics"]["trigger_opportunities"] for t in native),
-        "首轮前全部可见", "逐回合遥测：" + "；".join(
-            f"rep{t['replicate_id']} 读取 {len(t['accessed_modules_after_disclosure'])} 个模块"
-            for t in native),
-        sum(1 for t in native for turn in t["turns"] if turn["model_turn_timeout"]),
-        f"{sum(1 for t in native if t['final_verifier_pass'])}/3 通过；完整前置暴露对照",
-    ), (
-        "PD-SELF · 3 组", "VISTA.md + 全部模块前置可见",
-        f"{first_failed(pdself)} 组首轮失败",
-        sum(len(t["turns"]) for t in pdself),
-        sum(t["vista_metrics"]["trigger_opportunities"] for t in pdself),
-        "自选读取（无披露步骤）", "逐回合遥测：" + "；".join(
-            f"rep{t['replicate_id']} 读取 {len(t['accessed_modules_after_disclosure'])} 个模块"
-            for t in pdself),
-        sum(1 for t in pdself for turn in t["turns"] if turn["model_turn_timeout"]),
-        f"{sum(1 for t in pdself if t['final_verifier_pass'])}/3 通过；与 pd-vista 对照隔离反馈回路贡献",
-    )]
+    def group_row(label, visibility, group, disclosure_note, access_note, note):
+        return (
+            label, visibility,
+            f"{first_failed(group)} 组首轮失败",
+            sum(len(t["turns"]) for t in group),
+            sum(t["vista_metrics"]["trigger_opportunities"] for t in group),
+            disclosure_note, access_note,
+            sum(1 for t in group for turn in t["turns"] if turn["model_turn_timeout"]),
+            note,
+        )
+    rows: list[tuple] = [
+        group_row(
+            f"No-Skill · {len(noskill)} 组", "无模块", noskill, "无", "无",
+            f"{sum(1 for t in noskill if t['final_verifier_pass'])}/{len(noskill)} 通过；无 Skill 对照",
+        ),
+        group_row(
+            f"Native · {len(native)} 组", "全部模块前置可见", native, "首轮前全部可见",
+            "逐回合遥测：" + "；".join(
+                f"rep{t['replicate_id']} 读取 {len(t['accessed_modules_after_disclosure'])} 个模块"
+                for t in native),
+            f"{sum(1 for t in native if t['final_verifier_pass'])}/{len(native)} 通过；完整前置暴露对照",
+        ),
+        group_row(
+            f"PD-SELF · {len(pdself)} 组", "VISTA.md + 全部模块前置可见", pdself,
+            "自选读取（无披露步骤）",
+            "逐回合遥测：" + "；".join(
+                f"rep{t['replicate_id']} 读取 {len(t['accessed_modules_after_disclosure'])} 个模块"
+                for t in pdself),
+            f"{sum(1 for t in pdself if t['final_verifier_pass'])}/{len(pdself)} 通过；与 pd-vista 对照隔离反馈回路贡献",
+        ),
+    ]
     for t in vista:
         failed = len(t["turns"]) > 1 or not t["final_verifier_pass"]
         rows.append((
@@ -420,7 +434,7 @@ def sheet_disclosure(wb: Workbook, task_id: str, data: dict) -> None:
         f"成功披露 {sum(t['vista_metrics']['successful_disclosures'] for t in vista)} 次；涉及 {len({m for t in vista for m in t['disclosed_modules']})} 个唯一模块",
         f"后续访问 {sum(t['vista_metrics']['next_round_module_access'] for t in vista)} 次",
         sum(1 for t in vista for turn in t["turns"] if turn["model_turn_timeout"]),
-        f"{sum(1 for t in vista if t['final_verifier_pass'])}/3 通过；{sum(1 for t in vista if t['vista_metrics']['clean_complete_closure'])}/3 形成完整闭环",
+        f"{sum(1 for t in vista if t['final_verifier_pass'])}/{len(vista)} 通过；{sum(1 for t in vista if t['vista_metrics']['clean_complete_closure'])}/{len(vista)} 形成完整闭环",
     ))
     for i, row_data in enumerate(rows):
         row_num = 5 + i
@@ -438,17 +452,19 @@ def sheet_mapping(wb: Workbook, task_id: str, data: dict) -> None:
     for col, h in enumerate(headers, 2):
         ws.cell(row=4, column=col, value=h)
     style_header_row(ws, row_num=4, col_start=2, col_end=6)
+    n = len(data["trials"])
+    last = 4 + n
     rows = [
         ("运行", "group-summary.protocol", "实验总览!B4", "正式实验唯一标识", "group-summary.json"),
         ("运行", "group-summary.completed_trials", "实验总览!B8", "完成试验数", "group-summary.json"),
         ("运行", "group-summary.requested_provider_model", "实验总览!B11", "提供商 / 模型", "new-provider/glm53-flash"),
         ("条件", "condition_summaries.*.verifier_passes", "实验总览!四条件结果总览 / Token与成本", "每条件通过数", "group-summary.json；计算值而非公式（程序化验证）"),
-        ("试验", "replicate result.json", "单组明细!B5:Y16", "条件 × 重复的单组记录（12 试验）", "group-summary.json + result.json"),
-        ("Token", "result.json usage.input_tokens / output_tokens", "单组明细!K5:L16", "输入 / 输出 Token", "model-io rollout（response.usage）"),
-        ("Token", "result.json usage.cache_read_tokens", "单组明细!M5:M16", "缓存读取 Token", "model-io rollout"),
-        ("遥测", "turns[].tool_uses", "单组明细!J5:J16", "工具调用数", "response.toolCalls 逐回合计数"),
-        ("验收", "verifier-turn-N.txt（最终回合）", "单组明细!P5:P16", "最终测试通过数", "路径改写验证器的 pytest 汇总行"),
-        ("披露", "vista_metrics.*", "单组明细!U5:Y16 / 披露证据", "触发、路由、披露、访问、闭环", "result.json vista_metrics"),
+        ("试验", "replicate result.json", f"单组明细!B5:AA{last}", f"条件 × 重复的单组记录（{n} 试验）", "group-summary.json + result.json"),
+        ("Token", "result.json usage.input_tokens / output_tokens", f"单组明细!K5:L{last}", "输入 / 输出 Token", "model-io rollout（response.usage）"),
+        ("Token", "result.json usage.cache_read_tokens", f"单组明细!M5:M{last}", "缓存读取 Token", "model-io rollout"),
+        ("遥测", "turns[].tool_uses", f"单组明细!J5:J{last}", "工具调用数", "response.toolCalls 逐回合计数"),
+        ("验收", "verifier-turn-N.txt（最终回合）", f"单组明细!P5:P{last}", "最终测试通过数", "路径改写验证器的 pytest 汇总行"),
+        ("披露", "vista_metrics.*", f"单组明细!U5:AA{last} / 披露证据", "触发、路由、披露、访问、闭环", "result.json vista_metrics"),
         ("披露", "accessed_modules_after_disclosure", "披露证据!Native / PD-SELF 行", "native 与 pd-self 模块访问", "本批次逐回合遥测直接记录，无需 post-hoc 补扫"),
         ("无对应字段", "—", "单组明细（无记录费用列）", "glm53-flash 无单价记录", "与 task-001 模板差异：记录费用列省略"),
     ]
@@ -481,6 +497,7 @@ def build(task_id: str) -> Path:
 
 
 if __name__ == "__main__":
-    for task_id in BATCH:
+    tasks = sys.argv[1:] or sorted(BATCH)
+    for task_id in tasks:
         out = build(task_id)
         print("written:", out)

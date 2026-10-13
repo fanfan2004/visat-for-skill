@@ -1,5 +1,7 @@
 # ZCode Tier 1 批次报告 — task-011 / 012 / 013（glm53-flash）
 
+> ⚠️ **作废声明（2026-10-13）**：本报告的 task-011 / task-012 部分基于有验证器构建缺陷的批次（本地验证器缺 ground truth 伴随文件 + 验证器目录 agent 可达），全部 24 个试验无效，原始数据已隔离为 `data/raw/*-invalid-verifier-leak`。有效结果见 **[zcode-tier1-rerun-report.md](zcode-tier1-rerun-report.md)**（4 条件 × 5 复现重跑批次）。task-013 部分仍有效（验证器自包含）。
+
 运行日期：2026-09-30 ｜ 后端：ZCode CLI 0.16.9 headless（`ELECTRON_RUN_AS_NODE=1`）｜ 模型：`new-provider/glm53-flash`（宿主 provider_config 钉扎）｜ Docker：未使用 ｜ 本地验证器：SkillsBench `test_outputs.py` 路径改写副本（逐字节等价）
 
 协议：`{task}-zcode-local-3x3-glm53-noskill-native-pd-vista-pd-self-3x3` — 每任务 **4 条件 × 3 复现 = 12 试验**（pd-self：PD 格式 skill + 全部模块预先可见，代理自选读取，无反馈披露步骤），交错调度，每回合上限 1800 秒 / 最多 6 回合，控制器逐回合跑隐藏验证器并回传脱敏诊断。批次前缀 `-20260930-15`。
