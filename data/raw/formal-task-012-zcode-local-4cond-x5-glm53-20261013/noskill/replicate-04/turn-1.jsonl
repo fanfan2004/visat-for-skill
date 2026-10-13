@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_ac594f1f-a1aa-4f3a-839f-779a5a7da2f0",
+  "traceId": "a75edecf-838f-4193-bedb-e54ad28b38cf",
+  "turnId": "turn_4239d408-c25f-426a-9efd-b97808931f9a",
+  "response": "Done. `fraud_report.json` is written to the working directory with 50 flagged invoices out of 53.\n\n**Approach:** I extracted the 53 invoices from `invoices.pdf` (vendor name, amount, IBAN, PO number per page), loaded the 503 approved vendors from `vendors.xlsx`, and parsed the 2,503 purchase orders from `purchase_orders.csv`. The detection script (`detect_fraud.py`) applies the five criteria in the priority order the task specifies, using exact case-insensitive name matching first and rapidfuzz (token-set + weighted ratio, cutoff 85) for typos and variants like \"Ltd\"/\"Limited\".\n\n**Findings breakdown:**\n- **Amount Mismatch — 27** (e.g., page 2: invoice $8,347.33 vs. PO $1,587.74)\n- **Unknown Vendor — 9** (all from \"Fraudulent Corp\", which matches no approved vendor)\n- **IBAN Mismatch — 9** (invoice IBAN was `FRADULENT_IBAN` instead of the vendor's authorized IBAN)\n- **Invalid PO — 5** (PO numbers like `PO-INVALID` don't exist in the purchase orders)\n- No Vendor Mismatch cases exist in this dataset — every invoice whose amount matched its PO also had the correct vendor.\n\nThe only three clean invoices are the control cases on pages 51–53 (\"Safe Vendor Ltd\", \"Fuzzy Match Systems Inc.\", and \"Boundary Corp\"), each with a valid vendor, matching IBAN, valid PO, and exact amount. I verified these manually, including the boundary case on page 53 where the PO amount difference is exactly $0.01 (allowed by the > 0.01 rule).\n\nOutput follows the required structure with 1-based page indexing, `null` PO where missing, and the first applicable reason in the listed priority order.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 16,
+    "inputTokens": 372574,
+    "outputTokens": 5573,
+    "totalTokens": 378147,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 2269,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 3322,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 378147,
+    "contextUsed": 29461,
+    "contextWindow": 200000
+  }
+}

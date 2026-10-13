@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_c4fb2814-c726-4222-b6eb-a79880ca7b89",
+  "traceId": "107e7e9c-efd7-4a34-9176-7867502868d2",
+  "turnId": "turn_d2965435-e1d8-4cbd-a2c4-2b92950ee1d2",
+  "response": "Done. I wrote `./fraud_report.json` with 50 flagged invoices out of 53 pages, applying the five fraud criteria in the required precedence order (Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch → Vendor Mismatch).\n\n**How the analysis worked:**\n- Extracted all 53 invoices from `invoices.pdf` (one per page, parsed vendor, amount, IBAN, and PO number from each).\n- Loaded 503 approved vendors from `vendors.xlsx` (V001–V500 plus three special entries) and 2,503 purchase orders from `purchase_orders.csv`.\n- Matched vendor names with exact match first, then normalization (case, punctuation) with legal-suffix canonicalization (\"Ltd\" ↔ \"Limited\", \"Inc.\" collapsed), then rapidfuzz fuzzy matching at a 0.85 cutoff.\n\n**Findings by reason:**\n- **Amount Mismatch (27):** invoice amount differs from the linked PO's amount, always by hundreds or thousands — far beyond the 0.01 tolerance. Several of these also had PO vendor-ID mismatches, but Amount Mismatch takes precedence per the stated ordering.\n- **Unknown Vendor (9):** all \"Fraudulent Corp\" invoices (pages 3, 6, 12, 20, 26, 30, 31, 47, 48) — its best fuzzy score against any approved vendor was 0.50, safely below cutoff.\n- **IBAN Mismatch (9):** invoices paying to `FRADULENT_IBAN` while claiming to be from a legitimate vendor (pages 1, 17, 19, 22, 29, 36, 39, 42, 44).\n- **Invalid PO (5):** pages 4, 8, 15, 38, 45 referencing the literal `PO-INVALID`, which doesn't exist in the PO ledger.\n\n**Clean pages:** 51 (\"Safe Vendor Ltd\"), 52 (\"Fuzzy Match Systems Inc.\" — resolved via fuzzy matching to the approved \"Fuzzy Match Systems\" with matching IBAN and PO), and 53 (\"Boundary Corp\", exactly 0.00 difference) are unflagged. No PO was missing from an invoice, so no `null` entries were needed.\n\nThe JSON validates against the required schema: 1-based page indexing, sorted by page, all six keys present, and amounts as numbers.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 10,
+    "inputTokens": 319419,
+    "outputTokens": 5551,
+    "totalTokens": 324970,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 2470,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 3544,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 324970,
+    "contextUsed": 48716,
+    "contextWindow": 200000
+  }
+}

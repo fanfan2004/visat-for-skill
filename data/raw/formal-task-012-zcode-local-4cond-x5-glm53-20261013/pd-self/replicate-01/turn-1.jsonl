@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_bdc2d001-0ca2-4b57-8c72-846864aa34c3",
+  "traceId": "913b6198-71c7-492d-9935-3e941425c9af",
+  "turnId": "turn_9db7c649-6812-4c6f-a22e-3b8021a3b891",
+  "response": "Done. `./fraud_report.json` is written and validated: 50 of the 53 invoices are flagged.\n\n**What I did:** Extracted all 53 invoice pages from `invoices.pdf` with pdfplumber, loaded the 503 approved vendors from `vendors.xlsx` and 2,503 purchase orders from `purchase_orders.csv`, then checked each invoice against the five fraud criteria in the task's priority order (Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch → Vendor Mismatch). Vendor names were matched exactly first, then by fuzzy similarity (normalized Levenshtein-style ratio via difflib, cutoff 0.75) per the fuzzy-match module.\n\n**Findings by reason:**\n- **Unknown Vendor (9):** all \"Fraudulent Corp\" invoices (pages 3, 6, 12, 20, 26, 30, 31, 47, 48). Its similarity to the nearest real vendor (\"Boundary Corp\") is only 0.43, well below threshold, so it stays unknown.\n- **IBAN Mismatch (9):** invoices carrying the `FRADULENT_IBAN` account (pages 1, 17, 19, 22, 29, 36, 39, 42, 44).\n- **Invalid PO (5):** invoices referencing the nonexistent `PO-INVALID` (pages 4, 8, 15, 38, 45) — `po_number` is set to `null` for these per the task's \"if the PO is missing\" rule.\n- **Amount Mismatch (27):** invoices whose stated amount differs from the referenced PO's amount by more than $0.01 (verified manually against the CSV — e.g. page 2 invoices $8,347.33 against PO-1412's $1,587.74).\n\nNo invoice warranted \"Vendor Mismatch\": every PO whose vendor differed from the invoice also had an amount mismatch, and Amount Mismatch takes priority in the listed order.\n\n**Correctly passed (not flagged):** the three edge-case invoices — page 51 (\"Safe Vendor Ltd\", exact match), page 52 (\"Fuzzy Match Systems Inc.\", resolved via fuzzy matching to \"Fuzzy Match Systems\" at 0.88 similarity with matching IBAN and PO), and page 53 (\"Boundary Corp\", $500.01 which differs from its PO by exactly $0.01 — the \"exceeds 0.01\" boundary, so not flagged).",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 15,
+    "inputTokens": 495824,
+    "outputTokens": 14402,
+    "totalTokens": 510226,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 10528,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 11570,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 510226,
+    "contextUsed": 49654,
+    "contextWindow": 200000
+  }
+}

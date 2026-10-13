@@ -1,0 +1,21 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.14, pytest-7.4.0, pluggy-1.6.0 -- /Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/bin/python
+rootdir: /Users/wangjinhua/Library/Caches/VistaExperiments
+plugins: mock-3.15.1, asyncio-0.21.0, anyio-4.14.2, requests-mock-1.11.0
+asyncio: mode=Mode.STRICT
+collecting ... collected 2 items
+
+../../.verifiers/formal-task-012-zcode-local-4cond-x5-glm53-20261013-noskill-replicate-05/test_outputs_local.py::TestOutputs::test_file_exists PASSED [ 50%]
+../../.verifiers/formal-task-012-zcode-local-4cond-x5-glm53-20261013-noskill-replicate-05/test_outputs_local.py::TestOutputs::test_content FAILED [100%]
+
+=================================== FAILURES ===================================
+___________________________ TestOutputs.test_content ___________________________
+../../.verifiers/formal-task-012-zcode-local-4cond-x5-glm53-20261013-noskill-replicate-05/test_outputs_local.py:74: in test_content
+    assert act["po_number"] == exp["po_number"], (
+E   AssertionError: PO Number mismatch for page 4: Expected 'None', Got 'PO-INVALID'
+E   assert 'PO-INVALID' == None
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../../.verifiers/formal-task-012-zcode-local-4cond-x5-glm53-20261013-noskill-replicate-05/test_outputs_local.py::TestOutputs::test_file_exists
+FAILED ../../.verifiers/formal-task-012-zcode-local-4cond-x5-glm53-20261013-noskill-replicate-05/test_outputs_local.py::TestOutputs::test_content
+========================= 1 failed, 1 passed in 0.38s ==========================

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-011-zcode-local-4cond-x5-glm53-20261013-pd-vista-replicate-04",
+  "task_id": "task-011",
+  "condition": "pd-vista",
+  "replicate_id": 4,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_bac5386e-dc99-4d76-b3bd-d135f80b6c10",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_59108dc0-0f5b-44c6-ad18-146f733ef368",
+      "requests": 19,
+      "tool_uses": 19,
+      "accessed_modules": [],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_529c01c4-00e4-49ba-95d8-1757eaeec915",
+      "requests": 8,
+      "tool_uses": 7,
+      "accessed_modules": [
+        "13f-analyzer"
+      ],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 3,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_2508e704-4746-4103-8fed-6f7cc9b6038a",
+      "requests": 6,
+      "tool_uses": 5,
+      "accessed_modules": [],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 33,
+    "input_tokens": 1006319,
+    "output_tokens": 12687,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 1019006
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [
+    "13f-analyzer"
+  ],
+  "accessed_modules_after_disclosure": [
+    "13f-analyzer"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 2,
+    "routable_feedback": 1,
+    "unroutable_feedback": 1,
+    "successful_disclosures": 1,
+    "next_round_module_access": 1,
+    "disclosure_to_pass_gap": 2,
+    "access_after_last_disclosure": true,
+    "first_turn_pass": false,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed_without_clean_vista_feedback_loop",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-011-zcode-local-4cond-x5-glm53-20261013-pd-vista-replicate-04/workspace"
+}

@@ -1,0 +1,17 @@
+{
+  "verifier_python": true,
+  "task_md": true,
+  "verifier_source": true,
+  "inputs_present": {
+    "13f-2025-q2.zip": true,
+    "13f-2025-q3.zip": true
+  },
+  "vista_manifest": true,
+  "vista_root_skill": true,
+  "native_modules": [
+    "13f-analyzer",
+    "fuzzy-name-search"
+  ],
+  "verifier_imports": true,
+  "ready": true
+}

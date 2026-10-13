@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_ba2b1137-f20b-4355-bb85-c775f485e6f0",
+  "traceId": "ecd2f10e-75e4-43ae-a2b9-fdd6d71ebac6",
+  "turnId": "turn_7f4bc78b-3267-45da-ba8c-7db9dbc4acfc",
+  "response": "Done. `fraud_report.json` is written to the working directory with 50 flagged invoices out of 53, and the schema validated (1-based page numbers, sorted, exact key set, reason strings from the allowed list).\n\n**How the analysis worked** (script saved as `analyze.py`):\n\n1. **Extraction** — pdfplumber pulled one invoice per page (53 pages), parsing vendor name, total, IBAN, and PO number via regex.\n2. **Vendor matching** — exact match first, then fuzzy matching with rapidfuzz against `vendors.xlsx`. Names are normalized (punctuation stripped, legal suffixes like \"Ltd\"/\"Limited\"/\"Inc\"/\"Corp\" removed) and matched at a ≥85 score threshold. This correctly resolves the edge cases: \"Fuzzy Match Systems Inc.\" → `V_NF2` (\"Fuzzy Match Systems\"), while \"Fraudulent Corp\" matches nothing.\n3. **Criteria applied in the required priority order** — Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch (> 0.01 difference) → Vendor Mismatch.\n\n**Findings by reason:**\n- **Unknown Vendor: 9** — all the \"Fraudulent Corp\" invoices (pages 3, 6, 12, 20, 26, 30, 31, 47, 48), which use other vendors' IBANs and POs.\n- **IBAN Mismatch: 9** — legitimate vendor names but payment routed to `FRADULENT_IBAN` (pages 1, 17, 19, 22, 29, 36, 39, 42, 44).\n- **Invalid PO: 5** — PO number \"PO-INVALID\" appears nowhere in `purchase_orders.csv` (pages 4, 8, 15, 38, 45).\n- **Amount Mismatch: 27** — PO exists but the invoice amount differs by more than $0.01 (this outranks Vendor Mismatch, so it's picked even where the PO also belongs to a different vendor ID).\n\nThe three clean invoices are the deliberate edge cases: page 51 (\"Safe Vendor Ltd\", exact match, everything reconciles), page 52 (\"Fuzzy Match Systems Inc.\", matched via fuzzy matching), and page 53 (\"Boundary Corp\", amount exactly equal to the PO so it doesn't exceed the 0.01 threshold). No invoice was missing a PO field entirely, so no `null` `po_number` entries exist — pages with \"PO-INVALID\" carry that literal string with reason \"Invalid PO\".",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 13,
+    "inputTokens": 338041,
+    "outputTokens": 7680,
+    "totalTokens": 345721,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 3629,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4921,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 345721,
+    "contextUsed": 36369,
+    "contextWindow": 200000
+  }
+}

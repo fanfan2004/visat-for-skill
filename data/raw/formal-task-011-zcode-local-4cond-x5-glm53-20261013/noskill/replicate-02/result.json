@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-011-zcode-local-4cond-x5-glm53-20261013-noskill-replicate-02",
+  "task_id": "task-011",
+  "condition": "noskill",
+  "replicate_id": 2,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_edc51f45-6f01-4fe4-8c6d-f943838e42be",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_a34d679a-3970-4e8f-9ec1-80a839222272",
+      "requests": 12,
+      "tool_uses": 12,
+      "accessed_modules": [],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_4b875ba1-492c-4a2b-a7f6-e7ddc3e10807",
+      "requests": 12,
+      "tool_uses": 11,
+      "accessed_modules": [],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 3,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_69178a6e-ed36-4d0c-987a-949a156902f4",
+      "requests": 3,
+      "tool_uses": 2,
+      "accessed_modules": [],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 27,
+    "input_tokens": 1004977,
+    "output_tokens": 21800,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 1026777
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "vista_metrics": {
+    "trigger_opportunities": 2,
+    "routable_feedback": 0,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "disclosure_to_pass_gap": null,
+    "access_after_last_disclosure": false,
+    "first_turn_pass": false,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-011-zcode-local-4cond-x5-glm53-20261013-noskill-replicate-02/workspace"
+}

@@ -1,0 +1,8 @@
+本批次全部 12 个试验作废（2026-10-13 隔离）。
+原因：本地验证器构建缺陷（write_local_verifier 只拷贝 test_outputs.py，
+未拷贝 expected_output.json / ground_truth.json 伴随数据文件），且验证器
+目录是 workspace 兄弟目录、公开诊断泄露其路径。
+后果：10/9 个失败为验证器 FileNotFoundError 基础设施伪影；4 个"通过"
+（task-011 native rep2、pd-vista rep1；task-012 noskill rep2、native rep2）
+为 agent 自建 ground truth 文件自证通过，非真实验证。
+runner 修复后以新前缀重跑，见 data/raw/ 新批次目录。

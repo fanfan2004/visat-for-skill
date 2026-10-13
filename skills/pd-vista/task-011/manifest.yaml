@@ -3,7 +3,7 @@ source_content_equivalence: byte-for-byte-under-modules
 modules:
   - id: 13f-analyzer
     path: modules/13f-analyzer/SKILL.md
-    triggers: [incomplete_output, schema_error, wrong_format, test_failure, assertion_error, runtime_error, command_failure, timeout]
+    triggers: [13f_value_mismatch, 13f_missing_output]
   - id: fuzzy-name-search
     path: modules/fuzzy-name-search/SKILL.md
-    triggers: [incomplete_output, schema_error, wrong_format, test_failure, assertion_error, runtime_error, command_failure, timeout]
+    triggers: [13f_name_list_mismatch]

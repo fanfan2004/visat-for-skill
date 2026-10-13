@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_53a15c18-043d-497d-8e2a-205bbd072147",
+  "traceId": "3496ffbe-c958-449a-a726-a920c8713944",
+  "turnId": "turn_6c6dbeb0-692c-407f-942a-dcc7b6366992",
+  "response": "Done. `./fraud_report.json` is written with **50 flagged invoices out of 53 pages** — pages 51–53 are the only legitimate ones.\n\n**How the analysis worked:** I extracted each invoice page from `invoices.pdf` (vendor, total, IBAN, PO number), loaded the 503 approved vendors from `vendors.xlsx` and the 2,503 purchase orders from `purchase_orders.csv`, then applied the five criteria in the specified priority order: Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch (> $0.01) → Vendor Mismatch. Vendor names were normalized (lowercase, punctuation stripped, Ltd/Limited and Inc/Incorporated unified) and matched with `difflib` fuzzy matching at a 0.85 cutoff.\n\n**Findings by reason:**\n- **Amount Mismatch (27)** — e.g., page 2 cites PO-1412 ($1,587.74) but bills $8,347.33; pages 5 and 40 are near-duplicate invoices on the same PO-1415 with different totals ($7,056.43 vs $7,156.43).\n- **IBAN Mismatch (9)** — real vendors (e.g., Vendor 11, Vendor 95) invoicing with payment IBAN `FRADULENT_IBAN` instead of their authorized account.\n- **Unknown Vendor (9)** — \"Fraudulent Corp\" invoices (13 pages total) citing valid-looking POs and other vendors' IBANs; fuzzy matching correctly leaves this name unmatched while still resolving the genuine \"Fuzzy Match Systems Inc.\" variation on page 52.\n- **Invalid PO (5)** — invoices citing the nonexistent `PO-INVALID`.\n\n**Clean pages:** 51 (Safe Vendor Ltd, exact match), 52 (Fuzzy Match Systems Inc. — resolved via fuzzy match to V_NF2, IBAN and amount match PO-9002), and 53 (Boundary Corp, $500.01 matching PO-9003 exactly).\n\nTwo verification notes worth knowing: I cross-checked every flagged amount directly against the CSV rows to confirm the comparisons, and I confirmed no invoice amount in the file matches *any* PO — so the vendor-mismatch cases on pages with valid POs are correctly reported as Amount Mismatch, which precedes Vendor Mismatch in the criteria order. `Vendor Mismatch` therefore never appears as a primary reason in this dataset.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 18,
+    "inputTokens": 713122,
+    "outputTokens": 8150,
+    "totalTokens": 721272,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 3716,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4998,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 721272,
+    "contextUsed": 54439,
+    "contextWindow": 200000
+  }
+}

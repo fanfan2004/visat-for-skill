@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-012-zcode-local-4cond-x5-glm53-20261013-native-replicate-01",
+  "task_id": "task-012",
+  "condition": "native",
+  "replicate_id": 1,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_c43ec6d9-f305-4250-a667-2df9522258c3",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_36db4f20-d4ab-41a5-bb2b-0c7c3de60095",
+      "requests": 11,
+      "tool_uses": 13,
+      "accessed_modules": [
+        "fuzzy-match",
+        "pdf",
+        "xlsx"
+      ],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_bd5728ed-6efb-45da-b590-99aa68bfcba2",
+      "requests": 3,
+      "tool_uses": 2,
+      "accessed_modules": [],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 14,
+    "input_tokens": 510295,
+    "output_tokens": 6034,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 516329
+  },
+  "initially_available_modules": [
+    "fuzzy-match",
+    "pdf",
+    "xlsx"
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [
+    "fuzzy-match",
+    "pdf",
+    "xlsx"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 1,
+    "routable_feedback": 0,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 1,
+    "disclosure_to_pass_gap": null,
+    "access_after_last_disclosure": false,
+    "first_turn_pass": false,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-012-zcode-local-4cond-x5-glm53-20261013-native-replicate-01/workspace"
+}

@@ -73,7 +73,7 @@
 | native | 3 | 2 | 27 | passed | — |
 | pd-vista | 1 | 2 | 40 | passed_with_clean_vista_feedback_loop | 披露 pdf |
 | pd-vista | 2 | 1 | 14 | passed（turn 1 直通） | — |
-| pd-vista | 3 | 3 | 29 | passed_with_clean_vista_feedback_loop | 披露 xlsx |
+| pd-vista | 3 | 3 | 33 | passed_with_clean_vista_feedback_loop | 披露 xlsx |
 | pd-self | 1 | 2 | 35 | passed | 自读 xlsx |
 | pd-self | 2 | 2 | 39 | passed | 自读 xlsx |
 | pd-self | 3 | 2 | 38 | passed | 自读 xlsx |

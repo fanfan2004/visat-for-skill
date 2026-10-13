@@ -1,0 +1,655 @@
+{
+  "schema_version": 1,
+  "protocol": "task-011-zcode-local-glm53-4cond-x5",
+  "task_id": "task-011",
+  "benchmark_task_id": "sec-financial-report",
+  "conditions": [
+    "noskill",
+    "native",
+    "pd-vista",
+    "pd-self"
+  ],
+  "replicates_per_condition": 5,
+  "planned_trials": 20,
+  "completed_trials": 20,
+  "requested_provider_model": "glm53-flash",
+  "backend": "zcode-local-minimal-dependencies",
+  "condition_summaries": {
+    "noskill": {
+      "planned_trials": 5,
+      "completed_trials": 5,
+      "verifier_passes": 4,
+      "usage": {
+        "requests": 269,
+        "input_tokens": 14982082,
+        "output_tokens": 242240,
+        "cache_read_tokens": 0
+      }
+    },
+    "native": {
+      "planned_trials": 5,
+      "completed_trials": 5,
+      "verifier_passes": 5,
+      "usage": {
+        "requests": 106,
+        "input_tokens": 3141004,
+        "output_tokens": 37162,
+        "cache_read_tokens": 0
+      }
+    },
+    "pd-vista": {
+      "planned_trials": 5,
+      "completed_trials": 5,
+      "verifier_passes": 5,
+      "usage": {
+        "requests": 135,
+        "input_tokens": 4655379,
+        "output_tokens": 89151,
+        "cache_read_tokens": 0
+      }
+    },
+    "pd-self": {
+      "planned_trials": 5,
+      "completed_trials": 5,
+      "verifier_passes": 5,
+      "usage": {
+        "requests": 111,
+        "input_tokens": 2893792,
+        "output_tokens": 32893,
+        "cache_read_tokens": 0
+      }
+    }
+  },
+  "results": [
+    {
+      "condition": "noskill",
+      "replicate_id": 1,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_d240161a-7fd3-4290-b9d4-a6a7d89a18c4",
+      "usage": {
+        "requests": 67,
+        "input_tokens": 3818656,
+        "output_tokens": 48077,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 3866733
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 1,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_7e00d88c-7e24-44fc-b607-0722c6af1572",
+      "usage": {
+        "requests": 21,
+        "input_tokens": 586419,
+        "output_tokens": 7609,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 594028
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 1,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "sess_c5cb5075-2b62-4c59-b621-658c6ce0d2b0",
+      "usage": {
+        "requests": 28,
+        "input_tokens": 966582,
+        "output_tokens": 14126,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 980708
+      },
+      "disclosed_modules": [
+        "13f-analyzer"
+      ],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": 1,
+        "access_after_last_disclosure": true,
+        "first_turn_pass": false,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "pd-self",
+      "replicate_id": 1,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_6039c52c-26d5-44a0-92bc-6bdba926adcb",
+      "usage": {
+        "requests": 20,
+        "input_tokens": 522425,
+        "output_tokens": 6207,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 528632
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_edc51f45-6f01-4fe4-8c6d-f943838e42be",
+      "usage": {
+        "requests": 27,
+        "input_tokens": 1004977,
+        "output_tokens": 21800,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1026777
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_f0224d31-9445-4599-9c80-093f8ff2f7f8",
+      "usage": {
+        "requests": 21,
+        "input_tokens": 623163,
+        "output_tokens": 7163,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 630326
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 2,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "sess_371060c9-1271-4dfc-b3bc-16ec31948899",
+      "usage": {
+        "requests": 21,
+        "input_tokens": 824838,
+        "output_tokens": 25480,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 850318
+      },
+      "disclosed_modules": [
+        "13f-analyzer"
+      ],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": 1,
+        "access_after_last_disclosure": true,
+        "first_turn_pass": false,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "pd-self",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_121720dc-8ff9-445d-ba59-089118740c7d",
+      "usage": {
+        "requests": 20,
+        "input_tokens": 590111,
+        "output_tokens": 7414,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 597525
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_7fbc2504-d940-4bbb-b057-dca495827449",
+      "usage": {
+        "requests": 21,
+        "input_tokens": 660740,
+        "output_tokens": 8351,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 669091
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 3,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "sess_b40233f2-a567-4a45-90b0-7fb216e66416",
+      "usage": {
+        "requests": 24,
+        "input_tokens": 784705,
+        "output_tokens": 13928,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 798633
+      },
+      "disclosed_modules": [
+        "13f-analyzer"
+      ],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": 1,
+        "access_after_last_disclosure": true,
+        "first_turn_pass": false,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "pd-self",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_97cd7169-f329-493e-a4c7-672f694f1b18",
+      "usage": {
+        "requests": 23,
+        "input_tokens": 659040,
+        "output_tokens": 6284,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 665324
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 4,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_d8afd8f7-3c24-45f9-b0d0-e3a8f95308ff",
+      "usage": {
+        "requests": 38,
+        "input_tokens": 1890367,
+        "output_tokens": 44961,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1935328
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 4,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_309651af-f6e0-4f07-b9c5-d44046ecced0",
+      "usage": {
+        "requests": 23,
+        "input_tokens": 766662,
+        "output_tokens": 6482,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 773144
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 4,
+      "status": "passed_without_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "sess_bac5386e-dc99-4d76-b3bd-d135f80b6c10",
+      "usage": {
+        "requests": 33,
+        "input_tokens": 1006319,
+        "output_tokens": 12687,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1019006
+      },
+      "disclosed_modules": [
+        "13f-analyzer"
+      ],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 1,
+        "unroutable_feedback": 1,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": 2,
+        "access_after_last_disclosure": true,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-self",
+      "replicate_id": 4,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_3f9fc8fd-0f11-4eec-965a-01447724cd16",
+      "usage": {
+        "requests": 27,
+        "input_tokens": 667186,
+        "output_tokens": 7729,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 674915
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "native",
+      "replicate_id": 5,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_61d5dafe-0cb8-404d-9c7b-8e182f6a6e5f",
+      "usage": {
+        "requests": 20,
+        "input_tokens": 504020,
+        "output_tokens": 7557,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 511577
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd-vista",
+      "replicate_id": 5,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "sess_67dc12db-9572-4ed7-ae66-86fa809f7ae2",
+      "usage": {
+        "requests": 29,
+        "input_tokens": 1072935,
+        "output_tokens": 22930,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1095865
+      },
+      "disclosed_modules": [
+        "13f-analyzer"
+      ],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": 1,
+        "access_after_last_disclosure": true,
+        "first_turn_pass": false,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "pd-self",
+      "replicate_id": 5,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_1959e4c9-959b-43a1-92c1-7d19496c3f29",
+      "usage": {
+        "requests": 21,
+        "input_tokens": 455030,
+        "output_tokens": 5259,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 460289
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [
+        "13f-analyzer",
+        "fuzzy-name-search"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_40570fb3-26ab-48e9-a847-090e9d1bd8e3",
+      "usage": {
+        "requests": 74,
+        "input_tokens": 4595526,
+        "output_tokens": 69671,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 4665197
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 2,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 5,
+      "status": "quarantined_model_turn_timeout",
+      "final_verifier_pass": false,
+      "session_id": "sess_aeb47828-551f-4b92-b123-43286497ef72",
+      "usage": {
+        "requests": 63,
+        "input_tokens": 3672556,
+        "output_tokens": 57731,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 3730287
+      },
+      "disclosed_modules": [],
+      "accessed_modules_after_disclosure": [],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    }
+  ]
+}

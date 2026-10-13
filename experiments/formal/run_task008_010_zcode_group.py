@@ -54,13 +54,49 @@ MAX_TURNS = 6
 MODEL_TURN_TIMEOUT_SECONDS = 1800
 VERIFIER_TIMEOUT_SECONDS = 900
 CONDITIONS = ("noskill", "native", "pd-vista", "pd-self")
-REPLICATES = (1, 2, 3)
-SCHEDULE = (
-    (1, "noskill"), (1, "native"), (1, "pd-vista"),
-    (2, "native"), (2, "pd-vista"), (2, "noskill"),
-    (3, "pd-vista"), (3, "noskill"), (3, "native"),
-    (1, "pd-self"), (2, "pd-self"), (3, "pd-self"),
-)
+REPLICATES = (1, 2, 3, 4, 5)
+DEFAULT_REPLICATES = (1, 2, 3)
+EXTENDED_REPLICATES = (1, 2, 3, 4, 5)
+
+
+def schedule_for(task_id: str) -> tuple[tuple[int, str], ...]:
+    # 评审后：task-011/012 因验证器 bug 全部作废重跑，且 pd-vista/pd-self 需 ≥5 复现
+    reps = EXTENDED_REPLICATES if task_id in {"task-011", "task-012"} else DEFAULT_REPLICATES
+    return tuple((rep, condition) for rep in reps for condition in CONDITIONS)
+
+
+# 失败层签名：从验证器 traceback 提取任务专属反馈类型，模块触发词按失败层区分，
+# 不再依赖 8 个通用触发词的固定顺序披露（评审意见 1/三-1）
+FAILURE_LAYER_RULES: dict[str, tuple[tuple[tuple[str, ...], str], ...]] = {
+    "task-011": (
+        # q4 管理人名单（名称列表/精确比对层）
+        (("q4_answer", ".lower() ==", "ans.lower"), "13f_name_list_mismatch"),
+        # q1 数值偏差 / q2 q3 精确值（13F 聚合层）
+        (("q1_answer", "q2_answer", "q3_answer"), "13f_value_mismatch"),
+        # answers.json 缺失
+        (("os.path.isfile", "no such file", "not found"), "13f_missing_output"),
+    ),
+    "task-012": (
+        # 漏报 / 数量不符（发票内容抽取层）
+        (("missed fraud", "number of fraud cases"), "fraud_missed"),
+        # 误报（把干净发票标记为欺诈，供应商对照层）
+        (("false positives",), "fraud_false_positive"),
+        # 字段级不符（reason/vendor/iban/po/amount 模糊比对层）
+        (("reason mismatch", "vendor name mismatch", "iban mismatch",
+          "po number mismatch", "amount mismatch"), "fraud_field_mismatch"),
+        # fraud_report.json 缺失
+        (("os.path.exists", "no such file", "not found"), "missing_output_file"),
+    ),
+}
+
+
+def failure_layer_signatures(task_id: str, verifier_output: str) -> list[str]:
+    text = verifier_output.casefold()
+    signatures: list[str] = []
+    for keywords, signature in FAILURE_LAYER_RULES.get(task_id, ()):
+        if any(keyword in text for keyword in keywords) and signature not in signatures:
+            signatures.append(signature)
+    return signatures
 
 TASKS: dict[str, dict[str, Any]] = {
     "task-008": {
@@ -136,7 +172,7 @@ def task_paths(task_id: str) -> tuple[Path, Path, Path, Path]:
 def result_root(task_id: str) -> Path:
     run_prefix = os.environ.get(
         "VISTA_RUN_PREFIX",
-        f"formal-{task_id}-zcode-local-3x3-glm53-{datetime.now().strftime('%Y%m%d-%H')}",
+        f"formal-{task_id}-zcode-local-glm53-{datetime.now().strftime('%Y%m%d-%H')}",
     )
     return REPO / "data" / "raw" / run_prefix
 
@@ -207,6 +243,12 @@ def write_local_verifier(source: Path, verifier: Path, workspace: Path) -> Path:
     )
     path = verifier / "test_outputs_local.py"
     path.write_text(rewritten, encoding="utf-8")
+    # 验证器伴随数据（expected_output.json / ground_truth.json）必须随
+    # test_outputs.py 一起进试验目录，否则质量/内容检查每轮 FileNotFoundError
+    # （此前批次 24 个试验因此作废）
+    for item in sorted((source / "verifier").iterdir()):
+        if item.is_file() and item.name not in {"test_outputs.py", "test.sh"}:
+            shutil.copy2(item, verifier / item.name)
     return path
 
 
@@ -219,7 +261,9 @@ def prepare_trial(task_id: str, condition: str, replicate: int) -> dict[str, Pat
     if base.exists() and any(base.glob("turn-*.jsonl")):
         raise RuntimeError(f"refusing to reuse trial evidence: {base}")
     workspace = base / "workspace"
-    verifier = base / "verifier"
+    # 验证器目录移出试验 base（此前是 workspace 的兄弟目录，agent 用 yolo 权限
+    # 可以扫到并自建 ground truth 自证通过）；藏进 LOCAL_ROOT 的隐藏目录
+    verifier = LOCAL_ROOT / ".verifiers" / base.name
     router_source = base / "router-source"
     storage = base / "zcode-storage"
     for directory in (workspace, verifier, router_source, storage):
@@ -288,7 +332,8 @@ def verifier_infrastructure_failure(output: str) -> bool:
 
 
 def public_diagnostic(output: str, *, limit: int = 5000) -> str:
-    """Keep agent-observable failure lines while removing host-specific absolute paths."""
+    """Keep agent-observable failure lines while removing host-specific absolute paths
+    and any verifier/ground-truth path fragments (oracle-location leakage)."""
 
     selected: list[str] = []
     markers = ("FAILED", "ERROR", "assert", "assertion", "not found", "missing",
@@ -296,7 +341,12 @@ def public_diagnostic(output: str, *, limit: int = 5000) -> str:
     for raw in output.splitlines():
         if not any(marker in raw for marker in markers):
             continue
-        line = re.sub(r"/Users/[^\s:]+", "<local-path>", raw).strip()
+        line = re.sub(r"/Users/[^\s:]+", "<local-path>", raw)
+        # 脱敏验证器数据路径片段：泄露 verifier/expected_output.json、
+        # ground_truth.json 等位置会让 agent 定位并自证通过
+        line = re.sub(r"[\w./-]*(?:verifier|ground_truth|expected_output)[\w./-]*",
+                      "<verifier-data>", line)
+        line = line.strip()
         if line and line not in selected:
             selected.append(line)
     diagnostic = "\n".join(selected[:40])
@@ -405,8 +455,13 @@ def run_replicate(task_id: str, condition: str, replicate: int, *, model: str) -
     ) + INITIAL_PROMPTS[condition]
     turns: list[dict[str, Any]] = []
     final_pass = False
+    pass_turn: int | None = None
     stop_reason = "max_turns"
-    trigger_opportunities = routable_feedback = disclosure_count = access_rounds = 0
+    trigger_opportunities = routable_feedback = unroutable_feedback = 0
+    disclosure_count = access_rounds = 0
+    last_disclosure_turn: int | None = None
+    access_after_last_disclosure = False
+    stalled_rounds = 0
 
     process_env = tool_environment()
     process_env.update(turn_environment(base))
@@ -457,6 +512,8 @@ def run_replicate(task_id: str, condition: str, replicate: int, *, model: str) -
         if accessed_now:
             access_rounds += 1
             accessed_after_disclosure.extend(accessed_now)
+            if last_disclosure_turn is not None and turn == last_disclosure_turn + 1:
+                access_after_last_disclosure = True
         usage_summary = rollout_usage_summary(parse_model_io_rollout(
             model_io_rollout_path(storage, session_id)
         )) if session_id and model_io_rollout_path(storage, session_id).is_file() else {}
@@ -479,6 +536,7 @@ def run_replicate(task_id: str, condition: str, replicate: int, *, model: str) -
         )
         if verifier_pass:
             final_pass = True
+            pass_turn = turn
             stop_reason = (
                 "verifier_pass_after_model_timeout"
                 if any(item["model_turn_timeout"] for item in turns)
@@ -502,6 +560,10 @@ def run_replicate(task_id: str, condition: str, replicate: int, *, model: str) -
         feedback_types = list(classification.trigger_names)
         if not feedback_types or feedback_types == ["unknown"]:
             feedback_types = ["command_failure"]
+        signatures = failure_layer_signatures(task_id, verifier_output)
+        for signature in signatures:
+            if signature not in feedback_types:
+                feedback_types.append(signature)
         newly_disclosed: list[str] = []
         diagnostic = public_diagnostic(verifier_output)
         if condition == "pd-vista":
@@ -515,14 +577,31 @@ def run_replicate(task_id: str, condition: str, replicate: int, *, model: str) -
                 FeedbackObservation(source=FeedbackSource.TEST_OUTPUT, text=payload, exit_code=1),
                 trial_id=f"{base.name}",
             )
-            decision = router.route(routed, previous_modules=disclosed)
-            if decision.modules or decision.skipped_previous_modules:
+            # 失败层签名以字符串透传进路由；选不出新模块（无匹配或已披露完）
+            # 不披露，记为 unroutable
+            decision = router.route(
+                (*routed.trigger_names, *signatures), previous_modules=disclosed
+            )
+            if decision.modules:
                 routable_feedback += 1
+            else:
+                unroutable_feedback += 1
             for module in router.disclose(decision):
                 copy_disclosed_module(router_source, workspace, module.module_id)
                 disclosed.append(module.module_id)
                 newly_disclosed.append(module.module_id)
                 disclosure_count += 1
+                last_disclosure_turn = turn
+                access_after_last_disclosure = False
+        # 停滞检测：签名变化（agent 改出了新失败层）、新披露或读取模块都算进展；
+        # 披露开始后连续 2 轮无进展提前停止，不再空转到 MAX_TURNS
+        made_progress = bool(
+            newly_disclosed or accessed_now or classification.occurrence == 1
+        )
+        stalled_rounds = 0 if made_progress else stalled_rounds + 1
+        if condition == "pd-vista" and disclosed and stalled_rounds >= 2:
+            stop_reason = "stalled_after_full_disclosure"
+            break
         if newly_disclosed:
             instruction = "VISTA disclosed " + ", ".join(
                 f"./modules/{module}/SKILL.md" for module in newly_disclosed
@@ -532,7 +611,12 @@ def run_replicate(task_id: str, condition: str, replicate: int, *, model: str) -
         elif condition == "native":
             instruction = "Use the original modules already available under ./modules/."
         elif disclosed:
-            instruction = "Use the already disclosed modules: " + ", ".join(disclosed) + "."
+            # 模块披露完后再失败：点名重读已披露模块，而不是只让它继续修
+            instruction = (
+                "The verifier still fails. Re-examine the already disclosed modules "
+                "under ./modules/ (" + ", ".join(disclosed) + ") and repair the "
+                "outputs accordingly."
+            )
         else:
             instruction = "No task Skill is available; repair from the public failure category."
         prompt = (
@@ -543,7 +627,7 @@ def run_replicate(task_id: str, condition: str, replicate: int, *, model: str) -
         )
 
     result_dir = result_root(task_id) / condition / f"replicate-{replicate:02d}"
-    result_dir.mkdir(parents=True)
+    result_dir.mkdir(parents=True, exist_ok=True)
     for artifact in base.glob("turn-*.*"):
         shutil.copy2(artifact, result_dir / artifact.name)
     for artifact in verifier.glob("verifier-turn-*.txt"):
@@ -554,8 +638,15 @@ def run_replicate(task_id: str, condition: str, replicate: int, *, model: str) -
 
     usage = usage_summary or {"requests": 0, "input_tokens": 0, "output_tokens": 0,
                               "cache_read_tokens": 0, "input_plus_output_tokens": 0}
+    # 评审意见 4/三-4：干净闭环收紧为「披露后下一轮有模块读取 + gap ≤ 1」
+    disclosure_gap = (
+        pass_turn - last_disclosure_turn
+        if final_pass and last_disclosure_turn is not None else None
+    )
     clean_closure = int(
-        condition == "pd-vista" and final_pass and disclosure_count > 0 and access_rounds > 0
+        condition == "pd-vista" and final_pass and disclosure_count > 0
+        and access_after_last_disclosure and disclosure_gap is not None
+        and disclosure_gap <= 1
     )
     quarantined = stop_reason in {
         "provider_policy_rejection", "api_error", "session_identity_changed",
@@ -565,7 +656,8 @@ def run_replicate(task_id: str, condition: str, replicate: int, *, model: str) -
         "passed_with_clean_vista_feedback_loop" if clean_closure
         else "passed" if final_pass and condition != "pd-vista"
         else "passed_without_clean_vista_feedback_loop" if final_pass
-        else f"quarantined_{stop_reason}" if quarantined else "failed_max_turns"
+        else f"quarantined_{stop_reason}" if quarantined
+        else f"failed_{stop_reason}"
     )
     result = {
         "schema_version": 1,
@@ -580,8 +672,12 @@ def run_replicate(task_id: str, condition: str, replicate: int, *, model: str) -
         "vista_metrics": {
             "trigger_opportunities": trigger_opportunities,
             "routable_feedback": routable_feedback,
+            "unroutable_feedback": unroutable_feedback,
             "successful_disclosures": disclosure_count,
             "next_round_module_access": access_rounds,
+            "disclosure_to_pass_gap": disclosure_gap,
+            "access_after_last_disclosure": access_after_last_disclosure,
+            "first_turn_pass": bool(turns and turns[0]["verifier_pass"]),
             "clean_complete_closure": clean_closure,
         },
         "final_verifier_pass": final_pass, "stop_reason": stop_reason,
@@ -605,7 +701,8 @@ def run_group(task_id: str, *, model: str, jobs: int = 1, max_quarantine_break: 
         )
     pending: list[tuple[int, str]] = []
     results: list[dict[str, Any]] = []
-    for replicate, condition in SCHEDULE:
+    schedule = schedule_for(task_id)
+    for replicate, condition in schedule:
         existing = root / condition / f"replicate-{replicate:02d}" / "result.json"
         if existing.is_file():
             results.append(json.loads(existing.read_text(encoding="utf-8")))
@@ -634,7 +731,7 @@ def run_group(task_id: str, *, model: str, jobs: int = 1, max_quarantine_break: 
     condition_summaries = {}
     for condition in CONDITIONS:
         values = [result for result in results if result["condition"] == condition]
-        planned = sum(1 for _, scheduled in SCHEDULE if scheduled == condition)
+        planned = sum(1 for _, scheduled in schedule if scheduled == condition)
         condition_summaries[condition] = {
             "planned_trials": planned, "completed_trials": len(values),
             "verifier_passes": sum(result["final_verifier_pass"] for result in values),
@@ -645,11 +742,15 @@ def run_group(task_id: str, *, model: str, jobs: int = 1, max_quarantine_break: 
         }
     summary = {
         "schema_version": 1,
-        "protocol": f"{task_id}-zcode-local-glm53-noskill-native-pd-vista-3x3",
+        "protocol": (
+            f"{task_id}-zcode-local-glm53-4cond-x"
+            f"{len(schedule) // len(CONDITIONS)}"
+        ),
         "task_id": task_id,
         "benchmark_task_id": TASKS[task_id]["benchmark"],
-        "conditions": list(CONDITIONS), "replicates_per_condition": 3,
-        "planned_trials": len(SCHEDULE), "completed_trials": len(results),
+        "conditions": list(CONDITIONS),
+        "replicates_per_condition": len(schedule) // len(CONDITIONS),
+        "planned_trials": len(schedule), "completed_trials": len(results),
         "requested_provider_model": model,
         "backend": "zcode-local-minimal-dependencies",
         "condition_summaries": condition_summaries,
@@ -668,7 +769,7 @@ def run_group(task_id: str, *, model: str, jobs: int = 1, max_quarantine_break: 
     (root / "group-summary.json").write_text(
         json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    return 0 if len(results) == len(SCHEDULE) else 1
+    return 0 if len(results) == len(schedule) else 1
 
 
 def main(argv: list[str] | None = None) -> int:

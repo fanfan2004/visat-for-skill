@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_a5cf2d35-6aee-4ac1-b6b4-3e1791be82af",
+  "traceId": "93a97405-886e-4ff1-bb25-ccf4614ec0d1",
+  "turnId": "turn_d01025ed-876c-44f9-81e6-a73c1f60616a",
+  "response": "The fraud analysis is complete. `./fraud_report.json` has been written with 50 flagged invoices out of 53 pages, and the results were cross-validated with two independent matching implementations (difflib and rapidfuzz) with zero disagreements.\n\n**How the analysis worked:** I extracted all 53 invoice pages from `invoices.pdf` with pdfplumber, loaded the 503 approved vendors from `vendors.xlsx`, and the 2,503 purchase orders from `purchase_orders.csv`. Each invoice was then checked against the five fraud criteria in the task's priority order (Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch → Vendor Mismatch), with vendor names normalized (lowercased, punctuation stripped, \"Ltd\"/\"Limited\"/\"Inc.\" suffixes reconciled) and fuzzy-matched against the vendor registry.\n\n**Findings by reason:**\n- **Unknown Vendor — 9 invoices** (pages 3, 6, 12, 20, 26, 30, 31, 47, 48): all from \"Fraudulent Corp\", which matches no vendor in the registry (closest candidate was only ~29% similar, well below any reasonable match threshold).\n- **IBAN Mismatch — 9 invoices** (pages 1, 17, 19, 22, 29, 36, 39, 42, 44): legitimate vendor names paying to the suspicious account `FRADULENT_IBAN` instead of their authorized IBAN — a classic payment-diversion pattern.\n- **Invalid PO — 5 invoices** (pages 4, 8, 15, 38, 45): all cite `PO-INVALID`, which doesn't exist in the purchase order list.\n- **Amount Mismatch — 27 invoices**: the invoice amount differs from the linked PO's amount by more than $0.01 (e.g., page 40 invoices Vendor 80 for $7,156.43 against PO-1415's $4,259.39).\n\n**Three invoices were correctly NOT flagged:** page 51 (Safe Vendor Ltd — exact match, exact amount), page 52 (Fuzzy Match Systems Inc. — recognized as V_NF2 via fuzzy matching despite the \"Inc.\" variation, with matching IBAN and PO), and page 53 (Boundary Corp — $500.01 vs PO-9003's $500.01, within the 0.01 tolerance boundary). No invoice triggered \"Vendor Mismatch\" as its first applicable reason — every case where the PO belonged to a different vendor also had an amount discrepancy, which is checked earlier in the priority order.\n\nThe report follows the required schema exactly: 1-based page indexing, the invoice's stated PO number (or `null` if absent — none were absent here), and one reason per flagged invoice chosen by the specified priority order.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 11,
+    "inputTokens": 344142,
+    "outputTokens": 9293,
+    "totalTokens": 353435,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 4641,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 5890,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 353435,
+    "contextUsed": 45569,
+    "contextWindow": 200000
+  }
+}

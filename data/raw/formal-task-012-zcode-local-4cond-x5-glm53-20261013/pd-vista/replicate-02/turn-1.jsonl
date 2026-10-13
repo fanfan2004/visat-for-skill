@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_26736332-ed04-4241-8365-97f4d689524f",
+  "traceId": "30000155-34f4-4662-a024-72fa1d1a2e69",
+  "turnId": "turn_de0ce65f-8339-4ddc-87f3-22f22310b554",
+  "response": "Done. I wrote `./fraud_report.json` with 50 flagged invoices out of 53 pages, following the criteria and priority order from task.md.\n\n**How I analyzed it:** I extracted each invoice page with pdfplumber, loaded the 503 approved vendors from `vendors.xlsx` (including the three named vendors at the end: Safe Vendor Ltd, Fuzzy Match Systems, Boundary Corp), and loaded all 2,503 purchase orders from the CSV. Vendor names were resolved with exact matching after normalization, falling back to fuzzy matching (rapidfuzz token-set + Levenshtein ratio, threshold 85) — this correctly matched \"Fuzzy Match Systems Inc.\" to vendor V_NF2 \"Fuzzy Match Systems\" while rejecting \"Fraudulent Corp\" as unknown. Criteria were applied in the required priority order: Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch (> 0.01 difference) → Vendor Mismatch.\n\n**Findings breakdown:**\n- **Amount Mismatch (27)** — the invoice amount differs from the linked PO's amount by more than 0.01\n- **IBAN Mismatch (9)** — valid vendor, but payment IBAN is `FRADULENT_IBAN` instead of the vendor's authorized IBAN\n- **Unknown Vendor (9)** — all from \"Fraudulent Corp\", which has no close match in the vendor list\n- **Invalid PO (5)** — PO number `PO-INVALID`, not present in `purchase_orders.csv`\n\nPages 51–53 (the named edge-case vendors) came out clean: the fuzzy match handled the \"Inc.\" suffix variation, and Boundary Corp's 500.01 invoice exactly matches its PO within the 0.01 tolerance.\n\nOne notable data characteristic I verified before trusting the result: every numbered \"Vendor N\" invoice references a PO belonging to a different vendor with a different amount (zero invoices have a PO whose vendor matches the invoice's), so the high flag rate is a property of the dataset, not a matching bug. Where both amount and vendor mismatch applied, I reported Amount Mismatch since it comes first in the specified priority order.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 363313,
+    "outputTokens": 8802,
+    "totalTokens": 372115,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 5048,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 6067,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 372115,
+    "contextUsed": 45946,
+    "contextWindow": 200000
+  }
+}

@@ -3,10 +3,10 @@ source_content_equivalence: byte-for-byte-under-modules
 modules:
   - id: fuzzy-match
     path: modules/fuzzy-match/SKILL.md
-    triggers: [incomplete_output, schema_error, wrong_format, test_failure, assertion_error, runtime_error, command_failure, timeout]
+    triggers: [fraud_field_mismatch]
   - id: pdf
     path: modules/pdf/SKILL.md
-    triggers: [incomplete_output, schema_error, wrong_format, test_failure, assertion_error, runtime_error, command_failure, timeout]
+    triggers: [fraud_missed, missing_output_file]
   - id: xlsx
     path: modules/xlsx/SKILL.md
-    triggers: [incomplete_output, schema_error, wrong_format, test_failure, assertion_error, runtime_error, command_failure, timeout]
+    triggers: [fraud_false_positive]

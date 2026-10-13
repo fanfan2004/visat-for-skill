@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_00a2dce3-aa9f-4755-964c-af840a183b73",
+  "traceId": "1fb016a9-db49-4a5a-bf52-a214c48e805f",
+  "turnId": "turn_5629e1bd-34a6-4f86-88a4-760b9aad7973",
+  "response": "Done. `./fraud_report.json` is written and validated: **50 of the 53 invoices are flagged**, with 3 clean pages (51–53, the negative-control cases).\n\n**How the analysis worked:** I extracted one invoice per page from `invoices.pdf` (53 pages) with pdfplumber, loaded 503 approved vendors from `vendors.xlsx`, and 2,500 POs from `purchase_orders.csv`. Vendor matching used exact name match first, then rapidfuzz fuzzy matching (cutoff ≥90) for spelling/format variants. Each invoice was checked against the five fraud criteria in the task's priority order, so each flagged invoice carries exactly one reason.\n\n**Findings by reason:**\n- **Amount Mismatch (27):** e.g., page 2 bills $8,347.33 against PO-1412 ($1,587.74). Every regular invoice's amount differed from its PO by more than $0.01.\n- **IBAN Mismatch (9):** invoices naming a known vendor but paying to `FRADULENT_IBAN` (pages 1, 17, 19, 22, 29, 36, 39, 42, 44).\n- **Unknown Vendor (9):** \"Fraudulent Corp\" doesn't fuzzy-match any approved vendor (best score 50, well under threshold).\n- **Invalid PO (5):** PO-INVALID appears on pages 4, 8, 15, 38, 45; `po_number` is set to `null` there.\n\n**The three clean pages were deliberate edge cases and correctly pass:**\n- Page 51 \"Safe Vendor Ltd\" — exact vendor match, IBAN and PO-9001 amount ($1,000.00) both match.\n- Page 52 \"Fuzzy Match Systems Inc.\" — fuzzy-matched to \"Fuzzy Match Systems\" (V_NF2, score 95); PO-9002 amount and IBAN match.\n- Page 53 \"Boundary Corp\" — invoice amount $500.01 vs PO-9003 $500.01, exactly at the $0.01 tolerance, so not flagged.\n\nNotes on interpretation: for Unknown Vendor invoices whose PO number does exist in the CSV (e.g., page 3 → PO-1181), I kept the PO number in the report, reserving `null` for POs that are absent from `purchase_orders.csv`, per \"if the PO is missing, set it to null.\" No \"Vendor Mismatch\" reason appears in the final report — every invoice where the PO's vendor differed also had an amount mismatch, and Amount Mismatch takes priority in the specified order.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 314849,
+    "outputTokens": 8702,
+    "totalTokens": 323551,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 3267,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4555,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 323551,
+    "contextUsed": 37582,
+    "contextWindow": 200000
+  }
+}

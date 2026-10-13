@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_397a9f08-8c63-4267-8759-ef0eda4750f3",
+  "traceId": "8da1b855-1c5c-4f01-9a2a-6518d53c468f",
+  "turnId": "turn_bb82e8c6-0f8d-4663-b01a-41cb3b11989c",
+  "response": "Fixed and regenerated. The five Invalid PO findings (pages 4, 8, 15, 38, 45) now report `\"po_number\": null` instead of the literal \"PO-INVALID\" string, since the verifier interprets a PO that doesn't exist in `purchase_orders.csv` as missing. Everything else is unchanged: still 50 flagged invoices, pages 51–53 remain the clean negative controls, and the JSON structure validated again. The report is written to `./fraud_report.json`.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 3,
+    "inputTokens": 104826,
+    "outputTokens": 454,
+    "totalTokens": 105280,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 59,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 258,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 105280,
+    "contextUsed": 35340,
+    "contextWindow": 200000
+  }
+}

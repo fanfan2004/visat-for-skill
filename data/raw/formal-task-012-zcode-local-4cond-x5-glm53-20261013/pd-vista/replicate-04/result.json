@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-012-zcode-local-4cond-x5-glm53-20261013-pd-vista-replicate-04",
+  "task_id": "task-012",
+  "condition": "pd-vista",
+  "replicate_id": 4,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_98aba663-b36a-4296-a1b2-e7d0abe7818b",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_cbc40a4b-e39d-4e88-a194-9e44c7d3b741",
+      "requests": 11,
+      "tool_uses": 11,
+      "accessed_modules": [],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_680c563c-91a3-463d-b876-d30d07a09eac",
+      "requests": 3,
+      "tool_uses": 2,
+      "accessed_modules": [
+        "fuzzy-match"
+      ],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 14,
+    "input_tokens": 447738,
+    "output_tokens": 7766,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 455504
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [
+    "fuzzy-match"
+  ],
+  "accessed_modules_after_disclosure": [
+    "fuzzy-match"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 1,
+    "routable_feedback": 1,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 1,
+    "next_round_module_access": 1,
+    "disclosure_to_pass_gap": 1,
+    "access_after_last_disclosure": true,
+    "first_turn_pass": false,
+    "clean_complete_closure": 1
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed_with_clean_vista_feedback_loop",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-012-zcode-local-4cond-x5-glm53-20261013-pd-vista-replicate-04/workspace"
+}

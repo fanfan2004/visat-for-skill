@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_77f4c862-1479-4e2d-8b68-bc0740ee9127",
+  "traceId": "c5f12ca6-a8be-456f-a1e0-a1e1a40ff0b2",
+  "turnId": "turn_e52131f1-45ad-40bb-8fb1-b9e5719e3411",
+  "response": "Done — `./fraud_report.json` is written with 50 flagged invoices out of 53 pages scanned.\n\n**Results by reason** (checked in the task's priority order, first match wins):\n- **Amount Mismatch: 27** — every one of these invoices cites a PO whose recorded amount differs from the invoice total by far more than 0.01 (e.g. page 40's $7,156.43 vs PO-1415's $4,259.39).\n- **Unknown Vendor: 9** — all the \"Fraudulent Corp\" invoices; fuzzy matching scores them at most 50 against any approved vendor, so they don't match anything.\n- **IBAN Mismatch: 9** — invoices from legitimate vendors paid to the planted `FRADULENT_IBAN` account instead of the vendor's authorized IBAN.\n- **Invalid PO: 5** — the invoices printed with `PO-INVALID`, which doesn't exist in `purchase_orders.csv`. Since the PO number is present on the invoice (it's invalid, not missing), I reported the printed value; `null` is reserved for pages where no PO number appears (none in this dataset).\n\n**Not flagged (the three designed clean pages, 51–53):** \"Safe Vendor Ltd\" matches exactly; \"Fuzzy Match Systems Inc.\" fuzzy-matches to approved vendor \"Fuzzy Match Systems\" (token-set similarity 100) with matching IBAN and amount; and \"Boundary Corp\" at exactly $500.01 matches PO-9003 with 0.00 difference, inside the 0.01 tolerance.\n\nTwo data hazards I handled: fuzzy matching had to be exact-match-first, because a naive similarity threshold confuses \"Vendor 11\" with \"Vendor 1\" (94% similar) — every \"Vendor N\" invoice resolves exactly, so fuzzy logic only kicks in when no exact name exists. Also, most flagged invoices simultaneously have both amount and vendor mismatch on their PO; the task's criterion priority makes \"Amount Mismatch\" (4th) outrank \"Vendor Mismatch\" (5th), so no invoice is labeled \"Vendor Mismatch\" — that's the correct application of the stated ordering, not an omission. The analysis script is saved as `analyze_fraud.py` alongside the report.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 10,
+    "inputTokens": 317736,
+    "outputTokens": 9719,
+    "totalTokens": 327455,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 5957,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 7021,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 327455,
+    "contextUsed": 47450,
+    "contextWindow": 200000
+  }
+}

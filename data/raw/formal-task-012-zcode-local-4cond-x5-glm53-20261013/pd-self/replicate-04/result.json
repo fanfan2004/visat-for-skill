@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-012-zcode-local-4cond-x5-glm53-20261013-pd-self-replicate-04",
+  "task_id": "task-012",
+  "condition": "pd-self",
+  "replicate_id": 4,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_1ea34cd4-3490-45f2-a532-484f8f06963d",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_f61225eb-9520-48e5-b4a2-965088915d57",
+      "requests": 12,
+      "tool_uses": 15,
+      "accessed_modules": [
+        "pdf",
+        "fuzzy-match",
+        "xlsx"
+      ],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_485034eb-6188-4946-91b1-604a7760b6ed",
+      "requests": 2,
+      "tool_uses": 1,
+      "accessed_modules": [],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 14,
+    "input_tokens": 440581,
+    "output_tokens": 5715,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 446296
+  },
+  "initially_available_modules": [
+    "fuzzy-match",
+    "pdf",
+    "xlsx"
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [
+    "pdf",
+    "fuzzy-match",
+    "xlsx"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 1,
+    "routable_feedback": 0,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 1,
+    "disclosure_to_pass_gap": null,
+    "access_after_last_disclosure": false,
+    "first_turn_pass": false,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-012-zcode-local-4cond-x5-glm53-20261013-pd-self-replicate-04/workspace"
+}

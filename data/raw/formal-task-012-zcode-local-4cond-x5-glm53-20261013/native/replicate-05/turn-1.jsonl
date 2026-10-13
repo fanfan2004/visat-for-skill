@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_142f92c0-55b9-4617-af33-f4722c0fd8e8",
+  "traceId": "dc945ead-83a4-45ba-9dbc-238b13992a51",
+  "turnId": "turn_4fac21c5-1bfd-420d-b742-a06409560470",
+  "response": "Done. `./fraud_report.json` is written with 50 flagged invoices out of 53 pages.\n\n**How I analyzed it:** I extracted all 53 invoice pages from `invoices.pdf` with pdfplumber (each page has a consistent From/Total/IBAN/PO Number format), loaded the 503 approved vendors from `vendors.xlsx` and the 2,503 purchase orders from `purchase_orders.csv`, then applied the five fraud criteria in the priority order given in task.md (Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch → Vendor Mismatch), picking the first criterion that applies when several match.\n\n**Findings by reason:**\n- **Unknown Vendor (9):** all \"Fraudulent Corp\" invoices — that name doesn't match any approved vendor even with fuzzy matching.\n- **IBAN Mismatch (9):** known \"Vendor N\" invoices paying to `FRADULENT_IBAN` instead of the vendor's authorized IBAN.\n- **Invalid PO (5):** invoices citing `PO-INVALID`, which doesn't exist in the purchase orders file (reported with the invoice's stated PO string, since no invoice actually lacks a PO line).\n- **Amount Mismatch (27):** invoices whose stated PO exists but whose amount differs from the PO amount by far more than $0.01 (I spot-checked several against the raw CSV to confirm these weren't parsing artifacts — e.g., invoice page 27 claims $2,758.28 while PO-1192 is $9,298.70). Most also have vendor-ID mismatches, but Amount Mismatch takes priority per the task's ordering.\n\nThe three clean invoices are the deliberate control cases: pages 51–53 (\"Safe Vendor Ltd\", \"Fuzzy Match Systems Inc.\" — resolved via fuzzy matching to V_NF2 despite the \"Inc.\" suffix — and \"Boundary Corp\"), all with matching IBANs, valid PO-900x orders, and exactly matching amounts (the boundary case at $500.01 doesn't trip the 0.01 threshold). I used exact normalized matching first (with abbreviation normalization like Ltd/Limited) and only fell back to fuzzy matching at a 0.80 cutoff, which resolved \"Fuzzy Match Systems Inc.\" correctly without false-matching \"Fraudulent Corp\" to any real vendor.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 359656,
+    "outputTokens": 10405,
+    "totalTokens": 370061,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 6988,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 8098,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 370061,
+    "contextUsed": 46799,
+    "contextWindow": 200000
+  }
+}
