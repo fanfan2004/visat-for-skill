@@ -2,3 +2,6 @@
 # construction-evidence.json hashes break if SKILL.md is checked out with CRLF.
 experiments/artifacts/** -text
 experiments/benchmarks/** -text
+# pilot task dirs feed the same hash checks
+tasks/pilot/task-014/** -text
+tasks/pilot/task-015/** -text

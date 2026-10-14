@@ -4,13 +4,13 @@
   "benchmark": "energy-unit-commitment",
   "construction": "deterministic-source-preserving-v1",
   "source_files": {
-    "milp-solver-workflow/SKILL.md": "6cc4ad468c339f5269be72c7946a90ccc2e234a2dd4a447589b1ecd1c2bb7199",
-    "unit-commitment-data-modeling/SKILL.md": "7e85d107b46d06339484e58e1be6fff3f30448d13914805ffbff0ab57132b029",
-    "unit-commitment-operating-rules/SKILL.md": "cde34ca2ce6caeac8fc3734a9cc7cedfaccdc47d2a437013769598642437cc13"
+    "milp-solver-workflow/SKILL.md": "a7952b16cfda72bd0576f0f1ff1c222a0c05d5343195d00013e81ed56b8eddc4",
+    "unit-commitment-data-modeling/SKILL.md": "b67192fb7fccb9c6e04df287bf2049fbc0f26571d7d702f7bcacc1c1b0566d19",
+    "unit-commitment-operating-rules/SKILL.md": "e44bbc07a1f2b53a11ac0773962fc6dbf9daf1534244f358878919971d9caa2c"
   },
   "benchmark_files": {
-    "task.md": "66c3040657700d9f84ad6319d6802cb2f0f9fe6a3e9be94ad4133fe1eae5d44f",
-    "verifier/test_outputs.py": "8573b8714adff685111e3d738b8c90aeba6b8329205eba51ecb4afed48196fa8",
+    "task.md": "7cfc132244fdc80472809aaae1cf5d463e451be24402217739099239374ec3b4",
+    "verifier/test_outputs.py": "8212aba549fa693cc4ba9710259f37bd29f4b5a4e0a0b0932950a41ae3f5ac2e",
     "environment/network.json": "c6d81435e84898b71d0253aed0fb87449b957129f441d45b776d041e3eba9058"
   },
   "artifact_files": {
@@ -18,12 +18,13 @@
     "flat/unit-commitment-data-modeling/SKILL.md": "b67192fb7fccb9c6e04df287bf2049fbc0f26571d7d702f7bcacc1c1b0566d19",
     "flat/unit-commitment-operating-rules/SKILL.md": "e44bbc07a1f2b53a11ac0773962fc6dbf9daf1534244f358878919971d9caa2c",
     "manifest.yaml": "95ba9ebb7fedaf192a7675c1bf6355d74fb5638fcf618cb70bedde002226dfec",
+    "pd/SKILL.md": "f5976e5a9ed320c11deabec74fa9358f4f734884441833eb8ee036a4a4e4506d",
     "pd/references/milp-solver-workflow.md": "a7952b16cfda72bd0576f0f1ff1c222a0c05d5343195d00013e81ed56b8eddc4",
     "pd/references/unit-commitment-data-modeling.md": "b67192fb7fccb9c6e04df287bf2049fbc0f26571d7d702f7bcacc1c1b0566d19",
     "pd/references/unit-commitment-operating-rules.md": "e44bbc07a1f2b53a11ac0773962fc6dbf9daf1534244f358878919971d9caa2c",
-    "pd/SKILL.md": "f5976e5a9ed320c11deabec74fa9358f4f734884441833eb8ee036a4a4e4506d",
     "single-file/SKILL.md": "73a151bcf7f8f77f58873778a599c040ed8f673617390deb9381d35795000bb1"
   },
   "path_rewrites": [],
-  "limitations": []
+  "limitations": [],
+  "source_content_equivalence": "source-hash-and-support-byte-equality (LF, git-normalized)"
 }

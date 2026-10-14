@@ -49,7 +49,9 @@ def main() -> int:
         return 0
     if sys.platform != "darwin":
         parser.error("this launcher is for macOS; use local unit tests on Windows")
-    python = Path(os.environ.get("VISTA_VERIFIER_PYTHON", REPO / ".venv/bin/python")).expanduser().resolve()
+    # 不用 resolve()：.venv/bin/python 是 venv 启动器符号链接，resolve 后指向框架真实
+    # 二进制，子进程不再加载 venv site-packages（yaml 等 import 失败）。
+    python = Path(os.environ.get("VISTA_VERIFIER_PYTHON", REPO / ".venv/bin/python")).expanduser().absolute()
     if not python.is_file():
         parser.error(f"missing verifier/agent Python: {python}")
     def stop_requested(signum, frame):
