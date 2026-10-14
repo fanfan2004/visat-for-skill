@@ -66,16 +66,16 @@
       "planned_trials": 3,
       "completed_trials": 3,
       "first_turn_passes": 0,
-      "final_verifier_passes": 2,
-      "agent_net_seconds": 1353.782,
-      "verifier_seconds": 19.826,
+      "final_verifier_passes": 3,
+      "agent_net_seconds": 577.793,
+      "verifier_seconds": 13.13,
       "usage": {
-        "requests": 128,
-        "input_tokens": 7376623,
-        "output_tokens": 143504,
+        "requests": 79,
+        "input_tokens": 2652296,
+        "output_tokens": 57986,
         "cache_read_tokens": 0
       },
-      "skill_read_tokens": 220426
+      "skill_read_tokens": 168332
     }
   },
   "results": [
@@ -287,32 +287,32 @@
     {
       "condition": "vista",
       "replicate_id": 2,
-      "status": "quarantined_model_turn_timeout",
-      "final_verifier_pass": false,
-      "session_id": "sess_695b9c21-ee6e-4c1b-b5fa-0170e005d1b9",
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "sess_a605bdba-c4e3-4b2a-8841-b2b87a1c6f86",
       "usage": {
-        "requests": 77,
-        "input_tokens": 5607250,
-        "output_tokens": 105727,
+        "requests": 28,
+        "input_tokens": 882923,
+        "output_tokens": 20209,
         "cache_read_tokens": 0,
-        "input_plus_output_tokens": 5712977
+        "input_plus_output_tokens": 903132
       },
-      "skill_read_tokens": 82246,
-      "agent_net_seconds": 978.203,
-      "verifier_seconds": 10.181,
+      "skill_read_tokens": 30152,
+      "agent_net_seconds": 202.214,
+      "verifier_seconds": 3.485,
       "disclosed_modules": [
         "13f-analyzer"
       ],
       "vista_metrics": {
-        "trigger_opportunities": 3,
+        "trigger_opportunities": 1,
         "routable_feedback": 1,
-        "unroutable_feedback": 2,
+        "unroutable_feedback": 0,
         "successful_disclosures": 1,
-        "next_round_module_access": 2,
-        "disclosure_to_pass_gap": null,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": 1,
         "access_after_last_disclosure": true,
         "first_turn_pass": false,
-        "clean_complete_closure": 0
+        "clean_complete_closure": 1
       }
     },
     {
