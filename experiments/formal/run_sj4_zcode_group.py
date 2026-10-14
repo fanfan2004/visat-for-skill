@@ -1,19 +1,21 @@
-"""Run the sj4 experiment: four conditions (noskill / flat / pd / vista) x N replicates (--replicates, default 3).
+"""Run sj4 conditions, with optional pd-m (PD skill plus multi-turn public feedback).
 
 sj4 设计（manual: reports/experiment-sj4-protocol-prompt.md）:
 - noskill/flat/pd: 单回合单 episode——一个 headless ZCode 会话自由多步工作直到
   自己宣布完成，验证器在回合结束后跑一次，失败即停止，无反馈、无第二回合
   （等价 SkillJuror no-skill / origin-flat / progressive-disclosure）。
-- vista: 唯一多回合组——失败 -> 脱敏公共诊断 + 失败层签名 -> 路由 -> 披露
+- vista: 原四条件中唯一多回合组——失败 -> 脱敏公共诊断 + 失败层签名 -> 路由 -> 披露
   对应 PD 结构模块（与 pd 条件同源）-> 同 session resume 修复。
+- pd-m: 首轮与 pd 使用相同提示和完整 PD 工件；失败后接收同样的脱敏
+  公共诊断，在同一 session 修复，但不运行路由或新增披露。单独成批运行。
 
 Runner 必改项（manual 第三节）全部落地:
 1. public_diagnostic 对 pytest 断言行 E assert X == Y 两侧数值脱敏
    （教训: 20261013 noskill rep1 直接采纳诊断里泄露的标准答案 2451）。
-2. 回合结构分条件: noskill/flat/pd 固定 1 回合，代码不进反馈循环；MAX_TURNS 只对 vista。
+2. 回合结构分条件: noskill/flat/pd 固定 1 回合；MAX_TURNS 对 vista/pd-m 生效。
 3. flat/pd 工件复制进 workspace，初始 prompt 点名技能位置。
 4. 现有保护保留: 验证器藏于 agent 不可触及位置、路径片段清洗、模型身份 fail-closed。
-5. vista 披露模块与 pd 同源（同一 PD 工件，唯一差异是披露驱动者）。
+5. vista 披露模块与 pd 同源；pd-m 从首轮起提供这份完整 PD 工件。
 
 双端点并行（用户确认）: --provider new-provider（v1 chat-completions，宿主默认配置）
 或 new-provider-2（anthropic-messages，经修正配置 + ZCODE_PERSONAL_PROVIDER_CONFIG_FILE）。
@@ -62,10 +64,11 @@ LOCAL_ROOT = Path(
         "VISTA_EXPERIMENT_ROOT", Path.home() / "Library" / "Caches" / "VistaExperiments"
     )
 ).expanduser().resolve()
-MAX_TURNS = 6  # 只对 vista 生效；noskill/flat/pd 固定 1 回合
+MAX_TURNS = 6  # vista / pd-m；noskill/flat/pd 固定 1 回合
 MODEL_TURN_TIMEOUT_SECONDS = 1800
 VERIFIER_TIMEOUT_SECONDS = 900
 CONDITIONS = ("noskill", "flat", "pd", "vista")
+OPTIONAL_CONDITIONS = ("pd-m",)
 REPLICATES: tuple[int, ...] = (1, 2, 3)  # main() 按 --replicates 覆盖
 # 结果目录前缀在 main() 启动时冻结一次：首版每次调用都取当前小时，
 # 跨整点的批次会把后完成的 trial 写进另一个目录。
@@ -134,6 +137,7 @@ INITIAL_PROMPTS = {
     "noskill": " No task Skill is available in this condition.",
     "flat": " All guidance modules are available as flattened single files under ./modules/<module-id>/SKILL.md; read and use the relevant modules.",
     "pd": " A progressive-disclosure skill is available at ./skill/SKILL.md with detailed references under ./skill/references/; read the entry skill and decide for yourself which references to load and use.",
+    "pd-m": " A progressive-disclosure skill is available at ./skill/SKILL.md with detailed references under ./skill/references/; read the entry skill and decide for yourself which references to load and use.",
     "vista": " No task Skill is initially available; after a public verifier failure VISTA may disclose guidance modules.",
 }
 
@@ -195,7 +199,7 @@ def write_local_verifier(source: Path, verifier: Path, workspace: Path) -> Path:
 def prepare_trial(task_id: str, condition: str, replicate: int) -> dict[str, Any]:
     spec = TASKS[task_id]
     source, environment = task_paths(task_id)
-    if condition not in CONDITIONS:
+    if condition not in (*CONDITIONS, *OPTIONAL_CONDITIONS):
         raise ValueError(f"unsupported condition: {condition}")
     base = LOCAL_ROOT / f"{result_root(task_id).name}-{condition}-replicate-{replicate:02d}"
     if base.exists() and any(base.glob("turn-*.jsonl")):
@@ -243,7 +247,7 @@ def prepare_trial(task_id: str, condition: str, replicate: int) -> dict[str, Any
         (workspace / "modules").mkdir(exist_ok=True)
         for skill_md in sorted(flat_root.glob("*/SKILL.md")):
             clone_copy(skill_md.parent, workspace / "modules" / skill_md.parent.name)
-    elif condition == "pd":
+    elif condition in {"pd", "pd-m"}:
         # pd 工件：入口 SKILL.md + references/（与 vista 披露模块同源）
         clone_copy(ARTIFACT_ROOT / task_id / "pd", workspace / "skill")
     elif condition == "vista":
@@ -450,7 +454,7 @@ def rollout_agent_seconds(storage: Path, session_id: str) -> float:
 
 
 def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> dict[str, Any]:
-    """One trial. noskill/flat/pd: single episode, no feedback. vista: turn loop."""
+    """One trial. pd-m starts like pd and resumes on public feedback like vista."""
 
     paths = prepare_trial(task_id, condition, replicate)
     base: Path = paths["base"]
@@ -486,7 +490,7 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
     previous_signatures: tuple[str, ...] = ()
     verifier_seconds = 0.0
     agent_net_seconds = 0.0
-    max_turns = MAX_TURNS if condition == "vista" else 1
+    max_turns = MAX_TURNS if condition in {"vista", "pd-m"} else 1
 
     process_env = tool_environment()
     process_env.update(turn_environment(base))
@@ -590,7 +594,7 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
         if timed_out and not turn_payload:
             stop_reason = "model_turn_timeout"
             break
-        if condition != "vista":
+        if condition not in {"vista", "pd-m"}:
             # 单回合组：失败即停止，无反馈、无第二回合（manual 二.1/2/3）
             stop_reason = "single_episode_failed"
             break
@@ -611,24 +615,28 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
                 feedback_types.append(signature)
         diagnostic = public_diagnostic(verifier_output)
         newly_disclosed: list[str] = []
-        assert router is not None
-        payload = json.dumps({
-            "schema_version": 1, "kind": "vista_public_verifier_feedback",
-            "outcome": "fail", "feedback_types": feedback_types,
-            "summary": diagnostic,
-        })
-        routed = parser.parse(
-            FeedbackObservation(source=FeedbackSource.TEST_OUTPUT, text=payload, exit_code=1),
-            trial_id=f"{base.name}",
-        )
-        decision = router.route(
-            (*routed.trigger_names, *signatures), previous_modules=disclosed
-        )
-        if decision.modules:
-            routable_feedback += 1
+        if condition == "vista":
+            assert router is not None
+            payload = json.dumps({
+                "schema_version": 1, "kind": "vista_public_verifier_feedback",
+                "outcome": "fail", "feedback_types": feedback_types,
+                "summary": diagnostic,
+            })
+            routed = parser.parse(
+                FeedbackObservation(source=FeedbackSource.TEST_OUTPUT, text=payload, exit_code=1),
+                trial_id=f"{base.name}",
+            )
+            decision = router.route(
+                (*routed.trigger_names, *signatures), previous_modules=disclosed
+            )
+            if decision.modules:
+                routable_feedback += 1
+            else:
+                unroutable_feedback += 1
+            modules_to_disclose = router.disclose(decision)
         else:
-            unroutable_feedback += 1
-        for module in router.disclose(decision):
+            modules_to_disclose = ()
+        for module in modules_to_disclose:
             # 披露 PD 结构模块：入口 SKILL.md 首次披露 + 对应 reference 文件；
             # 命令依赖的支撑脚本随首次披露进入 workspace。
             # 注意 DisclosedModule.path 是解析后的绝对路径，不能拿它拼目标路径
@@ -661,10 +669,18 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
         made_progress = bool(newly_disclosed) or current_signatures != previous_signatures
         previous_signatures = current_signatures
         stalled_rounds = 0 if made_progress else stalled_rounds + 1
-        if disclosed and stalled_rounds >= 2:
-            stop_reason = "stalled_after_full_disclosure"
+        if (condition == "pd-m" or disclosed) and stalled_rounds >= 2:
+            stop_reason = (
+                "stalled_after_feedback" if condition == "pd-m"
+                else "stalled_after_full_disclosure"
+            )
             break
-        if newly_disclosed:
+        if condition == "pd-m":
+            instruction = (
+                "The progressive-disclosure skill is already available under ./skill/. "
+                "Re-examine the relevant references and repair the outputs accordingly."
+            )
+        elif newly_disclosed:
             instruction = "VISTA disclosed " + ", ".join(newly_disclosed) + (
                 ". Read the disclosed module before repairing."
             )
@@ -730,7 +746,7 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
         "run_id": f"{result_root(task_id).name}-{condition}-replicate-{replicate:02d}",
         "task_id": task_id, "condition": condition, "replicate_id": replicate,
         "backend": "zcode-local-minimal-dependencies", "docker_used": False,
-        "protocol": "sj4",
+        "protocol": "sj4-pdm" if condition == "pd-m" else "sj4",
         "requested_provider_model": model, "session_id": session_id,
         "turns": turns, "usage": usage,
         "skill_reads": all_skill_reads,
@@ -743,7 +759,7 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
         "verifier_seconds": round(verifier_seconds, 3),
         "initially_available_modules": (
             ["modules/<module-id>/SKILL.md"] if condition == "flat"
-            else ["skill/SKILL.md"] if condition == "pd" else []
+            else ["skill/SKILL.md"] if condition in {"pd", "pd-m"} else []
         ),
         "disclosed_modules": disclosed,
         "accessed_modules_after_disclosure": list(dict.fromkeys(accessed_after_disclosure)),
@@ -782,20 +798,29 @@ def archive_partial_base(task_id: str, condition: str, replicate: int) -> None:
         print(f"archived partial trial: {base_name} -> {archived.name}", flush=True)
 
 
-def run_group(task_id: str, *, model: str, provider: str, workers: int) -> int:
+def run_group(task_id: str, *, model: str, provider: str, workers: int,
+              conditions: tuple[str, ...] = CONDITIONS) -> int:
     readiness = dependency_readiness(task_id)
     if not readiness["ready"]:
         raise RuntimeError(
             f"{task_id} local dependencies are not ready: {json.dumps(readiness, ensure_ascii=False)}"
         )
     root = result_root(task_id)
+    prior_summary = root / "group-summary.json"
+    if prior_summary.is_file():
+        previous = json.loads(prior_summary.read_text(encoding="utf-8"))
+        if (tuple(previous.get("conditions", ())) != conditions
+                or previous.get("replicates_per_condition") != len(REPLICATES)
+                or previous.get("requested_provider_model") != model
+                or previous.get("provider_id") != provider):
+            raise RuntimeError(f"existing batch has a different protocol or model: {root}")
     if not root.exists():
         root.mkdir(parents=True)
         (root / "readiness.json").write_text(
             json.dumps({"ready": readiness, "provider": provider, "model": model},
                        ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
-    schedule = tuple((rep, condition) for rep in REPLICATES for condition in CONDITIONS)
+    schedule = tuple((rep, condition) for rep in REPLICATES for condition in conditions)
     results: dict[tuple[int, str], dict[str, Any]] = {}
     pending: list[tuple[int, str]] = []
     for replicate, condition in schedule:
@@ -823,7 +848,7 @@ def run_group(task_id: str, *, model: str, provider: str, workers: int) -> int:
     ordered = [results[(rep, cond)] for rep, cond in schedule]
 
     condition_summaries = {}
-    for condition in CONDITIONS:
+    for condition in conditions:
         values = [r for r in ordered if r["condition"] == condition]
         condition_summaries[condition] = {
             "planned_trials": len(REPLICATES), "completed_trials": len(values),
@@ -840,12 +865,17 @@ def run_group(task_id: str, *, model: str, provider: str, workers: int) -> int:
     summary = {
         "schema_version": 1,
         "protocol": (
+            f"{task_id}-sj4-pdm-x{len(REPLICATES)}-glm53-"
+            "pd-skill-initially-available/multi-turn-public-feedback/no-routing"
+            if conditions == ("pd-m",) else
             f"{task_id}-sj4-x{len(REPLICATES)}-glm53-"
             "single-episode-for-noskill-flat-pd/multi-turn-feedback-vista-only"
+            if conditions == CONDITIONS else
+            f"{task_id}-sj4-x{len(REPLICATES)}-glm53-custom-conditions"
         ),
         "task_id": task_id,
         "benchmark_task_id": TASKS[task_id]["benchmark"],
-        "conditions": list(CONDITIONS),
+        "conditions": list(conditions),
         "replicates_per_condition": len(REPLICATES),
         "planned_trials": len(schedule), "completed_trials": len(ordered),
         "requested_provider_model": model,
@@ -918,6 +948,9 @@ def main(argv: list[str] | None = None) -> int:
                         help="concurrent episodes per endpoint (1-6)")
     parser.add_argument("--replicates", type=int, default=3,
                         help="replicates per condition (1-10); result dir is named sj4-x<N>")
+    parser.add_argument("--conditions", nargs="+", choices=(*CONDITIONS, *OPTIONAL_CONDITIONS),
+                        default=list(CONDITIONS),
+                        help="conditions to run; use --conditions pd-m for the PD multi-turn add-on")
     parser.add_argument("--dry-run", action="store_true",
                         help="run readiness and preflight gates only, no model call")
     args = parser.parse_args(argv)
@@ -925,8 +958,18 @@ def main(argv: list[str] | None = None) -> int:
         raise SystemExit("--workers must be between 1 and 6")
     if not 1 <= args.replicates <= 10:
         raise SystemExit("--replicates must be between 1 and 10")
+    conditions = tuple(args.conditions)
+    if len(set(conditions)) != len(conditions):
+        raise SystemExit("--conditions must not contain duplicates")
     global REPLICATES
     REPLICATES = tuple(range(1, args.replicates + 1))
+    if conditions != CONDITIONS:
+        suffix = "pdm" if conditions == ("pd-m",) else "custom"
+        _RUN_PREFIX[args.task] = os.environ.get(
+            "VISTA_RUN_PREFIX",
+            f"formal-{args.task}-sj4-{suffix}-x{len(REPLICATES)}-glm53-"
+            f"{datetime.now().strftime('%Y%m%d-%H')}",
+        )
     root = result_root(args.task)
     print(f"result root: {root} (replicates={args.replicates})", flush=True)
 
@@ -963,7 +1006,7 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(readiness, ensure_ascii=False, indent=2))
         return 0 if readiness["ready"] else 1
     return run_group(args.task, model=model_config["model_id"], provider=args.provider,
-                     workers=args.workers)
+                     workers=args.workers, conditions=conditions)
 
 
 if __name__ == "__main__":
