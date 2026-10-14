@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_7e5c3869-10cb-4cf0-82ab-81c3c319f241",
+  "traceId": "5e97ce93-c0c1-4680-916f-2e82e347cb42",
+  "turnId": "turn_026b7520-9c59-4348-8927-8ac72ec0f301",
+  "response": "The report is regenerated with the now-verified `po_number` semantics: report the invoice's stated PO number when it exists in `purchase_orders.csv`, set it to null when the PO is missing from the database.\n\nThis is consistent with both verifier diagnostics:\n- **Page 3** (Unknown Vendor): its stated PO-1181 exists in the PO file, so it's reported — matching the first fix.\n- **Page 4** (and the other Invalid PO pages 8, 15, 38, 45): `PO-INVALID` doesn't exist in the PO file, so `po_number` is now null — exactly the 5 entries that carry null.\n\nEverything else is unchanged: 50 flagged invoices (9 Unknown Vendor, 9 IBAN Mismatch, 5 Invalid PO, 27 Amount Mismatch), pages 51–53 excluded as clean, same vendor names, amounts, IBANs, and reasons. `fraud_report.json` is ready for re-verification.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 3,
+    "inputTokens": 199307,
+    "outputTokens": 855,
+    "totalTokens": 200162,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 641,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 200162,
+    "contextUsed": 67188,
+    "contextWindow": 200000
+  }
+}

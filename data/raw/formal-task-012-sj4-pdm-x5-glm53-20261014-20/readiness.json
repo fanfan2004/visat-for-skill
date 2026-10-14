@@ -1,0 +1,28 @@
+{
+  "ready": {
+    "verifier_python": true,
+    "task_md": true,
+    "verifier_source": true,
+    "inputs_present": {
+      "invoices.pdf": true,
+      "vendors.xlsx": true,
+      "purchase_orders.csv": true
+    },
+    "flat_artifacts": [
+      "fuzzy-match",
+      "pdf",
+      "xlsx"
+    ],
+    "pd_artifact": true,
+    "pd_references": [
+      "fuzzy-match.md",
+      "pdf.md",
+      "xlsx.md"
+    ],
+    "sj4_manifest": true,
+    "verifier_imports": true,
+    "ready": true
+  },
+  "provider": "new-provider-2",
+  "model": "glm53-flash"
+}

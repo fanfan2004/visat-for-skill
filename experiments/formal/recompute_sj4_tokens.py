@@ -35,6 +35,17 @@ DERIVED = ROOT / "data/derived"
 CONDITIONS = ("noskill", "flat", "pd", "vista")
 
 
+def group_conditions(group: Path) -> tuple[str, ...]:
+    # 固定四条件在前（保证列序稳定），批次里实际存在的其他条件（如 pd-m）按名追加
+    found = {p.name for p in group.iterdir() if p.is_dir()}
+    known = tuple(c for c in CONDITIONS if c in found)
+    extra = tuple(sorted(
+        name for name in found - set(CONDITIONS)
+        if any((group / name).glob("replicate-*/result.json"))
+    ))
+    return known + extra
+
+
 def estimate_tokens(text: str) -> int:
     # 与 run_sj4_zcode_group.estimate_tokens 相同：英文/代码约 4 字符/token，CJK 1 字符/token
     cjk = sum(1 for ch in text if "一" <= ch <= "鿿")
@@ -73,7 +84,7 @@ def main(argv: list[str] | None = None) -> None:
     trial_rows: list[dict] = []
     turn_rows: list[dict] = []
     for task_id, group in groups.items():
-        for condition in CONDITIONS:
+        for condition in group_conditions(group):
             for result_path in sorted((group / condition).glob("replicate-*/result.json")):
                 result = json.loads(result_path.read_text(encoding="utf-8"))
                 reads = result.get("skill_reads") or []
@@ -130,8 +141,8 @@ def main(argv: list[str] | None = None) -> None:
             writer.writerows(rows)
 
     summary: dict = {}
-    for task_id in groups:
-        for condition in CONDITIONS:
+    for task_id, group in groups.items():
+        for condition in group_conditions(group):
             rows = [r for r in trial_rows if r["task_id"] == task_id and r["condition"] == condition]
             inputs = [r["input_tokens"] for r in rows]
             summary.setdefault(task_id, {})[condition] = {
