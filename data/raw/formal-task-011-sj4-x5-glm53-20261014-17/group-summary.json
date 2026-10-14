@@ -1,0 +1,673 @@
+{
+  "schema_version": 1,
+  "protocol": "task-011-sj4-x5-glm53-single-episode-for-noskill-flat-pd/multi-turn-feedback-vista-only",
+  "task_id": "task-011",
+  "benchmark_task_id": "sec-financial-report",
+  "conditions": [
+    "noskill",
+    "flat",
+    "pd",
+    "vista"
+  ],
+  "replicates_per_condition": 5,
+  "planned_trials": 20,
+  "completed_trials": 20,
+  "requested_provider_model": "glm53-flash",
+  "provider_id": "new-provider",
+  "construction_model": "glm53-flash",
+  "backend": "zcode-local-minimal-dependencies",
+  "condition_summaries": {
+    "noskill": {
+      "planned_trials": 5,
+      "completed_trials": 5,
+      "first_turn_passes": 0,
+      "final_verifier_passes": 0,
+      "agent_net_seconds": 554.639,
+      "verifier_seconds": 16.469,
+      "usage": {
+        "requests": 82,
+        "input_tokens": 1846368,
+        "output_tokens": 40145,
+        "cache_read_tokens": 0
+      },
+      "skill_read_tokens": 0
+    },
+    "flat": {
+      "planned_trials": 5,
+      "completed_trials": 5,
+      "first_turn_passes": 1,
+      "final_verifier_passes": 1,
+      "agent_net_seconds": 680.199,
+      "verifier_seconds": 20.786,
+      "usage": {
+        "requests": 107,
+        "input_tokens": 2992050,
+        "output_tokens": 51286,
+        "cache_read_tokens": 0
+      },
+      "skill_read_tokens": 20430
+    },
+    "pd": {
+      "planned_trials": 5,
+      "completed_trials": 5,
+      "first_turn_passes": 5,
+      "final_verifier_passes": 5,
+      "agent_net_seconds": 430.073,
+      "verifier_seconds": 12.366,
+      "usage": {
+        "requests": 95,
+        "input_tokens": 2428172,
+        "output_tokens": 30231,
+        "cache_read_tokens": 0
+      },
+      "skill_read_tokens": 9195
+    },
+    "vista": {
+      "planned_trials": 5,
+      "completed_trials": 5,
+      "first_turn_passes": 0,
+      "final_verifier_passes": 4,
+      "agent_net_seconds": 902.567,
+      "verifier_seconds": 29.178,
+      "usage": {
+        "requests": 120,
+        "input_tokens": 3494621,
+        "output_tokens": 76593,
+        "cache_read_tokens": 0
+      },
+      "skill_read_tokens": 3046
+    }
+  },
+  "results": [
+    {
+      "condition": "noskill",
+      "replicate_id": 1,
+      "status": "failed_single_episode_failed",
+      "final_verifier_pass": false,
+      "session_id": "sess_679303a5-bfbf-4195-adbb-a355f97e5559",
+      "usage": {
+        "requests": 16,
+        "input_tokens": 371010,
+        "output_tokens": 6131,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 377141
+      },
+      "skill_read_tokens": 0,
+      "agent_net_seconds": 131.851,
+      "verifier_seconds": 1.663,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "flat",
+      "replicate_id": 1,
+      "status": "failed_single_episode_failed",
+      "final_verifier_pass": false,
+      "session_id": "sess_e9a98a2b-5d72-48b1-b4cd-c27227a96d36",
+      "usage": {
+        "requests": 18,
+        "input_tokens": 488442,
+        "output_tokens": 8926,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 497368
+      },
+      "skill_read_tokens": 4086,
+      "agent_net_seconds": 157.986,
+      "verifier_seconds": 10.1,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd",
+      "replicate_id": 1,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_016dd458-075a-4b92-9d4f-39df07e0d471",
+      "usage": {
+        "requests": 28,
+        "input_tokens": 803042,
+        "output_tokens": 7074,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 810116
+      },
+      "skill_read_tokens": 1839,
+      "agent_net_seconds": 159.536,
+      "verifier_seconds": 4.849,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "vista",
+      "replicate_id": 1,
+      "status": "failed_stalled_after_full_disclosure",
+      "final_verifier_pass": false,
+      "session_id": "sess_25218874-6b45-46dd-99d6-3b59cd7f7139",
+      "usage": {
+        "requests": 30,
+        "input_tokens": 1008737,
+        "output_tokens": 24653,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 1033390
+      },
+      "skill_read_tokens": 1202,
+      "agent_net_seconds": 347.59,
+      "verifier_seconds": 10.363,
+      "disclosed_modules": [
+        "13f-analyzer"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 3,
+        "routable_feedback": 1,
+        "unroutable_feedback": 2,
+        "successful_disclosures": 1,
+        "next_round_module_access": 2,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": true,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 2,
+      "status": "failed_single_episode_failed",
+      "final_verifier_pass": false,
+      "session_id": "sess_61fed5f4-5df9-4b69-a465-89cbaea8ad9a",
+      "usage": {
+        "requests": 20,
+        "input_tokens": 432929,
+        "output_tokens": 13420,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 446349
+      },
+      "skill_read_tokens": 0,
+      "agent_net_seconds": 181.099,
+      "verifier_seconds": 7.265,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "flat",
+      "replicate_id": 2,
+      "status": "failed_single_episode_failed",
+      "final_verifier_pass": false,
+      "session_id": "sess_92f412ed-47bd-4490-82b4-bd202a7aed52",
+      "usage": {
+        "requests": 20,
+        "input_tokens": 580826,
+        "output_tokens": 12597,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 593423
+      },
+      "skill_read_tokens": 4086,
+      "agent_net_seconds": 194.236,
+      "verifier_seconds": 4.984,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd",
+      "replicate_id": 2,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_6aece3b4-b0d3-4772-b86b-d285f60e7c12",
+      "usage": {
+        "requests": 18,
+        "input_tokens": 442607,
+        "output_tokens": 5687,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 448294
+      },
+      "skill_read_tokens": 1839,
+      "agent_net_seconds": 72.768,
+      "verifier_seconds": 2.03,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "vista",
+      "replicate_id": 2,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "sess_793f32bc-9413-4021-8b0e-1092641edf55",
+      "usage": {
+        "requests": 26,
+        "input_tokens": 575354,
+        "output_tokens": 10101,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 585455
+      },
+      "skill_read_tokens": 461,
+      "agent_net_seconds": 123.365,
+      "verifier_seconds": 10.08,
+      "disclosed_modules": [
+        "13f-analyzer"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": 1,
+        "access_after_last_disclosure": true,
+        "first_turn_pass": false,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 3,
+      "status": "failed_single_episode_failed",
+      "final_verifier_pass": false,
+      "session_id": "sess_b3d8ebc9-0a7a-4276-abb1-5d6c494b5beb",
+      "usage": {
+        "requests": 13,
+        "input_tokens": 320056,
+        "output_tokens": 6406,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 326462
+      },
+      "skill_read_tokens": 0,
+      "agent_net_seconds": 78.769,
+      "verifier_seconds": 1.594,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "flat",
+      "replicate_id": 3,
+      "status": "failed_single_episode_failed",
+      "final_verifier_pass": false,
+      "session_id": "sess_e0ad06d5-4f9c-4961-943b-108837ee01c1",
+      "usage": {
+        "requests": 27,
+        "input_tokens": 836569,
+        "output_tokens": 13781,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 850350
+      },
+      "skill_read_tokens": 4086,
+      "agent_net_seconds": 148.221,
+      "verifier_seconds": 2.131,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd",
+      "replicate_id": 3,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_b57431e3-26f1-468a-85a2-5607a6e9fa01",
+      "usage": {
+        "requests": 16,
+        "input_tokens": 390127,
+        "output_tokens": 5991,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 396118
+      },
+      "skill_read_tokens": 1839,
+      "agent_net_seconds": 66.628,
+      "verifier_seconds": 2.15,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "vista",
+      "replicate_id": 3,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "sess_f9a7c71f-c366-41d9-8d9b-6fe705e6f885",
+      "usage": {
+        "requests": 21,
+        "input_tokens": 632206,
+        "output_tokens": 11231,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 643437
+      },
+      "skill_read_tokens": 461,
+      "agent_net_seconds": 123.642,
+      "verifier_seconds": 4.589,
+      "disclosed_modules": [
+        "13f-analyzer"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": 1,
+        "access_after_last_disclosure": true,
+        "first_turn_pass": false,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 4,
+      "status": "failed_single_episode_failed",
+      "final_verifier_pass": false,
+      "session_id": "sess_c892eb6b-0aa0-403c-900d-555cf13bd757",
+      "usage": {
+        "requests": 17,
+        "input_tokens": 364288,
+        "output_tokens": 6143,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 370431
+      },
+      "skill_read_tokens": 0,
+      "agent_net_seconds": 78.837,
+      "verifier_seconds": 3.943,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "flat",
+      "replicate_id": 4,
+      "status": "failed_single_episode_failed",
+      "final_verifier_pass": false,
+      "session_id": "sess_d48666ac-0495-406c-bfca-cdc0aace55f5",
+      "usage": {
+        "requests": 26,
+        "input_tokens": 679117,
+        "output_tokens": 7999,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 687116
+      },
+      "skill_read_tokens": 4086,
+      "agent_net_seconds": 93.236,
+      "verifier_seconds": 1.686,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd",
+      "replicate_id": 4,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_95bc747c-ad83-4696-b4fe-d4df0c19b960",
+      "usage": {
+        "requests": 13,
+        "input_tokens": 318188,
+        "output_tokens": 5088,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 323276
+      },
+      "skill_read_tokens": 1839,
+      "agent_net_seconds": 58.654,
+      "verifier_seconds": 1.812,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "vista",
+      "replicate_id": 4,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "sess_2771eac8-3cf2-4b5c-b748-28c0711b9338",
+      "usage": {
+        "requests": 22,
+        "input_tokens": 685297,
+        "output_tokens": 18396,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 703693
+      },
+      "skill_read_tokens": 461,
+      "agent_net_seconds": 190.851,
+      "verifier_seconds": 2.48,
+      "disclosed_modules": [
+        "13f-analyzer"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": 1,
+        "access_after_last_disclosure": true,
+        "first_turn_pass": false,
+        "clean_complete_closure": 1
+      }
+    },
+    {
+      "condition": "noskill",
+      "replicate_id": 5,
+      "status": "failed_single_episode_failed",
+      "final_verifier_pass": false,
+      "session_id": "sess_7b903d9a-ac25-46c9-84a4-65742d0276bf",
+      "usage": {
+        "requests": 16,
+        "input_tokens": 358085,
+        "output_tokens": 8045,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 366130
+      },
+      "skill_read_tokens": 0,
+      "agent_net_seconds": 84.083,
+      "verifier_seconds": 2.004,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 0,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": false,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "flat",
+      "replicate_id": 5,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_05110808-c494-4d4f-8757-6e126c9974e3",
+      "usage": {
+        "requests": 16,
+        "input_tokens": 407096,
+        "output_tokens": 7983,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 415079
+      },
+      "skill_read_tokens": 4086,
+      "agent_net_seconds": 86.52,
+      "verifier_seconds": 1.885,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "pd",
+      "replicate_id": 5,
+      "status": "passed",
+      "final_verifier_pass": true,
+      "session_id": "sess_c97656e8-a778-41ee-8f2f-b9ffc0ceb984",
+      "usage": {
+        "requests": 20,
+        "input_tokens": 474208,
+        "output_tokens": 6391,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 480599
+      },
+      "skill_read_tokens": 1839,
+      "agent_net_seconds": 72.487,
+      "verifier_seconds": 1.525,
+      "disclosed_modules": [],
+      "vista_metrics": {
+        "trigger_opportunities": 0,
+        "routable_feedback": 0,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 0,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": null,
+        "access_after_last_disclosure": false,
+        "first_turn_pass": true,
+        "clean_complete_closure": 0
+      }
+    },
+    {
+      "condition": "vista",
+      "replicate_id": 5,
+      "status": "passed_with_clean_vista_feedback_loop",
+      "final_verifier_pass": true,
+      "session_id": "sess_68eacbcd-380e-457b-86dd-45c667d5d0d1",
+      "usage": {
+        "requests": 21,
+        "input_tokens": 593027,
+        "output_tokens": 12212,
+        "cache_read_tokens": 0,
+        "input_plus_output_tokens": 605239
+      },
+      "skill_read_tokens": 461,
+      "agent_net_seconds": 117.119,
+      "verifier_seconds": 1.666,
+      "disclosed_modules": [
+        "13f-analyzer"
+      ],
+      "vista_metrics": {
+        "trigger_opportunities": 1,
+        "routable_feedback": 1,
+        "unroutable_feedback": 0,
+        "successful_disclosures": 1,
+        "next_round_module_access": 1,
+        "disclosure_to_pass_gap": 1,
+        "access_after_last_disclosure": true,
+        "first_turn_pass": false,
+        "clean_complete_closure": 1
+      }
+    }
+  ]
+}

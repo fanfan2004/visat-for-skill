@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_ed138b85-70a4-4cad-9c9b-f0df9433e5d7",
+  "traceId": "ad535292-1b14-49e6-b371-d8f7f5104f39",
+  "turnId": "turn_2d2b2d8f-e5d4-484c-b640-898a64ec24c3",
+  "response": "Done — `fraud_report.json` is written to the working directory with 50 flagged invoices out of 53 pages.\n\n**How I did it:** I extracted all 53 invoice pages from `invoices.pdf` with pdfplumber, loaded the 503 approved vendors from `vendors.xlsx`, and the 2,503 purchase orders from `purchase_orders.csv`, then ran each invoice through the five fraud criteria in the specified priority order (Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch → Vendor Mismatch), flagging only the first matching reason.\n\n**Findings by category:**\n- **Unknown Vendor (9):** all \"Fraudulent Corp\" invoices (pages 3, 6, 12, 20, 26, 30, 31, 47, 48) — that name matches no approved vendor (best fuzzy score was only 0.43, so it's clearly not a typo of a real vendor).\n- **IBAN Mismatch (9):** pages 1, 17, 19, 22, 29, 36, 39, 42, 44 — known vendors invoicing with `FRADULENT_IBAN` instead of their authorized account.\n- **Invalid PO (5):** pages 4, 8, 15, 38, 45 — POs printed as `PO-INVALID`, which don't exist in the registry; `po_number` is set to `null` for these.\n- **Amount Mismatch (27):** the remaining known-vendor pages, where the invoice amount differs from the PO amount by more than $0.01 (most also had vendor-ID mismatches on the PO, but Amount Mismatch takes priority per the spec).\n\n**Clean pages (not flagged):** 51, 52, and 53 — these are the deliberate control cases. Page 51 (\"Safe Vendor Ltd\") matches exactly, page 52 (\"Fuzzy Match Systems Inc.\") fuzzy-matches the approved \"Fuzzy Match Systems\" (I normalized legal suffixes like \"Inc.\"/\"Ltd\" before comparing, exactly the variation the task describes), and page 53 (\"Boundary Corp\") has an exact amount match against its PO.\n\nOne judgment call worth noting: for Unknown Vendor invoices, I set `po_number` to `null` (matching the example in task.md, where the unknown vendor's PO is reported as null), since the PO can't be validated without a known vendor. For all other reasons, the printed PO number is echoed when it exists in the registry.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 13,
+    "inputTokens": 413248,
+    "outputTokens": 19911,
+    "totalTokens": 433159,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 15822,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 433159,
+    "contextUsed": 49675,
+    "contextWindow": 200000
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-012-sj4-x5-glm53-20261014-17-noskill-replicate-01",
+  "task_id": "task-012",
+  "condition": "noskill",
+  "replicate_id": 1,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "protocol": "sj4",
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_c8c0f2bd-ffaa-44a8-930d-d50b73524985",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_02764fd0-f0a9-49e6-91b5-7a34a05ba805",
+      "requests": 12,
+      "tool_uses": 14,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 12,
+        "inputTokens": 313223,
+        "outputTokens": 8948,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 12,
+    "input_tokens": 313223,
+    "output_tokens": 8948,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 322171
+  },
+  "skill_reads": [],
+  "skill_read_tokens": 0,
+  "skill_unique_file_tokens": 0,
+  "skill_read_count": 0,
+  "agent_net_seconds": 147.019,
+  "verifier_seconds": 6.001,
+  "initially_available_modules": [],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "vista_metrics": {
+    "trigger_opportunities": 0,
+    "routable_feedback": 0,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "disclosure_to_pass_gap": null,
+    "access_after_last_disclosure": false,
+    "first_turn_pass": false,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": false,
+  "stop_reason": "single_episode_failed",
+  "status": "failed_single_episode_failed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-012-sj4-x5-glm53-20261014-17-noskill-replicate-01/workspace"
+}

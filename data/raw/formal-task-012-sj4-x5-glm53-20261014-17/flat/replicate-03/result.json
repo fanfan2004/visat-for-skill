@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-012-sj4-x5-glm53-20261014-17-flat-replicate-03",
+  "task_id": "task-012",
+  "condition": "flat",
+  "replicate_id": 3,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "protocol": "sj4",
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_b43c576a-2ce3-413c-9482-52f75afb74c4",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_81a98575-c372-4f97-b2e4-42e5be28582e",
+      "requests": 11,
+      "tool_uses": 13,
+      "skill_reads": [
+        {
+          "file": "modules/fuzzy-match/SKILL.md",
+          "turn_id": "turn_81a98575-c372-4f97-b2e4-42e5be28582e",
+          "file_chars": 3173,
+          "file_tokens": 794,
+          "context_input_tokens": 34704
+        }
+      ],
+      "turn_usage": {
+        "modelRequestCount": 11,
+        "inputTokens": 436419,
+        "outputTokens": 7372,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 11,
+    "input_tokens": 436419,
+    "output_tokens": 7372,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 443791
+  },
+  "skill_reads": [
+    {
+      "file": "modules/fuzzy-match/SKILL.md",
+      "turn_id": "turn_81a98575-c372-4f97-b2e4-42e5be28582e",
+      "file_chars": 3173,
+      "file_tokens": 794,
+      "context_input_tokens": 34704
+    }
+  ],
+  "skill_read_tokens": 794,
+  "skill_unique_file_tokens": 794,
+  "skill_read_count": 1,
+  "agent_net_seconds": 109.548,
+  "verifier_seconds": 6.514,
+  "initially_available_modules": [
+    "modules/<module-id>/SKILL.md"
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [
+    "modules/fuzzy-match/SKILL.md"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 0,
+    "routable_feedback": 0,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 1,
+    "disclosure_to_pass_gap": null,
+    "access_after_last_disclosure": false,
+    "first_turn_pass": false,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": false,
+  "stop_reason": "single_episode_failed",
+  "status": "failed_single_episode_failed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-012-sj4-x5-glm53-20261014-17-flat-replicate-03/workspace"
+}

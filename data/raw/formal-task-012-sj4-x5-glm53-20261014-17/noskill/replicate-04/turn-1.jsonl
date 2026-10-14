@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_1ae63275-c745-47d2-934b-7a29ca65cf0c",
+  "traceId": "cd787af0-cbd1-4ac1-82dd-09f7022c3306",
+  "turnId": "turn_3143f724-2281-48ff-a18d-b7631e5113ae",
+  "response": "Done. `fraud_report.json` is written to the working directory with 50 flagged invoices out of 53 pages — the only clean pages are the three control pages at the end (51–53), including the 0.01-boundary amount case which correctly passes.\n\n**How the analysis worked:**\n- Extracted all 53 invoice pages from `invoices.pdf` with pdfplumber (vendor name, amount, IBAN, PO number per page), loaded 503 vendors from `vendors.xlsx` and 2,503 POs from `purchase_orders.csv`.\n- Vendor matching: exact (case-insensitive) match first, then difflib fuzzy matching with a 0.75 similarity threshold. This correctly accepts \"Fuzzy Match Systems Inc.\" as a variant of \"Fuzzy Match Systems\" (0.88) while rejecting \"Fraudulent Corp\" (max ratio 0.43), which never falsely matches \"Boundary Corp\" or the numbered vendors.\n- Checked the five fraud criteria in the task's priority order (Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch >0.01 → Vendor Mismatch), using the first applicable reason.\n\n**Findings by category:**\n- **Amount Mismatch: 27** — PO exists but amount differs (e.g., page 5: Vendor 80 invoices $7,056.43 against PO-1415 at $4,259.39)\n- **IBAN Mismatch: 9** — valid vendor but payment routed to `FRADULENT_IBAN`\n- **Unknown Vendor: 9** — all \"Fraudulent Corp\" invoices, no legitimate vendor match\n- **Invalid PO: 5** — PO listed as \"PO-INVALID\", absent from `purchase_orders.csv`\n\nNo \"Vendor Mismatch\"-only cases exist in this dataset (where a valid PO with a matching amount is linked to a different vendor ID); where both applied, the spec's priority order resolved them to Amount Mismatch. The output was validated: a JSON list of 50 objects, each with the six required fields, 1-based page indexing, sorted and unique page numbers, sorted and unique page numbers, sorted and unique page numbers, and reasons restricted to the five allowed criteria.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 11,
+    "inputTokens": 218382,
+    "outputTokens": 8617,
+    "totalTokens": 226999,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 5599,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 226999,
+    "contextUsed": 29296,
+    "contextWindow": 200000
+  }
+}

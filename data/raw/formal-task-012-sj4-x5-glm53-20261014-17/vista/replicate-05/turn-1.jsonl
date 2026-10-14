@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_335b67cc-a44e-4d1e-b34b-fcd4b4064082",
+  "traceId": "66030d90-c8e3-41c8-93ed-67623b725c4d",
+  "turnId": "turn_74889f80-0046-4d84-bb1a-978b61dc7f10",
+  "response": "Done. `./fraud_report.json` is written and validated — it flags **50 of the 53 invoices**, with the 3 clean pages being 51–53 (the designed test cases).\n\n**How I analyzed it:** I extracted each invoice page from `invoices.pdf` with pdfplumber, loaded the 503 vendors from `vendors.xlsx`, and the 2,503 POs from `purchase_orders.csv`. Vendor names were matched exactly first (all \"Vendor N\" invoices match exactly, which avoids \"Vendor 11\" fuzzy-colliding with \"Vendor 1\"), with fuzzy matching as fallback only — \"Fuzzy Match Systems Inc.\" resolves to \"Fuzzy Match Systems\" at a 95% score, while \"Fraudulent Corp\" tops out at 50% and is correctly treated as unknown. Reasons are assigned in the task's priority order (Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch → Vendor Mismatch), amounts are flagged only when the difference exceeds 0.01, and `po_number` is null when the PO doesn't exist in the CSV.\n\n**Findings breakdown:**\n- **Amount Mismatch: 27** — the dominant fraud pattern; the referenced PO exists but its amount differs from the invoice (often also linked to a different vendor, but amount takes priority).\n- **Unknown Vendor: 9** — all \"Fraudulent Corp\" invoices (pages 3, 6, 12, 20, 26, 30, 31, 47, 48).\n- **IBAN Mismatch: 9** — valid vendors paid to `FRADULENT_IBAN` (pages 1, 17, 19, 22, 29, 36, 39, 42, 44).\n- **Invalid PO: 5** — pages 4, 8, 15, 38, 45 reference `PO-INVALID` or a nonexistent PO; these get `po_number: null`.\n\nThe clean pages confirm the edge cases: page 51 (\"Safe Vendor Ltd\", exact match), page 52 (fuzzy name variant with matching IBAN and amount), and page 53 (\"Boundary Corp\", $500.01 = PO amount, so the 0.01 boundary does not flag). Pages 21 and 33 are identical duplicate invoices and both are flagged as Amount Mismatch.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 9,
+    "inputTokens": 188838,
+    "outputTokens": 8452,
+    "totalTokens": 197290,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 6154,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 197290,
+    "contextUsed": 31367,
+    "contextWindow": 200000
+  }
+}

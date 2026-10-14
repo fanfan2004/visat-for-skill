@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_4ca1e67e-7419-4030-b0b2-c795829dde31",
+  "traceId": "c1be7fba-6179-4a3d-ba8d-eb1efef05b59",
+  "turnId": "turn_0fd01fa2-60c4-48ca-bb9d-d5b9ba401d92",
+  "response": "Done. `./fraud_report.json` is written with **50 flagged invoices out of 53 pages**, and every entry passed an independent audit that re-derived each field from the PDF and re-checked each reason against the criteria.\n\n**How it worked:** I extracted each invoice page from `invoices.pdf` with pdfplumber (vendor, total, IBAN, PO number), matched vendor names against `vendors.xlsx` using normalized exact matching first (lowercase, punctuation/suffix normalization for \"Ltd\"/\"Inc.\" variants) with a difflib fuzzy fallback at a strict 0.85 cutoff, then evaluated the five fraud criteria in the task's priority order (Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch → Vendor Mismatch), comparing amounts with `Decimal` so the 0.01 threshold is exact.\n\n**Findings by reason:**\n- **Amount Mismatch (27):** invoices whose stated total differs from the linked PO's amount by more than 0.01 — including the inflated duplicate pair on pages 5/40 (same PO-1415, amounts $7,056.43 vs $7,156.43).\n- **Unknown Vendor (9):** all \"Fraudulent Corp\" invoices, which don't fuzzy-match any approved vendor (closest similarity 0.29, well below cutoff).\n- **IBAN Mismatch (9):** legitimate vendor names paying to \"FRADULENT_IBAN\" instead of their authorized account.\n- **Invalid PO (5):** invoices citing \"PO-INVALID\", which doesn't exist in `purchase_orders.csv`.\n\n**Correctly unflagged (pages 51–53):** the three control invoices — \"Safe Vendor Ltd\" (exact match), \"Fuzzy Match Systems Inc.\" (resolved via normalization/fuzzy matching to V_NF2), and \"Boundary Corp\" — all have matching IBANs, valid POs, exact amounts, and matching PO vendor IDs, including the boundary case where the difference is exactly 0.01 (which does not exceed the threshold).\n\nOne judgment call worth noting: for Invalid PO entries I kept the invoice's stated PO string (\"PO-INVALID\") in the `po_number` field rather than null, since the task's \"if the PO is missing, set it to null\" most naturally refers to invoices lacking a PO number entirely — and every invoice here states one.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 581215,
+    "outputTokens": 13109,
+    "totalTokens": 594324,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 10197,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 594324,
+    "contextUsed": 69604,
+    "contextWindow": 200000
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-012-sj4-x5-glm53-20261014-17-flat-replicate-01",
+  "task_id": "task-012",
+  "condition": "flat",
+  "replicate_id": 1,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "protocol": "sj4",
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_4ca1e67e-7419-4030-b0b2-c795829dde31",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_0fd01fa2-60c4-48ca-bb9d-d5b9ba401d92",
+      "requests": 12,
+      "tool_uses": 15,
+      "skill_reads": [
+        {
+          "file": "modules/fuzzy-match/SKILL.md",
+          "turn_id": "turn_0fd01fa2-60c4-48ca-bb9d-d5b9ba401d92",
+          "file_chars": 3173,
+          "file_tokens": 794,
+          "context_input_tokens": 14526
+        },
+        {
+          "file": "modules/pdf/SKILL.md",
+          "turn_id": "turn_0fd01fa2-60c4-48ca-bb9d-d5b9ba401d92",
+          "file_chars": 65548,
+          "file_tokens": 16387,
+          "context_input_tokens": 14526
+        },
+        {
+          "file": "modules/xlsx/SKILL.md",
+          "turn_id": "turn_0fd01fa2-60c4-48ca-bb9d-d5b9ba401d92",
+          "file_chars": 18895,
+          "file_tokens": 4724,
+          "context_input_tokens": 14526
+        }
+      ],
+      "turn_usage": {
+        "modelRequestCount": 12,
+        "inputTokens": 581215,
+        "outputTokens": 13109,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 12,
+    "input_tokens": 581215,
+    "output_tokens": 13109,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 594324
+  },
+  "skill_reads": [
+    {
+      "file": "modules/fuzzy-match/SKILL.md",
+      "turn_id": "turn_0fd01fa2-60c4-48ca-bb9d-d5b9ba401d92",
+      "file_chars": 3173,
+      "file_tokens": 794,
+      "context_input_tokens": 14526
+    },
+    {
+      "file": "modules/pdf/SKILL.md",
+      "turn_id": "turn_0fd01fa2-60c4-48ca-bb9d-d5b9ba401d92",
+      "file_chars": 65548,
+      "file_tokens": 16387,
+      "context_input_tokens": 14526
+    },
+    {
+      "file": "modules/xlsx/SKILL.md",
+      "turn_id": "turn_0fd01fa2-60c4-48ca-bb9d-d5b9ba401d92",
+      "file_chars": 18895,
+      "file_tokens": 4724,
+      "context_input_tokens": 14526
+    }
+  ],
+  "skill_read_tokens": 21905,
+  "skill_unique_file_tokens": 21905,
+  "skill_read_count": 3,
+  "agent_net_seconds": 194.472,
+  "verifier_seconds": 6.976,
+  "initially_available_modules": [
+    "modules/<module-id>/SKILL.md"
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [
+    "modules/fuzzy-match/SKILL.md",
+    "modules/pdf/SKILL.md",
+    "modules/xlsx/SKILL.md"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 0,
+    "routable_feedback": 0,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 1,
+    "disclosure_to_pass_gap": null,
+    "access_after_last_disclosure": false,
+    "first_turn_pass": false,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": false,
+  "stop_reason": "single_episode_failed",
+  "status": "failed_single_episode_failed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-012-sj4-x5-glm53-20261014-17-flat-replicate-01/workspace"
+}

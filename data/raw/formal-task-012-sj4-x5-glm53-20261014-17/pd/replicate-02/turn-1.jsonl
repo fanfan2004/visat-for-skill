@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_c04265f2-dba6-4d5f-8169-8b2cc1b540d7",
+  "traceId": "bda0db5b-eb65-46c1-9334-36739f4a8a0a",
+  "turnId": "turn_5ef3a304-5f89-4251-b1ff-564017aa4ef8",
+  "response": "Done. `fraud_report.json` is written to the working directory with 50 flagged invoices out of 53 pages, validated against the required schema.\n\n**How I did it:** I extracted all 53 invoices from `invoices.pdf` (vendor name, amount, IBAN, PO number per page), loaded the 503 approved vendors from `vendors.xlsx` and 2,503 purchase orders from `purchase_orders.csv`, then applied the five fraud criteria in the specified priority order (Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch → Vendor Mismatch). Vendor names were normalized (lowercase, punctuation stripped, corporate suffixes like \"Inc.\"/\"Ltd.\" removed) before exact matching, with difflib fuzzy matching as fallback.\n\n**Findings by reason:**\n- **Amount Mismatch: 27** — PO exists but invoice amount differs by hundreds or thousands (I verified each diff against the raw CSV; amounts were compared in integer cents so a 0.01 difference passes).\n- **IBAN Mismatch: 9** — valid vendors paid to `FRADULENT_IBAN` instead of their authorized IBAN.\n- **Unknown Vendor: 9** — all \"Fraudulent Corp\" invoices; fuzzy matching correctly rejected it (its best similarity to any real vendor was 0.29, well below the 0.6 cutoff, so no false match to \"Boundary Corp\").\n- **Invalid PO: 5** — invoices citing `PO-INVALID`, which doesn't exist in the CSV; per the task, `po_number` is set to `null` for these.\n- **Vendor Mismatch: 0** — criterion never surfaced because Amount Mismatch (higher priority) always applied first when both held.\n\nThe three clean invoices are the designed edge cases on pages 51–53: \"Safe Vendor Ltd\" (exact match), \"Fuzzy Match Systems Inc.\" (matched to \"Fuzzy Match Systems\" via normalization/fuzzy matching), and \"Boundary Corp\" with an amount exactly 0.01 apart from nothing — actually its invoice amount equals PO-9003's amount exactly (500.01), so nothing exceeds the threshold. Vendor names on flagged pages are reported exactly as printed on the invoice, and pages are 1-based and sorted. The analysis script is saved at `detect_fraud.py` in the same directory.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 337134,
+    "outputTokens": 10698,
+    "totalTokens": 347832,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 8321,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 347832,
+    "contextUsed": 42169,
+    "contextWindow": 200000
+  }
+}
