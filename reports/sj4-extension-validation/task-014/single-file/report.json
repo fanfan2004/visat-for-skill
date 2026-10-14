@@ -1,0 +1,298 @@
+{
+  "schemaVersion": "behavior-unit-diff/v1",
+  "generatedAt": "2026-10-14T13:07:21.445Z",
+  "sourceRoot": "E:\\git-hub\\skillsbench-1.1\\skillsbench\\tasks\\energy-unit-commitment\\environment\\skills",
+  "candidateRoot": "E:\\git-hub\\vista-mac\\visat-for-skill\\experiments\\artifacts\\sj4\\task-014\\single-file",
+  "summary": {
+    "sourceFiles": 3,
+    "candidateFiles": 1,
+    "sourceUnits": 218,
+    "candidateUnits": 216,
+    "missingUnits": 6,
+    "addedUnits": 4,
+    "semanticSourceUnits": 212,
+    "semanticCandidateUnits": 215,
+    "semanticMissingUnits": 0,
+    "semanticAddedUnits": 3,
+    "structuralMissingUnits": 6,
+    "structuralAddedUnits": 1,
+    "missingRatio": 0,
+    "addedRatio": 0.013953488372093023,
+    "highRiskMissingUnits": 0,
+    "highRiskAddedUnits": 0
+  },
+  "byKind": {
+    "source": {
+      "code-symbol:attr": 11,
+      "code-symbol:call": 11,
+      "code-symbol:method": 7,
+      "code-symbol:module": 1,
+      "fenced-text": 1,
+      "file-path": 3,
+      "heading": 40,
+      "important-line": 103,
+      "schema-key": 11,
+      "semantic-code-block": 27,
+      "skill-frontmatter": 3
+    },
+    "candidate": {
+      "code-symbol:attr": 11,
+      "code-symbol:call": 11,
+      "code-symbol:method": 7,
+      "code-symbol:module": 1,
+      "fenced-text": 1,
+      "file-path": 1,
+      "heading": 43,
+      "important-line": 103,
+      "schema-key": 11,
+      "semantic-code-block": 27
+    },
+    "missing": {
+      "file-path": 3,
+      "skill-frontmatter": 3
+    },
+    "added": {
+      "file-path": 1,
+      "heading": 3
+    }
+  },
+  "risk": {
+    "level": "low",
+    "reasons": []
+  },
+  "samples": {
+    "missing": [
+      {
+        "kind": "file-path",
+        "value": "milp-solver-workflow/skill md",
+        "preview": "milp-solver-workflow/SKILL.md",
+        "locations": [
+          {
+            "file": "milp-solver-workflow/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "skill-frontmatter",
+        "value": "name milp-solver-workflow description use for formulating solving debugging and validating mixed-integer linear optimization models with open-source solvers including variable indexing sparse constraints linearized costs solver limits mip gaps incumbent extraction numerical tolerances and deterministic output reporting",
+        "preview": "name: milp-solver-workflow",
+        "locations": [
+          {
+            "file": "milp-solver-workflow/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "unit-commitment-data-modeling/skill md",
+        "preview": "unit-commitment-data-modeling/SKILL.md",
+        "locations": [
+          {
+            "file": "unit-commitment-data-modeling/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "skill-frontmatter",
+        "value": "name unit-commitment-data-modeling description use for parsing structured unit commitment input data from json csv benchmark cases spreadsheets databases or nested tables finding fields for time periods resources load reserve generator limits initial conditions startup data renewable availability and production costs without assuming one source-specific schema",
+        "preview": "name: unit-commitment-data-modeling",
+        "locations": [
+          {
+            "file": "unit-commitment-data-modeling/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "unit-commitment-operating-rules/skill md",
+        "preview": "unit-commitment-operating-rules/SKILL.md",
+        "locations": [
+          {
+            "file": "unit-commitment-operating-rules/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "skill-frontmatter",
+        "value": "name unit-commitment-operating-rules description use for day-ahead or multi-period unit commitment problems including thermal on/off schedules dispatch startup/shutdown logic minimum up/down time ramping spinning reserve deliverability renewable curtailment operating-cost accounting and independent feasibility checks for power-system operations schedules",
+        "preview": "name: unit-commitment-operating-rules",
+        "locations": [
+          {
+            "file": "unit-commitment-operating-rules/SKILL.md",
+            "line": 1
+          }
+        ]
+      }
+    ],
+    "added": [
+      {
+        "kind": "file-path",
+        "value": "skill md",
+        "preview": "SKILL.md",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "unit-commitment-data-modeling",
+        "preview": "# unit-commitment-data-modeling",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "unit-commitment-operating-rules",
+        "preview": "# unit-commitment-operating-rules",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 170
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "milp-solver-workflow",
+        "preview": "# milp-solver-workflow",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 414
+          }
+        ]
+      }
+    ],
+    "highRiskMissing": [],
+    "highRiskAdded": [],
+    "semanticMissing": [],
+    "semanticAdded": [
+      {
+        "kind": "heading",
+        "value": "unit-commitment-data-modeling",
+        "preview": "# unit-commitment-data-modeling",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "unit-commitment-operating-rules",
+        "preview": "# unit-commitment-operating-rules",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 170
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "milp-solver-workflow",
+        "preview": "# milp-solver-workflow",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 414
+          }
+        ]
+      }
+    ],
+    "structuralMissing": [
+      {
+        "kind": "file-path",
+        "value": "milp-solver-workflow/skill md",
+        "preview": "milp-solver-workflow/SKILL.md",
+        "locations": [
+          {
+            "file": "milp-solver-workflow/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "skill-frontmatter",
+        "value": "name milp-solver-workflow description use for formulating solving debugging and validating mixed-integer linear optimization models with open-source solvers including variable indexing sparse constraints linearized costs solver limits mip gaps incumbent extraction numerical tolerances and deterministic output reporting",
+        "preview": "name: milp-solver-workflow",
+        "locations": [
+          {
+            "file": "milp-solver-workflow/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "unit-commitment-data-modeling/skill md",
+        "preview": "unit-commitment-data-modeling/SKILL.md",
+        "locations": [
+          {
+            "file": "unit-commitment-data-modeling/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "skill-frontmatter",
+        "value": "name unit-commitment-data-modeling description use for parsing structured unit commitment input data from json csv benchmark cases spreadsheets databases or nested tables finding fields for time periods resources load reserve generator limits initial conditions startup data renewable availability and production costs without assuming one source-specific schema",
+        "preview": "name: unit-commitment-data-modeling",
+        "locations": [
+          {
+            "file": "unit-commitment-data-modeling/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "unit-commitment-operating-rules/skill md",
+        "preview": "unit-commitment-operating-rules/SKILL.md",
+        "locations": [
+          {
+            "file": "unit-commitment-operating-rules/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "skill-frontmatter",
+        "value": "name unit-commitment-operating-rules description use for day-ahead or multi-period unit commitment problems including thermal on/off schedules dispatch startup/shutdown logic minimum up/down time ramping spinning reserve deliverability renewable curtailment operating-cost accounting and independent feasibility checks for power-system operations schedules",
+        "preview": "name: unit-commitment-operating-rules",
+        "locations": [
+          {
+            "file": "unit-commitment-operating-rules/SKILL.md",
+            "line": 1
+          }
+        ]
+      }
+    ],
+    "structuralAdded": [
+      {
+        "kind": "file-path",
+        "value": "skill md",
+        "preview": "SKILL.md",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      }
+    ]
+  }
+}

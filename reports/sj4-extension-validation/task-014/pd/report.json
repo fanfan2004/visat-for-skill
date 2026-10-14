@@ -1,0 +1,321 @@
+{
+  "schemaVersion": "behavior-unit-diff/v1",
+  "generatedAt": "2026-10-14T13:07:21.521Z",
+  "sourceRoot": "E:\\git-hub\\vista-mac\\visat-for-skill\\experiments\\artifacts\\sj4\\task-014\\single-file",
+  "candidateRoot": "E:\\git-hub\\vista-mac\\visat-for-skill\\experiments\\artifacts\\sj4\\task-014\\pd",
+  "summary": {
+    "sourceFiles": 1,
+    "candidateFiles": 4,
+    "sourceUnits": 216,
+    "candidateUnits": 221,
+    "missingUnits": 3,
+    "addedUnits": 8,
+    "semanticSourceUnits": 215,
+    "semanticCandidateUnits": 216,
+    "semanticMissingUnits": 3,
+    "semanticAddedUnits": 4,
+    "structuralMissingUnits": 0,
+    "structuralAddedUnits": 4,
+    "missingRatio": 0.013953488372093023,
+    "addedRatio": 0.018518518518518517,
+    "highRiskMissingUnits": 0,
+    "highRiskAddedUnits": 0
+  },
+  "byKind": {
+    "source": {
+      "code-symbol:attr": 11,
+      "code-symbol:call": 11,
+      "code-symbol:method": 7,
+      "code-symbol:module": 1,
+      "fenced-text": 1,
+      "file-path": 1,
+      "heading": 43,
+      "important-line": 103,
+      "schema-key": 11,
+      "semantic-code-block": 27
+    },
+    "candidate": {
+      "code-symbol:attr": 11,
+      "code-symbol:call": 11,
+      "code-symbol:method": 7,
+      "code-symbol:module": 1,
+      "fenced-text": 1,
+      "file-path": 4,
+      "heading": 41,
+      "important-line": 106,
+      "schema-key": 11,
+      "semantic-code-block": 27,
+      "skill-frontmatter": 1
+    },
+    "missing": {
+      "heading": 3
+    },
+    "added": {
+      "file-path": 3,
+      "heading": 1,
+      "important-line": 3,
+      "skill-frontmatter": 1
+    }
+  },
+  "risk": {
+    "level": "low",
+    "reasons": []
+  },
+  "samples": {
+    "missing": [
+      {
+        "kind": "heading",
+        "value": "unit-commitment-data-modeling",
+        "preview": "# unit-commitment-data-modeling",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "unit-commitment-operating-rules",
+        "preview": "# unit-commitment-operating-rules",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 170
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "milp-solver-workflow",
+        "preview": "# milp-solver-workflow",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 414
+          }
+        ]
+      }
+    ],
+    "added": [
+      {
+        "kind": "file-path",
+        "value": "references/milp-solver-workflow md",
+        "preview": "references/milp-solver-workflow.md",
+        "locations": [
+          {
+            "file": "references/milp-solver-workflow.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "references/unit-commitment-data-modeling md",
+        "preview": "references/unit-commitment-data-modeling.md",
+        "locations": [
+          {
+            "file": "references/unit-commitment-data-modeling.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "references/unit-commitment-operating-rules md",
+        "preview": "references/unit-commitment-operating-rules.md",
+        "locations": [
+          {
+            "file": "references/unit-commitment-operating-rules.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "skill-frontmatter",
+        "value": "name energy-unit-commitment-guidance description guidance for energy-unit-commitment workflows",
+        "preview": "name: energy-unit-commitment-guidance",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "energy-unit-commitment guidance",
+        "preview": "# energy-unit-commitment guidance",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 6
+          }
+        ]
+      },
+      {
+        "kind": "important-line",
+        "value": "- references/unit-commitment-data-modeling md — open when you need to parse resource fields array shapes periods and report conventions",
+        "preview": "- **`references/unit-commitment-data-modeling.md`** — Open when you need to parse resource fields, array shapes, periods, and report conventions.",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 10
+          }
+        ]
+      },
+      {
+        "kind": "important-line",
+        "value": "- references/unit-commitment-operating-rules md — open when you need to formulate transitions reserve ramping initial conditions and operating costs",
+        "preview": "- **`references/unit-commitment-operating-rules.md`** — Open when you need to formulate transitions, reserve, ramping, initial conditions, and operating costs.",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 11
+          }
+        ]
+      },
+      {
+        "kind": "important-line",
+        "value": "- references/milp-solver-workflow md — open when you need to build sparse milp constraints extract incumbents and validate solver results",
+        "preview": "- **`references/milp-solver-workflow.md`** — Open when you need to build sparse MILP constraints, extract incumbents, and validate solver results.",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 12
+          }
+        ]
+      }
+    ],
+    "highRiskMissing": [],
+    "highRiskAdded": [],
+    "semanticMissing": [
+      {
+        "kind": "heading",
+        "value": "unit-commitment-data-modeling",
+        "preview": "# unit-commitment-data-modeling",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "unit-commitment-operating-rules",
+        "preview": "# unit-commitment-operating-rules",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 170
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "milp-solver-workflow",
+        "preview": "# milp-solver-workflow",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 414
+          }
+        ]
+      }
+    ],
+    "semanticAdded": [
+      {
+        "kind": "heading",
+        "value": "energy-unit-commitment guidance",
+        "preview": "# energy-unit-commitment guidance",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 6
+          }
+        ]
+      },
+      {
+        "kind": "important-line",
+        "value": "- references/unit-commitment-data-modeling md — open when you need to parse resource fields array shapes periods and report conventions",
+        "preview": "- **`references/unit-commitment-data-modeling.md`** — Open when you need to parse resource fields, array shapes, periods, and report conventions.",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 10
+          }
+        ]
+      },
+      {
+        "kind": "important-line",
+        "value": "- references/unit-commitment-operating-rules md — open when you need to formulate transitions reserve ramping initial conditions and operating costs",
+        "preview": "- **`references/unit-commitment-operating-rules.md`** — Open when you need to formulate transitions, reserve, ramping, initial conditions, and operating costs.",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 11
+          }
+        ]
+      },
+      {
+        "kind": "important-line",
+        "value": "- references/milp-solver-workflow md — open when you need to build sparse milp constraints extract incumbents and validate solver results",
+        "preview": "- **`references/milp-solver-workflow.md`** — Open when you need to build sparse MILP constraints, extract incumbents, and validate solver results.",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 12
+          }
+        ]
+      }
+    ],
+    "structuralMissing": [],
+    "structuralAdded": [
+      {
+        "kind": "file-path",
+        "value": "references/milp-solver-workflow md",
+        "preview": "references/milp-solver-workflow.md",
+        "locations": [
+          {
+            "file": "references/milp-solver-workflow.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "references/unit-commitment-data-modeling md",
+        "preview": "references/unit-commitment-data-modeling.md",
+        "locations": [
+          {
+            "file": "references/unit-commitment-data-modeling.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "references/unit-commitment-operating-rules md",
+        "preview": "references/unit-commitment-operating-rules.md",
+        "locations": [
+          {
+            "file": "references/unit-commitment-operating-rules.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "skill-frontmatter",
+        "value": "name energy-unit-commitment-guidance description guidance for energy-unit-commitment workflows",
+        "preview": "name: energy-unit-commitment-guidance",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      }
+    ]
+  }
+}

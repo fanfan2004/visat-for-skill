@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+"""Use the trial's LibreOffice profile without changing the source recalc helper."""
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+profile = Path(os.environ["VISTA_LO_PROFILE"]).resolve()
+profile.mkdir(parents=True, exist_ok=True)
+command = [os.environ["VISTA_SOFFICE_BINARY"],
+           "-env:UserInstallation=" + profile.as_uri(), *sys.argv[1:]]
+raise SystemExit(subprocess.call(command))

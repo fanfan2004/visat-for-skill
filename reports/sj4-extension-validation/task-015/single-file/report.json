@@ -1,0 +1,278 @@
+{
+  "schemaVersion": "behavior-unit-diff/v1",
+  "generatedAt": "2026-10-14T13:07:21.755Z",
+  "sourceRoot": "E:\\git-hub\\skillsbench-1.1\\skillsbench\\tasks\\xlsx-recover-data\\environment\\skills",
+  "candidateRoot": "E:\\git-hub\\vista-mac\\visat-for-skill\\experiments\\artifacts\\sj4\\task-015\\single-file",
+  "summary": {
+    "sourceFiles": 4,
+    "candidateFiles": 1,
+    "sourceUnits": 343,
+    "candidateUnits": 346,
+    "missingUnits": 6,
+    "addedUnits": 3,
+    "semanticSourceUnits": 337,
+    "semanticCandidateUnits": 345,
+    "semanticMissingUnits": 0,
+    "semanticAddedUnits": 2,
+    "structuralMissingUnits": 6,
+    "structuralAddedUnits": 1,
+    "missingRatio": 0,
+    "addedRatio": 0.005797101449275362,
+    "highRiskMissingUnits": 0,
+    "highRiskAddedUnits": 0
+  },
+  "byKind": {
+    "source": {
+      "code-symbol:attr": 54,
+      "code-symbol:call": 28,
+      "code-symbol:method": 28,
+      "code-symbol:module": 9,
+      "command": 3,
+      "fenced-text": 9,
+      "file-path": 4,
+      "heading": 65,
+      "important-line": 120,
+      "schema-key": 11,
+      "semantic-code-block": 10,
+      "skill-frontmatter": 2
+    },
+    "candidate": {
+      "code-symbol:attr": 56,
+      "code-symbol:call": 28,
+      "code-symbol:method": 28,
+      "code-symbol:module": 9,
+      "command": 3,
+      "fenced-text": 9,
+      "file-path": 1,
+      "heading": 69,
+      "important-line": 121,
+      "schema-key": 11,
+      "semantic-code-block": 11
+    },
+    "missing": {
+      "file-path": 4,
+      "skill-frontmatter": 2
+    },
+    "added": {
+      "file-path": 1,
+      "heading": 2
+    }
+  },
+  "risk": {
+    "level": "low",
+    "reasons": []
+  },
+  "samples": {
+    "missing": [
+      {
+        "kind": "file-path",
+        "value": "data-reconciliation/skill md",
+        "preview": "data-reconciliation/SKILL.md",
+        "locations": [
+          {
+            "file": "data-reconciliation/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "skill-frontmatter",
+        "value": "name data-reconciliation description recover missing spreadsheet values from row and column totals percentage shares year-over-year changes cagr relationships and cross-sheet constraints",
+        "preview": "name: data-reconciliation",
+        "locations": [
+          {
+            "file": "data-reconciliation/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "xlsx/license txt",
+        "preview": "xlsx/LICENSE.txt",
+        "locations": [
+          {
+            "file": "xlsx/LICENSE.txt",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "xlsx/recalc py",
+        "preview": "xlsx/recalc.py",
+        "locations": [
+          {
+            "file": "xlsx/recalc.py",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "xlsx/skill md",
+        "preview": "xlsx/SKILL.md",
+        "locations": [
+          {
+            "file": "xlsx/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "skill-frontmatter",
+        "value": "name xlsx description comprehensive spreadsheet creation editing and analysis with support for formulas formatting data analysis and visualization when claude needs to work with spreadsheets xlsx xlsm csv tsv etc for 1 creating new spreadsheets with formulas and formatting 2 reading or analyzing data 3 modify existing spreadsheets while preserving formulas 4 data analysis and visualization in spreadsheets or 5 recalculating formulas license proprietary license txt has complete terms",
+        "preview": "name: xlsx",
+        "locations": [
+          {
+            "file": "xlsx/SKILL.md",
+            "line": 1
+          }
+        ]
+      }
+    ],
+    "added": [
+      {
+        "kind": "file-path",
+        "value": "skill md",
+        "preview": "SKILL.md",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "data-reconciliation",
+        "preview": "# data-reconciliation",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "xlsx",
+        "preview": "# xlsx",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 101
+          }
+        ]
+      }
+    ],
+    "highRiskMissing": [],
+    "highRiskAdded": [],
+    "semanticMissing": [],
+    "semanticAdded": [
+      {
+        "kind": "heading",
+        "value": "data-reconciliation",
+        "preview": "# data-reconciliation",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "xlsx",
+        "preview": "# xlsx",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 101
+          }
+        ]
+      }
+    ],
+    "structuralMissing": [
+      {
+        "kind": "file-path",
+        "value": "data-reconciliation/skill md",
+        "preview": "data-reconciliation/SKILL.md",
+        "locations": [
+          {
+            "file": "data-reconciliation/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "skill-frontmatter",
+        "value": "name data-reconciliation description recover missing spreadsheet values from row and column totals percentage shares year-over-year changes cagr relationships and cross-sheet constraints",
+        "preview": "name: data-reconciliation",
+        "locations": [
+          {
+            "file": "data-reconciliation/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "xlsx/license txt",
+        "preview": "xlsx/LICENSE.txt",
+        "locations": [
+          {
+            "file": "xlsx/LICENSE.txt",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "xlsx/recalc py",
+        "preview": "xlsx/recalc.py",
+        "locations": [
+          {
+            "file": "xlsx/recalc.py",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "xlsx/skill md",
+        "preview": "xlsx/SKILL.md",
+        "locations": [
+          {
+            "file": "xlsx/SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "skill-frontmatter",
+        "value": "name xlsx description comprehensive spreadsheet creation editing and analysis with support for formulas formatting data analysis and visualization when claude needs to work with spreadsheets xlsx xlsm csv tsv etc for 1 creating new spreadsheets with formulas and formatting 2 reading or analyzing data 3 modify existing spreadsheets while preserving formulas 4 data analysis and visualization in spreadsheets or 5 recalculating formulas license proprietary license txt has complete terms",
+        "preview": "name: xlsx",
+        "locations": [
+          {
+            "file": "xlsx/SKILL.md",
+            "line": 1
+          }
+        ]
+      }
+    ],
+    "structuralAdded": [
+      {
+        "kind": "file-path",
+        "value": "skill md",
+        "preview": "SKILL.md",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      }
+    ]
+  }
+}

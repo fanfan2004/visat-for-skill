@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "task_id": "task-015",
+  "benchmark": "xlsx-recover-data",
+  "construction": "deterministic-source-preserving-v1",
+  "source_files": {
+    "data-reconciliation/SKILL.md": "dcf8c056972e12ebe28ee256e5bf5e1cef5038ffa997edd4614086a3850d389e",
+    "xlsx/LICENSE.txt": "6f8bd7f4d8ec5cb52b7a59ccb9e8c14c2a4ba529cb5adfc5e0bc676892b8ca79",
+    "xlsx/recalc.py": "3f123fd5575f3b42289fb485f21660ce89f376af9159e758102f57a1ae4bcbd9",
+    "xlsx/SKILL.md": "fa55245ff2b9789a2976b4f7359bd4d1a4400219407bce1f0f4d58cd81ecfd84"
+  },
+  "benchmark_files": {
+    "task.md": "e853d2dbfd998646e8e1cbecd5d9f00b6b8ad02529e2affed1a483273df97deb",
+    "verifier/test_outputs.py": "6d7ed7583d459e564247847a7d13f1618127a4c3464478a386f170dd5f6065d1",
+    "environment/nasa_budget_incomplete.xlsx": "d15aeb8720d52525d99e7196f8c00dd5daddf90e4262255a98177da0ffb573bf"
+  },
+  "artifact_files": {
+    "flat/data-reconciliation/SKILL.md": "341dd818dfc713e5413bb74923c905f9990996c0876037a3918bce826b6a0c8d",
+    "flat/xlsx/SKILL.md": "0a4f2b6d749004b45ec9557231e6d64dc3985ef4093e5a381e2b99a7b5875202",
+    "manifest.yaml": "5dfc20799f8cd8704cc27a2ff00dbb89435db058b9f866185c509cc3cefd34f9",
+    "pd/references/data-reconciliation.md": "341dd818dfc713e5413bb74923c905f9990996c0876037a3918bce826b6a0c8d",
+    "pd/references/xlsx.md": "2d651d45492b78e198e363442d7c886db5495e49d832c168c9e7a6ec7e989d12",
+    "pd/SKILL.md": "9f54a1cdb8818705a8a11da618818234ccb10c91df452e47780328b1d1f489b4",
+    "pd/xlsx/LICENSE.txt": "6f8bd7f4d8ec5cb52b7a59ccb9e8c14c2a4ba529cb5adfc5e0bc676892b8ca79",
+    "pd/xlsx/recalc.py": "3f123fd5575f3b42289fb485f21660ce89f376af9159e758102f57a1ae4bcbd9",
+    "single-file/SKILL.md": "874fe668a897215d80aa82157b9975baa6f08963b2b36b7875ef9494df25cf7a"
+  },
+  "path_rewrites": [
+    "xlsx reference: python recalc.py -> python xlsx/recalc.py",
+    "xlsx reference: LICENSE.txt -> xlsx/LICENSE.txt"
+  ],
+  "limitations": [
+    "xlsx Skill requires formulas; original verifier loads formulas as text"
+  ]
+}

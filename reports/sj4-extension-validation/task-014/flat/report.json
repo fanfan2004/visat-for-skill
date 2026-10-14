@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "behavior-unit-diff/v1",
+  "generatedAt": "2026-10-14T13:07:21.363Z",
+  "sourceRoot": "E:\\git-hub\\skillsbench-1.1\\skillsbench\\tasks\\energy-unit-commitment\\environment\\skills",
+  "candidateRoot": "E:\\git-hub\\vista-mac\\visat-for-skill\\experiments\\artifacts\\sj4\\task-014\\flat",
+  "summary": {
+    "sourceFiles": 3,
+    "candidateFiles": 3,
+    "sourceUnits": 218,
+    "candidateUnits": 218,
+    "missingUnits": 0,
+    "addedUnits": 0,
+    "semanticSourceUnits": 212,
+    "semanticCandidateUnits": 212,
+    "semanticMissingUnits": 0,
+    "semanticAddedUnits": 0,
+    "structuralMissingUnits": 0,
+    "structuralAddedUnits": 0,
+    "missingRatio": 0,
+    "addedRatio": 0,
+    "highRiskMissingUnits": 0,
+    "highRiskAddedUnits": 0
+  },
+  "byKind": {
+    "source": {
+      "code-symbol:attr": 11,
+      "code-symbol:call": 11,
+      "code-symbol:method": 7,
+      "code-symbol:module": 1,
+      "fenced-text": 1,
+      "file-path": 3,
+      "heading": 40,
+      "important-line": 103,
+      "schema-key": 11,
+      "semantic-code-block": 27,
+      "skill-frontmatter": 3
+    },
+    "candidate": {
+      "code-symbol:attr": 11,
+      "code-symbol:call": 11,
+      "code-symbol:method": 7,
+      "code-symbol:module": 1,
+      "fenced-text": 1,
+      "file-path": 3,
+      "heading": 40,
+      "important-line": 103,
+      "schema-key": 11,
+      "semantic-code-block": 27,
+      "skill-frontmatter": 3
+    },
+    "missing": {},
+    "added": {}
+  },
+  "risk": {
+    "level": "low",
+    "reasons": []
+  },
+  "samples": {
+    "missing": [],
+    "added": [],
+    "highRiskMissing": [],
+    "highRiskAdded": [],
+    "semanticMissing": [],
+    "semanticAdded": [],
+    "structuralMissing": [],
+    "structuralAdded": []
+  }
+}

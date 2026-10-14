@@ -1,0 +1,17 @@
+schema_version: 1
+construction_model: none-deterministic-source-preserving-v1
+source_content_equivalence: source-hash-and-support-byte-equality
+modules:
+- id: unit-commitment-data-modeling
+  path: pd/references/unit-commitment-data-modeling.md
+  triggers:
+  - uc_schema
+  - uc_missing_output
+- id: unit-commitment-operating-rules
+  path: pd/references/unit-commitment-operating-rules.md
+  triggers:
+  - uc_operating_rules
+- id: milp-solver-workflow
+  path: pd/references/milp-solver-workflow.md
+  triggers:
+  - uc_solver_or_cost

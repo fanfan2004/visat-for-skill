@@ -1,0 +1,12 @@
+schema_version: 1
+construction_model: none-deterministic-source-preserving-v1
+source_content_equivalence: source-hash-and-support-byte-equality
+modules:
+- id: data-reconciliation
+  path: pd/references/data-reconciliation.md
+  triggers:
+  - xlsx_value_or_consistency
+- id: xlsx
+  path: pd/references/xlsx.md
+  triggers:
+  - xlsx_file_or_type

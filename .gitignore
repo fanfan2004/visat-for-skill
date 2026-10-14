@@ -1,5 +1,6 @@
 # Local Python environment and credentials
 .venv/
+.venv-sj4ext/
 .env
 
 # Vendor read-only checkouts (full benchmark clone kept local only)

@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "behavior-unit-diff/v1",
+  "generatedAt": "2026-10-14T13:07:21.675Z",
+  "sourceRoot": "E:\\git-hub\\skillsbench-1.1\\skillsbench\\tasks\\xlsx-recover-data\\environment\\skills",
+  "candidateRoot": "E:\\git-hub\\vista-mac\\visat-for-skill\\experiments\\artifacts\\sj4\\task-015\\flat",
+  "summary": {
+    "sourceFiles": 4,
+    "candidateFiles": 2,
+    "sourceUnits": 343,
+    "candidateUnits": 347,
+    "missingUnits": 2,
+    "addedUnits": 0,
+    "semanticSourceUnits": 337,
+    "semanticCandidateUnits": 343,
+    "semanticMissingUnits": 0,
+    "semanticAddedUnits": 0,
+    "structuralMissingUnits": 2,
+    "structuralAddedUnits": 0,
+    "missingRatio": 0,
+    "addedRatio": 0,
+    "highRiskMissingUnits": 0,
+    "highRiskAddedUnits": 0
+  },
+  "byKind": {
+    "source": {
+      "code-symbol:attr": 54,
+      "code-symbol:call": 28,
+      "code-symbol:method": 28,
+      "code-symbol:module": 9,
+      "command": 3,
+      "fenced-text": 9,
+      "file-path": 4,
+      "heading": 65,
+      "important-line": 120,
+      "schema-key": 11,
+      "semantic-code-block": 10,
+      "skill-frontmatter": 2
+    },
+    "candidate": {
+      "code-symbol:attr": 56,
+      "code-symbol:call": 28,
+      "code-symbol:method": 28,
+      "code-symbol:module": 9,
+      "command": 3,
+      "fenced-text": 9,
+      "file-path": 2,
+      "heading": 67,
+      "important-line": 121,
+      "schema-key": 11,
+      "semantic-code-block": 11,
+      "skill-frontmatter": 2
+    },
+    "missing": {
+      "file-path": 2
+    },
+    "added": {}
+  },
+  "risk": {
+    "level": "low",
+    "reasons": []
+  },
+  "samples": {
+    "missing": [
+      {
+        "kind": "file-path",
+        "value": "xlsx/license txt",
+        "preview": "xlsx/LICENSE.txt",
+        "locations": [
+          {
+            "file": "xlsx/LICENSE.txt",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "xlsx/recalc py",
+        "preview": "xlsx/recalc.py",
+        "locations": [
+          {
+            "file": "xlsx/recalc.py",
+            "line": 1
+          }
+        ]
+      }
+    ],
+    "added": [],
+    "highRiskMissing": [],
+    "highRiskAdded": [],
+    "semanticMissing": [],
+    "semanticAdded": [],
+    "structuralMissing": [
+      {
+        "kind": "file-path",
+        "value": "xlsx/license txt",
+        "preview": "xlsx/LICENSE.txt",
+        "locations": [
+          {
+            "file": "xlsx/LICENSE.txt",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "xlsx/recalc py",
+        "preview": "xlsx/recalc.py",
+        "locations": [
+          {
+            "file": "xlsx/recalc.py",
+            "line": 1
+          }
+        ]
+      }
+    ],
+    "structuralAdded": []
+  }
+}

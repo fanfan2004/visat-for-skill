@@ -1,0 +1,301 @@
+{
+  "schemaVersion": "behavior-unit-diff/v1",
+  "generatedAt": "2026-10-14T13:07:21.840Z",
+  "sourceRoot": "E:\\git-hub\\vista-mac\\visat-for-skill\\experiments\\artifacts\\sj4\\task-015\\single-file",
+  "candidateRoot": "E:\\git-hub\\vista-mac\\visat-for-skill\\experiments\\artifacts\\sj4\\task-015\\pd",
+  "summary": {
+    "sourceFiles": 1,
+    "candidateFiles": 5,
+    "sourceUnits": 346,
+    "candidateUnits": 346,
+    "missingUnits": 2,
+    "addedUnits": 8,
+    "semanticSourceUnits": 345,
+    "semanticCandidateUnits": 340,
+    "semanticMissingUnits": 2,
+    "semanticAddedUnits": 3,
+    "structuralMissingUnits": 0,
+    "structuralAddedUnits": 5,
+    "missingRatio": 0.005797101449275362,
+    "addedRatio": 0.008823529411764706,
+    "highRiskMissingUnits": 0,
+    "highRiskAddedUnits": 0
+  },
+  "byKind": {
+    "source": {
+      "code-symbol:attr": 56,
+      "code-symbol:call": 28,
+      "code-symbol:method": 28,
+      "code-symbol:module": 9,
+      "command": 3,
+      "fenced-text": 9,
+      "file-path": 1,
+      "heading": 69,
+      "important-line": 121,
+      "schema-key": 11,
+      "semantic-code-block": 11
+    },
+    "candidate": {
+      "code-symbol:attr": 54,
+      "code-symbol:call": 28,
+      "code-symbol:method": 28,
+      "code-symbol:module": 9,
+      "command": 3,
+      "fenced-text": 9,
+      "file-path": 5,
+      "heading": 66,
+      "important-line": 122,
+      "schema-key": 11,
+      "semantic-code-block": 10,
+      "skill-frontmatter": 1
+    },
+    "missing": {
+      "heading": 2
+    },
+    "added": {
+      "file-path": 4,
+      "heading": 1,
+      "important-line": 2,
+      "skill-frontmatter": 1
+    }
+  },
+  "risk": {
+    "level": "low",
+    "reasons": []
+  },
+  "samples": {
+    "missing": [
+      {
+        "kind": "heading",
+        "value": "data-reconciliation",
+        "preview": "# data-reconciliation",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "xlsx",
+        "preview": "# xlsx",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 101
+          }
+        ]
+      }
+    ],
+    "added": [
+      {
+        "kind": "file-path",
+        "value": "references/data-reconciliation md",
+        "preview": "references/data-reconciliation.md",
+        "locations": [
+          {
+            "file": "references/data-reconciliation.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "references/xlsx md",
+        "preview": "references/xlsx.md",
+        "locations": [
+          {
+            "file": "references/xlsx.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "skill-frontmatter",
+        "value": "name xlsx-recover-data-guidance description guidance for xlsx-recover-data workflows",
+        "preview": "name: xlsx-recover-data-guidance",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "xlsx-recover-data guidance",
+        "preview": "# xlsx-recover-data guidance",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 6
+          }
+        ]
+      },
+      {
+        "kind": "important-line",
+        "value": "- references/data-reconciliation md — open when you need to recover missing cells from totals shares yoy cagr and cross-sheet dependencies",
+        "preview": "- **`references/data-reconciliation.md`** — Open when you need to recover missing cells from totals, shares, YoY, CAGR, and cross-sheet dependencies.",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 10
+          }
+        ]
+      },
+      {
+        "kind": "important-line",
+        "value": "- references/xlsx md — open when you need to read edit preserve recalculate and check excel workbooks",
+        "preview": "- **`references/xlsx.md`** — Open when you need to read, edit, preserve, recalculate, and check Excel workbooks.",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 11
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "xlsx/license txt",
+        "preview": "xlsx/LICENSE.txt",
+        "locations": [
+          {
+            "file": "xlsx/LICENSE.txt",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "xlsx/recalc py",
+        "preview": "xlsx/recalc.py",
+        "locations": [
+          {
+            "file": "xlsx/recalc.py",
+            "line": 1
+          }
+        ]
+      }
+    ],
+    "highRiskMissing": [],
+    "highRiskAdded": [],
+    "semanticMissing": [
+      {
+        "kind": "heading",
+        "value": "data-reconciliation",
+        "preview": "# data-reconciliation",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "heading",
+        "value": "xlsx",
+        "preview": "# xlsx",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 101
+          }
+        ]
+      }
+    ],
+    "semanticAdded": [
+      {
+        "kind": "heading",
+        "value": "xlsx-recover-data guidance",
+        "preview": "# xlsx-recover-data guidance",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 6
+          }
+        ]
+      },
+      {
+        "kind": "important-line",
+        "value": "- references/data-reconciliation md — open when you need to recover missing cells from totals shares yoy cagr and cross-sheet dependencies",
+        "preview": "- **`references/data-reconciliation.md`** — Open when you need to recover missing cells from totals, shares, YoY, CAGR, and cross-sheet dependencies.",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 10
+          }
+        ]
+      },
+      {
+        "kind": "important-line",
+        "value": "- references/xlsx md — open when you need to read edit preserve recalculate and check excel workbooks",
+        "preview": "- **`references/xlsx.md`** — Open when you need to read, edit, preserve, recalculate, and check Excel workbooks.",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 11
+          }
+        ]
+      }
+    ],
+    "structuralMissing": [],
+    "structuralAdded": [
+      {
+        "kind": "file-path",
+        "value": "references/data-reconciliation md",
+        "preview": "references/data-reconciliation.md",
+        "locations": [
+          {
+            "file": "references/data-reconciliation.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "references/xlsx md",
+        "preview": "references/xlsx.md",
+        "locations": [
+          {
+            "file": "references/xlsx.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "skill-frontmatter",
+        "value": "name xlsx-recover-data-guidance description guidance for xlsx-recover-data workflows",
+        "preview": "name: xlsx-recover-data-guidance",
+        "locations": [
+          {
+            "file": "SKILL.md",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "xlsx/license txt",
+        "preview": "xlsx/LICENSE.txt",
+        "locations": [
+          {
+            "file": "xlsx/LICENSE.txt",
+            "line": 1
+          }
+        ]
+      },
+      {
+        "kind": "file-path",
+        "value": "xlsx/recalc py",
+        "preview": "xlsx/recalc.py",
+        "locations": [
+          {
+            "file": "xlsx/recalc.py",
+            "line": 1
+          }
+        ]
+      }
+    ]
+  }
+}

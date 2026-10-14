@@ -1,0 +1,11 @@
+task_id: task-014
+mapping_status: resolved
+condition_backend: zcode
+source:
+  benchmark: skillsbench
+  benchmark_task_id: energy-unit-commitment
+  definition_path: experiments/benchmarks/sj4-extension-v1/energy-unit-commitment
+  skill_path: experiments/benchmarks/sj4-extension-v1/energy-unit-commitment/environment/skills
+skill_paths:
+  sj4_artifacts: experiments/artifacts/sj4/task-014
+protocol: sj4-extension-v1

@@ -1,0 +1,11 @@
+task_id: task-015
+mapping_status: resolved
+condition_backend: zcode
+source:
+  benchmark: skillsbench
+  benchmark_task_id: xlsx-recover-data
+  definition_path: experiments/benchmarks/sj4-extension-v1/xlsx-recover-data
+  skill_path: experiments/benchmarks/sj4-extension-v1/xlsx-recover-data/environment/skills
+skill_paths:
+  sj4_artifacts: experiments/artifacts/sj4/task-015
+protocol: sj4-extension-v1

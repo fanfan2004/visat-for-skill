@@ -1,0 +1,7 @@
+# Tested source-compatible runtime (Python 3.11 or 3.12).
+numpy==1.26.4
+scipy==1.13.1
+pandas==2.2.3
+openpyxl==3.1.5
+PyYAML==6.0.2
+pytest==8.3.5

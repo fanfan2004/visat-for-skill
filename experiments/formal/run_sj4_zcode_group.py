@@ -19,13 +19,14 @@ Runner 必改项（manual 第三节）全部落地:
 
 双端点并行（用户确认）: --provider new-provider（v1 chat-completions，宿主默认配置）
 或 new-provider-2（anthropic-messages，经修正配置 + ZCODE_PERSONAL_PROVIDER_CONFIG_FILE）。
-两个实例分别跑两个任务；每个实例内 trial 用 --workers 线程池并发（用户确认 4-6），
+两个实例分别跑两个任务；每个实例内 trial 用 --workers 线程池并发（最多 10），
 达到双端点 × N 线程并行。
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -38,6 +39,11 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 from typing import Any
+
+from sj4_extension_tasks import PROTOCOL as EXTENSION_PROTOCOL
+from sj4_extension_tasks import TASKS as EXTENSION_TASKS
+from sj4_resource_guard import configure as configure_resources
+from sj4_resource_guard import slots
 
 from vista.feedback import FeedbackObservation, FeedbackParser, FeedbackSource
 from vista.runtime import DisclosureRouter, SkillManifest
@@ -55,10 +61,11 @@ from vista.runtime.zcode_local_backend import (
 REPO = Path(os.environ.get("VISTA_REPO_ROOT", Path(__file__).resolve().parents[2])).resolve()
 VENDOR_TASKS = REPO / "vendor" / "skillsbench" / "tasks"
 ARTIFACT_ROOT = REPO / "experiments" / "artifacts" / "sj4"
-TOOLS_VENV_BIN = REPO / ".venv" / "bin"
 VERIFIER_PYTHON = Path(
     os.environ.get("VISTA_VERIFIER_PYTHON", REPO / ".venv" / "bin" / "python")
 ).expanduser().absolute()
+TOOLS_VENV_BIN = VERIFIER_PYTHON.parent
+EXTENSION_SOURCE_TASKS = REPO / "experiments" / "benchmarks" / "sj4-extension-v1"
 LOCAL_ROOT = Path(
     os.environ.get(
         "VISTA_EXPERIMENT_ROOT", Path.home() / "Library" / "Caches" / "VistaExperiments"
@@ -68,7 +75,12 @@ MAX_TURNS = 6  # vista / pd-m；noskill/flat/pd 固定 1 回合
 MODEL_TURN_TIMEOUT_SECONDS = 1800
 VERIFIER_TIMEOUT_SECONDS = 900
 CONDITIONS = ("noskill", "flat", "pd", "vista")
-OPTIONAL_CONDITIONS = ("pd-m",)
+OPTIONAL_CONDITIONS = ("pd-m", "noskill-multi")
+MULTI_CONDITIONS = {"vista", "pd-m", "noskill-multi"}
+RESOURCE_POLICY: dict[str, Any] = {}
+ACTIVE_PROVIDER: str | None = None
+CURRENT_WORKERS = 0
+_VERIFIER_TIMING = threading.local()
 REPLICATES: tuple[int, ...] = (1, 2, 3)  # main() 按 --replicates 覆盖
 # 结果目录前缀在 main() 启动时冻结一次：首版每次调用都取当前小时，
 # 跨整点的批次会把后完成的 trial 写进另一个目录。
@@ -101,6 +113,7 @@ TASKS: dict[str, dict[str, Any]] = {
         "output_files": ["fraud_report.json"],
     },
 }
+TASKS.update(EXTENSION_TASKS)
 
 FAILURE_LAYER_RULES: dict[str, tuple[tuple[tuple[str, ...], str], ...]] = {
     "task-011": (
@@ -120,6 +133,30 @@ FAILURE_LAYER_RULES: dict[str, tuple[tuple[tuple[str, ...], str], ...]] = {
 
 def failure_layer_signatures(task_id: str, verifier_output: str) -> list[str]:
     text = verifier_output.casefold()
+    if task_id in EXTENSION_TASKS:
+        # Route on failed test names / error classes, never on hidden solution values.
+        failed = "\n".join(line for line in text.splitlines()
+                           if "failed " in line or "error " in line)
+        rules = {
+            "task-014": (
+                (("test_required_schema", "test_arrays_align_with_case"), "uc_schema"),
+                (("test_startup", "test_no_simultaneous", "test_reported_transition",
+                  "test_must_run", "test_output_limits", "test_deliverable_reserve",
+                  "test_demand_and_reserve", "test_renewable_limits",
+                  "test_hourly_summary", "test_initial_and_in_horizon"), "uc_operating_rules"),
+                (("test_reported_cost", "test_cost_within_benchmark"), "uc_solver_or_cost"),
+            ),
+            "task-015": (
+                (("test_file_exists", "test_output", "typeerror", "keyerror"), "xlsx_file_or_type"),
+                (("test_budget_values", "test_yoy_values", "test_shares_values",
+                  "test_growth_values", "test_no_remaining", "test_row_sums",
+                  "test_cross_sheet"), "xlsx_value_or_consistency"),
+            ),
+        }
+        if "filenotfounderror" in text or "missing output" in text:
+            return ["uc_missing_output" if task_id == "task-014" else "xlsx_file_or_type"]
+        return [signature for keywords, signature in rules[task_id]
+                if any(keyword in failed for keyword in keywords)]
     signatures: list[str] = []
     for keywords, signature in FAILURE_LAYER_RULES.get(task_id, ()):
         if any(keyword in text for keyword in keywords) and signature not in signatures:
@@ -135,6 +172,7 @@ Use the local python interpreter for any simulation or analysis you need to run.
 Hidden verifier tests are run only by the controller after the episode."""
 INITIAL_PROMPTS = {
     "noskill": " No task Skill is available in this condition.",
+    "noskill-multi": " No task Skill is available in this condition.",
     "flat": " All guidance modules are available as flattened single files under ./modules/<module-id>/SKILL.md; read and use the relevant modules.",
     "pd": " A progressive-disclosure skill is available at ./skill/SKILL.md with detailed references under ./skill/references/; read the entry skill and decide for yourself which references to load and use.",
     "pd-m": " A progressive-disclosure skill is available at ./skill/SKILL.md with detailed references under ./skill/references/; read the entry skill and decide for yourself which references to load and use.",
@@ -144,7 +182,7 @@ INITIAL_PROMPTS = {
 
 def task_paths(task_id: str) -> tuple[Path, Path]:
     spec = TASKS[task_id]
-    source = VENDOR_TASKS / spec["benchmark"]
+    source = (EXTENSION_SOURCE_TASKS if task_id in EXTENSION_TASKS else VENDOR_TASKS) / spec["benchmark"]
     return source, source / "environment"
 
 
@@ -162,6 +200,22 @@ def tool_environment() -> dict[str, str]:
     env = os.environ.copy()
     env["PATH"] = str(TOOLS_VENV_BIN) + os.pathsep + env.get("PATH", "")
     env.pop("PYTHONHOME", None)
+    if RESOURCE_POLICY:
+        for name in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS",
+                     "VECLIB_MAXIMUM_THREADS", "NUMEXPR_NUM_THREADS"):
+            env[name] = str(RESOURCE_POLICY["numeric_threads"])
+        env.update({
+            "VISTA_RESOURCE_GUARD_ENABLED": "1",
+            "VISTA_RESOURCE_GUARD_ROOT": RESOURCE_POLICY["guard_root"],
+            "VISTA_SOLVER_WORKERS": str(RESOURCE_POLICY["solver_workers"]),
+            "VISTA_NUMERIC_THREADS": str(RESOURCE_POLICY["numeric_threads"]),
+        })
+        env["PYTHONPATH"] = str(Path(RESOURCE_POLICY["guard_root"]) / "python") + (
+            os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else ""
+        )
+        if RESOURCE_POLICY.get("soffice_binary"):
+            env["PATH"] = str(Path(RESOURCE_POLICY["guard_root"]) / "bin") + os.pathsep + env["PATH"]
+            env["VISTA_SOFFICE_BINARY"] = RESOURCE_POLICY["soffice_binary"]
     return env
 
 
@@ -211,7 +265,13 @@ def prepare_trial(task_id: str, condition: str, replicate: int) -> dict[str, Any
     storage = base / "zcode-storage"
     for directory in (workspace, verifier, router_source, storage):
         directory.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(source / "task.md", workspace / "task.md")
+    if task_id in EXTENSION_TASKS:
+        (workspace / "task.md").write_text(
+            (source / "task.md").read_text(encoding="utf-8").replace("/root/", "./"),
+            encoding="utf-8",
+        )
+    else:
+        shutil.copy2(source / "task.md", workspace / "task.md")
     for name in spec["inputs"]:
         item = environment / name
         if item.is_dir():
@@ -267,6 +327,7 @@ def verifier_infrastructure_failure(output: str) -> bool:
     return any(marker in folded for marker in (
         "no module named", "modulenotfounderror", "failed to import",
         "error while loading conftest", "collection error", "connection timed out",
+        "benchmark milp did not return a feasible incumbent",
     ))
 
 
@@ -341,22 +402,54 @@ def public_diagnostic(output: str, *, limit: int = 5000) -> str:
     return (diagnostic or "The local verifier run failed.")[:limit]
 
 
+def extension_diagnostic(task_id: str, output: str) -> str:
+    """New tasks disclose failure categories only; no source snippets or operands."""
+    failures = []
+    for line in output.splitlines():
+        # Pytest includes cell/expected values in parametrized node IDs and messages.
+        match = re.search(r"(?:FAILED|ERROR)\s+\S+::(?:\w+::)?(test_\w+)", line)
+        if match and match.group(1) not in failures:
+            failures.append(match.group(1))
+    signatures = failure_layer_signatures(task_id, output)
+    return "\n".join([
+        "The required output failed the hidden checks.",
+        *("Failed check: " + name for name in failures),
+        "Failure categories: " + (", ".join(signatures) or "unclassified_output_failure"),
+    ])
+
+
 def run_verifier(workspace: Path, verifier: Path, turn: int) -> tuple[bool, str, bool, float]:
     command = [
         str(VERIFIER_PYTHON), "-m", "pytest",
         str(verifier / "test_outputs_local.py"),
         "-rA", "-v", "--tb=short", "-p", "no:cacheprovider",
     ]
+    if RESOURCE_POLICY:
+        with slots(Path(RESOURCE_POLICY["guard_root"]), "verifier",
+                   RESOURCE_POLICY["verifier_workers"]) as waited:
+            _VERIFIER_TIMING.wait_seconds = waited
+            return _run_verifier_command(command, workspace, verifier, turn)
+    _VERIFIER_TIMING.wait_seconds = 0.0
+    return _run_verifier_command(command, workspace, verifier, turn)
+
+
+def _run_verifier_command(command: list[str], workspace: Path, verifier: Path,
+                          turn: int) -> tuple[bool, str, bool, float]:
     started = time.monotonic()
+    environment = tool_environment()
+    if RESOURCE_POLICY:
+        environment["VISTA_SOLVER_LOG"] = str(verifier / "verifier-solver-usage.jsonl")
     try:
         completed = subprocess.run(
-            command, cwd=workspace, env=tool_environment(), capture_output=True, text=True,
+            command, cwd=workspace, env=environment, capture_output=True, text=True,
             encoding="utf-8", errors="replace", timeout=VERIFIER_TIMEOUT_SECONDS, check=False,
         )
     except subprocess.TimeoutExpired as exc:
-        output = (exc.stdout or "") + (exc.stderr or "")
+        def decoded(value):
+            return value.decode("utf-8", errors="replace") if isinstance(value, bytes) else value or ""
+        output = decoded(exc.stdout) + decoded(exc.stderr) + "\nVerifier infrastructure timeout."
         (verifier / f"verifier-turn-{turn}.txt").write_text(output, encoding="utf-8")
-        return False, output, False, time.monotonic() - started
+        return False, output, True, time.monotonic() - started
     output = (completed.stdout or "") + (completed.stderr or "")
     (verifier / f"verifier-turn-{turn}.txt").write_text(output, encoding="utf-8")
     elapsed = time.monotonic() - started
@@ -472,11 +565,14 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
     accessed_after_disclosure: list[str] = []
     entry_disclosed = False
     session_id: str | None = None
+    first_instruction = INITIAL_PROMPTS[condition]
+    if task_id in EXTENSION_TASKS and condition == "vista":
+        first_instruction = INITIAL_PROMPTS["noskill"]
     prompt = COMMON_PROMPT.format(
         benchmark=TASKS[task_id]["benchmark"],
         inputs=", ".join(TASKS[task_id]["inputs"]),
         outputs=", ".join(f"./{name}" for name in TASKS[task_id]["output_files"]),
-    ) + INITIAL_PROMPTS[condition]
+    ) + first_instruction
     turns: list[dict[str, Any]] = []
     all_skill_reads: list[dict[str, Any]] = []
     final_pass = False
@@ -488,14 +584,20 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
     access_after_last_disclosure = False
     stalled_rounds = 0
     previous_signatures: tuple[str, ...] = ()
+    extension_previous_signatures: tuple[str, ...] = ()
+    extension_stall = 0
     verifier_seconds = 0.0
     agent_net_seconds = 0.0
-    max_turns = MAX_TURNS if condition in {"vista", "pd-m"} else 1
+    max_turns = MAX_TURNS if condition in MULTI_CONDITIONS else 1
 
     process_env = tool_environment()
     process_env.update(turn_environment(base))
+    if RESOURCE_POLICY:
+        process_env["VISTA_SOLVER_LOG"] = str(base / "solver-usage.jsonl")
+        process_env["VISTA_LO_PROFILE"] = str(base / "libreoffice-profile")
 
     for turn in range(1, max_turns + 1):
+        (base / f"prompt-turn-{turn}.txt").write_text(prompt, encoding="utf-8")
         command = command_for_turn(workspace=workspace, prompt=prompt, session_id=session_id)
         timed_out = False
         try:
@@ -573,7 +675,14 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
             },
             "verifier_pass": verifier_pass,
             "verifier_infrastructure_error": verifier_infra,
+            "verifier_queue_seconds": round(getattr(_VERIFIER_TIMING, "wait_seconds", 0.0), 3),
         })
+        if task_id in EXTENSION_TASKS:
+            snapshot = base / f"outputs-turn-{turn}"
+            snapshot.mkdir(exist_ok=True)
+            for name in TASKS[task_id]["output_files"]:
+                if (workspace / name).is_file():
+                    shutil.copy2(workspace / name, snapshot / name)
         print(
             f"task={task_id} condition={condition} replicate={replicate} turn={turn} "
             f"requests={len(records)} tools={tool_uses} skill_reads={accessed_now} "
@@ -594,9 +703,12 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
         if timed_out and not turn_payload:
             stop_reason = "model_turn_timeout"
             break
-        if condition not in {"vista", "pd-m"}:
+        if condition not in MULTI_CONDITIONS:
             # 单回合组：失败即停止，无反馈、无第二回合（manual 二.1/2/3）
             stop_reason = "single_episode_failed"
+            break
+        if task_id in EXTENSION_TASKS and turn == max_turns:
+            stop_reason = "max_turns"
             break
 
         trigger_opportunities += 1
@@ -610,10 +722,20 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
         if not feedback_types or feedback_types == ["unknown"]:
             feedback_types = ["command_failure"]
         signatures = failure_layer_signatures(task_id, verifier_output)
+        if task_id in EXTENSION_TASKS:
+            current = tuple(sorted(signatures))
+            extension_stall = (0 if current != extension_previous_signatures
+                               else extension_stall + 1)
+            extension_previous_signatures = current
+            turns[-1]["failure_layer_signatures"] = signatures
+            if extension_stall >= 2:
+                stop_reason = "stalled_after_feedback"
+                break
         for signature in signatures:
             if signature not in feedback_types:
                 feedback_types.append(signature)
-        diagnostic = public_diagnostic(verifier_output)
+        diagnostic = (extension_diagnostic(task_id, verifier_output)
+                      if task_id in EXTENSION_TASKS else public_diagnostic(verifier_output))
         newly_disclosed: list[str] = []
         if condition == "vista":
             assert router is not None
@@ -669,9 +791,11 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
         made_progress = bool(newly_disclosed) or current_signatures != previous_signatures
         previous_signatures = current_signatures
         stalled_rounds = 0 if made_progress else stalled_rounds + 1
-        if (condition == "pd-m" or disclosed) and stalled_rounds >= 2:
+        stalled = (task_id not in EXTENSION_TASKS
+                   and (condition == "pd-m" or disclosed) and stalled_rounds >= 2)
+        if stalled:
             stop_reason = (
-                "stalled_after_feedback" if condition == "pd-m"
+                "stalled_after_feedback" if condition != "vista"
                 else "stalled_after_full_disclosure"
             )
             break
@@ -680,6 +804,8 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
                 "The progressive-disclosure skill is already available under ./skill/. "
                 "Re-examine the relevant references and repair the outputs accordingly."
             )
+        elif condition == "noskill-multi":
+            instruction = "No task Skill is available; repair from the public failure category."
         elif newly_disclosed:
             instruction = "VISTA disclosed " + ", ".join(newly_disclosed) + (
                 ". Read the disclosed module before repairing."
@@ -702,12 +828,26 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
     result_dir = result_root(task_id) / condition / f"replicate-{replicate:02d}"
     result_dir.mkdir(parents=True, exist_ok=True)
     # 补跑覆盖同一目录时清掉旧试验的回合证据，否则会残留多出来的 verifier-turn-N
-    for stale in [*result_dir.glob("turn-*.*"), *result_dir.glob("verifier-turn-*.txt")]:
-        stale.unlink()
+    if (result_dir / "result.json").exists():
+        raise RuntimeError(f"refusing to overwrite completed trial evidence: {result_dir}")
     for artifact in base.glob("turn-*.*"):
         shutil.copy2(artifact, result_dir / artifact.name)
     for artifact in verifier.glob("verifier-turn-*.txt"):
         shutil.copy2(artifact, result_dir / artifact.name)
+    if (verifier / "verifier-solver-usage.jsonl").is_file():
+        shutil.copy2(verifier / "verifier-solver-usage.jsonl", result_dir / "verifier-solver-usage.jsonl")
+    for artifact in base.glob("prompt-turn-*.txt"):
+        shutil.copy2(artifact, result_dir / artifact.name)
+    for snapshot in base.glob("outputs-turn-*"):
+        if not (result_dir / snapshot.name).exists():
+            shutil.copytree(snapshot, result_dir / snapshot.name)
+    if (base / "solver-usage.jsonl").is_file():
+        shutil.copy2(base / "solver-usage.jsonl", result_dir / "solver-usage.jsonl")
+    if task_id in EXTENSION_TASKS and session_id:
+        rollout = model_io_rollout_path(storage, session_id)
+        if rollout.is_file():
+            # Contains prompts/tools/results; inspect before publishing outside the repo.
+            shutil.copy2(rollout, result_dir / "model-io.jsonl")
     for name in TASKS[task_id]["output_files"]:
         if (workspace / name).is_file():
             shutil.copy2(workspace / name, result_dir / name)
@@ -746,8 +886,15 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
         "run_id": f"{result_root(task_id).name}-{condition}-replicate-{replicate:02d}",
         "task_id": task_id, "condition": condition, "replicate_id": replicate,
         "backend": "zcode-local-minimal-dependencies", "docker_used": False,
-        "protocol": "sj4-pdm" if condition == "pd-m" else "sj4",
+        "protocol": EXTENSION_PROTOCOL if task_id in EXTENSION_TASKS else
+                    "sj4-pdm" if condition == "pd-m" else "sj4",
         "requested_provider_model": model, "session_id": session_id,
+        "provider_id": ACTIVE_PROVIDER,
+        "episode_workers": CURRENT_WORKERS,
+        "construction_evidence_sha256": (
+            hashlib.sha256((ARTIFACT_ROOT / task_id / "construction-evidence.json").read_bytes()).hexdigest()
+            if task_id in EXTENSION_TASKS else None
+        ),
         "turns": turns, "usage": usage,
         "skill_reads": all_skill_reads,
         "skill_read_tokens": sum(read["file_tokens"] for read in all_skill_reads),
@@ -757,6 +904,9 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
         "skill_read_count": len(all_skill_reads),
         "agent_net_seconds": round(agent_net_seconds, 3),
         "verifier_seconds": round(verifier_seconds, 3),
+        "verifier_queue_seconds": round(sum(t.get("verifier_queue_seconds", 0.0)
+                                            for t in turns), 3),
+        "resource_policy": RESOURCE_POLICY,
         "initially_available_modules": (
             ["modules/<module-id>/SKILL.md"] if condition == "flat"
             else ["skill/SKILL.md"] if condition in {"pd", "pd-m"} else []
@@ -788,13 +938,27 @@ def archive_partial_base(task_id: str, condition: str, replicate: int) -> None:
     避免 prepare_trial 的 refuse-to-reuse 保护误报；证据不删除。"""
 
     base_name = f"{result_root(task_id).name}-{condition}-replicate-{replicate:02d}"
+    raw_trial = result_root(task_id) / condition / f"replicate-{replicate:02d}"
+    if raw_trial.exists() and not (raw_trial / "result.json").exists():
+        if not raw_trial.resolve().is_relative_to(result_root(task_id).resolve()):
+            raise RuntimeError(f"partial result escapes batch root: {raw_trial}")
+        archived_result = result_root(task_id) / "_interrupted" / (
+            f"{condition}-replicate-{replicate:02d}-{time.time_ns()}"
+        )
+        archived_result.parent.mkdir(exist_ok=True)
+        raw_trial.rename(archived_result)
     base = LOCAL_ROOT / base_name
-    if base.exists() and any(base.glob("turn-*.jsonl")) and not (
-        base / "result.json"
-    ).is_file():
-        stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    if base.exists() and any(base.iterdir()):
+        if not base.resolve().is_relative_to(LOCAL_ROOT.resolve()):
+            raise RuntimeError(f"partial workspace escapes cache root: {base}")
+        stamp = f"{datetime.now().strftime('%Y%m%d-%H%M%S')}-{time.time_ns()}"
         archived = LOCAL_ROOT / f"{base_name}-abandoned-{stamp}"
         base.rename(archived)
+        verifier = LOCAL_ROOT / ".verifiers" / base_name
+        if verifier.exists():
+            if not verifier.resolve().is_relative_to(LOCAL_ROOT.resolve()):
+                raise RuntimeError(f"partial verifier escapes cache root: {verifier}")
+            verifier.rename(verifier.with_name(f"{base_name}-abandoned-{stamp}"))
         print(f"archived partial trial: {base_name} -> {archived.name}", flush=True)
 
 
@@ -814,6 +978,10 @@ def run_group(task_id: str, *, model: str, provider: str, workers: int,
                 or previous.get("requested_provider_model") != model
                 or previous.get("provider_id") != provider):
             raise RuntimeError(f"existing batch has a different protocol or model: {root}")
+        if task_id in EXTENSION_TASKS and (
+                previous.get("protocol_version") != EXTENSION_PROTOCOL
+                or previous.get("resource_policy") != RESOURCE_POLICY):
+            raise RuntimeError(f"existing batch has a different extension/resource protocol: {root}")
     if not root.exists():
         root.mkdir(parents=True)
         (root / "readiness.json").write_text(
@@ -827,6 +995,19 @@ def run_group(task_id: str, *, model: str, provider: str, workers: int,
         existing = root / condition / f"replicate-{replicate:02d}" / "result.json"
         if existing.is_file():
             results[(replicate, condition)] = json.loads(existing.read_text(encoding="utf-8"))
+            saved = results[(replicate, condition)]
+            if (saved.get("task_id") != task_id or saved.get("condition") != condition
+                    or saved.get("replicate_id") != replicate
+                    or saved.get("requested_provider_model") != model):
+                raise RuntimeError(f"saved result identity does not match schedule: {existing}")
+            if task_id in EXTENSION_TASKS and (
+                    saved.get("protocol") != EXTENSION_PROTOCOL
+                    or saved.get("resource_policy") != RESOURCE_POLICY
+                    or saved.get("provider_id") != provider
+                    or saved.get("construction_evidence_sha256") != hashlib.sha256(
+                        (ARTIFACT_ROOT / task_id / "construction-evidence.json").read_bytes()
+                    ).hexdigest()):
+                raise RuntimeError(f"saved result uses another protocol: {existing}")
             continue
         archive_partial_base(task_id, condition, replicate)
         pending.append((replicate, condition))
@@ -862,9 +1043,22 @@ def run_group(task_id: str, *, model: str, provider: str, workers: int,
             },
             "skill_read_tokens": sum(r["skill_read_tokens"] for r in values),
         }
+        if task_id in EXTENSION_TASKS:
+            valid = [r for r in values if not r["status"].startswith("quarantined_")]
+            condition_summaries[condition].update({
+                "valid_trials": len(valid), "quarantined_trials": len(values) - len(valid),
+                "valid_first_turn_passes": sum(r["vista_metrics"]["first_turn_pass"] for r in valid),
+                "valid_final_verifier_passes": sum(r["final_verifier_pass"] for r in valid),
+                "verifier_queue_seconds": round(sum(r.get("verifier_queue_seconds", 0.0)
+                                                    for r in values), 3),
+                "worker_counts_seen": sorted({r.get("episode_workers", 0) for r in values}),
+            })
     summary = {
         "schema_version": 1,
         "protocol": (
+            f"{task_id}-{EXTENSION_PROTOCOL}-x{len(REPLICATES)}-"
+            "single-noskill-flat-pd/multi-pdm-noskill-vista/categories-only-feedback"
+            if task_id in EXTENSION_TASKS else
             f"{task_id}-sj4-pdm-x{len(REPLICATES)}-glm53-"
             "pd-skill-initially-available/multi-turn-public-feedback/no-routing"
             if conditions == ("pd-m",) else
@@ -880,7 +1074,10 @@ def run_group(task_id: str, *, model: str, provider: str, workers: int,
         "planned_trials": len(schedule), "completed_trials": len(ordered),
         "requested_provider_model": model,
         "provider_id": provider,
-        "construction_model": "glm53-flash",
+        "protocol_version": EXTENSION_PROTOCOL if task_id in EXTENSION_TASKS else "sj4",
+        "resource_policy": RESOURCE_POLICY,
+        "construction_model": "deterministic-source-preserving-v1"
+                              if task_id in EXTENSION_TASKS else "glm53-flash",
         "backend": "zcode-local-minimal-dependencies",
         "condition_summaries": condition_summaries,
         "results": [
@@ -921,15 +1118,31 @@ def dependency_readiness(task_id: str) -> dict[str, Any]:
         "sj4_manifest": (ARTIFACT_ROOT / task_id / "manifest.yaml").is_file(),
     }
     try:
+        imports = spec.get("imports", ["pytest", "numpy", "pandas", "yaml", "rapidfuzz", "openpyxl"])
         completed = subprocess.run(
             [str(VERIFIER_PYTHON), "-c",
-             "import pytest, numpy, pandas, yaml, rapidfuzz, openpyxl; print('ok')"],
-            capture_output=True, text=True, timeout=60, check=False,
+             "import " + ", ".join(imports) + "; print('ok')"],
+            capture_output=True, text=True, timeout=60, check=False, env=tool_environment(),
         )
         checks["verifier_imports"] = completed.returncode == 0
     except Exception as exc:
         checks["verifier_imports"] = False
         checks["verifier_import_error"] = str(exc)
+    if task_id in EXTENSION_TASKS:
+        from build_sj4_extension_artifacts import verify_artifacts
+
+        checks["source_and_artifact_hashes"] = verify_artifacts(source, ARTIFACT_ROOT / task_id)
+        if RESOURCE_POLICY:
+            guarded = subprocess.run([
+                str(VERIFIER_PYTHON), "-c",
+                "from scipy.optimize import milp; assert milp.__module__ == 'sj4_resource_guard'; "
+                "r=milp([1.0], integrality=[1], options={'time_limit': 1}); "
+                "assert r.success; print('guarded solver ok')",
+            ], env=tool_environment(), capture_output=True, text=True, timeout=60, check=False)
+            checks["resource_guard_probe"] = guarded.returncode == 0
+        if task_id == "task-015":
+            # Source xlsx guidance assumes soffice; make it available equally to all groups.
+            checks["libreoffice"] = shutil.which("soffice", path=tool_environment()["PATH"]) is not None
     checks["ready"] = all(
         value if isinstance(value, bool) else bool(value)
         for key, value in checks.items()
@@ -945,7 +1158,13 @@ def main(argv: list[str] | None = None) -> int:
                         help="v1 chat-completions (host default config) or v3 anthropic "
                              "endpoint via corrected provider config")
     parser.add_argument("--workers", type=int, default=4,
-                        help="concurrent episodes per endpoint (1-6)")
+                        help="concurrent episodes per endpoint (1-10)")
+    parser.add_argument("--verifier-workers", type=int, default=1,
+                        help="host-wide verifier slots for task-014/015")
+    parser.add_argument("--solver-workers", type=int, default=2,
+                        help="host-wide scipy.optimize.milp slots for task-014/015")
+    parser.add_argument("--numeric-threads", type=int, default=1,
+                        help="BLAS/OpenMP/HiGHS threads per numeric process for task-014/015")
     parser.add_argument("--replicates", type=int, default=3,
                         help="replicates per condition (1-10); result dir is named sj4-x<N>")
     parser.add_argument("--conditions", nargs="+", choices=(*CONDITIONS, *OPTIONAL_CONDITIONS),
@@ -954,15 +1173,55 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--dry-run", action="store_true",
                         help="run readiness and preflight gates only, no model call")
     args = parser.parse_args(argv)
-    if not 1 <= args.workers <= 6:
-        raise SystemExit("--workers must be between 1 and 6")
+    if not 1 <= args.workers <= 10:
+        raise SystemExit("--workers must be between 1 and 10")
+    if min(args.verifier_workers, args.solver_workers, args.numeric_threads) < 1:
+        raise SystemExit("resource limits must be positive")
     if not 1 <= args.replicates <= 10:
         raise SystemExit("--replicates must be between 1 and 10")
     conditions = tuple(args.conditions)
     if len(set(conditions)) != len(conditions):
         raise SystemExit("--conditions must not contain duplicates")
-    global REPLICATES
+    global REPLICATES, CURRENT_WORKERS
     REPLICATES = tuple(range(1, args.replicates + 1))
+    CURRENT_WORKERS = args.workers
+    if args.task in EXTENSION_TASKS:
+        global RESOURCE_POLICY
+        guard = Path(os.environ.get("VISTA_RESOURCE_GUARD_ROOT",
+                                    LOCAL_ROOT / ".sj4-extension-guard-v1")).expanduser().resolve()
+        configure_resources(guard, verifier_workers=args.verifier_workers,
+                            solver_workers=args.solver_workers, numeric_threads=args.numeric_threads)
+        guard_python = guard / "python"
+        guard_python.mkdir(exist_ok=True)
+        for source in (Path(__file__).with_name("sj4_resource_guard.py"),
+                       Path(__file__).parent / "sj4_guard_site" / "sitecustomize.py"):
+            target = guard_python / source.name
+            if not target.exists() or target.read_bytes() != source.read_bytes():
+                # Atomic replacement prevents the other endpoint importing a partial file.
+                temporary = guard_python / f"{source.name}.{os.getpid()}.tmp"
+                shutil.copy2(source, temporary)
+                temporary.replace(target)
+        RESOURCE_POLICY = {"guard_root": str(guard), "verifier_workers": args.verifier_workers,
+                           "solver_workers": args.solver_workers,
+                           "numeric_threads": args.numeric_threads}
+        RESOURCE_POLICY["guard_sha256"] = hashlib.sha256(
+            Path(__file__).with_name("sj4_resource_guard.py").read_bytes()
+            + (Path(__file__).parent / "sj4_guard_site/sitecustomize.py").read_bytes()
+            + (Path(__file__).parent / "sj4_guard_site/soffice").read_bytes()
+        ).hexdigest()
+        # Freeze the actual executable before prepending the profile-isolating shim.
+        soffice = shutil.which("soffice")
+        mac_soffice = Path("/Applications/LibreOffice.app/Contents/MacOS/soffice")
+        if not soffice and mac_soffice.is_file():
+            soffice = str(mac_soffice)
+        if soffice:
+            RESOURCE_POLICY["soffice_binary"] = str(Path(soffice).resolve())
+            guard_bin = guard / "bin"
+            guard_bin.mkdir(exist_ok=True)
+            temporary = guard_bin / f"soffice.{os.getpid()}.tmp"
+            shutil.copy2(Path(__file__).parent / "sj4_guard_site" / "soffice", temporary)
+            temporary.chmod(0o755)
+            temporary.replace(guard_bin / "soffice")
     if conditions != CONDITIONS:
         suffix = "pdm" if conditions == ("pd-m",) else "custom"
         _RUN_PREFIX[args.task] = os.environ.get(
@@ -984,6 +1243,8 @@ def main(argv: list[str] | None = None) -> int:
     else:
         expected_provider = PROVIDER_V1
     model_config = current_zcode_model_config(provider_id=expected_provider)
+    global ACTIVE_PROVIDER
+    ACTIVE_PROVIDER = args.provider
     last_error: Exception | None = None
     launcher = None
     for attempt in range(3):
