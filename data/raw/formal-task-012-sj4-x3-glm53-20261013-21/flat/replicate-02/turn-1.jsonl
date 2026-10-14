@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_e4f4ce0e-2fee-47c1-8474-3bb079a2d7e7",
+  "traceId": "18968b09-84e9-48ed-83f5-b6974e3c3429",
+  "turnId": "turn_323d26a0-dfc2-4e74-aec7-92b02600e4fe",
+  "response": "The fraud report is complete and written to `./fraud_report.json`. Of the 53 invoices, 50 were flagged; pages 51–53 are the legitimate ones.\n\n**How it was done:** I extracted each invoice from `invoices.pdf` with pdfplumber (one per page, 1-based), loaded the 503 approved vendors from `vendors.xlsx` and 2,503 purchase orders from `purchase_orders.csv`, then applied the five fraud criteria in the priority order the task specifies, using normalized names plus difflib fuzzy matching (cutoff 0.6) for vendor resolution.\n\n**Findings breakdown:**\n- **Amount Mismatch (27)** — invoice amount differs from the referenced PO's amount by more than $0.01 (e.g., page 2: Vendor 3 bills $8,347.33 against PO-1412, which is $1,587.74).\n- **Unknown Vendor (9)** — \"Fraudulent Corp\" appears on pages 3, 6, 12, 20, 26, 30, 31, 47, 48; its best fuzzy match against the vendor list scores only 0.29, well below any reasonable threshold.\n- **IBAN Mismatch (9)** — known vendors billing to `FRADULENT_IBAN` instead of their authorized account (pages 1, 17, 19, 22, 29, 36, 39, 42, 44).\n- **Invalid PO (5)** — the literal `PO-INVALID` on pages 4, 8, 15, 38, 45; `po_number` is set to `null` for these per the task instruction.\n\n**The clean pages confirm the tricky cases were handled correctly:** page 51 \"Safe Vendor Ltd\" matches V_NF1 exactly after normalization; page 52 \"Fuzzy Match Systems Inc.\" resolves to V_NF2 via the \"Inc.\" suffix variation; page 53 \"Boundary Corp\" matches its PO amount exactly ($500.01), so the 0.01-difference rule does not flag it.\n\nTwo edge cases worth noting: where multiple criteria applied (e.g., IBAN mismatch plus amount mismatch), I recorded only the first in the task's priority order; and where a flagged invoice's PO number does exist in the CSV, it's reported as-is — only nonexistent POs become `null`. No duplicate PO numbers or vendor names exist in the reference data, so lookups are unambiguous. The analysis script is saved as `detect_fraud.py` in the working directory for reproducibility.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 10,
+    "inputTokens": 438275,
+    "outputTokens": 8330,
+    "totalTokens": 446605,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 6335,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 446605,
+    "contextUsed": 67472,
+    "contextWindow": 200000
+  }
+}

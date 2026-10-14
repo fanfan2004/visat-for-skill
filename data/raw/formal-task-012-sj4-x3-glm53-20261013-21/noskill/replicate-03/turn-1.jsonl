@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_bbe82352-0b10-46e0-abba-a0273a702cd5",
+  "traceId": "d1f01ec8-9d00-4c05-aa86-929862de50da",
+  "turnId": "turn_c94f74b8-44e6-4f5b-8cc2-f81f80fe0d97",
+  "response": "Done — `./fraud_report.json` is written with 50 flagged invoices out of 53 pages. The three clean pages are exactly the deliberate sentinel cases: page 51 (exact vendor/PO/IBAN/amount match), page 52 (\"Fuzzy Match Systems Inc.\" which fuzzy-matches the approved vendor \"Fuzzy Match Systems\" at score 100 and passes all checks), and page 53 (Boundary Corp at exactly 500.01 vs. PO 500.01 — a 0.00 difference, within the 0.01 tolerance, so not flagged).\n\n**How the detection works:** I parsed all 53 invoice pages with pdfplumber, loaded the 503 approved vendors (500 \"Vendor N\" + 3 special ones) from vendors.xlsx and the 2,503 purchase orders from purchase_orders.csv, then applied the five criteria strictly in the order given in task.md, with exact vendor matching first and fuzzy matching (token_set_ratio ≥ 90) as fallback for name variants. Exact matching protects the \"Vendor N\" names from false fuzzy collisions, and \"Fraudulent Corp\" correctly stays unmatched (best candidate \"Boundary Corp\" scores only 50).\n\n**Flag breakdown:**\n- **9 Unknown Vendor** (pages 3, 6, 12, 20, 26, 30, 31, 47, 48) — \"Fraudulent Corp\" invoices\n- **9 IBAN Mismatch** (pages 1, 17, 19, 22, 29, 36, 39, 42, 44) — payment IBAN is the placeholder `FRADULENT_IBAN` instead of the vendor's authorized IBAN\n- **5 Invalid PO** (pages 4, 8, 15, 38, 45) — PO `PO-INVALID` doesn't exist in the CSV\n- **27 Amount Mismatch** (remaining pages) — the claimed PO exists, but the invoice amount differs from the PO amount by more than 0.01; since Amount Mismatch is listed before Vendor Mismatch, it takes precedence (all of these POs also belong to different vendors, but that's the 5th criterion)\n\nTwo format notes, both derived from task.md: `po_number` is `null` for Unknown Vendor entries (matching the example in task.md) and for Invalid PO entries (the PO is missing from `purchase_orders.csv`), while IBAN Mismatch and Amount Mismatch entries carry the printed PO string. Amount comparisons use `Decimal` arithmetic to avoid floating-point drift around the 0.01 threshold. The report is sorted by 1-based page number and passes schema validation (correct keys, integer page numbers, reason strings exactly as specified).",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 365543,
+    "outputTokens": 34306,
+    "totalTokens": 399849,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 30669,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 399849,
+    "contextUsed": 59134,
+    "contextWindow": 200000
+  }
+}

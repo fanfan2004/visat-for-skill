@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-13T21:00:43.260047",
+  "construction_model": "new-provider/glm53-flash",
+  "tasks": {
+    "task-011": {
+      "task_id": "task-011",
+      "ok": true,
+      "steps": {
+        "flat": {
+          "ok": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "turn": {
+                "session_id": "sess_e37eb918-1bee-4d4a-8794-78051906cc5f",
+                "return_code": 0
+              },
+              "output_ok": true,
+              "diff_ok": true,
+              "hygiene_ok": true
+            }
+          ]
+        },
+        "single-file": {
+          "ok": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "turn": {
+                "session_id": "sess_3da1b6e1-41fb-47e0-976b-74d61200847d",
+                "return_code": 0
+              },
+              "output_ok": true,
+              "diff_ok": true,
+              "hygiene_ok": true
+            }
+          ]
+        },
+        "pd": {
+          "ok": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "turn": {
+                "session_id": "sess_5d2c0bd2-dbd2-44dc-9eec-37135c3639a7",
+                "return_code": 0
+              },
+              "output_ok": true,
+              "diff_ok": true,
+              "hygiene_ok": true
+            }
+          ]
+        }
+      },
+      "manifest": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/experiments/artifacts/sj4/task-011/manifest.yaml"
+    },
+    "task-012": {
+      "task_id": "task-012",
+      "ok": true,
+      "steps": {
+        "flat": {
+          "ok": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "turn": {
+                "session_id": "sess_d4abaa64-a3ac-450f-9910-2327258b080b",
+                "return_code": 0
+              },
+              "output_ok": true,
+              "diff_ok": true,
+              "hygiene_ok": true
+            }
+          ]
+        },
+        "single-file": {
+          "ok": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "turn": {
+                "session_id": "sess_d459110d-345e-41a8-ab41-c561955fb5f2",
+                "return_code": 0
+              },
+              "output_ok": true,
+              "diff_ok": true,
+              "hygiene_ok": true
+            }
+          ]
+        },
+        "pd": {
+          "ok": true,
+          "attempts": [
+            {
+              "attempt": 1,
+              "turn": {
+                "session_id": "sess_e632dcb7-5d80-4848-b813-fc039d61ac71",
+                "return_code": 0
+              },
+              "output_ok": true,
+              "diff_ok": true,
+              "hygiene_ok": true
+            }
+          ]
+        }
+      },
+      "manifest": "/Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/experiments/artifacts/sj4/task-012/manifest.yaml"
+    }
+  }
+}

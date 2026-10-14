@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_4a8e1843-9145-41ce-9c0d-cd91b060037d",
+  "traceId": "a850c5ce-5477-47f0-958c-9491583ef3ca",
+  "turnId": "turn_2ff2034e-0293-4ab3-82df-882e175a2ba6",
+  "response": "Done. `fraud_report.json` is written to the working directory with 50 flagged invoices.\n\n**Summary of the analysis:**\n\n- **Invoices (53 pages):** Pages 1–50 all failed validation and were flagged; pages 51–53 are clean control pages and were excluded.\n- **Flagged reasons (applied in the task's priority order):**\n  - **Unknown Vendor (9):** pages 3, 6, 12, 20, 26, 30, 31, 47, 48 — all from \"Fraudulent Corp\", which doesn't match any vendor in `vendors.xlsx` (best fuzzy similarity was only ~0.29, so it's safely unmatched).\n  - **IBAN Mismatch (9):** pages 1, 17, 19, 22, 29, 36, 39, 42, 44 — known vendors paid to `FRADULENT_IBAN` instead of their registered IBAN.\n  - **Invalid PO (5):** pages 4, 8, 15, 38, 45 — PO number `PO-INVALID` doesn't exist in `purchase_orders.csv`; `po_number` is set to `null` for these.\n  - **Amount Mismatch (27):** the remaining pages — the invoice total differs from the PO amount by more than 0.01 (verified against the actual PO record for every one).\n- **Clean pages confirmed:** page 51 \"Safe Vendor Ltd\" matches exactly; page 52 \"Fuzzy Match Systems Inc.\" matches \"Fuzzy Match Systems\" after normalizing the Inc./Ltd.-style suffix; page 53 \"Boundary Corp\" bills 500.01 against PO-9003's 500.01 — a difference of exactly 0.01, which does not exceed the 0.01 tolerance, so it's not flagged.\n- **Correctness checks:** vendors actually span V001–V500 (the sheet's 504 rows include all PO vendor IDs like V413), each PO number in the CSV is unique, and the report structure matches the required schema with 1-based page indexing.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 11,
+    "inputTokens": 218142,
+    "outputTokens": 6141,
+    "totalTokens": 224283,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 3565,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 224283,
+    "contextUsed": 29002,
+    "contextWindow": 200000
+  }
+}

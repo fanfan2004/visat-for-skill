@@ -1,0 +1,17 @@
+schema_version: 1
+construction_model: glm53-flash
+source_content_equivalence: behavior-unit-diff-low-risk
+modules:
+- id: fuzzy-match
+  path: pd/references/fuzzy-match.md
+  triggers:
+  - fraud_field_mismatch
+- id: pdf
+  path: pd/references/pdf.md
+  triggers:
+  - fraud_missed
+  - missing_output_file
+- id: xlsx
+  path: pd/references/xlsx.md
+  triggers:
+  - fraud_false_positive

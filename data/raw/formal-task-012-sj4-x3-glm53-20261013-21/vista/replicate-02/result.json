@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-012-sj4-x3-glm53-20261013-21-vista-replicate-02",
+  "task_id": "task-012",
+  "condition": "vista",
+  "replicate_id": 2,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "protocol": "sj4",
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_4e984fc0-29dd-4e7e-a73b-307b77a92cac",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_05475563-08de-4fba-b8ff-0f20ba41ffb4",
+      "requests": 13,
+      "tool_uses": 14,
+      "skill_reads": [],
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_dcadf144-483a-4f36-88ba-f815f2d5168c",
+      "requests": 15,
+      "tool_uses": 14,
+      "skill_reads": [
+        {
+          "file": "skill/references/fuzzy-match.md",
+          "turn_id": "turn_dcadf144-483a-4f36-88ba-f815f2d5168c",
+          "request_input_tokens": 41585
+        }
+      ],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 28,
+    "input_tokens": 1539036,
+    "output_tokens": 77086,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 1616122
+  },
+  "skill_reads": [
+    {
+      "file": "skill/references/fuzzy-match.md",
+      "turn_id": "turn_dcadf144-483a-4f36-88ba-f815f2d5168c",
+      "request_input_tokens": 41585
+    }
+  ],
+  "skill_read_tokens": 41585,
+  "agent_net_seconds": 678.81,
+  "verifier_seconds": 5.872,
+  "initially_available_modules": [],
+  "disclosed_modules": [
+    "fuzzy-match"
+  ],
+  "accessed_modules_after_disclosure": [
+    "skill/references/fuzzy-match.md"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 1,
+    "routable_feedback": 1,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 1,
+    "next_round_module_access": 1,
+    "disclosure_to_pass_gap": 1,
+    "access_after_last_disclosure": true,
+    "first_turn_pass": false,
+    "clean_complete_closure": 1
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed_with_clean_vista_feedback_loop",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-012-sj4-x3-glm53-20261013-21-vista-replicate-02/workspace"
+}

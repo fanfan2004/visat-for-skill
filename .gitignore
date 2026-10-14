@@ -25,3 +25,6 @@ reports/trajectory_cases/
 macos-preflight.json
 HANDOFF_CONTENTS.sha256
 
+
+# Benchmark task checkout under vendor (kept local only, same as skillsbench/)
+vendor/skillsbench/

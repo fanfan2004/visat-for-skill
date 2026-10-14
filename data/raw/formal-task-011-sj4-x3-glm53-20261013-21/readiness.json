@@ -1,0 +1,25 @@
+{
+  "ready": {
+    "verifier_python": true,
+    "task_md": true,
+    "verifier_source": true,
+    "inputs_present": {
+      "13f-2025-q2.zip": true,
+      "13f-2025-q3.zip": true
+    },
+    "flat_artifacts": [
+      "13f-analyzer",
+      "fuzzy-name-search"
+    ],
+    "pd_artifact": true,
+    "pd_references": [
+      "13f-analyzer.md",
+      "fuzzy-name-search.md"
+    ],
+    "sj4_manifest": true,
+    "verifier_imports": true,
+    "ready": true
+  },
+  "provider": "new-provider",
+  "model": "glm53-flash"
+}

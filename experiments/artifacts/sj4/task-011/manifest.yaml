@@ -1,0 +1,13 @@
+schema_version: 1
+construction_model: glm53-flash
+source_content_equivalence: behavior-unit-diff-low-risk
+modules:
+- id: 13f-analyzer
+  path: pd/references/13f-analyzer.md
+  triggers:
+  - 13f_value_mismatch
+  - 13f_missing_output
+- id: fuzzy-name-search
+  path: pd/references/fuzzy-name-search.md
+  triggers:
+  - 13f_name_list_mismatch

@@ -209,24 +209,37 @@ def rollout_usage_summary(records: list[dict[str, Any]]) -> dict[str, int]:
     return summary
 
 
-def rollout_model_identity(records: list[dict[str, Any]]) -> tuple[str, str]:
+def rollout_model_identity(
+    records: list[dict[str, Any]],
+    *,
+    expected_provider: str = PROVIDER_ID,
+    expected_model: str = EXPECTED_MODEL,
+) -> tuple[str, str]:
     """Return the single (provider_id, model_id) across all requests, fail-closed."""
 
     identities = {(r["provider_id"], r["model_id"]) for r in records}
     if len(identities) != 1:
         raise LocalGateError("model identity is not consistent across rollout requests")
     provider_id, model_id = identities.pop()
-    if (provider_id, model_id) != (PROVIDER_ID, EXPECTED_MODEL):
+    if (provider_id, model_id) != (expected_provider, expected_model):
         raise LocalGateError(
-            f"rollout model {provider_id}/{model_id} does not equal {PROVIDER_ID}/{EXPECTED_MODEL}"
+            f"rollout model {provider_id}/{model_id} does not equal "
+            f"{expected_provider}/{expected_model}"
         )
     return provider_id, model_id
 
 
-def current_zcode_model_config() -> dict[str, str]:
-    """Fail-closed proof that the host provider config pins the frozen glm53 model.
+def current_zcode_model_config(
+    *,
+    provider_id: str = PROVIDER_ID,
+    model_id: str = MODEL,
+) -> dict[str, str]:
+    """Fail-closed proof that the host provider config pins the frozen model.
 
     The ZCode CLI has no ``--model`` flag; the host default model is the pin.
+    A parallel instance may pin the second provider through a corrected config
+    file passed via ``ZCODE_PERSONAL_PROVIDER_CONFIG_FILE`` (the CLI reads its
+    personal provider config from that env override).
     Secrets are only referenced, never returned or persisted here.
     """
 
@@ -241,17 +254,17 @@ def current_zcode_model_config() -> dict[str, str]:
     config = json.loads(path.read_text(encoding="utf-8"))
     rules = (config.get("config") or {})
     provider_order = rules.get("providerOrder") or []
-    if provider_order[:1] != [PROVIDER_ID]:
+    if provider_order[:1] != [provider_id]:
         raise LocalGateError(
-            f"host providerOrder must start with {PROVIDER_ID}: {provider_order}"
+            f"host providerOrder must start with {provider_id}: {provider_order}"
         )
     provider_rule = ((rules.get("providerConfigRules") or {}).get("providerRules") or [None])[0]
-    if not isinstance(provider_rule, dict) or provider_rule.get("providerId") != PROVIDER_ID:
-        raise LocalGateError(f"host provider rule for {PROVIDER_ID} is absent")
+    if not isinstance(provider_rule, dict) or provider_rule.get("providerId") != provider_id:
+        raise LocalGateError(f"host provider rule for {provider_id} is absent")
     model_order = provider_rule.get("config", {}).get("modelOrder") or []
-    if model_order[:1] != [MODEL]:
-        raise LocalGateError(f"host modelOrder must start with {MODEL}: {model_order}")
-    return {"provider_id": PROVIDER_ID, "model_id": MODEL, "config_path": str(path)}
+    if model_order[:1] != [model_id]:
+        raise LocalGateError(f"host modelOrder must start with {model_id}: {model_order}")
+    return {"provider_id": provider_id, "model_id": model_id, "config_path": str(path)}
 
 
 def save_readiness(evidence: LauncherEvidence, model_config: dict[str, str], output: Path) -> None:

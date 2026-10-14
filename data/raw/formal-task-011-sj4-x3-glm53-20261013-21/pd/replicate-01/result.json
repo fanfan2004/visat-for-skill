@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-011-sj4-x3-glm53-20261013-21-pd-replicate-01",
+  "task_id": "task-011",
+  "condition": "pd",
+  "replicate_id": 1,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "protocol": "sj4",
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_87bff076-0e1d-4476-8338-2801d064e92f",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_e2d59c6b-4b5c-4088-9ee2-17c6e29676a8",
+      "requests": 20,
+      "tool_uses": 27,
+      "skill_reads": [
+        {
+          "file": "skill/SKILL.md",
+          "turn_id": "turn_e2d59c6b-4b5c-4088-9ee2-17c6e29676a8",
+          "request_input_tokens": 15078
+        },
+        {
+          "file": "skill/references/13f-analyzer.md",
+          "turn_id": "turn_e2d59c6b-4b5c-4088-9ee2-17c6e29676a8",
+          "request_input_tokens": 16918
+        },
+        {
+          "file": "skill/references/fuzzy-name-search.md",
+          "turn_id": "turn_e2d59c6b-4b5c-4088-9ee2-17c6e29676a8",
+          "request_input_tokens": 16918
+        }
+      ],
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false
+    }
+  ],
+  "usage": {
+    "requests": 20,
+    "input_tokens": 531678,
+    "output_tokens": 9107,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 540785
+  },
+  "skill_reads": [
+    {
+      "file": "skill/SKILL.md",
+      "turn_id": "turn_e2d59c6b-4b5c-4088-9ee2-17c6e29676a8",
+      "request_input_tokens": 15078
+    },
+    {
+      "file": "skill/references/13f-analyzer.md",
+      "turn_id": "turn_e2d59c6b-4b5c-4088-9ee2-17c6e29676a8",
+      "request_input_tokens": 16918
+    },
+    {
+      "file": "skill/references/fuzzy-name-search.md",
+      "turn_id": "turn_e2d59c6b-4b5c-4088-9ee2-17c6e29676a8",
+      "request_input_tokens": 16918
+    }
+  ],
+  "skill_read_tokens": 48914,
+  "agent_net_seconds": 91.862,
+  "verifier_seconds": 2.416,
+  "initially_available_modules": [
+    "skill/SKILL.md"
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [
+    "skill/SKILL.md",
+    "skill/references/13f-analyzer.md",
+    "skill/references/fuzzy-name-search.md"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 0,
+    "routable_feedback": 0,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 1,
+    "disclosure_to_pass_gap": null,
+    "access_after_last_disclosure": false,
+    "first_turn_pass": true,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-011-sj4-x3-glm53-20261013-21-pd-replicate-01/workspace"
+}

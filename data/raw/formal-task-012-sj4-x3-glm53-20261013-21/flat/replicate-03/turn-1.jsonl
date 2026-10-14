@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_04867fd7-41f2-49aa-b28f-52cc3a5066e6",
+  "traceId": "06879062-d0d0-4be6-a24e-4a05757649c2",
+  "turnId": "turn_fe2270bb-1cae-49fd-bd69-6a2d63286466",
+  "response": "Done. `fraud_report.json` is written to the workspace with 50 flagged invoices out of 53 pages, verified consistent against the raw data.\n\n**How the analysis worked:**\n- Extracted 53 invoices from `invoices.pdf` (one per page, 1-based indexing), 500+3 vendors from `vendors.xlsx`, and 2,503 POs from `purchase_orders.csv`.\n- Vendor names were matched by exact name, then normalized comparison (Ltd/Limited, Corp/Corporation/Inc. variants), then fuzzy matching (difflib, 0.85 cutoff) per the fuzzy-match module.\n- Reasons were assigned in the task's priority order: Unknown Vendor → IBAN Mismatch → Invalid PO → Amount Mismatch (>0.01 difference) → Vendor Mismatch.\n\n**Findings breakdown:**\n- 9 Unknown Vendor — \"Fraudulent Corp\" invoices that aren't in the approved vendor list\n- 9 IBAN Mismatch — invoices paying to `FRADULENT_IBAN` instead of the vendor's authorized IBAN\n- 5 Invalid PO — invoices referencing `PO-INVALID`\n- 27 Amount Mismatch — valid vendors and POs, but invoice amounts differ from the PO amount\n\nPages 51–53 (\"Safe Vendor Ltd\", \"Fuzzy Match Systems Inc.\", \"Boundary Corp\" with PO-9001–9003) were deliberately included as clean cases — exact/fuzzy name variants, boundary 0.01 amount difference, and correct vendor IDs — and all correctly passed every criterion, so they're excluded from the report. A final structural check confirmed all 50 entries have the six required fields and are sorted by page number.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 550334,
+    "outputTokens": 6741,
+    "totalTokens": 557075,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 3877,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 557075,
+    "contextUsed": 65089,
+    "contextWindow": 200000
+  }
+}
