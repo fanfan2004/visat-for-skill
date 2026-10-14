@@ -39,6 +39,9 @@
 cd /d E:\git-hub\vista-mac\visat-for-skill
 git pull --ff-only
 py -m venv .venv-sj4ext
+set PIP_CACHE_DIR=E:\pip-cache
+set TMP=E:\pip-tmp
+set TEMP=E:\pip-tmp
 .venv-sj4ext\Scripts\python -m pip install -r experiments\formal\requirements-sj4-extension.txt
 .venv-sj4ext\Scripts\python -m pip install -e .
 ```
@@ -47,7 +50,10 @@ py -m venv .venv-sj4ext
 - `pip install -e .` 把 `vista` 包（src-layout）装进 venv；否则 runner 里的
   `from vista.runtime.zcode_local_backend import ...` 会 ImportError
   （`sj4_extension_tasks` 等同目录模块会自动导入，`vista` 不会）。
-- 固定版本 numpy 1.26.4 / scipy 1.13.1 在 Windows 3.12 上有预编译 wheel，无需编译。
+- `PIP_CACHE_DIR` / `TMP` / `TEMP` 指到 E 盘：pip 缓存和临时文件默认走
+  `%LOCALAPPDATA%`（C 盘），不想占 C 盘就改到 E 盘。固定版本 numpy 1.26.4 /
+  scipy 1.13.1 在 Windows 3.12 上有预编译 wheel，无需编译。
+- 2026-10-14 实测：以上安装一次通过，版本精确命中固定版本。
 
 ## 3. 每个终端都要设的环境变量
 
@@ -57,7 +63,7 @@ runner 和 backend 读取的关键变量（cmd 语法；持久化可用 `setx`�
 set VISTA_VERIFIER_PYTHON=%CD%\.venv-sj4ext\Scripts\python.exe
 set VISTA_ZCODE_SCRIPT=E:\zcode\resources\glm\zcode.cjs
 set VISTA_ZCODE_BINARY=E:\zcode\ZCode.exe
-set VISTA_EXPERIMENT_ROOT=%LOCALAPPDATA%\VistaExperiments
+set VISTA_EXPERIMENT_ROOT=E:\vista-experiments
 ```
 
 - `VISTA_VERIFIER_PYTHON`：默认值 `.venv/bin/python` 在 Windows 不存在，必须显式设。
@@ -66,17 +72,20 @@ set VISTA_EXPERIMENT_ROOT=%LOCALAPPDATA%\VistaExperiments
   `freeze_launcher()` 的 "frozen ZCode electron binary or script is missing" 处失败。
   设好后与冻结路径一致，版本 0.16.9 已核实。
 - `VISTA_EXPERIMENT_ROOT`：不设会写到 `~/Library/Caches/...`（在 Windows 上会真的
-  建出这个字面目录）。设为 `%LOCALAPPDATA%\VistaExperiments`。
+  建出这个字面目录）。runner 会在其下放工作目录、资源守卫和 LibreOffice profile；
+  trial 证据本身仍写在仓库 `data/raw/<前缀>` 下（E 盘）。不想占 C 盘就设 E 盘路径。
 - 其余（`VISTA_RESOURCE_GUARD_ROOT`、`VISTA_LO_PROFILE`、`VISTA_SOLVER_LOG` 等）由
   runner 内部按 trial 生成，不需要手动设。
-- 不需要设 `PYTHONPATH`：第 2 节的 `pip install -e .` 已解决包导入。
+- 不需要设 `PYTHONPATH`：第 2 节的 `pip install -e .` 已解决包导入（runner；
+  pytest 见第 4 节）。
 
 ## 4. 预检（不调用模型）与单元测试
 
 选一个批次标签并在本次运行、查询、续跑中始终用同一个（下面用 `20261014-2130` 举例）。
 
 ```bat
-%VISTA_VERIFIER_PYTHON% -m pytest tests\test_sj4_extension.py -q
+set PYTHONPATH=%CD%\experiments\formal
+.venv-sj4ext\Scripts\python -m pytest tests\test_sj4_extension.py -q --basetemp=E:\pip-tmp\pytest
 %VISTA_VERIFIER_PYTHON% experiments\formal\build_sj4_extension_artifacts.py --check
 
 set VISTA_RUN_PREFIX=formal-task-014-sj4ext-six-x5-glm53-20261014-2130
@@ -86,7 +95,10 @@ set VISTA_RUN_PREFIX=formal-task-014-sj4ext-six-x5-glm53-20261014-2130
 ```
 
 - 第一条跑 9 项单元测试（多回合控制、反馈不泄真值、slot 跨进程序列化、
-  工件证据与打包文件一致等）。
+  工件证据与打包文件一致等），pytest 共 12 个用例。测试模块从
+  `experiments\formal` 导入 runner，需要 `PYTHONPATH`（conftest 只加了 src）。
+  pytest 的临时目录默认在 C 盘 `%TEMP%`，本机实测会被拒（WinError 5），
+  用 `--basetemp` 指到 E 盘。
 - 第二条核对源快照与工件 hash，不重建、不调模型；应输出
   `task-014: source/artifact hashes OK`（和 `task-015: ... OK`）。
   **若 FAILED：先确认 `.gitattributes` 生效、重新 `git pull` 拿到 LF 原文；
@@ -94,6 +106,7 @@ set VISTA_RUN_PREFIX=formal-task-014-sj4ext-six-x5-glm53-20261014-2130
 - 第三条 dry-run 依次通过 provider/model gate（host 默认配置 → `new-provider` +
   `glm53-flash`）、launcher gate（0.16.9）、依赖与资源 hook 检查，输出
   `"ready": true` 才进正式运行。资源 hook 只解一个单变量小问题，不调用模型。
+  2026-10-14 实测三项全部通过。
 - 注意：`--conditions` 传全部 6 个时结果目录前缀直接用 `VISTA_RUN_PREFIX`（与本例
   一致）；只传部分条件时前缀会变成 `custom` 后缀，续跑时必须保持同一组条件。
 
