@@ -261,22 +261,50 @@ def verifier_infrastructure_failure(output: str) -> bool:
     ))
 
 
-def mask_assert_values(line: str) -> str:
-    """Mask both sides of `assert X == Y` comparison lines.
+_LITERAL_OPERAND = re.compile(
+    r"""^\s*(?:-?\d[\d.,eE+-]*|'[^']*'|"[^"]*"|\[.*|\{.*|\(.*|None|True|False|nan)\s*$"""
+)
+_VALUE_FRAGMENTS = (
+    # AssertionError 消息里的 Expected/Got 值：保留字段与位置，掩去值
+    # 未加引号的裸值（如 Expected PO-1234）也要掩，故兜底匹配到逗号/空白为止；
+    # (?<!<) 防止把已替换的 <expected>/<actual> 占位符再掩一次。
+    (re.compile(r"(?i)(?<!<)\b(expected)\s*[:=]?\s*('[^']*'|\"[^\"]*\"|\[[^\]]*\]|(?!<)[^\s,;)]+)"),
+     r"\1 <expected>"),
+    (re.compile(r"(?i)(?<!<)\b(got|actual)\s*[:=]?\s*('[^']*'|\"[^\"]*\"|\[[^\]]*\]|(?!<)[^\s,;)]+)"),
+     r"\1 <actual>"),
+    # pytest 序列比较：At index N diff: X != Y
+    (re.compile(r"(?i)(at index \d+ diff:).*"), r"\1 <actual> != <expected>"),
+)
+# pytest 断言展开的 diff 行（E   - ... / E   + ... / E   ? ...）整行丢弃
+_DIFF_LINE = re.compile(r"^\s*E\s+[-+?]\s")
 
-    教训：20261013 批次 noskill rep1 在诊断里看到泄露的标准答案 2451 后直接抄答案。
-    测试名/文件名等上下文保留，只掩去比较两侧数值。
+
+def mask_assert_values(line: str) -> str:
+    """Mask comparison *values* in assertion lines while keeping field names.
+
+    教训 1：20261013 批次所有多轮试验的诊断都带了 `assert 3457 == 2451` 这类真值，
+    agent 直接抄答案。教训 2：sj4 首版把 `answers["q2_answer"]` 也一并掩掉，
+    agent 只能看到 test 名、不知道哪一项错。现在：
+      - `==`/`!=` 右侧一律掩为 <expected>；
+      - 左侧若是字面值（数字/字符串/列表/None 等）掩为 <actual>，
+        若是表达式（如 answers["q2_answer"]、act["po_number"]）原样保留；
+      - Expected/Got/At index diff 片段掩值。
     """
 
-    if "assert" not in line:
-        return line
-    masked = re.sub(
-        r"(assert\b.*?==)\s*[^=\n]+",
-        r"\1 <expected>",
-        line,
-    )
-    masked = re.sub(r"assert\b[^=\n]+==", "assert <actual> ==", masked)
-    return masked
+    out = line
+    match = re.search(r"\bassert\b(.*?)(==|!=)(.*)$", out)
+    if match:
+        lhs, op = match.group(1), match.group(2)
+        lhs_text = " <actual> " if _LITERAL_OPERAND.match(lhs) else lhs
+        rhs = match.group(3)
+        tail = ""
+        if rhs.rstrip().endswith(", ("):
+            tail = ", ("
+        out = out[: match.start()] + f"assert{lhs_text}{op} <expected>{tail}"
+        out = re.sub(r"assert\s+<actual>\s+", "assert <actual> ", out)
+    for pattern, replacement in _VALUE_FRAGMENTS:
+        out = pattern.sub(replacement, out)
+    return out
 
 
 def public_diagnostic(output: str, *, limit: int = 5000) -> str:
@@ -284,10 +312,14 @@ def public_diagnostic(output: str, *, limit: int = 5000) -> str:
     data path fragments, and leaked assert operand values."""
 
     selected: list[str] = []
-    markers = ("FAILED", "ERROR", "assert", "assertion", "not found", "missing",
-               "exit code", "passed", "failed")
+    # 大小写不敏感：首版只因 "AssertionError" 不含小写 "assert" 才没漏出
+    # Expected/Got 值，属于侥幸；现在显式选中并显式掩值。
+    markers = ("failed", "error", "assert", "not found", "missing", "exit code",
+               "passed", "mismatch", "expected", "got ")
     for raw in output.splitlines():
-        if not any(marker in raw for marker in markers):
+        if _DIFF_LINE.match(raw):
+            continue
+        if not any(marker in raw.casefold() for marker in markers):
             continue
         line = re.sub(r"/Users/[^\s:]+", "<local-path>", raw)
         line = re.sub(r"[\w./-]*(?:verifier|ground_truth|expected_output)[\w./-]*",
@@ -362,9 +394,21 @@ def turn_records(storage: Path, session_id: str, turn_id: str) -> list[dict[str,
 SKILL_PATH_PATTERN = re.compile(r"(?:modules/[\w.-]+/SKILL\.md|skill/(?:SKILL\.md|references/[\w.-]+\.md))")
 
 
-def skill_reads(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Skill-reading observations: which skill files the agent opened, with the
-    containing request's input tokens attributed (组织方式对比的核心观测)."""
+def estimate_tokens(text: str) -> int:
+    """粗估 token：英文/代码约 4 字符/token，CJK 约 1 字符/token。
+    只用于条件间相对比较（flat vs pd vs vista 同一估计口径）。"""
+
+    cjk = sum(1 for ch in text if "\u4e00" <= ch <= "\u9fff")
+    return cjk + (len(text) - cjk + 3) // 4
+
+
+def skill_reads(records: list[dict[str, Any]], workspace: Path) -> list[dict[str, Any]]:
+    """Skill-reading observations: which skill files the agent opened.
+
+    file_tokens = 被读文件本身的估计 token（组织方式对比的核心观测）；
+    context_input_tokens = 该次请求的整段上下文输入量，仅作参考。
+    首版把 context_input_tokens 当作技能阅读 token 求和，同一个 1.9KB
+    文件被记成 15k~67k，flat/pd 对比因此失真。"""
 
     reads: list[dict[str, Any]] = []
     for record in records:
@@ -372,13 +416,21 @@ def skill_reads(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
         for tool_call in ((record.get("response") or {}).get("toolCalls") or []):
             rendered = json.dumps(tool_call.get("input") or {}, ensure_ascii=False)
             for match in sorted(set(SKILL_PATH_PATTERN.findall(rendered))):
-                if not any(existing["file"] == match and existing["turn_id"] == record.get("turnId")
-                           for existing in reads):
-                    reads.append({
-                        "file": match,
-                        "turn_id": record.get("turnId"),
-                        "request_input_tokens": int(usage.get("inputTokens", 0) or 0),
-                    })
+                if any(existing["file"] == match and existing["turn_id"] == record.get("turnId")
+                       for existing in reads):
+                    continue
+                path = workspace / match
+                try:
+                    content = path.read_text(encoding="utf-8", errors="replace")
+                except OSError:
+                    content = ""
+                reads.append({
+                    "file": match,
+                    "turn_id": record.get("turnId"),
+                    "file_chars": len(content),
+                    "file_tokens": estimate_tokens(content),
+                    "context_input_tokens": int(usage.get("inputTokens", 0) or 0),
+                })
     return reads
 
 
@@ -426,6 +478,7 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
     last_disclosure_turn: int | None = None
     access_after_last_disclosure = False
     stalled_rounds = 0
+    previous_signatures: tuple[str, ...] = ()
     verifier_seconds = 0.0
     agent_net_seconds = 0.0
     max_turns = MAX_TURNS if condition == "vista" else 1
@@ -458,6 +511,18 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
             )
         (base / f"turn-{turn}.jsonl").write_text(completed.stdout or "", encoding="utf-8")
         (base / f"turn-{turn}.stderr.txt").write_text(completed.stderr or "", encoding="utf-8")
+        if not timed_out and completed.returncode != 0:
+            # ZCode 自身报错（如 API 域名 ENOTFOUND）是基础设施故障，不是 agent 失败：
+            # 首版照常跑验证器并进入反馈，task-011 vista r2 因此被污染。
+            turns.append({
+                "turn": turn, "return_code": completed.returncode,
+                "model_turn_timeout": False, "zcode_turn_id": None,
+                "requests": 0, "tool_uses": 0, "skill_reads": [],
+                "turn_usage": {}, "verifier_pass": False,
+                "verifier_infrastructure_error": False,
+            })
+            stop_reason = "api_error"
+            break
 
         records: list[dict[str, Any]] = []
         turn_payload: dict[str, Any] = {}
@@ -473,7 +538,7 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
             except (RuntimeError, json.JSONDecodeError):
                 turn_payload = {}
         tool_uses = sum(len((r.get("response") or {}).get("toolCalls") or []) for r in records)
-        reads_now = skill_reads(records)
+        reads_now = skill_reads(records, workspace)
         all_skill_reads.extend(reads_now)
         accessed_now = [read["file"] for read in reads_now]
         if accessed_now:
@@ -492,6 +557,11 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
             "zcode_turn_id": turn_payload.get("turnId"),
             "requests": len(records), "tool_uses": tool_uses,
             "skill_reads": reads_now,
+            # 回合级用量（ZCode --json 回执）：用于把上下文累积成本与技能阅读分开
+            "turn_usage": {
+                key: (turn_payload.get("usage") or {}).get(key)
+                for key in ("modelRequestCount", "inputTokens", "outputTokens", "cacheReadTokens")
+            },
             "verifier_pass": verifier_pass,
             "verifier_infrastructure_error": verifier_infra,
         })
@@ -579,10 +649,12 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
             disclosure_count += 1
             last_disclosure_turn = turn
             access_after_last_disclosure = False
-        # 停滞检测：新披露、读取技能文件或新失败层都算进展
-        made_progress = bool(
-            newly_disclosed or accessed_now or classification.occurrence == 1
-        )
+        # 停滞检测：只有「新披露」或「失败层签名集合变化」算进展。
+        # 首版把重读已披露模块也算进展，task-011 vista r2 因此同一签名空转到
+        # 第 4 轮超时（5.7M token）。
+        current_signatures = tuple(sorted(signatures))
+        made_progress = bool(newly_disclosed) or current_signatures != previous_signatures
+        previous_signatures = current_signatures
         stalled_rounds = 0 if made_progress else stalled_rounds + 1
         if disclosed and stalled_rounds >= 2:
             stop_reason = "stalled_after_full_disclosure"
@@ -608,6 +680,9 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
 
     result_dir = result_root(task_id) / condition / f"replicate-{replicate:02d}"
     result_dir.mkdir(parents=True, exist_ok=True)
+    # 补跑覆盖同一目录时清掉旧试验的回合证据，否则会残留多出来的 verifier-turn-N
+    for stale in [*result_dir.glob("turn-*.*"), *result_dir.glob("verifier-turn-*.txt")]:
+        stale.unlink()
     for artifact in base.glob("turn-*.*"):
         shutil.copy2(artifact, result_dir / artifact.name)
     for artifact in verifier.glob("verifier-turn-*.txt"):
@@ -654,7 +729,11 @@ def run_episode(task_id: str, condition: str, replicate: int, *, model: str) -> 
         "requested_provider_model": model, "session_id": session_id,
         "turns": turns, "usage": usage,
         "skill_reads": all_skill_reads,
-        "skill_read_tokens": sum(read["request_input_tokens"] for read in all_skill_reads),
+        "skill_read_tokens": sum(read["file_tokens"] for read in all_skill_reads),
+        "skill_unique_file_tokens": sum(
+            {read["file"]: read["file_tokens"] for read in all_skill_reads}.values()
+        ),
+        "skill_read_count": len(all_skill_reads),
         "agent_net_seconds": round(agent_net_seconds, 3),
         "verifier_seconds": round(verifier_seconds, 3),
         "initially_available_modules": (

@@ -1,5 +1,18 @@
 # ZCode Tier 1 重跑批次报告（4cond-x5-glm53-20261013）
 
+> **⚠ 2026-10-14 更正：本批次仅首轮结果有效。**
+> 复核发现重跑时的 `public_diagnostic` 未掩断言数值：26 个多轮试验（task-011 noskill 5、pd-vista 5；task-012 noskill 5、native 4、pd-self 3、pd-vista 4）的失败诊断**全部**把真值回传给了 agent（如 `E assert 3457 == 2451`、`E assert 'PO-INVALID' == None`），task-011 noskill r1 下一轮直接写入 2451。因此第 3 节的"四条件 5/5""noskill −48% 请求""pd-vista 4/5 干净闭环"及第 4 节依赖多轮的结论**撤回**。
+>
+> 有效的首轮通过率：
+>
+> | 首轮通过 | noskill | native | pd-self | pd-vista（首轮无 skill） |
+> |---|---|---|---|---|
+> | task-011 | 0/5 | 5/5 | 5/5 | 0/5 |
+> | task-012 | 0/5 | 1/5 | 2/5 | 1/5 |
+>
+> task-011 首轮 native/pd-self 5/5 vs noskill 0/5 是目前最干净的 skill 准确率效应，保留。数值掩码已在 `run_sj4_zcode_group.py` 修复（保留字段名、掩值，188 份历史失败日志回放零泄漏）。
+
+
 任务来源：task-011（sec-financial-report）、task-012（invoice-fraud-detection）因旧批次验证器构建缺陷全部作废，按外部评审指南修复后全条件重跑；task-013 验证器自包含、结果有效，维持 20260930-15 批次不变。
 
 后端：ZCode CLI 0.16.9 headless + glm53-flash（宿主 provider_config 钉扎），本地验证器（/root 路径改写副本），无 Docker。

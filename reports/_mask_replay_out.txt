@@ -1,0 +1,21 @@
+verifier outputs scanned (with assert/Expected content): 555
+leaks found in fed diagnostic: 0
+
+=== new-logic fed diagnostic for known leak cases ===
+--- formal-task-011-zcode-local-4cond-x5-glm53-20261013\noskill\replicate-01\verifier-turn-1.txt
+  | <verifier-data>::test_file_exists PASSED [ 50%]
+  | <verifier-data>::test_answer_quality FAILED [100%]
+  | assert answers["q2_answer"] == <expected>
+  | E   assert <actual> == <expected>
+  | PASSED <verifier-data>::test_file_exists
+  | FAILED <verifier-data>::test_answer_quality
+  | ========================= 1 failed, 1 passed in 0.09s ==========================
+--- formal-task-012-zcode-local-4cond-x5-glm53-20261013\pd-vista\replicate-03\verifier-turn-1.txt
+  | <verifier-data>::TestOutputs::test_file_exists PASSED [ 50%]
+  | <verifier-data>::TestOutputs::test_content FAILED [100%]
+  | assert act["po_number"] == <expected>, (
+  | E   AssertionError: PO Number mismatch for page 3: Expected <expected>, Got <actual>
+  | E   assert <actual> == <expected>
+  | PASSED <verifier-data>::TestOutputs::test_file_exists
+  | FAILED <verifier-data>::TestOutputs::test_content
+  | ========================= 1 failed, 1 passed in 0.18s ==========================
