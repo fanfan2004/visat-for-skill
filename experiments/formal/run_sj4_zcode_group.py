@@ -1,4 +1,4 @@
-"""Run the sj4 experiment: four conditions (noskill / flat / pd / vista) x 3 replicates.
+"""Run the sj4 experiment: four conditions (noskill / flat / pd / vista) x N replicates (--replicates, default 3).
 
 sj4 设计（manual: reports/experiment-sj4-protocol-prompt.md）:
 - noskill/flat/pd: 单回合单 episode——一个 headless ZCode 会话自由多步工作直到
@@ -66,7 +66,10 @@ MAX_TURNS = 6  # 只对 vista 生效；noskill/flat/pd 固定 1 回合
 MODEL_TURN_TIMEOUT_SECONDS = 1800
 VERIFIER_TIMEOUT_SECONDS = 900
 CONDITIONS = ("noskill", "flat", "pd", "vista")
-REPLICATES = (1, 2, 3)
+REPLICATES: tuple[int, ...] = (1, 2, 3)  # main() 按 --replicates 覆盖
+# 结果目录前缀在 main() 启动时冻结一次：首版每次调用都取当前小时，
+# 跨整点的批次会把后完成的 trial 写进另一个目录。
+_RUN_PREFIX: dict[str, str] = {}
 # 并发 episode 线程共享同一份 .shared-inputs 解压缓存，抽取段须互斥
 _UNZIP_LOCK = threading.Lock()
 
@@ -142,11 +145,13 @@ def task_paths(task_id: str) -> tuple[Path, Path]:
 
 
 def result_root(task_id: str) -> Path:
-    run_prefix = os.environ.get(
-        "VISTA_RUN_PREFIX",
-        f"formal-{task_id}-sj4-x3-glm53-{datetime.now().strftime('%Y%m%d-%H')}",
-    )
-    return REPO / "data" / "raw" / run_prefix
+    if task_id not in _RUN_PREFIX:
+        _RUN_PREFIX[task_id] = os.environ.get(
+            "VISTA_RUN_PREFIX",
+            f"formal-{task_id}-sj4-x{len(REPLICATES)}-glm53-"
+            f"{datetime.now().strftime('%Y%m%d-%H')}",
+        )
+    return REPO / "data" / "raw" / _RUN_PREFIX[task_id]
 
 
 def tool_environment() -> dict[str, str]:
@@ -835,7 +840,7 @@ def run_group(task_id: str, *, model: str, provider: str, workers: int) -> int:
     summary = {
         "schema_version": 1,
         "protocol": (
-            f"{task_id}-sj4-x3-glm53-"
+            f"{task_id}-sj4-x{len(REPLICATES)}-glm53-"
             "single-episode-for-noskill-flat-pd/multi-turn-feedback-vista-only"
         ),
         "task_id": task_id,
@@ -911,11 +916,19 @@ def main(argv: list[str] | None = None) -> int:
                              "endpoint via corrected provider config")
     parser.add_argument("--workers", type=int, default=4,
                         help="concurrent episodes per endpoint (1-6)")
+    parser.add_argument("--replicates", type=int, default=3,
+                        help="replicates per condition (1-10); result dir is named sj4-x<N>")
     parser.add_argument("--dry-run", action="store_true",
                         help="run readiness and preflight gates only, no model call")
     args = parser.parse_args(argv)
     if not 1 <= args.workers <= 6:
         raise SystemExit("--workers must be between 1 and 6")
+    if not 1 <= args.replicates <= 10:
+        raise SystemExit("--replicates must be between 1 and 10")
+    global REPLICATES
+    REPLICATES = tuple(range(1, args.replicates + 1))
+    root = result_root(args.task)
+    print(f"result root: {root} (replicates={args.replicates})", flush=True)
 
     os.environ.pop("ZCODE_PERSONAL_PROVIDER_CONFIG_FILE", None)
     os.environ.pop("VISTA_ZCODE_PROVIDER_CONFIG", None)

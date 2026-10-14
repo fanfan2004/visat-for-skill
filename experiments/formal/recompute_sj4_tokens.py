@@ -7,21 +7,26 @@ skill_read_tokens（字段 request_input_tokens），同一请求读多个文件
   - skill_file_tokens：被读文件本身的估计 token（与 runner 新口径 estimate_tokens 一致）
   - 回合级上下文成本：每回合请求数 / 输入 token / 平均每请求输入（来自 turn-N.jsonl 回执）
 
-输出：
-  data/derived/sj4_token_trials.csv      每试验一行
-  data/derived/sj4_token_turns.csv       每回合一行
-  data/derived/sj4_token_summary.json    每任务×条件汇总
+输出（--tag 默认 x3）：
+  data/derived/sj4_<tag>_token_trials.csv      每试验一行
+  data/derived/sj4_<tag>_token_turns.csv       每回合一行
+  data/derived/sj4_<tag>_token_summary.json    每任务×条件汇总
+
+用法：
+  python experiments/formal/recompute_sj4_tokens.py            # 默认 x3 批次
+  python experiments/formal/recompute_sj4_tokens.py --tag x5       --group task-011=data/raw/formal-task-011-sj4-x5-glm53-<stamp>       --group task-012=data/raw/formal-task-012-sj4-x5-glm53-<stamp>
 """
 
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import statistics
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-RAW_GROUPS = {
+DEFAULT_GROUPS = {
     "task-011": ROOT / "data/raw/formal-task-011-sj4-x3-glm53-20261013-21",
     "task-012": ROOT / "data/raw/formal-task-012-sj4-x3-glm53-20261013-21",
 }
@@ -50,10 +55,24 @@ def turn_receipt(path: Path) -> dict:
     return json.loads(text[text.find("{"):]).get("usage") or {}
 
 
-def main() -> None:
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(description=__doc__,
+                                     formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--tag", default="x3", help="output file tag, e.g. x3 / x5")
+    parser.add_argument("--group", action="append", default=[], metavar="TASK=DIR",
+                        help="task group directory (repeatable); defaults to the x3 batch")
+    args = parser.parse_args(argv)
+    groups = dict(DEFAULT_GROUPS)
+    if args.group:
+        groups = {}
+        for item in args.group:
+            task_id, directory = item.split("=", 1)
+            path = Path(directory)
+            groups[task_id] = path if path.is_absolute() else ROOT / path
+
     trial_rows: list[dict] = []
     turn_rows: list[dict] = []
-    for task_id, group in RAW_GROUPS.items():
+    for task_id, group in groups.items():
         for condition in CONDITIONS:
             for result_path in sorted((group / condition).glob("replicate-*/result.json")):
                 result = json.loads(result_path.read_text(encoding="utf-8"))
@@ -104,14 +123,14 @@ def main() -> None:
                 })
 
     DERIVED.mkdir(parents=True, exist_ok=True)
-    for name, rows in (("sj4_token_trials.csv", trial_rows), ("sj4_token_turns.csv", turn_rows)):
+    for name, rows in ((f"sj4_{args.tag}_token_trials.csv", trial_rows), (f"sj4_{args.tag}_token_turns.csv", turn_rows)):
         with (DERIVED / name).open("w", encoding="utf-8", newline="") as stream:
             writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
             writer.writeheader()
             writer.writerows(rows)
 
     summary: dict = {}
-    for task_id in RAW_GROUPS:
+    for task_id in groups:
         for condition in CONDITIONS:
             rows = [r for r in trial_rows if r["task_id"] == task_id and r["condition"] == condition]
             inputs = [r["input_tokens"] for r in rows]
@@ -127,7 +146,7 @@ def main() -> None:
                 "input_per_request": round(sum(inputs) / max(1, sum(r["requests"] for r in rows))),
                 "all_turn_receipts_reconcile": all(r["turn_receipts_reconcile"] for r in rows),
             }
-    (DERIVED / "sj4_token_summary.json").write_text(
+    (DERIVED / f"sj4_{args.tag}_token_summary.json").write_text(
         json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     for task_id, conditions in summary.items():
