@@ -1,0 +1,54 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.14, pytest-7.4.0, pluggy-1.6.0 -- /Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/bin/python
+rootdir: /Users/wangjinhua/Library/Caches/VistaExperiments
+plugins: mock-3.15.1, asyncio-0.21.0, anyio-4.14.2, requests-mock-1.11.0
+asyncio: mode=Mode.STRICT
+collecting ... collected 14 items
+
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestSchema::test_required_schema PASSED [  7%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestSchema::test_arrays_align_with_case PASSED [ 14%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestBinaryLogic::test_startup_shutdown_match_commitment PASSED [ 21%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestBinaryLogic::test_no_simultaneous_startup_shutdown PASSED [ 28%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestBinaryLogic::test_reported_transition_counts PASSED [ 35%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestThermalFeasibility::test_must_run_units_online PASSED [ 42%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestThermalFeasibility::test_output_limits_and_offline_zeroes PASSED [ 50%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestThermalFeasibility::test_deliverable_reserve_and_ramping FAILED [ 57%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestSystemFeasibility::test_demand_and_reserve FAILED [ 64%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestSystemFeasibility::test_renewable_limits PASSED [ 71%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestSystemFeasibility::test_hourly_summary_matches_schedule PASSED [ 78%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestMinimumUpDown::test_initial_and_in_horizon_obligations PASSED [ 85%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestCostAndQuality::test_reported_cost_matches_schedule PASSED [ 92%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestCostAndQuality::test_cost_within_benchmark_gap PASSED [100%]
+
+=================================== FAILURES ===================================
+_________ TestThermalFeasibility.test_deliverable_reserve_and_ramping __________
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py:632: in test_deliverable_reserve_and_ramping
+    assert lhs <= shut_rhs + TOL_GENERATOR_MW, (
+E   AssertionError: 101_CT_1 violates pre-shutdown capacity at hour 19
+E   assert np.float64(12.0) <= (np.float64(0.0) + 0.001)
+________________ TestSystemFeasibility.test_demand_and_reserve _________________
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py:649: in test_demand_and_reserve
+    assert np.max(np.abs(thermal + renewable - parsed_case["demand"])) <= TOL_POWER_BALANCE_MW, (
+E   AssertionError: thermal plus renewable generation does not match demand
+E   assert np.float64(2645.7437000000004) <= 0.01
+E    +  where np.float64(2645.7437000000004) = <function max at 0x1094f4eb0>(array([2107.91  , 2072.16  , 2074.7   , 2163.81  , 2328.74  , 2441.    ,\n       2483.8   , 2645.7437, 2377.64  , 2150.04  , 2010.27  , 1938.89  ,\n       1908.12  , 1937.7   , 2057.99  , 1996.91  , 2121.5096, 1956.2   ,\n       2139.7   , 2431.8   , 2391.2   , 2393.5   , 2275.85  , 2324.64  ,\n       2225.46  , 2068.44  , 2067.68  , 2117.1   , 2271.96  , 2440.9   ,\n       2403.6   , 2533.8718, 2290.21  , 2076.87  , 1934.47  , 1863.55  ,\n       1851.28  , 1858.96  , 1885.92  , 1806.64  , 1416.    , 1144.5   ,\n       1634.4   ,  951.8   , 1763.4179, 1975.3   , 1989.7   , 2176.27  ]))
+E    +    where <function max at 0x1094f4eb0> = np.max
+E    +    and   array([2107.91  , 2072.16  , 2074.7   , 2163.81  , 2328.74  , 2441.    ,\n       2483.8   , 2645.7437, 2377.64  , 2150.04  , 2010.27  , 1938.89  ,\n       1908.12  , 1937.7   , 2057.99  , 1996.91  , 2121.5096, 1956.2   ,\n       2139.7   , 2431.8   , 2391.2   , 2393.5   , 2275.85  , 2324.64  ,\n       2225.46  , 2068.44  , 2067.68  , 2117.1   , 2271.96  , 2440.9   ,\n       2403.6   , 2533.8718, 2290.21  , 2076.87  , 1934.47  , 1863.55  ,\n       1851.28  , 1858.96  , 1885.92  , 1806.64  , 1416.    , 1144.5   ,\n       1634.4   ,  951.8   , 1763.4179, 1975.3   , 1989.7   , 2176.27  ]) = <ufunc 'absolute'>(((array([ 948.    ,  886.    ,  886.    ,  886.    ,  886.    , 1153.43  ,\n       1344.81  ,  894.2963,  856.    ,  856.    ,  856.    ,  856.    ,\n        856.    ,  856.    ,  856.    , 1056.    , 1382.1004, 1976.08  ,\n       2015.97  , 1594.61  , 1466.72  , 1173.3   ,  994.    ,  824.    ,\n        824.    ,  824.    ,  824.    ,  824.    ,  824.    ,  926.38  ,\n       1245.94  ,  880.1082,  824.    ,  824.    ,  824.    ,  824.    ,\n        824.    ,  824.    ,  824.    , 1164.    , 1972.69  , 2654.99  ,\n       2393.27  , 2987.87  , 2030.8921, 1561.78  , 1330.25  ,  860.    ]) + array([ 206.4,  257.8,  260.2,  224.2,  221. ,  185.4,  287.6,  554.3,\n        843. , 1057.9, 1173.1, 1224.3, 1225.6, 1159.2, 1015.6,  829.5,\n        450.2,  428.4,  346.4,  383.6,  389.2,  389.2,  365.6,  246.8,\n        188.6,  279.8,  273.8,  263. ,  259. ,  286.6,  289.4,  496.6,\n        786.8, 1028.9, 1187.8, 1243.4, 1233.5, 1193.5, 1106.3,  822.2,\n        458.9,  436.8,  334. ,  334.4,  326.4,  313.2,  234.8,  307.2])) - array([3262.31, 3215.96, 3220.9 , 3274.01, 3435.74, 3779.83, 4116.21,\n       4094.34, 4076.64, 4063.94, 4039.37, 4019.19, 3989.72, 3952.9 ,\n       3929.59, 3882.41, 3953.81, 4360.68, 4502.07, 4410.01, 4247.12,\n       3956.  , 3635.45, 3395.44, 3238.06, 3172.24, 3165.48, 3204.1 ,\n       3354.96, 3653.88, 3938.94, 3910.58, 3901.01, 3929.77, 3946.27,\n       3930.95, 3908.78, 3876.46, 3816.22, 3792.84, 3847.59, 4236.29,\n       4361.67, 4274.07, 4120.71, 3850.28, 3554.75, 3343.47])))
+E    +      where <ufunc 'absolute'> = np.abs
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestSchema::test_required_schema
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestSchema::test_arrays_align_with_case
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestBinaryLogic::test_startup_shutdown_match_commitment
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestBinaryLogic::test_no_simultaneous_startup_shutdown
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestBinaryLogic::test_reported_transition_counts
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestThermalFeasibility::test_must_run_units_online
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestThermalFeasibility::test_output_limits_and_offline_zeroes
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestSystemFeasibility::test_renewable_limits
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestSystemFeasibility::test_hourly_summary_matches_schedule
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestMinimumUpDown::test_initial_and_in_horizon_obligations
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestCostAndQuality::test_reported_cost_matches_schedule
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestCostAndQuality::test_cost_within_benchmark_gap
+FAILED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestThermalFeasibility::test_deliverable_reserve_and_ramping
+FAILED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-01/test_outputs_local.py::TestSystemFeasibility::test_demand_and_reserve
+=================== 2 failed, 12 passed in 119.82s (0:01:59) ===================

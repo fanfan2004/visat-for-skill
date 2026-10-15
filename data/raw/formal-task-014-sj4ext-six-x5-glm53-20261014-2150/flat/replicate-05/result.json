@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-014-sj4ext-six-x5-glm53-20261014-2150-flat-replicate-05",
+  "task_id": "task-014",
+  "condition": "flat",
+  "replicate_id": 5,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "protocol": "sj4-extension-v1",
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_28192a73-f320-4893-9249-8f417fe72984",
+  "provider_id": "new-provider",
+  "episode_workers": 3,
+  "construction_evidence_sha256": "f9a0d63b989ab389c8743e05fadae9f50a7cbb58313f320885e6364995a91ed0",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_048670cd-3234-4c3b-b4a3-1d3c156b5f52",
+      "requests": 28,
+      "tool_uses": 33,
+      "skill_reads": [
+        {
+          "file": "modules/unit-commitment-operating-rules/SKILL.md",
+          "turn_id": "turn_048670cd-3234-4c3b-b4a3-1d3c156b5f52",
+          "file_chars": 8199,
+          "file_tokens": 2050,
+          "context_input_tokens": 18774
+        },
+        {
+          "file": "modules/unit-commitment-data-modeling/SKILL.md",
+          "turn_id": "turn_048670cd-3234-4c3b-b4a3-1d3c156b5f52",
+          "file_chars": 6924,
+          "file_tokens": 1731,
+          "context_input_tokens": 18774
+        },
+        {
+          "file": "modules/milp-solver-workflow/SKILL.md",
+          "turn_id": "turn_048670cd-3234-4c3b-b4a3-1d3c156b5f52",
+          "file_chars": 6563,
+          "file_tokens": 1641,
+          "context_input_tokens": 23173
+        }
+      ],
+      "turn_usage": {
+        "modelRequestCount": 28,
+        "inputTokens": 1504015,
+        "outputTokens": 53012,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.001
+    }
+  ],
+  "usage": {
+    "requests": 28,
+    "input_tokens": 1504015,
+    "output_tokens": 53012,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 1557027
+  },
+  "skill_reads": [
+    {
+      "file": "modules/unit-commitment-operating-rules/SKILL.md",
+      "turn_id": "turn_048670cd-3234-4c3b-b4a3-1d3c156b5f52",
+      "file_chars": 8199,
+      "file_tokens": 2050,
+      "context_input_tokens": 18774
+    },
+    {
+      "file": "modules/unit-commitment-data-modeling/SKILL.md",
+      "turn_id": "turn_048670cd-3234-4c3b-b4a3-1d3c156b5f52",
+      "file_chars": 6924,
+      "file_tokens": 1731,
+      "context_input_tokens": 18774
+    },
+    {
+      "file": "modules/milp-solver-workflow/SKILL.md",
+      "turn_id": "turn_048670cd-3234-4c3b-b4a3-1d3c156b5f52",
+      "file_chars": 6563,
+      "file_tokens": 1641,
+      "context_input_tokens": 23173
+    }
+  ],
+  "skill_read_tokens": 5422,
+  "skill_unique_file_tokens": 5422,
+  "skill_read_count": 3,
+  "agent_net_seconds": 548.88,
+  "verifier_seconds": 112.613,
+  "verifier_queue_seconds": 0.001,
+  "resource_policy": {
+    "guard_root": "/Users/wangjinhua/Library/Caches/VistaExperiments/.sj4-extension-guard-v1",
+    "verifier_workers": 1,
+    "solver_workers": 2,
+    "numeric_threads": 1,
+    "guard_sha256": "6188b500b467fc5abf8ce1624f146e65c999f286b1d0d127b6dc61547b790891",
+    "soffice_binary": "/Applications/LibreOffice.app/Contents/MacOS/soffice"
+  },
+  "initially_available_modules": [
+    "modules/<module-id>/SKILL.md"
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [
+    "modules/unit-commitment-operating-rules/SKILL.md",
+    "modules/unit-commitment-data-modeling/SKILL.md",
+    "modules/milp-solver-workflow/SKILL.md"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 0,
+    "routable_feedback": 0,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 1,
+    "disclosure_to_pass_gap": null,
+    "access_after_last_disclosure": false,
+    "first_turn_pass": true,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-flat-replicate-05/workspace"
+}

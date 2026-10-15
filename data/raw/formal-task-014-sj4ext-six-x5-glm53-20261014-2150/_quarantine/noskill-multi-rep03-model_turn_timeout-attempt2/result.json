@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03",
+  "task_id": "task-014",
+  "condition": "noskill-multi",
+  "replicate_id": 3,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "protocol": "sj4-extension-v1",
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_9edafb58-3cbe-432d-8f69-e47d29b25496",
+  "provider_id": "new-provider",
+  "episode_workers": 3,
+  "construction_evidence_sha256": "f9a0d63b989ab389c8743e05fadae9f50a7cbb58313f320885e6364995a91ed0",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_ae3c95f1-d33f-4ecd-8945-6d96ca972375",
+      "requests": 11,
+      "tool_uses": 12,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 11,
+        "inputTokens": 687458,
+        "outputTokens": 19037,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0,
+      "failure_layer_signatures": [
+        "uc_operating_rules"
+      ]
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_9a20de44-ddf8-49f4-b397-bb23d03b22af",
+      "requests": 9,
+      "tool_uses": 8,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 9,
+        "inputTokens": 733035,
+        "outputTokens": 9339,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0,
+      "failure_layer_signatures": [
+        "uc_operating_rules"
+      ]
+    },
+    {
+      "turn": 3,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_e46b69f1-949f-406b-9b1c-d85a61bafc69",
+      "requests": 8,
+      "tool_uses": 7,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 8,
+        "inputTokens": 756735,
+        "outputTokens": 19615,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0,
+      "failure_layer_signatures": [
+        "uc_solver_or_cost"
+      ]
+    },
+    {
+      "turn": 4,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_3e3b37e6-70be-4bef-bd10-775868f8868c",
+      "requests": 9,
+      "tool_uses": 8,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 9,
+        "inputTokens": 1090809,
+        "outputTokens": 22647,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0,
+      "failure_layer_signatures": [
+        "uc_operating_rules"
+      ]
+    },
+    {
+      "turn": 5,
+      "return_code": 124,
+      "model_turn_timeout": true,
+      "zcode_turn_id": null,
+      "requests": 0,
+      "tool_uses": 0,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "cacheReadTokens": null
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.001
+    }
+  ],
+  "usage": {
+    "requests": 75,
+    "input_tokens": 6470488,
+    "output_tokens": 182627,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 6653115
+  },
+  "skill_reads": [],
+  "skill_read_tokens": 0,
+  "skill_unique_file_tokens": 0,
+  "skill_read_count": 0,
+  "agent_net_seconds": 1722.189,
+  "verifier_seconds": 423.332,
+  "verifier_queue_seconds": 0.001,
+  "resource_policy": {
+    "guard_root": "/Users/wangjinhua/Library/Caches/VistaExperiments/.sj4-extension-guard-v1",
+    "verifier_workers": 1,
+    "solver_workers": 2,
+    "numeric_threads": 1,
+    "guard_sha256": "6188b500b467fc5abf8ce1624f146e65c999f286b1d0d127b6dc61547b790891",
+    "soffice_binary": "/Applications/LibreOffice.app/Contents/MacOS/soffice"
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "vista_metrics": {
+    "trigger_opportunities": 4,
+    "routable_feedback": 0,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "disclosure_to_pass_gap": null,
+    "access_after_last_disclosure": false,
+    "first_turn_pass": false,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": false,
+  "stop_reason": "model_turn_timeout",
+  "status": "quarantined_model_turn_timeout",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace"
+}

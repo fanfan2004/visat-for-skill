@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-04",
+  "task_id": "task-014",
+  "condition": "vista",
+  "replicate_id": 4,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "protocol": "sj4-extension-v1",
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_caecab49-a876-41c6-bd54-55c9d075c636",
+  "provider_id": "new-provider",
+  "episode_workers": 3,
+  "construction_evidence_sha256": "f9a0d63b989ab389c8743e05fadae9f50a7cbb58313f320885e6364995a91ed0",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_890e1cf6-822c-4239-8970-633d85367d58",
+      "requests": 9,
+      "tool_uses": 10,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 9,
+        "inputTokens": 547480,
+        "outputTokens": 18771,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0,
+      "failure_layer_signatures": [
+        "uc_operating_rules",
+        "uc_solver_or_cost"
+      ]
+    },
+    {
+      "turn": 2,
+      "return_code": 124,
+      "model_turn_timeout": true,
+      "zcode_turn_id": null,
+      "requests": 0,
+      "tool_uses": 0,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "cacheReadTokens": null
+      },
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.001
+    }
+  ],
+  "usage": {
+    "requests": 28,
+    "input_tokens": 2530563,
+    "output_tokens": 63717,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 2594280
+  },
+  "skill_reads": [],
+  "skill_read_tokens": 0,
+  "skill_unique_file_tokens": 0,
+  "skill_read_count": 0,
+  "agent_net_seconds": 582.876,
+  "verifier_seconds": 183.642,
+  "verifier_queue_seconds": 0.001,
+  "resource_policy": {
+    "guard_root": "/Users/wangjinhua/Library/Caches/VistaExperiments/.sj4-extension-guard-v1",
+    "verifier_workers": 1,
+    "solver_workers": 2,
+    "numeric_threads": 1,
+    "guard_sha256": "6188b500b467fc5abf8ce1624f146e65c999f286b1d0d127b6dc61547b790891",
+    "soffice_binary": "/Applications/LibreOffice.app/Contents/MacOS/soffice"
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [
+    "unit-commitment-operating-rules"
+  ],
+  "accessed_modules_after_disclosure": [],
+  "vista_metrics": {
+    "trigger_opportunities": 1,
+    "routable_feedback": 1,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 1,
+    "next_round_module_access": 0,
+    "disclosure_to_pass_gap": 1,
+    "access_after_last_disclosure": false,
+    "first_turn_pass": false,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass_after_model_timeout",
+  "status": "passed_without_clean_vista_feedback_loop",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-04/workspace"
+}

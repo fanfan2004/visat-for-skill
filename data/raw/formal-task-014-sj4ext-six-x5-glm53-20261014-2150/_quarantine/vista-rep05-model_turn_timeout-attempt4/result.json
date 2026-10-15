@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-05",
+  "task_id": "task-014",
+  "condition": "vista",
+  "replicate_id": 5,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "protocol": "sj4-extension-v1",
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_528ba88e-5490-4e22-98e8-1fa432eb241b",
+  "provider_id": "new-provider",
+  "episode_workers": 3,
+  "construction_evidence_sha256": "f9a0d63b989ab389c8743e05fadae9f50a7cbb58313f320885e6364995a91ed0",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_517020ec-89e4-4d44-a629-c7d40c8830b8",
+      "requests": 7,
+      "tool_uses": 8,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 7,
+        "inputTokens": 129310,
+        "outputTokens": 10691,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0,
+      "failure_layer_signatures": [
+        "uc_schema",
+        "uc_operating_rules",
+        "uc_solver_or_cost"
+      ]
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_8433610e-026a-4f13-9dee-88d08f1d84eb",
+      "requests": 40,
+      "tool_uses": 40,
+      "skill_reads": [
+        {
+          "file": "skill/SKILL.md",
+          "turn_id": "turn_8433610e-026a-4f13-9dee-88d08f1d84eb",
+          "file_chars": 740,
+          "file_tokens": 185,
+          "context_input_tokens": 29426
+        },
+        {
+          "file": "skill/references/unit-commitment-data-modeling.md",
+          "turn_id": "turn_8433610e-026a-4f13-9dee-88d08f1d84eb",
+          "file_chars": 6924,
+          "file_tokens": 1731,
+          "context_input_tokens": 29749
+        },
+        {
+          "file": "skill/references/unit-commitment-operating-rules.md",
+          "turn_id": "turn_8433610e-026a-4f13-9dee-88d08f1d84eb",
+          "file_chars": 0,
+          "file_tokens": 0,
+          "context_input_tokens": 32148
+        }
+      ],
+      "turn_usage": {
+        "modelRequestCount": 40,
+        "inputTokens": 3693634,
+        "outputTokens": 83370,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.001,
+      "failure_layer_signatures": [
+        "uc_solver_or_cost"
+      ]
+    },
+    {
+      "turn": 3,
+      "return_code": 124,
+      "model_turn_timeout": true,
+      "zcode_turn_id": null,
+      "requests": 0,
+      "tool_uses": 0,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "cacheReadTokens": null
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.001
+    }
+  ],
+  "usage": {
+    "requests": 61,
+    "input_tokens": 5810053,
+    "output_tokens": 120226,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 5930279
+  },
+  "skill_reads": [
+    {
+      "file": "skill/SKILL.md",
+      "turn_id": "turn_8433610e-026a-4f13-9dee-88d08f1d84eb",
+      "file_chars": 740,
+      "file_tokens": 185,
+      "context_input_tokens": 29426
+    },
+    {
+      "file": "skill/references/unit-commitment-data-modeling.md",
+      "turn_id": "turn_8433610e-026a-4f13-9dee-88d08f1d84eb",
+      "file_chars": 6924,
+      "file_tokens": 1731,
+      "context_input_tokens": 29749
+    },
+    {
+      "file": "skill/references/unit-commitment-operating-rules.md",
+      "turn_id": "turn_8433610e-026a-4f13-9dee-88d08f1d84eb",
+      "file_chars": 0,
+      "file_tokens": 0,
+      "context_input_tokens": 32148
+    }
+  ],
+  "skill_read_tokens": 1916,
+  "skill_unique_file_tokens": 1916,
+  "skill_read_count": 3,
+  "agent_net_seconds": 1232.27,
+  "verifier_seconds": 226.457,
+  "verifier_queue_seconds": 0.002,
+  "resource_policy": {
+    "guard_root": "/Users/wangjinhua/Library/Caches/VistaExperiments/.sj4-extension-guard-v1",
+    "verifier_workers": 1,
+    "solver_workers": 2,
+    "numeric_threads": 1,
+    "guard_sha256": "6188b500b467fc5abf8ce1624f146e65c999f286b1d0d127b6dc61547b790891",
+    "soffice_binary": "/Applications/LibreOffice.app/Contents/MacOS/soffice"
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [
+    "unit-commitment-data-modeling",
+    "milp-solver-workflow"
+  ],
+  "accessed_modules_after_disclosure": [
+    "skill/SKILL.md",
+    "skill/references/unit-commitment-data-modeling.md",
+    "skill/references/unit-commitment-operating-rules.md"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 2,
+    "routable_feedback": 2,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 2,
+    "next_round_module_access": 1,
+    "disclosure_to_pass_gap": null,
+    "access_after_last_disclosure": false,
+    "first_turn_pass": false,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": false,
+  "stop_reason": "model_turn_timeout",
+  "status": "quarantined_model_turn_timeout",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-05/workspace"
+}

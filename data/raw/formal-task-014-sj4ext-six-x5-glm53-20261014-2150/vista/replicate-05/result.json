@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-05",
+  "task_id": "task-014",
+  "condition": "vista",
+  "replicate_id": 5,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "protocol": "sj4-extension-v1",
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_325b7fd9-cbc7-4d91-b5f4-8d72c5fb281b",
+  "provider_id": "new-provider",
+  "episode_workers": 1,
+  "construction_evidence_sha256": "f9a0d63b989ab389c8743e05fadae9f50a7cbb58313f320885e6364995a91ed0",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_6ff7f44e-05b8-4f3f-92e8-0144ba9052ad",
+      "requests": 10,
+      "tool_uses": 10,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 10,
+        "inputTokens": 646415,
+        "outputTokens": 26616,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0,
+      "failure_layer_signatures": [
+        "uc_operating_rules"
+      ]
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_2ae4183e-edb4-43c2-9bfc-d200cd32507c",
+      "requests": 12,
+      "tool_uses": 11,
+      "skill_reads": [
+        {
+          "file": "skill/references/unit-commitment-operating-rules.md",
+          "turn_id": "turn_2ae4183e-edb4-43c2-9bfc-d200cd32507c",
+          "file_chars": 8199,
+          "file_tokens": 2050,
+          "context_input_tokens": 81771
+        }
+      ],
+      "turn_usage": {
+        "modelRequestCount": 12,
+        "inputTokens": 1131689,
+        "outputTokens": 16300,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0
+    }
+  ],
+  "usage": {
+    "requests": 22,
+    "input_tokens": 1778104,
+    "output_tokens": 42916,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 1821020
+  },
+  "skill_reads": [
+    {
+      "file": "skill/references/unit-commitment-operating-rules.md",
+      "turn_id": "turn_2ae4183e-edb4-43c2-9bfc-d200cd32507c",
+      "file_chars": 8199,
+      "file_tokens": 2050,
+      "context_input_tokens": 81771
+    }
+  ],
+  "skill_read_tokens": 2050,
+  "skill_unique_file_tokens": 2050,
+  "skill_read_count": 1,
+  "agent_net_seconds": 379.732,
+  "verifier_seconds": 200.058,
+  "verifier_queue_seconds": 0.0,
+  "resource_policy": {
+    "guard_root": "/Users/wangjinhua/Library/Caches/VistaExperiments/.sj4-extension-guard-v1",
+    "verifier_workers": 1,
+    "solver_workers": 2,
+    "numeric_threads": 1,
+    "guard_sha256": "6188b500b467fc5abf8ce1624f146e65c999f286b1d0d127b6dc61547b790891",
+    "soffice_binary": "/Applications/LibreOffice.app/Contents/MacOS/soffice"
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [
+    "unit-commitment-operating-rules"
+  ],
+  "accessed_modules_after_disclosure": [
+    "skill/references/unit-commitment-operating-rules.md"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 1,
+    "routable_feedback": 1,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 1,
+    "next_round_module_access": 1,
+    "disclosure_to_pass_gap": 1,
+    "access_after_last_disclosure": true,
+    "first_turn_pass": false,
+    "clean_complete_closure": 1
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed_with_clean_vista_feedback_loop",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-05/workspace"
+}

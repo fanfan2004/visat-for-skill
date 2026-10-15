@@ -1,0 +1,151 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.14, pytest-7.4.0, pluggy-1.6.0 -- /Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/bin/python
+rootdir: /Users/wangjinhua/Library/Caches/VistaExperiments
+plugins: mock-3.15.1, asyncio-0.21.0, anyio-4.14.2, requests-mock-1.11.0
+asyncio: mode=Mode.STRICT
+collecting ... collected 14 items
+
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestSchema::test_required_schema ERROR [  7%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestSchema::test_arrays_align_with_case ERROR [ 14%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestBinaryLogic::test_startup_shutdown_match_commitment ERROR [ 21%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestBinaryLogic::test_no_simultaneous_startup_shutdown ERROR [ 28%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestBinaryLogic::test_reported_transition_counts ERROR [ 35%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestThermalFeasibility::test_must_run_units_online ERROR [ 42%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestThermalFeasibility::test_output_limits_and_offline_zeroes ERROR [ 50%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestThermalFeasibility::test_deliverable_reserve_and_ramping ERROR [ 57%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestSystemFeasibility::test_demand_and_reserve ERROR [ 64%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestSystemFeasibility::test_renewable_limits ERROR [ 71%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestSystemFeasibility::test_hourly_summary_matches_schedule ERROR [ 78%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestMinimumUpDown::test_initial_and_in_horizon_obligations ERROR [ 85%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestCostAndQuality::test_reported_cost_matches_schedule ERROR [ 92%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestCostAndQuality::test_cost_within_benchmark_gap ERROR [100%]
+
+==================================== ERRORS ====================================
+______________ ERROR at setup of TestSchema.test_required_schema _______________
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py:500: in report
+    assert os.path.exists(OUTPUT_FILE), f"Output file {OUTPUT_FILE} does not exist"
+E   AssertionError: Output file /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json does not exist
+E   assert False
+E    +  where False = <function exists at 0x1071c6ca0>('/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json')
+E    +    where <function exists at 0x1071c6ca0> = <module 'posixpath' (frozen)>.exists
+E    +      where <module 'posixpath' (frozen)> = os.path
+___________ ERROR at setup of TestSchema.test_arrays_align_with_case ___________
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py:500: in report
+    assert os.path.exists(OUTPUT_FILE), f"Output file {OUTPUT_FILE} does not exist"
+E   AssertionError: Output file /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json does not exist
+E   assert False
+E    +  where False = <function exists at 0x1071c6ca0>('/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json')
+E    +    where <function exists at 0x1071c6ca0> = <module 'posixpath' (frozen)>.exists
+E    +      where <module 'posixpath' (frozen)> = os.path
+___ ERROR at setup of TestBinaryLogic.test_startup_shutdown_match_commitment ___
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py:500: in report
+    assert os.path.exists(OUTPUT_FILE), f"Output file {OUTPUT_FILE} does not exist"
+E   AssertionError: Output file /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json does not exist
+E   assert False
+E    +  where False = <function exists at 0x1071c6ca0>('/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json')
+E    +    where <function exists at 0x1071c6ca0> = <module 'posixpath' (frozen)>.exists
+E    +      where <module 'posixpath' (frozen)> = os.path
+___ ERROR at setup of TestBinaryLogic.test_no_simultaneous_startup_shutdown ____
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py:500: in report
+    assert os.path.exists(OUTPUT_FILE), f"Output file {OUTPUT_FILE} does not exist"
+E   AssertionError: Output file /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json does not exist
+E   assert False
+E    +  where False = <function exists at 0x1071c6ca0>('/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json')
+E    +    where <function exists at 0x1071c6ca0> = <module 'posixpath' (frozen)>.exists
+E    +      where <module 'posixpath' (frozen)> = os.path
+______ ERROR at setup of TestBinaryLogic.test_reported_transition_counts _______
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py:500: in report
+    assert os.path.exists(OUTPUT_FILE), f"Output file {OUTPUT_FILE} does not exist"
+E   AssertionError: Output file /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json does not exist
+E   assert False
+E    +  where False = <function exists at 0x1071c6ca0>('/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json')
+E    +    where <function exists at 0x1071c6ca0> = <module 'posixpath' (frozen)>.exists
+E    +      where <module 'posixpath' (frozen)> = os.path
+_____ ERROR at setup of TestThermalFeasibility.test_must_run_units_online ______
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py:500: in report
+    assert os.path.exists(OUTPUT_FILE), f"Output file {OUTPUT_FILE} does not exist"
+E   AssertionError: Output file /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json does not exist
+E   assert False
+E    +  where False = <function exists at 0x1071c6ca0>('/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json')
+E    +    where <function exists at 0x1071c6ca0> = <module 'posixpath' (frozen)>.exists
+E    +      where <module 'posixpath' (frozen)> = os.path
+_ ERROR at setup of TestThermalFeasibility.test_output_limits_and_offline_zeroes _
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py:500: in report
+    assert os.path.exists(OUTPUT_FILE), f"Output file {OUTPUT_FILE} does not exist"
+E   AssertionError: Output file /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json does not exist
+E   assert False
+E    +  where False = <function exists at 0x1071c6ca0>('/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json')
+E    +    where <function exists at 0x1071c6ca0> = <module 'posixpath' (frozen)>.exists
+E    +      where <module 'posixpath' (frozen)> = os.path
+_ ERROR at setup of TestThermalFeasibility.test_deliverable_reserve_and_ramping _
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py:500: in report
+    assert os.path.exists(OUTPUT_FILE), f"Output file {OUTPUT_FILE} does not exist"
+E   AssertionError: Output file /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json does not exist
+E   assert False
+E    +  where False = <function exists at 0x1071c6ca0>('/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json')
+E    +    where <function exists at 0x1071c6ca0> = <module 'posixpath' (frozen)>.exists
+E    +      where <module 'posixpath' (frozen)> = os.path
+_______ ERROR at setup of TestSystemFeasibility.test_demand_and_reserve ________
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py:500: in report
+    assert os.path.exists(OUTPUT_FILE), f"Output file {OUTPUT_FILE} does not exist"
+E   AssertionError: Output file /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json does not exist
+E   assert False
+E    +  where False = <function exists at 0x1071c6ca0>('/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json')
+E    +    where <function exists at 0x1071c6ca0> = <module 'posixpath' (frozen)>.exists
+E    +      where <module 'posixpath' (frozen)> = os.path
+________ ERROR at setup of TestSystemFeasibility.test_renewable_limits _________
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py:500: in report
+    assert os.path.exists(OUTPUT_FILE), f"Output file {OUTPUT_FILE} does not exist"
+E   AssertionError: Output file /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json does not exist
+E   assert False
+E    +  where False = <function exists at 0x1071c6ca0>('/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json')
+E    +    where <function exists at 0x1071c6ca0> = <module 'posixpath' (frozen)>.exists
+E    +      where <module 'posixpath' (frozen)> = os.path
+_ ERROR at setup of TestSystemFeasibility.test_hourly_summary_matches_schedule _
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py:500: in report
+    assert os.path.exists(OUTPUT_FILE), f"Output file {OUTPUT_FILE} does not exist"
+E   AssertionError: Output file /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json does not exist
+E   assert False
+E    +  where False = <function exists at 0x1071c6ca0>('/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json')
+E    +    where <function exists at 0x1071c6ca0> = <module 'posixpath' (frozen)>.exists
+E    +      where <module 'posixpath' (frozen)> = os.path
+_ ERROR at setup of TestMinimumUpDown.test_initial_and_in_horizon_obligations __
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py:500: in report
+    assert os.path.exists(OUTPUT_FILE), f"Output file {OUTPUT_FILE} does not exist"
+E   AssertionError: Output file /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json does not exist
+E   assert False
+E    +  where False = <function exists at 0x1071c6ca0>('/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json')
+E    +    where <function exists at 0x1071c6ca0> = <module 'posixpath' (frozen)>.exists
+E    +      where <module 'posixpath' (frozen)> = os.path
+___ ERROR at setup of TestCostAndQuality.test_reported_cost_matches_schedule ___
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py:500: in report
+    assert os.path.exists(OUTPUT_FILE), f"Output file {OUTPUT_FILE} does not exist"
+E   AssertionError: Output file /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json does not exist
+E   assert False
+E    +  where False = <function exists at 0x1071c6ca0>('/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json')
+E    +    where <function exists at 0x1071c6ca0> = <module 'posixpath' (frozen)>.exists
+E    +      where <module 'posixpath' (frozen)> = os.path
+_____ ERROR at setup of TestCostAndQuality.test_cost_within_benchmark_gap ______
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py:500: in report
+    assert os.path.exists(OUTPUT_FILE), f"Output file {OUTPUT_FILE} does not exist"
+E   AssertionError: Output file /Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json does not exist
+E   assert False
+E    +  where False = <function exists at 0x1071c6ca0>('/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/workspace/report.json')
+E    +    where <function exists at 0x1071c6ca0> = <module 'posixpath' (frozen)>.exists
+E    +      where <module 'posixpath' (frozen)> = os.path
+=========================== short test summary info ============================
+ERROR ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestSchema::test_required_schema
+ERROR ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestSchema::test_arrays_align_with_case
+ERROR ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestBinaryLogic::test_startup_shutdown_match_commitment
+ERROR ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestBinaryLogic::test_no_simultaneous_startup_shutdown
+ERROR ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestBinaryLogic::test_reported_transition_counts
+ERROR ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestThermalFeasibility::test_must_run_units_online
+ERROR ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestThermalFeasibility::test_output_limits_and_offline_zeroes
+ERROR ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestThermalFeasibility::test_deliverable_reserve_and_ramping
+ERROR ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestSystemFeasibility::test_demand_and_reserve
+ERROR ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestSystemFeasibility::test_renewable_limits
+ERROR ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestSystemFeasibility::test_hourly_summary_matches_schedule
+ERROR ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestMinimumUpDown::test_initial_and_in_horizon_obligations
+ERROR ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestCostAndQuality::test_reported_cost_matches_schedule
+ERROR ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-03/test_outputs_local.py::TestCostAndQuality::test_cost_within_benchmark_gap
+============================== 14 errors in 2.88s ==============================

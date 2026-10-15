@@ -1,0 +1,18 @@
+The public verifier check failed with assertion_error, uc_schema, uc_operating_rules, uc_solver_or_cost. Public diagnostic:
+The required output failed the hidden checks.
+Failed check: test_required_schema
+Failed check: test_arrays_align_with_case
+Failed check: test_startup_shutdown_match_commitment
+Failed check: test_no_simultaneous_startup_shutdown
+Failed check: test_reported_transition_counts
+Failed check: test_must_run_units_online
+Failed check: test_output_limits_and_offline_zeroes
+Failed check: test_deliverable_reserve_and_ramping
+Failed check: test_demand_and_reserve
+Failed check: test_renewable_limits
+Failed check: test_hourly_summary_matches_schedule
+Failed check: test_initial_and_in_horizon_obligations
+Failed check: test_reported_cost_matches_schedule
+Failed check: test_cost_within_benchmark_gap
+Failure categories: uc_schema, uc_operating_rules, uc_solver_or_cost
+VISTA disclosed ./skill/references/unit-commitment-data-modeling.md. Read the disclosed module before repairing. Continue in the same session, work only inside this directory, and repair the required outputs: ./report.json.

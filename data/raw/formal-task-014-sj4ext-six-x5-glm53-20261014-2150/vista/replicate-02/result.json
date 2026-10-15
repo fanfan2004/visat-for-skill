@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02",
+  "task_id": "task-014",
+  "condition": "vista",
+  "replicate_id": 2,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "protocol": "sj4-extension-v1",
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_4ad9f4d8-2069-4575-81f6-8365b3a97657",
+  "provider_id": "new-provider",
+  "episode_workers": 3,
+  "construction_evidence_sha256": "f9a0d63b989ab389c8743e05fadae9f50a7cbb58313f320885e6364995a91ed0",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_61c0e81e-9891-44ea-a594-9c6a91f1cd4f",
+      "requests": 16,
+      "tool_uses": 18,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 16,
+        "inputTokens": 1216247,
+        "outputTokens": 40015,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0,
+      "failure_layer_signatures": [
+        "uc_operating_rules"
+      ]
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_cc460b0b-e452-4e19-9b09-d3ae567f6b65",
+      "requests": 10,
+      "tool_uses": 9,
+      "skill_reads": [
+        {
+          "file": "skill/references/unit-commitment-operating-rules.md",
+          "turn_id": "turn_cc460b0b-e452-4e19-9b09-d3ae567f6b65",
+          "file_chars": 8199,
+          "file_tokens": 2050,
+          "context_input_tokens": 97392
+        }
+      ],
+      "turn_usage": {
+        "modelRequestCount": 10,
+        "inputTokens": 1120718,
+        "outputTokens": 20161,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0,
+      "failure_layer_signatures": [
+        "uc_operating_rules"
+      ]
+    },
+    {
+      "turn": 3,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_da538d6e-3921-44bd-b7fd-04737087df3d",
+      "requests": 18,
+      "tool_uses": 18,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 18,
+        "inputTokens": 2617652,
+        "outputTokens": 36639,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0
+    }
+  ],
+  "usage": {
+    "requests": 44,
+    "input_tokens": 4954617,
+    "output_tokens": 96815,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 5051432
+  },
+  "skill_reads": [
+    {
+      "file": "skill/references/unit-commitment-operating-rules.md",
+      "turn_id": "turn_cc460b0b-e452-4e19-9b09-d3ae567f6b65",
+      "file_chars": 8199,
+      "file_tokens": 2050,
+      "context_input_tokens": 97392
+    }
+  ],
+  "skill_read_tokens": 2050,
+  "skill_unique_file_tokens": 2050,
+  "skill_read_count": 1,
+  "agent_net_seconds": 1569.45,
+  "verifier_seconds": 416.09,
+  "verifier_queue_seconds": 0.0,
+  "resource_policy": {
+    "guard_root": "/Users/wangjinhua/Library/Caches/VistaExperiments/.sj4-extension-guard-v1",
+    "verifier_workers": 1,
+    "solver_workers": 2,
+    "numeric_threads": 1,
+    "guard_sha256": "6188b500b467fc5abf8ce1624f146e65c999f286b1d0d127b6dc61547b790891",
+    "soffice_binary": "/Applications/LibreOffice.app/Contents/MacOS/soffice"
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [
+    "unit-commitment-operating-rules"
+  ],
+  "accessed_modules_after_disclosure": [
+    "skill/references/unit-commitment-operating-rules.md"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 2,
+    "routable_feedback": 1,
+    "unroutable_feedback": 1,
+    "successful_disclosures": 1,
+    "next_round_module_access": 1,
+    "disclosure_to_pass_gap": 2,
+    "access_after_last_disclosure": true,
+    "first_turn_pass": false,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed_without_clean_vista_feedback_loop",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/workspace"
+}

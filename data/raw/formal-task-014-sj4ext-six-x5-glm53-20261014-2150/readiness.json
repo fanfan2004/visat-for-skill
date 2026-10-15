@@ -1,0 +1,28 @@
+{
+  "ready": {
+    "verifier_python": true,
+    "task_md": true,
+    "verifier_source": true,
+    "inputs_present": {
+      "network.json": true
+    },
+    "flat_artifacts": [
+      "milp-solver-workflow",
+      "unit-commitment-data-modeling",
+      "unit-commitment-operating-rules"
+    ],
+    "pd_artifact": true,
+    "pd_references": [
+      "milp-solver-workflow.md",
+      "unit-commitment-data-modeling.md",
+      "unit-commitment-operating-rules.md"
+    ],
+    "sj4_manifest": true,
+    "verifier_imports": true,
+    "source_and_artifact_hashes": true,
+    "resource_guard_probe": true,
+    "ready": true
+  },
+  "provider": "new-provider",
+  "model": "glm53-flash"
+}

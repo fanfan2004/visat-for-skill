@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-014-sj4ext-six-x5-glm53-20261014-2150-pd-m-replicate-02",
+  "task_id": "task-014",
+  "condition": "pd-m",
+  "replicate_id": 2,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "protocol": "sj4-extension-v1",
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_44f9b95d-8af0-4f60-8834-4320d3f66611",
+  "provider_id": "new-provider",
+  "episode_workers": 3,
+  "construction_evidence_sha256": "f9a0d63b989ab389c8743e05fadae9f50a7cbb58313f320885e6364995a91ed0",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_577f48f3-bd2f-4b5e-b34b-48092480ae7b",
+      "requests": 29,
+      "tool_uses": 32,
+      "skill_reads": [
+        {
+          "file": "skill/SKILL.md",
+          "turn_id": "turn_577f48f3-bd2f-4b5e-b34b-48092480ae7b",
+          "file_chars": 740,
+          "file_tokens": 185,
+          "context_input_tokens": 15454
+        },
+        {
+          "file": "skill/references/unit-commitment-data-modeling.md",
+          "turn_id": "turn_577f48f3-bd2f-4b5e-b34b-48092480ae7b",
+          "file_chars": 6924,
+          "file_tokens": 1731,
+          "context_input_tokens": 15910
+        },
+        {
+          "file": "skill/references/unit-commitment-operating-rules.md",
+          "turn_id": "turn_577f48f3-bd2f-4b5e-b34b-48092480ae7b",
+          "file_chars": 8199,
+          "file_tokens": 2050,
+          "context_input_tokens": 15910
+        },
+        {
+          "file": "skill/references/milp-solver-workflow.md",
+          "turn_id": "turn_577f48f3-bd2f-4b5e-b34b-48092480ae7b",
+          "file_chars": 6563,
+          "file_tokens": 1641,
+          "context_input_tokens": 20313
+        }
+      ],
+      "turn_usage": {
+        "modelRequestCount": 29,
+        "inputTokens": 1360152,
+        "outputTokens": 36968,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": true,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0
+    }
+  ],
+  "usage": {
+    "requests": 29,
+    "input_tokens": 1360152,
+    "output_tokens": 36968,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 1397120
+  },
+  "skill_reads": [
+    {
+      "file": "skill/SKILL.md",
+      "turn_id": "turn_577f48f3-bd2f-4b5e-b34b-48092480ae7b",
+      "file_chars": 740,
+      "file_tokens": 185,
+      "context_input_tokens": 15454
+    },
+    {
+      "file": "skill/references/unit-commitment-data-modeling.md",
+      "turn_id": "turn_577f48f3-bd2f-4b5e-b34b-48092480ae7b",
+      "file_chars": 6924,
+      "file_tokens": 1731,
+      "context_input_tokens": 15910
+    },
+    {
+      "file": "skill/references/unit-commitment-operating-rules.md",
+      "turn_id": "turn_577f48f3-bd2f-4b5e-b34b-48092480ae7b",
+      "file_chars": 8199,
+      "file_tokens": 2050,
+      "context_input_tokens": 15910
+    },
+    {
+      "file": "skill/references/milp-solver-workflow.md",
+      "turn_id": "turn_577f48f3-bd2f-4b5e-b34b-48092480ae7b",
+      "file_chars": 6563,
+      "file_tokens": 1641,
+      "context_input_tokens": 20313
+    }
+  ],
+  "skill_read_tokens": 5607,
+  "skill_unique_file_tokens": 5607,
+  "skill_read_count": 4,
+  "agent_net_seconds": 371.811,
+  "verifier_seconds": 106.663,
+  "verifier_queue_seconds": 0.0,
+  "resource_policy": {
+    "guard_root": "/Users/wangjinhua/Library/Caches/VistaExperiments/.sj4-extension-guard-v1",
+    "verifier_workers": 1,
+    "solver_workers": 2,
+    "numeric_threads": 1,
+    "guard_sha256": "6188b500b467fc5abf8ce1624f146e65c999f286b1d0d127b6dc61547b790891",
+    "soffice_binary": "/Applications/LibreOffice.app/Contents/MacOS/soffice"
+  },
+  "initially_available_modules": [
+    "skill/SKILL.md"
+  ],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [
+    "skill/SKILL.md",
+    "skill/references/unit-commitment-data-modeling.md",
+    "skill/references/unit-commitment-operating-rules.md",
+    "skill/references/milp-solver-workflow.md"
+  ],
+  "vista_metrics": {
+    "trigger_opportunities": 0,
+    "routable_feedback": 0,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 1,
+    "disclosure_to_pass_gap": null,
+    "access_after_last_disclosure": false,
+    "first_turn_pass": true,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": true,
+  "stop_reason": "verifier_pass",
+  "status": "passed",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-pd-m-replicate-02/workspace"
+}

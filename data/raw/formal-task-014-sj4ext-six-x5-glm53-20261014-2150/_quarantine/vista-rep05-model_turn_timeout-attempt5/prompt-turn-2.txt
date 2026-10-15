@@ -1,0 +1,6 @@
+The public verifier check failed with assertion_error, test_failure, uc_schema, uc_operating_rules. Public diagnostic:
+The required output failed the hidden checks.
+Failed check: test_required_schema
+Failed check: test_deliverable_reserve_and_ramping
+Failure categories: uc_schema, uc_operating_rules
+VISTA disclosed ./skill/references/unit-commitment-data-modeling.md. Read the disclosed module before repairing. Continue in the same session, work only inside this directory, and repair the required outputs: ./report.json.

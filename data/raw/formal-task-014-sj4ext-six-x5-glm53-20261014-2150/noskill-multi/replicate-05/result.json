@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "run_id": "formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-05",
+  "task_id": "task-014",
+  "condition": "noskill-multi",
+  "replicate_id": 5,
+  "backend": "zcode-local-minimal-dependencies",
+  "docker_used": false,
+  "protocol": "sj4-extension-v1",
+  "requested_provider_model": "glm53-flash",
+  "session_id": "sess_9b1a8b8c-7564-492b-9e14-38f59f8423c3",
+  "provider_id": "new-provider",
+  "episode_workers": 4,
+  "construction_evidence_sha256": "f9a0d63b989ab389c8743e05fadae9f50a7cbb58313f320885e6364995a91ed0",
+  "turns": [
+    {
+      "turn": 1,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_79540b40-6b17-48ce-a5d9-79f6b8f40a96",
+      "requests": 26,
+      "tool_uses": 26,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 26,
+        "inputTokens": 2380238,
+        "outputTokens": 51676,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0,
+      "failure_layer_signatures": [
+        "uc_operating_rules"
+      ]
+    },
+    {
+      "turn": 2,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_854b571e-ef08-4fcc-8a78-fb97bbf7c6d2",
+      "requests": 13,
+      "tool_uses": 12,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 13,
+        "inputTokens": 1871278,
+        "outputTokens": 41456,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0,
+      "failure_layer_signatures": [
+        "uc_operating_rules"
+      ]
+    },
+    {
+      "turn": 3,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_49197ae9-88e7-4fbf-a4c5-5abcefb5ccdc",
+      "requests": 29,
+      "tool_uses": 27,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 29,
+        "inputTokens": 1450642,
+        "outputTokens": 25889,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0,
+      "failure_layer_signatures": [
+        "uc_solver_or_cost"
+      ]
+    },
+    {
+      "turn": 4,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_79778d0c-cdc2-44bc-ade4-7bb383159afb",
+      "requests": 35,
+      "tool_uses": 34,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 35,
+        "inputTokens": 2380091,
+        "outputTokens": 37633,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0,
+      "failure_layer_signatures": [
+        "uc_operating_rules"
+      ]
+    },
+    {
+      "turn": 5,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_bad33dd9-a406-4181-9705-464ba2160e57",
+      "requests": 11,
+      "tool_uses": 10,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 11,
+        "inputTokens": 1100257,
+        "outputTokens": 8731,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0,
+      "failure_layer_signatures": [
+        "uc_operating_rules"
+      ]
+    },
+    {
+      "turn": 6,
+      "return_code": 0,
+      "model_turn_timeout": false,
+      "zcode_turn_id": "turn_e2c5a8e8-b16d-405c-9e04-da7f855162af",
+      "requests": 17,
+      "tool_uses": 16,
+      "skill_reads": [],
+      "turn_usage": {
+        "modelRequestCount": 17,
+        "inputTokens": 2028969,
+        "outputTokens": 27198,
+        "cacheReadTokens": 0
+      },
+      "verifier_pass": false,
+      "verifier_infrastructure_error": false,
+      "verifier_queue_seconds": 0.0
+    }
+  ],
+  "usage": {
+    "requests": 131,
+    "input_tokens": 11211475,
+    "output_tokens": 192583,
+    "cache_read_tokens": 0,
+    "input_plus_output_tokens": 11404058
+  },
+  "skill_reads": [],
+  "skill_read_tokens": 0,
+  "skill_unique_file_tokens": 0,
+  "skill_read_count": 0,
+  "agent_net_seconds": 1849.764,
+  "verifier_seconds": 338.644,
+  "verifier_queue_seconds": 0.0,
+  "resource_policy": {
+    "guard_root": "/Users/wangjinhua/Library/Caches/VistaExperiments/.sj4-extension-guard-v1",
+    "verifier_workers": 1,
+    "solver_workers": 2,
+    "numeric_threads": 1,
+    "guard_sha256": "6188b500b467fc5abf8ce1624f146e65c999f286b1d0d127b6dc61547b790891",
+    "soffice_binary": "/Applications/LibreOffice.app/Contents/MacOS/soffice"
+  },
+  "initially_available_modules": [],
+  "disclosed_modules": [],
+  "accessed_modules_after_disclosure": [],
+  "vista_metrics": {
+    "trigger_opportunities": 5,
+    "routable_feedback": 0,
+    "unroutable_feedback": 0,
+    "successful_disclosures": 0,
+    "next_round_module_access": 0,
+    "disclosure_to_pass_gap": null,
+    "access_after_last_disclosure": false,
+    "first_turn_pass": false,
+    "clean_complete_closure": 0
+  },
+  "final_verifier_pass": false,
+  "stop_reason": "max_turns",
+  "status": "failed_max_turns",
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-noskill-multi-replicate-05/workspace"
+}

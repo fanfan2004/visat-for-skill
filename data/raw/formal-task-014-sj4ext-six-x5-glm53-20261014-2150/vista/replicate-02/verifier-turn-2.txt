@@ -1,0 +1,45 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.14, pytest-7.4.0, pluggy-1.6.0 -- /Users/wangjinhua/Downloads/vista-travel-macos-handoff-20260819-192318/.venv/bin/python
+rootdir: /Users/wangjinhua/Library/Caches/VistaExperiments
+plugins: mock-3.15.1, asyncio-0.21.0, anyio-4.14.2, requests-mock-1.11.0
+asyncio: mode=Mode.STRICT
+collecting ... collected 14 items
+
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestSchema::test_required_schema PASSED [  7%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestSchema::test_arrays_align_with_case PASSED [ 14%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestBinaryLogic::test_startup_shutdown_match_commitment PASSED [ 21%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestBinaryLogic::test_no_simultaneous_startup_shutdown PASSED [ 28%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestBinaryLogic::test_reported_transition_counts PASSED [ 35%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestThermalFeasibility::test_must_run_units_online PASSED [ 42%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestThermalFeasibility::test_output_limits_and_offline_zeroes PASSED [ 50%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestThermalFeasibility::test_deliverable_reserve_and_ramping FAILED [ 57%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestSystemFeasibility::test_demand_and_reserve PASSED [ 64%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestSystemFeasibility::test_renewable_limits PASSED [ 71%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestSystemFeasibility::test_hourly_summary_matches_schedule PASSED [ 78%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestMinimumUpDown::test_initial_and_in_horizon_obligations PASSED [ 85%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestCostAndQuality::test_reported_cost_matches_schedule PASSED [ 92%]
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestCostAndQuality::test_cost_within_benchmark_gap PASSED [100%]
+
+=================================== FAILURES ===================================
+_________ TestThermalFeasibility.test_deliverable_reserve_and_ramping __________
+../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py:632: in test_deliverable_reserve_and_ramping
+    assert lhs <= shut_rhs + TOL_GENERATOR_MW, (
+E   AssertionError: 101_CT_1 violates pre-shutdown capacity at hour 19
+E   assert np.float64(12.0) <= (np.float64(0.0) + 0.001)
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestSchema::test_required_schema
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestSchema::test_arrays_align_with_case
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestBinaryLogic::test_startup_shutdown_match_commitment
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestBinaryLogic::test_no_simultaneous_startup_shutdown
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestBinaryLogic::test_reported_transition_counts
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestThermalFeasibility::test_must_run_units_online
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestThermalFeasibility::test_output_limits_and_offline_zeroes
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestSystemFeasibility::test_demand_and_reserve
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestSystemFeasibility::test_renewable_limits
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestSystemFeasibility::test_hourly_summary_matches_schedule
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestMinimumUpDown::test_initial_and_in_horizon_obligations
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestCostAndQuality::test_reported_cost_matches_schedule
+PASSED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestCostAndQuality::test_cost_within_benchmark_gap
+FAILED ../../.verifiers/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-02/test_outputs_local.py::TestThermalFeasibility::test_deliverable_reserve_and_ramping
+=================== 1 failed, 13 passed in 142.31s (0:02:22) ===================

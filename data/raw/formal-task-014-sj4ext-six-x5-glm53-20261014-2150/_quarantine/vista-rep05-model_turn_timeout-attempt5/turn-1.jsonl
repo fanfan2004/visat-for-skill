@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_31e5da97-2fd0-4115-986a-3e29d4917814",
+  "traceId": "791ea5f2-b086-46f8-8987-228931fcd902",
+  "turnId": "turn_0cbcefac-82f8-4cf9-9dfc-977f36024f06",
+  "response": "Done. `./report.json` contains a complete, independently verified unit commitment schedule for the 73-thermal / 81-renewable, 48-hour case.\n\n**How it was solved** (`solve_uc.py`): a full MILP built with PuLP and solved with HiGHS, including:\n- Commitment binaries with Rajan–Takriti minimum up/down constraints, honoring initial states (`unit_on_t0`, `time_up_t0`/`time_down_t0`)\n- Startup-cost tiers, with the tier valid only when the shutdown occurred inside its lag window; pre-horizon downtime (all ≥ 24 h) correctly forces the cold tier for first starts\n- Exact piecewise production cost via incremental segments (all curves are convex), so reported cost equals linear interpolation of the input table\n- Spinning reserve from online thermal units only, with headroom (`p + r ≤ Pmax`) and ramp deliverability (`r ≤ ramp_up_limit`) limits\n- Equality demand balance with renewable curtailment between hourly min/max profiles\n- Ramp up/down, startup/shutdown ramp limits, and t0 initial-condition ramps; the nuclear unit is committed all 48 hours (must-run)\n\nAfter the MILP, binaries were fixed and an LP re-solve produced exactly-feasible continuous values.\n\n**Results:**\n- Objective cost: **1,216,760.93** (recomputed exactly from the schedule — matches)\n- Solver status: `time_limit_feasible`, reported MIP gap **0.00358** (HiGHS hit the 520 s limit at a 0.358% gap — the solution is feasible and economical)\n- 30 startups / 51 shutdowns (units cycle off during the midday renewable surplus, where wind/PV curtailment alone can't absorb the overgeneration, and restart for the evening peaks)\n- Max demand-balance violation: 4.5e-13 MW; max reserve shortfall: 1.4e-14 MW\n\n`validate_report.py` re-derives every constraint from `network.json` against `report.json` — balance, reserve, generator/renewable limits, ramping, min up/down, startup/shutdown logic, initial conditions, deliverability, cost consistency, and summary counts — and reports **ALL CHECKS PASS**.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 23,
+    "inputTokens": 1702846,
+    "outputTokens": 33184,
+    "totalTokens": 1736030,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 19581,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 21057,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1736030,
+    "contextUsed": 91475,
+    "contextWindow": 200000
+  }
+}

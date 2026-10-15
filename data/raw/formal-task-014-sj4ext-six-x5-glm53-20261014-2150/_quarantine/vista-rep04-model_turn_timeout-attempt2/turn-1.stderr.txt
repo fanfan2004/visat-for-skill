@@ -1,0 +1,101 @@
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+APICallError [AI_APICallError]: Cannot connect to API: other side closed
+    at handleFetchError (/Applications/ZCode.app/Contents/Resources/glm/zcode.cjs:2104:5837)
+    at postToApi (/Applications/ZCode.app/Contents/Resources/glm/zcode.cjs:2108:20318)
+    at async OpenAICompatibleChatLanguageModel.doStream (/Applications/ZCode.app/Contents/Resources/glm/zcode.cjs:2118:6883)
+    at async fn (/Applications/ZCode.app/Contents/Resources/glm/zcode.cjs:2170:15517)
+    at async /Applications/ZCode.app/Contents/Resources/glm/zcode.cjs:2165:964
+    at async _retryWithExponentialBackoff (/Applications/ZCode.app/Contents/Resources/glm/zcode.cjs:2165:5143)
+    at async streamStep (/Applications/ZCode.app/Contents/Resources/glm/zcode.cjs:2170:14640)
+    at async fn (/Applications/ZCode.app/Contents/Resources/glm/zcode.cjs:2170:20970)
+    at async /Applications/ZCode.app/Contents/Resources/glm/zcode.cjs:2165:964 {
+  cause: SocketError: other side closed
+      at Socket.onHttpSocketEnd (node:internal/deps/undici/undici:7635:26)
+      at Socket.emit (node:events:520:35)
+      at endReadableNT (node:internal/streams/readable:1729:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'UND_ERR_SOCKET',
+    socket: {
+      localAddress: '10.68.109.29',
+      localPort: 52739,
+      remoteAddress: '175.178.217.136',
+      remotePort: 32001,
+      remoteFamily: 'IPv4',
+      timeout: undefined,
+      bytesWritten: 531622,
+      bytesRead: 4552327
+    }
+  },
+  url: 'http://gz.scery.com:32001/v1/chat/completions',
+  requestBodyValues: {
+    model: 'glm53-flash',
+    user: undefined,
+    max_tokens: undefined,
+    temperature: undefined,
+    top_p: undefined,
+    frequency_penalty: undefined,
+    presence_penalty: undefined,
+    response_format: undefined,
+    stop: undefined,
+    seed: undefined,
+    reasoning_effort: undefined,
+    verbosity: undefined,
+    messages: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ],
+    tools: [
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object]
+    ],
+    tool_choice: 'auto',
+    stream: true,
+    stream_options: { include_usage: true }
+  },
+  statusCode: undefined,
+  responseHeaders: undefined,
+  responseBody: undefined,
+  isRetryable: true,
+  data: undefined,
+  Symbol(vercel.ai.error): true,
+  Symbol(vercel.ai.error.AI_APICallError): true
+}
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
