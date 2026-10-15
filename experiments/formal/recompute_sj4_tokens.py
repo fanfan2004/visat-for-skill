@@ -153,7 +153,7 @@ def main(argv: list[str] | None = None) -> None:
                 "requests": sum(r["requests"] for r in rows),
                 "input_tokens": sum(inputs),
                 "input_tokens_median": statistics.median(inputs),
-                "input_tokens_max_over_min": round(max(inputs) / min(inputs), 2),
+                "input_tokens_max_over_min": round(max(inputs) / min(inputs), 2) if min(inputs) else None,
                 "input_per_request": round(sum(inputs) / max(1, sum(r["requests"] for r in rows))),
                 "all_turn_receipts_reconcile": all(r["turn_receipts_reconcile"] for r in rows),
             }
