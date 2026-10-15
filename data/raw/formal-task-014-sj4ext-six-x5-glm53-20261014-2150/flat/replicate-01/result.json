@@ -8,7 +8,7 @@
   "docker_used": false,
   "protocol": "sj4-extension-v1",
   "requested_provider_model": "glm53-flash",
-  "session_id": null,
+  "session_id": "sess_c4529136-e0f8-48da-bbaf-de71f78b6147",
   "provider_id": "new-provider",
   "episode_workers": 3,
   "construction_evidence_sha256": "f9a0d63b989ab389c8743e05fadae9f50a7cbb58313f320885e6364995a91ed0",
@@ -17,15 +17,15 @@
       "turn": 1,
       "return_code": 124,
       "model_turn_timeout": true,
-      "zcode_turn_id": null,
-      "requests": 0,
+      "zcode_turn_id": "turn_cb534c82-25d1-4cbf-9986-9e27d8eaa552",
+      "requests": 40,
       "tool_uses": 0,
       "skill_reads": [],
       "turn_usage": {
-        "modelRequestCount": null,
-        "inputTokens": null,
-        "outputTokens": null,
-        "cacheReadTokens": null
+        "modelRequestCount": 40,
+        "inputTokens": 3263626,
+        "outputTokens": 100896,
+        "cacheReadTokens": 0
       },
       "verifier_pass": true,
       "verifier_infrastructure_error": false,
@@ -33,17 +33,17 @@
     }
   ],
   "usage": {
-    "requests": 0,
-    "input_tokens": 0,
-    "output_tokens": 0,
+    "requests": 40,
+    "input_tokens": 3263626,
+    "output_tokens": 100896,
     "cache_read_tokens": 0,
-    "input_plus_output_tokens": 0
+    "input_plus_output_tokens": 3364522
   },
   "skill_reads": [],
   "skill_read_tokens": 0,
   "skill_unique_file_tokens": 0,
   "skill_read_count": 0,
-  "agent_net_seconds": 0.0,
+  "agent_net_seconds": 957.107,
   "verifier_seconds": 150.793,
   "verifier_queue_seconds": 0.0,
   "resource_policy": {
@@ -73,5 +73,17 @@
   "final_verifier_pass": true,
   "stop_reason": "verifier_pass_after_model_timeout",
   "status": "passed",
-  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-flat-replicate-01/workspace"
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-flat-replicate-01/workspace",
+  "usage_recovery": {
+    "source": "zcode-storage/cli/rollout/model-io",
+    "note": "usage 由 rollout 原始记录补记：回合被超时杀掉，runner 收尾解析失败",
+    "recovered": [
+      "usage",
+      "session_id",
+      "agent_net_seconds",
+      "turn_breakdown"
+    ],
+    "requests": 40,
+    "input_tokens": 3263626
+  }
 }

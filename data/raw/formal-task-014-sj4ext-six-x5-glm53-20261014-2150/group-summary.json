@@ -57,12 +57,12 @@
       "completed_trials": 5,
       "first_turn_passes": 4,
       "final_verifier_passes": 4,
-      "agent_net_seconds": 2613.428,
+      "agent_net_seconds": 3570.535,
       "verifier_seconds": 551.133,
       "usage": {
-        "requests": 112,
-        "input_tokens": 7668096,
-        "output_tokens": 230570,
+        "requests": 152,
+        "input_tokens": 10931722,
+        "output_tokens": 331466,
         "cache_read_tokens": 0
       },
       "skill_read_tokens": 21688,
@@ -81,12 +81,12 @@
       "completed_trials": 5,
       "first_turn_passes": 3,
       "final_verifier_passes": 3,
-      "agent_net_seconds": 1505.243,
+      "agent_net_seconds": 3958.256,
       "verifier_seconds": 625.96,
       "usage": {
-        "requests": 54,
-        "input_tokens": 3211104,
-        "output_tokens": 115949,
+        "requests": 142,
+        "input_tokens": 9936955,
+        "output_tokens": 309712,
         "cache_read_tokens": 0
       },
       "skill_read_tokens": 11214,
@@ -104,12 +104,12 @@
       "completed_trials": 5,
       "first_turn_passes": 4,
       "final_verifier_passes": 5,
-      "agent_net_seconds": 1247.252,
+      "agent_net_seconds": 3377.599,
       "verifier_seconds": 637.91,
       "usage": {
-        "requests": 56,
-        "input_tokens": 2818439,
-        "output_tokens": 100795,
+        "requests": 188,
+        "input_tokens": 12923472,
+        "output_tokens": 319647,
         "cache_read_tokens": 0
       },
       "skill_read_tokens": 11214,
@@ -207,16 +207,16 @@
       "replicate_id": 1,
       "status": "passed",
       "final_verifier_pass": true,
-      "session_id": null,
+      "session_id": "sess_c4529136-e0f8-48da-bbaf-de71f78b6147",
       "usage": {
-        "requests": 0,
-        "input_tokens": 0,
-        "output_tokens": 0,
+        "requests": 40,
+        "input_tokens": 3263626,
+        "output_tokens": 100896,
         "cache_read_tokens": 0,
-        "input_plus_output_tokens": 0
+        "input_plus_output_tokens": 3364522
       },
       "skill_read_tokens": 0,
-      "agent_net_seconds": 0.0,
+      "agent_net_seconds": 957.107,
       "verifier_seconds": 150.793,
       "disclosed_modules": [],
       "vista_metrics": {
@@ -412,16 +412,16 @@
       "replicate_id": 2,
       "status": "passed",
       "final_verifier_pass": true,
-      "session_id": null,
+      "session_id": "sess_878e94ee-98bb-48e4-89ba-187781c8a160",
       "usage": {
-        "requests": 0,
-        "input_tokens": 0,
-        "output_tokens": 0,
+        "requests": 26,
+        "input_tokens": 2167073,
+        "output_tokens": 49198,
         "cache_read_tokens": 0,
-        "input_plus_output_tokens": 0
+        "input_plus_output_tokens": 2216271
       },
       "skill_read_tokens": 0,
-      "agent_net_seconds": 0.0,
+      "agent_net_seconds": 839.779,
       "verifier_seconds": 133.678,
       "disclosed_modules": [],
       "vista_metrics": {
@@ -588,16 +588,16 @@
       "replicate_id": 3,
       "status": "passed",
       "final_verifier_pass": true,
-      "session_id": null,
+      "session_id": "sess_5ebcc645-9ab8-4e85-b740-f720191e348f",
       "usage": {
-        "requests": 0,
-        "input_tokens": 0,
-        "output_tokens": 0,
+        "requests": 17,
+        "input_tokens": 941445,
+        "output_tokens": 59898,
         "cache_read_tokens": 0,
-        "input_plus_output_tokens": 0
+        "input_plus_output_tokens": 1001343
       },
       "skill_read_tokens": 0,
-      "agent_net_seconds": 0.0,
+      "agent_net_seconds": 761.897,
       "verifier_seconds": 59.499,
       "disclosed_modules": [],
       "vista_metrics": {
@@ -617,16 +617,16 @@
       "replicate_id": 3,
       "status": "passed",
       "final_verifier_pass": true,
-      "session_id": null,
+      "session_id": "sess_0b5d98f9-57d4-447d-86fb-34273b91ccf9",
       "usage": {
-        "requests": 0,
-        "input_tokens": 0,
-        "output_tokens": 0,
+        "requests": 65,
+        "input_tokens": 5587554,
+        "output_tokens": 87976,
         "cache_read_tokens": 0,
-        "input_plus_output_tokens": 0
+        "input_plus_output_tokens": 5675530
       },
       "skill_read_tokens": 0,
-      "agent_net_seconds": 0.0,
+      "agent_net_seconds": 852.505,
       "verifier_seconds": 80.096,
       "disclosed_modules": [],
       "vista_metrics": {
@@ -793,16 +793,16 @@
       "replicate_id": 4,
       "status": "passed",
       "final_verifier_pass": true,
-      "session_id": null,
+      "session_id": "sess_1728cbea-8dda-49c7-9c79-edf5921ecee5",
       "usage": {
-        "requests": 0,
-        "input_tokens": 0,
-        "output_tokens": 0,
+        "requests": 27,
+        "input_tokens": 1895237,
+        "output_tokens": 63804,
         "cache_read_tokens": 0,
-        "input_plus_output_tokens": 0
+        "input_plus_output_tokens": 1959041
       },
       "skill_read_tokens": 0,
-      "agent_net_seconds": 0.0,
+      "agent_net_seconds": 645.132,
       "verifier_seconds": 131.484,
       "disclosed_modules": [],
       "vista_metrics": {
@@ -940,16 +940,16 @@
       "replicate_id": 5,
       "status": "passed",
       "final_verifier_pass": true,
-      "session_id": null,
+      "session_id": "sess_f5c2d33d-618f-4d47-b985-a556dae78dca",
       "usage": {
-        "requests": 0,
-        "input_tokens": 0,
-        "output_tokens": 0,
+        "requests": 45,
+        "input_tokens": 3617333,
+        "output_tokens": 84667,
         "cache_read_tokens": 0,
-        "input_plus_output_tokens": 0
+        "input_plus_output_tokens": 3702000
       },
       "skill_read_tokens": 0,
-      "agent_net_seconds": 0.0,
+      "agent_net_seconds": 851.337,
       "verifier_seconds": 91.622,
       "disclosed_modules": [],
       "vista_metrics": {
@@ -969,16 +969,16 @@
       "replicate_id": 5,
       "status": "passed",
       "final_verifier_pass": true,
-      "session_id": null,
+      "session_id": "sess_36dd2335-a868-4e95-80f0-30bb33a713e2",
       "usage": {
-        "requests": 0,
-        "input_tokens": 0,
-        "output_tokens": 0,
+        "requests": 40,
+        "input_tokens": 2622242,
+        "output_tokens": 67072,
         "cache_read_tokens": 0,
-        "input_plus_output_tokens": 0
+        "input_plus_output_tokens": 2689314
       },
       "skill_read_tokens": 0,
-      "agent_net_seconds": 0.0,
+      "agent_net_seconds": 632.71,
       "verifier_seconds": 158.695,
       "disclosed_modules": [],
       "vista_metrics": {

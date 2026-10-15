@@ -39,15 +39,15 @@
       "turn": 2,
       "return_code": 124,
       "model_turn_timeout": true,
-      "zcode_turn_id": null,
-      "requests": 0,
+      "zcode_turn_id": "turn_1794bb83-d38b-46db-ab6a-e551d5df9c87",
+      "requests": 19,
       "tool_uses": 0,
       "skill_reads": [],
       "turn_usage": {
-        "modelRequestCount": null,
-        "inputTokens": null,
-        "outputTokens": null,
-        "cacheReadTokens": null
+        "modelRequestCount": 19,
+        "inputTokens": 1983083,
+        "outputTokens": 44946,
+        "cacheReadTokens": 0
       },
       "verifier_pass": true,
       "verifier_infrastructure_error": false,
@@ -95,5 +95,13 @@
   "final_verifier_pass": true,
   "stop_reason": "verifier_pass_after_model_timeout",
   "status": "passed_without_clean_vista_feedback_loop",
-  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-04/workspace"
+  "workspace": "/Users/wangjinhua/Library/Caches/VistaExperiments/formal-task-014-sj4ext-six-x5-glm53-20261014-2150-vista-replicate-04/workspace",
+  "usage_recovery": {
+    "source": "zcode-storage/cli/rollout/model-io",
+    "note": "usage 由 rollout 原始记录补记：回合被超时杀掉，runner 收尾解析失败",
+    "recovered": [
+      "turn_breakdown"
+    ],
+    "turns": 1
+  }
 }
